@@ -18,6 +18,7 @@
 {
     BOOL isLogin;
     UserInfoItem *user;
+    NSMutableArray *listMArr;
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (weak, nonatomic) IBOutlet UIView *customNav;
@@ -55,21 +56,23 @@
     
     UITapGestureRecognizer *avatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginAction)];
     [self.avatarImgV addGestureRecognizer:avatarTap];
+    
+    listMArr = [[NSMutableArray alloc] initWithArray:@[@[@"新手指导"], @[@"意见反馈", @"关于企图"], @[@"分享账号绑定"], @[@"清理缓存"]]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (user.uid) {
-        NSLog(@"uid:%@", @(user.uid));
-        [self updateUIWithData];
-    }else {
-
-    }
+    [self updateUIWithData];
 }
 
 - (void)updateUIWithData {
-    [self.avatarImgV sd_setImageWithURL:[NSURL URLWithString:user.thumb] placeholderImage:[UIImage imageNamed:@"maka_avatar_default"]];
-    self.nameLbl.text = [user.nickname length] > 0 ? user.nickname : @"未设置";
+    if (user.uid) {
+        [self.avatarImgV sd_setImageWithURL:[NSURL URLWithString:user.thumb] placeholderImage:[UIImage imageNamed:@"maka_avatar_default"]];
+        self.nameLbl.text = [user.nickname length] > 0 ? user.nickname : @"未设置";
+        self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }else {
+        self.myTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    }
 }
 
 - (void)loginAction {
@@ -153,25 +156,77 @@
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [listMArr count];
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (user.uid) {
+        return 2;
+    }else{
+        return [listMArr[section] count];
+    }
+    return 0;
+}
+- (MyEventCell *)tableView:(UITableView *)tableView myEventCellForRow:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"MyEventCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MyEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[MyEventCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:CellIdentifier];
+                                  reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
     return cell;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return kScreenWidth/2;
+- (UITableViewCell *)tableView:(UITableView *)tableView commonCellForRow:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"CommonCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                  reuseIdentifier:CellIdentifier];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.font = [UIFont systemFontOfSize:15.0];
+    }
+    // Configure the cell...
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    if (section == 3) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }else {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    cell.textLabel.text = listMArr[section][row];
+   
+    return cell;
 }
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = nil;
+    if (user.uid) {
+        cell = [self tableView:tableView myEventCellForRow:indexPath];
+    }
+    else {
+        cell = [self tableView:tableView commonCellForRow:indexPath];
+    }
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (user.uid) {
+        return kScreenWidth/2;
+    }else {
+        return 44.0;
+    }
+    return 0.0;
+}
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footer = [[UIView alloc] init];
+    footer.backgroundColor = RGBCOLOR(236, 236, 236);
+    return footer;
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 15.0;
+}
 @end
