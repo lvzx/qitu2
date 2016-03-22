@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startPageBG" translatesAutoresizingMaskIntoConstraints="NO" id="gX2-qw-ezt">
+                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gX2-qw-ezt" secondAttribute="trailing" id="GKD-wa-Ptz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gX2-qw-ezt" secondAttribute="trailing" id="bee-4k-smy"/>
+                            <constraint firstItem="gX2-qw-ezt" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="dQZ-VK-a8p"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="gX2-qw-ezt" secondAttribute="bottom" id="k5e-6z-cYv"/>
+                            <constraint firstItem="gX2-qw-ezt" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="v5o-6X-I5f"/>
+                            <constraint firstItem="gX2-qw-ezt" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="z7J-QP-CCZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bee-4k-smy"/>
+                                <exclude reference="v5o-6X-I5f"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="startPageBG" width="375" height="667"/>
+    </resources>
+</document>
