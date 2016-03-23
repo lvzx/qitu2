@@ -13,6 +13,7 @@
     NSArray *listArr;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 @end
 
 @implementation SettingsVC
@@ -100,13 +101,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44.0;
 }
-- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *footer = [[UIView alloc] init];
     footer.backgroundColor = RGBCOLOR(236, 236, 236);
     return footer;
     
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 15.0;
 }
 
