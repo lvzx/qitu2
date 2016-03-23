@@ -14,6 +14,7 @@
 		0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB71C9A96600063AC7E /* BaseViewController.m */; };
 		0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */; };
 		0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6A2A1CA2367F00C65EF0 /* MyTextField.m */; };
+		0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6A2D1CA27BA600C65EF0 /* SettingsVC.m */; };
 		0D9C9DB31C97E62400652830 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C9DB21C97E62400652830 /* main.m */; };
 		0D9C9DB61C97E62400652830 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C9DB51C97E62400652830 /* AppDelegate.m */; };
 		0D9C9DBE1C97E62400652830 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C9DBD1C97E62400652830 /* Assets.xcassets */; };
@@ -67,6 +68,8 @@
 		0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
 		0D8A6A291CA2367F00C65EF0 /* MyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextField.h; sourceTree = "<group>"; };
 		0D8A6A2A1CA2367F00C65EF0 /* MyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextField.m; sourceTree = "<group>"; };
+		0D8A6A2C1CA27BA600C65EF0 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
+		0D8A6A2D1CA27BA600C65EF0 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
 		0D9C9DAE1C97E62400652830 /* qitu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qitu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9C9DB21C97E62400652830 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D9C9DB41C97E62400652830 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 		0D630BA41C9A40250063AC7E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				0D8A6A2C1CA27BA600C65EF0 /* SettingsVC.h */,
+				0D8A6A2D1CA27BA600C65EF0 /* SettingsVC.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */,
 				0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */,
 				0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */,
+				0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */,
 				0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */,
 				0D9C9DB61C97E62400652830 /* AppDelegate.m in Sources */,
 				0DA937661C9BF0EA000DC170 /* HomeViewController.m in Sources */,

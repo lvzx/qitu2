@@ -21,7 +21,7 @@
 
 
 //Toost
-- (void)showHudWithToostTitle:(NSString *)title;
+- (void)showToast:(NSString *)title;
 
 //报告网络错误
 - (void)reportNetworkError:(NSError *)error;

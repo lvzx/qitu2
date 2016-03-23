@@ -87,7 +87,7 @@
 {}
 
 
-- (void)showHudWithToostTitle:(NSString *)title
+- (void)showToast:(NSString *)title
 {
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hud];
@@ -139,9 +139,9 @@
 
 #pragma mark - 导航栏设置
 - (void)setNavBackBarSelector:(SEL)aSelector {
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 25)];
-    [btn setImage:[UIImage imageNamed:@"WDIPh_btn_navi_back"] forState:UIControlStateNormal];
-    [btn setImage:[UIImage imageNamed:@"WDIPh_btn_navi_back"] forState:UIControlStateHighlighted];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [btn setImage:[UIImage imageNamed:@"maka_navbar_return"] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"maka_navbar_return"] forState:UIControlStateHighlighted];
     [btn addTarget:self action:aSelector forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];

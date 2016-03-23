@@ -11,6 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "LoginVC.h"
 #import "UserInfoItem.h"
+#import "SettingsVC.h"
 
 #define NAV_HEIGHT_DELTA    100.0
 #define AVATAR_HEIGHT_DELTA    30.0
@@ -78,10 +79,11 @@
 }
 
 - (void)avatarTapAction {
+    UIStoryboard *storyboard1 = [UIStoryboard storyboardWithName:@"MyEvent" bundle:nil];
     if (_user.uid) {
-        
+        SettingsVC *settingsVC = [storyboard1 instantiateViewControllerWithIdentifier:@"SettingsVC"];
+        [self.navigationController pushViewController:settingsVC animated:YES];
     }else {
-        UIStoryboard *storyboard1 = [UIStoryboard storyboardWithName:@"MyEvent" bundle:nil];
         LoginVC *loginVC = [storyboard1 instantiateViewControllerWithIdentifier:@"LoginVC"];
         loginVC.delegate = self;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
