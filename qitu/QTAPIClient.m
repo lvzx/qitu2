@@ -39,4 +39,5 @@
 - (void)setAuthorizationHeaderFieldWithToken:(NSString *)token {
     [self.requestSerializer setValue:[NSString stringWithFormat:@"Token token=\"%@\"", token] forHTTPHeaderField:@"Authorization"];
 }
+
 @end

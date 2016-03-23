@@ -10,7 +10,6 @@
 		0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0398511C9F90DB00A65973 /* MyEventVC.m */; };
 		0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D7B731CA0FF22002E1D3F /* UserInfoItem.m */; };
 		0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D7B761CA1481D002E1D3F /* LoginVC.m */; };
-		0D630BB01C9A5A830063AC7E /* QTAPIClient+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BAF1C9A5A830063AC7E /* QTAPIClient+User.m */; };
 		0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB21C9A5E340063AC7E /* QTAPIClient.m */; };
 		0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB71C9A96600063AC7E /* BaseViewController.m */; };
 		0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */; };
@@ -57,8 +56,6 @@
 		0D5D7B761CA1481D002E1D3F /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		0D630BA91C9A59F80063AC7E /* QTAPIConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTAPIConfig.h; sourceTree = "<group>"; };
 		0D630BAA1C9A5A110063AC7E /* QTAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTAPI.h; sourceTree = "<group>"; };
-		0D630BAE1C9A5A830063AC7E /* QTAPIClient+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QTAPIClient+User.h"; sourceTree = "<group>"; };
-		0D630BAF1C9A5A830063AC7E /* QTAPIClient+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QTAPIClient+User.m"; sourceTree = "<group>"; };
 		0D630BB11C9A5E340063AC7E /* QTAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTAPIClient.h; sourceTree = "<group>"; };
 		0D630BB21C9A5E340063AC7E /* QTAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTAPIClient.m; sourceTree = "<group>"; };
 		0D630BB41C9A93E40063AC7E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -224,8 +221,6 @@
 				0D630BAA1C9A5A110063AC7E /* QTAPI.h */,
 				0D630BB11C9A5E340063AC7E /* QTAPIClient.h */,
 				0D630BB21C9A5E340063AC7E /* QTAPIClient.m */,
-				0D630BAE1C9A5A830063AC7E /* QTAPIClient+User.h */,
-				0D630BAF1C9A5A830063AC7E /* QTAPIClient+User.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -582,7 +577,6 @@
 				0DA937631C9BD715000DC170 /* MyEventCell.m in Sources */,
 				0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */,
 				0DA9376F1C9BF55C000DC170 /* CreatorVC.m in Sources */,
-				0D630BB01C9A5A830063AC7E /* QTAPIClient+User.m in Sources */,
 				0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */,
 				0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */,
 			);

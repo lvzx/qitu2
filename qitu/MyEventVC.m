@@ -18,7 +18,6 @@
 @interface MyEventVC ()<UITableViewDataSource, UITableViewDelegate, PassingUserInfoDelegate>
 {
     BOOL isLogin;
-    UserInfoItem *user;
     NSMutableArray *listMArr;
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
@@ -30,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLbl;
 @property (strong, nonatomic) UINavigationBar *navBar;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopCons;
+@property (strong, nonatomic) UserInfoItem *user;
 
 @end
 
@@ -44,7 +44,7 @@
     btn.layer.masksToBounds = YES;
     [btn setImage:[UIImage imageNamed:@"maka_avatar_default"] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"maka_avatar_default"] forState:UIControlStateHighlighted];
-    [btn addTarget:self action:@selector(personalInfo) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(avatarTapAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *barBtn = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = barBtn;
     
@@ -55,43 +55,47 @@
     //取消scrollView默认的内边距64px
     //self.automaticallyAdjustsScrollViewInsets = NO;
     
-    UITapGestureRecognizer *avatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginAction)];
+    UITapGestureRecognizer *avatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarTapAction)];
     [self.avatarImgV addGestureRecognizer:avatarTap];
     
     listMArr = [[NSMutableArray alloc] initWithArray:@[@[@"新手指导"], @[@"意见反馈", @"关于企图"], @[@"分享账号绑定"], @[@"清理缓存"]]];
+    [self updateUIWithData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self updateUIWithData];
 }
 
 - (void)updateUIWithData {
-    if (user.uid) {
-        [self.avatarImgV sd_setImageWithURL:[NSURL URLWithString:user.thumb] placeholderImage:[UIImage imageNamed:@"maka_avatar_default"]];
-        self.nameLbl.text = [user.nickname length] > 0 ? user.nickname : @"未设置";
+    if (_user.uid) {
+        [self.avatarImgV sd_setImageWithURL:[NSURL URLWithString:_user.thumb] placeholderImage:[UIImage imageNamed:@"maka_avatar_default"]];
+        self.nameLbl.text = [_user.nickname length] > 0 ? _user.nickname : @"未设置";
         self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }else {
         self.myTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     }
+    [self.myTableView reloadData];
 }
 
-- (void)loginAction {
-    UIStoryboard *storyboard1 = [UIStoryboard storyboardWithName:@"MyEvent" bundle:nil];
-    LoginVC *loginVC = [storyboard1 instantiateViewControllerWithIdentifier:@"LoginVC"];
-    loginVC.delegate = self;
-    UINavigationController *nav = [storyboard1 instantiateViewControllerWithIdentifier:@"LoginNavVC"];
-    [self presentViewController:nav animated:YES completion:nil];
+- (void)avatarTapAction {
+    if (_user.uid) {
+        
+    }else {
+        UIStoryboard *storyboard1 = [UIStoryboard storyboardWithName:@"MyEvent" bundle:nil];
+        LoginVC *loginVC = [storyboard1 instantiateViewControllerWithIdentifier:@"LoginVC"];
+        loginVC.delegate = self;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+        nav.navigationBarHidden = YES;
+        [self presentViewController:nav animated:YES completion:nil];
+    }
 }
 
-- (void)personalInfo {
-
-}
 #pragma mark - PassingUserInfoDelegate
 - (void)didPassingUserInfo:(id)userInfo {
     if ([userInfo isKindOfClass:[UserInfoItem class]]) {
-        user = userInfo;
+        self.user = userInfo;
     }
+     [self updateUIWithData];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -170,7 +174,7 @@
     return [listMArr count];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (user.uid) {
+    if (_user.uid) {
         return 2;
     }else{
         return [listMArr[section] count];
@@ -214,7 +218,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = nil;
-    if (user.uid) {
+    if (_user.uid) {
         cell = [self tableView:tableView myEventCellForRow:indexPath];
     }
     else {
@@ -223,7 +227,7 @@
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (user.uid) {
+    if (_user.uid) {
         return kScreenWidth/2;
     }else {
         return 44.0;
