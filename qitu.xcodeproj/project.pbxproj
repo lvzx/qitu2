@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0398511C9F90DB00A65973 /* MyEventVC.m */; };
 		0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D7B731CA0FF22002E1D3F /* UserInfoItem.m */; };
+		0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D7B761CA1481D002E1D3F /* LoginVC.m */; };
 		0D630BB01C9A5A830063AC7E /* QTAPIClient+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BAF1C9A5A830063AC7E /* QTAPIClient+User.m */; };
 		0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB21C9A5E340063AC7E /* QTAPIClient.m */; };
 		0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB71C9A96600063AC7E /* BaseViewController.m */; };
 		0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */; };
+		0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6A2A1CA2367F00C65EF0 /* MyTextField.m */; };
 		0D9C9DB31C97E62400652830 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C9DB21C97E62400652830 /* main.m */; };
 		0D9C9DB61C97E62400652830 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C9DB51C97E62400652830 /* AppDelegate.m */; };
 		0D9C9DBE1C97E62400652830 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C9DBD1C97E62400652830 /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 		0D0398511C9F90DB00A65973 /* MyEventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventVC.m; sourceTree = "<group>"; };
 		0D5D7B721CA0FF22002E1D3F /* UserInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoItem.h; sourceTree = "<group>"; };
 		0D5D7B731CA0FF22002E1D3F /* UserInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoItem.m; sourceTree = "<group>"; };
+		0D5D7B751CA1481D002E1D3F /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		0D5D7B761CA1481D002E1D3F /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		0D630BA91C9A59F80063AC7E /* QTAPIConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTAPIConfig.h; sourceTree = "<group>"; };
 		0D630BAA1C9A5A110063AC7E /* QTAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTAPI.h; sourceTree = "<group>"; };
 		0D630BAE1C9A5A830063AC7E /* QTAPIClient+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QTAPIClient+User.h"; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 		0D630BBA1C9A9CF00063AC7E /* AppStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppStyle.h; sourceTree = "<group>"; };
 		0D630BBC1C9A9D9B0063AC7E /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
 		0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
+		0D8A6A291CA2367F00C65EF0 /* MyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextField.h; sourceTree = "<group>"; };
+		0D8A6A2A1CA2367F00C65EF0 /* MyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextField.m; sourceTree = "<group>"; };
 		0D9C9DAE1C97E62400652830 /* qitu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qitu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9C9DB21C97E62400652830 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D9C9DB41C97E62400652830 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -192,6 +198,7 @@
 		0D630B9E1C9A3E4C0063AC7E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0D8A6A281CA2365E00C65EF0 /* MyTextField */,
 				0D630BBB1C9A9D580063AC7E /* MyAlertView */,
 			);
 			name = Common;
@@ -254,6 +261,8 @@
 		0D630BA51C9A402F0063AC7E /* User */ = {
 			isa = PBXGroup;
 			children = (
+				0D5D7B751CA1481D002E1D3F /* LoginVC.h */,
+				0D5D7B761CA1481D002E1D3F /* LoginVC.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -294,6 +303,15 @@
 				0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */,
 			);
 			name = MyAlertView;
+			sourceTree = "<group>";
+		};
+		0D8A6A281CA2365E00C65EF0 /* MyTextField */ = {
+			isa = PBXGroup;
+			children = (
+				0D8A6A291CA2367F00C65EF0 /* MyTextField.h */,
+				0D8A6A2A1CA2367F00C65EF0 /* MyTextField.m */,
+			);
+			name = MyTextField;
 			sourceTree = "<group>";
 		};
 		0D9C9DA51C97E62400652830 = {
@@ -554,6 +572,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */,
+				0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */,
+				0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */,
 				0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */,
 				0D9C9DB61C97E62400652830 /* AppDelegate.m in Sources */,
 				0DA937661C9BF0EA000DC170 /* HomeViewController.m in Sources */,

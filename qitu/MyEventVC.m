@@ -8,13 +8,14 @@
 
 #import "MyEventVC.h"
 #import "MyEventCell.h"
-#import "QTAPIClient+User.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "LoginVC.h"
+#import "UserInfoItem.h"
 
 #define NAV_HEIGHT_DELTA    100.0
 #define AVATAR_HEIGHT_DELTA    30.0
 #define VERTICAL_STYLE_CHANGE   140.0
-@interface MyEventVC ()<UITableViewDataSource, UITableViewDelegate>
+@interface MyEventVC ()<UITableViewDataSource, UITableViewDelegate, PassingUserInfoDelegate>
 {
     BOOL isLogin;
     UserInfoItem *user;
@@ -76,12 +77,21 @@
 }
 
 - (void)loginAction {
-    user = [[QTAPIClient sharedClient] loginWithMobile:nil password:nil];
-    
+    UIStoryboard *storyboard1 = [UIStoryboard storyboardWithName:@"MyEvent" bundle:nil];
+    LoginVC *loginVC = [storyboard1 instantiateViewControllerWithIdentifier:@"LoginVC"];
+    loginVC.delegate = self;
+    UINavigationController *nav = [storyboard1 instantiateViewControllerWithIdentifier:@"LoginNavVC"];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)personalInfo {
 
+}
+#pragma mark - PassingUserInfoDelegate
+- (void)didPassingUserInfo:(id)userInfo {
+    if ([userInfo isKindOfClass:[UserInfoItem class]]) {
+        user = userInfo;
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
