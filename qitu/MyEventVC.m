@@ -60,9 +60,14 @@
     [self.avatarImgV addGestureRecognizer:avatarTap];
     
     listMArr = [[NSMutableArray alloc] initWithArray:@[@[@"新手指导"], @[@"意见反馈", @"关于企图"], @[@"分享账号绑定"], @[@"清理缓存"]]];
+    NSDictionary *userDic = [kUserDefaults valueForKey:KUSER_USERINFO];
+    self.user = [UserInfoItem mj_objectWithKeyValues:userDic];
     [self updateUIWithData];
 }
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navBar.hidden = YES;
+}
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }

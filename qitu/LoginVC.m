@@ -50,6 +50,8 @@
         QTClient.token = data[@"token"];
         QTClient.uid = [data[@"uid"] integerValue];
         self.user = [UserInfoItem mj_objectWithKeyValues:data];
+        [kUserDefaults setValue:data forKey:KUSER_USERINFO];
+        [kUserDefaults synchronize];
         
         if (_delegate && [_delegate respondsToSelector:@selector(didPassingUserInfo:)]) {
             [self.delegate didPassingUserInfo:_user];

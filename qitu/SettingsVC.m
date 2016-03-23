@@ -8,11 +8,11 @@
 
 #import "SettingsVC.h"
 
-@interface SettingsVC ()
+@interface SettingsVC ()<UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *listArr;
 }
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation SettingsVC
@@ -23,47 +23,91 @@
     listArr = @[@[@"余额", @"账号安全"],@[@"新手指导"], @[@"意见反馈", @"关于企图"], @[@"分享账号绑定"], @[@"清理缓存"]];
     [self initNavAndView];
 }
-
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (void)initNavAndView {
-    [self createUI];
+    self.navigationController.navigationBar.hidden = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)navBack {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)createUI {
-    self.tableView = [[UITableView alloc] init];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+- (IBAction)personalInfo:(id)sender {
+    NSLog(@"personalInfo");
 }
 
 #pragma mark - UITableViewDataSource、UITableViewDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#pragma mark - UITableViewDataSource, UITableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [listArr count];
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [listArr[section] count];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView commonCellForRow:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"CommonCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:CellIdentifier];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.font = [UIFont systemFontOfSize:15.0];
     }
-    cell.textLabel.text = [listArr objectAtIndex:indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (4 == indexPath.row) {
-        cell.detailTextLabel.text = @"V5.1.1"; //**版本号更新
+    // Configure the cell...
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    if (section == 3) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }else {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    cell.textLabel.text = listArr[section][row];
     
     return cell;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"CommonCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:CellIdentifier];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.font = [UIFont systemFontOfSize:15.0];
+    }
+    // Configure the cell...
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    if (section == 0 && row == 0) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }else {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    cell.textLabel.text = listArr[section][row];
+    
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44.0;
+}
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footer = [[UIView alloc] init];
+    footer.backgroundColor = RGBCOLOR(236, 236, 236);
+    return footer;
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 15.0;
 }
 
 @end
