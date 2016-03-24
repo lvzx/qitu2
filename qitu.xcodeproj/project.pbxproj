@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0398511C9F90DB00A65973 /* MyEventVC.m */; };
+		0D3C0F941CA3E2020063F5CB /* PersonalInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3C0F931CA3E2020063F5CB /* PersonalInfoVC.m */; };
 		0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D7B731CA0FF22002E1D3F /* UserInfoItem.m */; };
 		0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D7B761CA1481D002E1D3F /* LoginVC.m */; };
 		0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB21C9A5E340063AC7E /* QTAPIClient.m */; };
@@ -55,6 +56,8 @@
 /* Begin PBXFileReference section */
 		0D0398501C9F90DB00A65973 /* MyEventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventVC.h; sourceTree = "<group>"; };
 		0D0398511C9F90DB00A65973 /* MyEventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventVC.m; sourceTree = "<group>"; };
+		0D3C0F921CA3E2020063F5CB /* PersonalInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoVC.h; sourceTree = "<group>"; };
+		0D3C0F931CA3E2020063F5CB /* PersonalInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoVC.m; sourceTree = "<group>"; };
 		0D5D7B721CA0FF22002E1D3F /* UserInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoItem.h; sourceTree = "<group>"; };
 		0D5D7B731CA0FF22002E1D3F /* UserInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoItem.m; sourceTree = "<group>"; };
 		0D5D7B751CA1481D002E1D3F /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 			children = (
 				0D8A6A2C1CA27BA600C65EF0 /* SettingsVC.h */,
 				0D8A6A2D1CA27BA600C65EF0 /* SettingsVC.m */,
+				0D3C0F921CA3E2020063F5CB /* PersonalInfoVC.h */,
+				0D3C0F931CA3E2020063F5CB /* PersonalInfoVC.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -616,6 +621,7 @@
 				0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */,
 				0D9C9DB61C97E62400652830 /* AppDelegate.m in Sources */,
 				0DA937661C9BF0EA000DC170 /* HomeViewController.m in Sources */,
+				0D3C0F941CA3E2020063F5CB /* PersonalInfoVC.m in Sources */,
 				0DA937721C9BF576000DC170 /* PublicEventVC.m in Sources */,
 				0D8764F81CA3A21E0078E871 /* IdentifierValidator.m in Sources */,
 				0D9C9DB31C97E62400652830 /* main.m in Sources */,
