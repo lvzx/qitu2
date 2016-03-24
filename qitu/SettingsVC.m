@@ -39,7 +39,6 @@
     [self setNavBackBarSelector:@selector(navBack)];
     self.navigationController.navigationBar.hidden = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
 }
 
 - (void)navBack {
@@ -50,7 +49,6 @@
     NSLog(@"personalInfo");
 }
 
-#pragma mark - UITableViewDataSource、UITableViewDelegate
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [listArr count];

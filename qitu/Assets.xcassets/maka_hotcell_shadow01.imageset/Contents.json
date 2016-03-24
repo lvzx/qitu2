@@ -5,11 +5,33 @@
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "3-part-horizontal",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "cap-insets" : {
+          "right" : 10,
+          "left" : 10
+        }
+      },
       "idiom" : "universal",
       "filename" : "maka_hotcell_shadow01@2x.png",
       "scale" : "2x"
     },
     {
+      "resizing" : {
+        "mode" : "3-part-horizontal",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "cap-insets" : {
+          "right" : 15,
+          "left" : 15
+        }
+      },
       "idiom" : "universal",
       "filename" : "maka_hotcell_shadow01@3x.png",
       "scale" : "3x"
