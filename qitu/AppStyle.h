@@ -54,7 +54,8 @@
 #define kContentFontSmall            [UIFont systemFontOfSize:14]  //内容部分小字号
 #define kContentFontSmaller            [UIFont systemFontOfSize:13]  //内容部分小字号
 
-#define VIEW_BORDER_HEX_COLOR_STR   @"d6d6d6"
+#define VIEW_BORDERCOLOR   [UIColor colorWithRed:214/255.0 green:214/255.0 blue:214/255.0 alpha:1]
+
 #define SEPERAT_LINE_COLOR  @""
 
 //内容部分正常显示颜色和突出显示颜色

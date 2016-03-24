@@ -2,15 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "maka_hotcell_shadow01.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "maka_hotcell_shadow01@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "maka_hotcell_shadow01@3x.png",
       "scale" : "3x"
     }
   ],

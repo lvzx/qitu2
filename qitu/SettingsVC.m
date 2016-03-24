@@ -13,7 +13,9 @@
     NSArray *listArr;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImg;
+@property (weak, nonatomic) IBOutlet UILabel *userAccountLbl;
+@property (weak, nonatomic) IBOutlet UILabel *nickNameLbl;
 @end
 
 @implementation SettingsVC
@@ -33,8 +35,11 @@
 }
 
 - (void)initNavAndView {
+    [self setNavTitle:@"设置"];
+    [self setNavBackBarSelector:@selector(navBack)];
     self.navigationController.navigationBar.hidden = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
 }
 
 - (void)navBack {

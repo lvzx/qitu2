@@ -139,13 +139,12 @@
 
 #pragma mark - 导航栏设置
 - (void)setNavBackBarSelector:(SEL)aSelector {
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [btn setImage:[UIImage imageNamed:@"maka_navbar_return"] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"maka_navbar_return"] forState:UIControlStateHighlighted];
     [btn addTarget:self action:aSelector forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    
 }
 
 - (void)setNavLeftBarBtnImg:(UIImage *)img selector:(SEL)aSSelector {
@@ -174,7 +173,6 @@
 }
 
 - (void)setNavTitle:(NSString *)title {
-    self.navigationController.navigationBar.barTintColor = GLOBAL_NAVIGATIONBAR_BG_COLOR;
     self.navigationItem.title = title;
 }
 

@@ -74,6 +74,7 @@
 
 - (void)updateUIWithData {
     if (_user.uid) {
+        NSLog(@"thumb:%@", _user.thumb);
         [self.avatarImgV sd_setImageWithURL:[NSURL URLWithString:_user.thumb] placeholderImage:[UIImage imageNamed:@"maka_avatar_default"]];
         self.nameLbl.text = [_user.nickname length] > 0 ? _user.nickname : @"未设置";
         self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -178,7 +179,12 @@
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [listMArr count];
+    if (_user.uid) {
+        return 1;
+    }else {
+        return [listMArr count];
+    }
+    return 0;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (_user.uid) {

@@ -13,6 +13,10 @@
 		0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB21C9A5E340063AC7E /* QTAPIClient.m */; };
 		0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB71C9A96600063AC7E /* BaseViewController.m */; };
 		0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */; };
+		0D8764F51CA39EE70078E871 /* MyUtills.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8764F41CA39EE70078E871 /* MyUtills.m */; };
+		0D8764F81CA3A21E0078E871 /* IdentifierValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8764F71CA3A21E0078E871 /* IdentifierValidator.m */; };
+		0D8764FC1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8764FB1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m */; };
+		0D8764FF1CA3A3410078E871 /* NSData+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8764FE1CA3A3410078E871 /* NSData+SSToolkitAdditions.m */; };
 		0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6A2A1CA2367F00C65EF0 /* MyTextField.m */; };
 		0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6A2D1CA27BA600C65EF0 /* SettingsVC.m */; };
 		0D9C9DB31C97E62400652830 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C9DB21C97E62400652830 /* main.m */; };
@@ -66,6 +70,14 @@
 		0D630BBA1C9A9CF00063AC7E /* AppStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppStyle.h; sourceTree = "<group>"; };
 		0D630BBC1C9A9D9B0063AC7E /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
 		0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
+		0D8764F31CA39EE70078E871 /* MyUtills.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUtills.h; sourceTree = "<group>"; };
+		0D8764F41CA39EE70078E871 /* MyUtills.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUtills.m; sourceTree = "<group>"; };
+		0D8764F61CA3A21E0078E871 /* IdentifierValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifierValidator.h; sourceTree = "<group>"; };
+		0D8764F71CA3A21E0078E871 /* IdentifierValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentifierValidator.m; sourceTree = "<group>"; };
+		0D8764FA1CA3A2D00078E871 /* NSString+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SSToolkitAdditions.h"; sourceTree = "<group>"; };
+		0D8764FB1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SSToolkitAdditions.m"; sourceTree = "<group>"; };
+		0D8764FD1CA3A3410078E871 /* NSData+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SSToolkitAdditions.h"; sourceTree = "<group>"; };
+		0D8764FE1CA3A3410078E871 /* NSData+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		0D8A6A291CA2367F00C65EF0 /* MyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextField.h; sourceTree = "<group>"; };
 		0D8A6A2A1CA2367F00C65EF0 /* MyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextField.m; sourceTree = "<group>"; };
 		0D8A6A2C1CA27BA600C65EF0 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
@@ -187,6 +199,7 @@
 		0D630B9D1C9A3E3B0063AC7E /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				0D8764F91CA3A2890078E871 /* Category */,
 				0D630BB61C9A96600063AC7E /* BaseViewController.h */,
 				0D630BB71C9A96600063AC7E /* BaseViewController.m */,
 				0D630BB91C9A96CC0063AC7E /* AppMacro.h */,
@@ -198,6 +211,7 @@
 		0D630B9E1C9A3E4C0063AC7E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0D8764F21CA39EA90078E871 /* Util */,
 				0D8A6A281CA2365E00C65EF0 /* MyTextField */,
 				0D630BBB1C9A9D580063AC7E /* MyAlertView */,
 			);
@@ -303,6 +317,28 @@
 				0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */,
 			);
 			name = MyAlertView;
+			sourceTree = "<group>";
+		};
+		0D8764F21CA39EA90078E871 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0D8764F31CA39EE70078E871 /* MyUtills.h */,
+				0D8764F41CA39EE70078E871 /* MyUtills.m */,
+				0D8764F61CA3A21E0078E871 /* IdentifierValidator.h */,
+				0D8764F71CA3A21E0078E871 /* IdentifierValidator.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		0D8764F91CA3A2890078E871 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0D8764FA1CA3A2D00078E871 /* NSString+SSToolkitAdditions.h */,
+				0D8764FB1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m */,
+				0D8764FD1CA3A3410078E871 /* NSData+SSToolkitAdditions.h */,
+				0D8764FE1CA3A3410078E871 /* NSData+SSToolkitAdditions.m */,
+			);
+			name = Category;
 			sourceTree = "<group>";
 		};
 		0D8A6A281CA2365E00C65EF0 /* MyTextField */ = {
@@ -574,14 +610,18 @@
 				0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */,
 				0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */,
 				0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */,
+				0D8764F51CA39EE70078E871 /* MyUtills.m in Sources */,
 				0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */,
+				0D8764FF1CA3A3410078E871 /* NSData+SSToolkitAdditions.m in Sources */,
 				0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */,
 				0D9C9DB61C97E62400652830 /* AppDelegate.m in Sources */,
 				0DA937661C9BF0EA000DC170 /* HomeViewController.m in Sources */,
 				0DA937721C9BF576000DC170 /* PublicEventVC.m in Sources */,
+				0D8764F81CA3A21E0078E871 /* IdentifierValidator.m in Sources */,
 				0D9C9DB31C97E62400652830 /* main.m in Sources */,
 				0DA937631C9BD715000DC170 /* MyEventCell.m in Sources */,
 				0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */,
+				0D8764FC1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m in Sources */,
 				0DA9376F1C9BF55C000DC170 /* CreatorVC.m in Sources */,
 				0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */,
 				0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */,

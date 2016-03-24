@@ -59,7 +59,11 @@
     [[UINavigationBar appearance] setBarTintColor:GLOBAL_NAVIGATIONBAR_BG_COLOR];  //设置导航栏背景色
     [[UINavigationBar appearance] setTintColor:GLOBAL_NAVIGATIONBAR_TITLE_TEXT_COLOR];  //设置标题文本颜色
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: GLOBAL_NAVIGATIONBAR_TITLE_FONT, NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"maka_navbar_return"]];
+//    UIImage *image = [UIImage imageNamed:@"maka_navbar_return"];
+//    [UINavigationBar appearance].backIndicatorImage = image;
+//    [UINavigationBar appearance].backIndicatorTransitionMaskImage = image;
+//    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+//                                                         forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - 私有方法
