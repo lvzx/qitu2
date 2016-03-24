@@ -7,10 +7,12 @@
 //
 
 #import "SettingsVC.h"
+#import "MyUtills.h"
 
 @interface SettingsVC ()<UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *listArr;
+    float cacheSize;//缓存内容大小
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImg;
@@ -24,6 +26,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     listArr = @[@[@"余额", @"账号安全"],@[@"新手指导"], @[@"意见反馈", @"关于企图"], @[@"分享账号绑定"], @[@"清理缓存"]];
+    //文件保存地址
+    //NSString *folderPath =
+    cacheSize = [MyUtills folderSizeAtPath:@""];
     [self initNavAndView];
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -39,6 +44,9 @@
     [self setNavBackBarSelector:@selector(navBack)];
     self.navigationController.navigationBar.hidden = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [MyUtills roundedView:_avatarImg];
+    self.userAccountLbl.text = self.user.email;
+    self.nickNameLbl.text = [self.user.nickname length] > 0 ? _user.nickname : @"未设置";
 }
 
 - (void)navBack {
@@ -83,23 +91,83 @@
     static NSString *CellIdentifier = @"CommonCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                       reuseIdentifier:CellIdentifier];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.font = [UIFont systemFontOfSize:15.0];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
+        cell.detailTextLabel.textColor = [UIColor grayColor];
     }
     // Configure the cell...
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
     if (section == 0 && row == 0) {
         cell.accessoryType = UITableViewCellAccessoryNone;
-    }else {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        NSString *balance = [NSString stringWithFormat:@"余额：RMB¥ %@", @(_user.accountBalance)];
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:balance];
+        [str addAttribute:NSForegroundColorAttributeName value:RGBCOLOR(56, 184, 165) range:NSMakeRange(3,[balance length]-3)];
+        cell.textLabel.attributedText = str;
+        cell.detailTextLabel.text = @"充值";
+        cell.detailTextLabel.textColor = RGBCOLOR(56, 184, 165);
+    }else if (section == 4) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.textLabel.text = listArr[section][row];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@M", @(cacheSize)];
     }
-    cell.textLabel.text = listArr[section][row];
+    else {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = listArr[section][row];
+    }
     
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    switch (section) {
+        case 0:
+        {
+            if (row == 0) {//充值
+                
+            }else {//账号安全
+            
+            }
+        }
+            break;
+        case 1://新手指导
+        {
+        
+        }
+            break;
+        case 2:
+        {
+            if (row == 0) {//意见反馈
+                
+            }else {//关于企图
+            
+            }
+        }
+            break;
+        case 3://分享账号绑定
+        {
+            
+        }
+            break;
+        case 4://清理缓存
+        {
+            NSString *msg = nil;
+            if (cacheSize == 0) {
+                msg = @"呀！没有东西可以清理了";
+            }else {
+                msg = @"清理完毕,手机又快活了！";
+            }
+            [self showToast:msg];
+        }
+            break;
+        default:
+            break;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44.0;

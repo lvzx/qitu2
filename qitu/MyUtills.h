@@ -29,7 +29,13 @@
 //+ (void)formatLbl1:(UILabel *) lab1 withLab2:(UILabel *) lab2;
 ////设置不同字体颜色
 //+ (void)fuwenbenLabel:(UILabel *)label fontNumber:(id)font andRange:(NSRange)range andColor:(UIColor *)vaColor;
-
+#pragma mark - Clear Cache Function
+//计算单个文件大小
++(float)fileSizeAtPath:(NSString *)path;
+//计算目录大小
++(float)folderSizeAtPath:(NSString *)path;
+//清理缓存文件
++(void)clearCache:(NSString *)path;
 #pragma mark - Common Function
 
 + (NSString *)getDeviceTokenFromData:(NSData *)deviceToken;     //获取APNS设备令牌

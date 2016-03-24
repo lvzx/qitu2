@@ -18,7 +18,6 @@
 #import "QTAPIClient.h"
 #import "QTAPIConfig.h"
 #import <MJExtension/MJExtension.h>
-
 //NSUserDefault中的Key值
 #define KUSER_USERINFO @"kuserInfo"
 #endif /* PrefixHeader_pch */

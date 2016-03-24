@@ -74,7 +74,6 @@
 
 - (void)updateUIWithData {
     if (_user.uid) {
-        NSLog(@"thumb:%@", _user.thumb);
         [self.avatarImgV sd_setImageWithURL:[NSURL URLWithString:_user.thumb] placeholderImage:[UIImage imageNamed:@"maka_avatar_default"]];
         self.nameLbl.text = [_user.nickname length] > 0 ? _user.nickname : @"未设置";
         self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -88,6 +87,7 @@
     UIStoryboard *storyboard1 = [UIStoryboard storyboardWithName:@"MyEvent" bundle:nil];
     if (_user.uid) {
         SettingsVC *settingsVC = [storyboard1 instantiateViewControllerWithIdentifier:@"SettingsVC"];
+        settingsVC.user = _user;
         [self.navigationController pushViewController:settingsVC animated:YES];
     }else {
         LoginVC *loginVC = [storyboard1 instantiateViewControllerWithIdentifier:@"LoginVC"];
