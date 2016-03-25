@@ -12,6 +12,6 @@
 /*-----用户相关接口------*/
 #define kLogin                  @"app/user/login"
 #define kRegister               @"UserManage/register"
-#define kGetUserInfo            @"UserManage/getUserInfo"
+#define kGetUserInfo            @"app/user"
 
 #endif /* QTAPIConfig_h */

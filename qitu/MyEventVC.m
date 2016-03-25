@@ -40,6 +40,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [self initNavAndView];
+    [self updateUIWithData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navBar.hidden = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)initNavAndView {
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-16, 0, 40, 40)];
     btn.layer.cornerRadius = 20.0;
     btn.layer.masksToBounds = YES;
@@ -53,6 +67,9 @@
     self.navBar.hidden = YES;
     self.avatarImgV.layer.cornerRadius = self.avatarWidthCons.constant/2.0;
     self.avatarImgV.layer.masksToBounds = YES;
+    
+    self.myTableView.tableFooterView = [[UIView alloc] init];
+    
     //取消scrollView默认的内边距64px
     //self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -62,14 +79,8 @@
     listMArr = [[NSMutableArray alloc] initWithArray:@[@[@"新手指导"], @[@"意见反馈", @"关于企图"], @[@"分享账号绑定"], @[@"清理缓存"]]];
     NSDictionary *userDic = [kUserDefaults valueForKey:KUSER_USERINFO];
     self.user = [UserInfoItem mj_objectWithKeyValues:userDic];
-    [self updateUIWithData];
-}
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.navBar.hidden = YES;
-}
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+    [QTAPIClient sharedClient].token = _user.token;
+    [QTAPIClient sharedClient].uid = _user.uid;
 }
 
 - (void)updateUIWithData {
@@ -88,6 +99,7 @@
     if (_user.uid) {
         SettingsVC *settingsVC = [storyboard1 instantiateViewControllerWithIdentifier:@"SettingsVC"];
         settingsVC.user = _user;
+        [settingsVC setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:settingsVC animated:YES];
     }else {
         LoginVC *loginVC = [storyboard1 instantiateViewControllerWithIdentifier:@"LoginVC"];
@@ -255,5 +267,34 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 15.0;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    switch (section) {
+        case 0://新手指导
+        {
+            
+        }
+            break;
+        case 1:{
+            if (row == 0) {//意见反馈
+                
+            }else {//关于企图
+                
+            }
+        }
+            break;
+        case 2:{//分享账号绑定
+        
+        }
+            break;
+        case 3:{//清理缓存
+        
+        }
+            break;
+        default:
+            break;
+    }
 }
 @end

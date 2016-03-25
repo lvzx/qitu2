@@ -10,6 +10,7 @@
 
 @interface UserInfoItem : NSObject
 @property (assign, nonatomic) NSInteger uid;
+@property (copy, nonatomic) NSString *token;
 @property (copy, nonatomic) NSString *email;
 @property (copy, nonatomic) NSString *nickname;
 @property (copy, nonatomic) NSString *thumb;

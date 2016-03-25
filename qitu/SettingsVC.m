@@ -64,28 +64,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [listArr[section] count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView commonCellForRow:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"CommonCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:CellIdentifier];
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.font = [UIFont systemFontOfSize:15.0];
-    }
-    // Configure the cell...
-    NSInteger row = indexPath.row;
-    NSInteger section = indexPath.section;
-    if (section == 3) {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }else {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    cell.textLabel.text = listArr[section][row];
-    
-    return cell;
-}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"CommonCell";
