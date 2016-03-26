@@ -21,6 +21,7 @@
 		0D8899FD1CA4D0E1003F6B29 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8899FC1CA4D0E1003F6B29 /* ArrayDataSource.m */; };
 		0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6A2A1CA2367F00C65EF0 /* MyTextField.m */; };
 		0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6A2D1CA27BA600C65EF0 /* SettingsVC.m */; };
+		0D97ABD71CA6661200099DF7 /* CreatorMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D97ABD61CA6661200099DF7 /* CreatorMainVC.m */; };
 		0D9C9DB31C97E62400652830 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C9DB21C97E62400652830 /* main.m */; };
 		0D9C9DB61C97E62400652830 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C9DB51C97E62400652830 /* AppDelegate.m */; };
 		0D9C9DBE1C97E62400652830 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C9DBD1C97E62400652830 /* Assets.xcassets */; };
@@ -32,7 +33,6 @@
 		0DA937681C9BF162000DC170 /* MyEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA937671C9BF162000DC170 /* MyEvent.storyboard */; };
 		0DA9376A1C9BF17D000DC170 /* Creator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA937691C9BF17D000DC170 /* Creator.storyboard */; };
 		0DA9376C1C9BF19A000DC170 /* PublicEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9376B1C9BF19A000DC170 /* PublicEvent.storyboard */; };
-		0DA9376F1C9BF55C000DC170 /* CreatorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9376E1C9BF55C000DC170 /* CreatorVC.m */; };
 		0DA937721C9BF576000DC170 /* PublicEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA937711C9BF576000DC170 /* PublicEventVC.m */; };
 		0DD2D0641CA5309700F2EF62 /* UserDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2D0631CA5309700F2EF62 /* UserDetailItem.m */; };
 		0DD2D0671CA534FC00F2EF62 /* PersonalInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2D0661CA534FC00F2EF62 /* PersonalInfoCell.m */; };
@@ -90,6 +90,8 @@
 		0D8A6A2A1CA2367F00C65EF0 /* MyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextField.m; sourceTree = "<group>"; };
 		0D8A6A2C1CA27BA600C65EF0 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
 		0D8A6A2D1CA27BA600C65EF0 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
+		0D97ABD51CA6661200099DF7 /* CreatorMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatorMainVC.h; sourceTree = "<group>"; };
+		0D97ABD61CA6661200099DF7 /* CreatorMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatorMainVC.m; sourceTree = "<group>"; };
 		0D9C9DAE1C97E62400652830 /* qitu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qitu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9C9DB21C97E62400652830 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D9C9DB41C97E62400652830 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -110,8 +112,6 @@
 		0DA937671C9BF162000DC170 /* MyEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyEvent.storyboard; sourceTree = "<group>"; };
 		0DA937691C9BF17D000DC170 /* Creator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Creator.storyboard; sourceTree = "<group>"; };
 		0DA9376B1C9BF19A000DC170 /* PublicEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PublicEvent.storyboard; sourceTree = "<group>"; };
-		0DA9376D1C9BF55C000DC170 /* CreatorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatorVC.h; sourceTree = "<group>"; };
-		0DA9376E1C9BF55C000DC170 /* CreatorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatorVC.m; sourceTree = "<group>"; };
 		0DA937701C9BF576000DC170 /* PublicEventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicEventVC.h; sourceTree = "<group>"; };
 		0DA937711C9BF576000DC170 /* PublicEventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicEventVC.m; sourceTree = "<group>"; };
 		0DD2D0621CA5309700F2EF62 /* UserDetailItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailItem.h; sourceTree = "<group>"; };
@@ -332,8 +332,8 @@
 		0D630BA81C9A40590063AC7E /* Creator */ = {
 			isa = PBXGroup;
 			children = (
-				0DA9376D1C9BF55C000DC170 /* CreatorVC.h */,
-				0DA9376E1C9BF55C000DC170 /* CreatorVC.m */,
+				0D97ABD51CA6661200099DF7 /* CreatorMainVC.h */,
+				0D97ABD61CA6661200099DF7 /* CreatorMainVC.m */,
 			);
 			name = Creator;
 			sourceTree = "<group>";
@@ -637,6 +637,7 @@
 			files = (
 				0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */,
 				0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */,
+				0D97ABD71CA6661200099DF7 /* CreatorMainVC.m in Sources */,
 				0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */,
 				0D8764F51CA39EE70078E871 /* MyUtills.m in Sources */,
 				0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */,
@@ -652,7 +653,6 @@
 				0DA937631C9BD715000DC170 /* MyEventCell.m in Sources */,
 				0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */,
 				0D8764FC1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m in Sources */,
-				0DA9376F1C9BF55C000DC170 /* CreatorVC.m in Sources */,
 				0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */,
 				0DD2D0671CA534FC00F2EF62 /* PersonalInfoCell.m in Sources */,
 				0D8899FD1CA4D0E1003F6B29 /* ArrayDataSource.m in Sources */,

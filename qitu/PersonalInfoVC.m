@@ -19,10 +19,11 @@
 @implementation PersonItem
 @end
 
-@interface PersonalInfoVC ()<UITableViewDataSource, UITableViewDelegate>
+@interface PersonalInfoVC ()<UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *exitBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImgV;
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic) NSArray *listArr;
 @end
 @implementation PersonalInfoVC
@@ -117,12 +118,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     PersonItem *pItem = _listArr[row];
-//    if (row > 0) {
-//        <#statements#>
-//    }
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:pItem.title message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alert show];
-    
+    if (row <= 3) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:pItem.title message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        alert.tag = 10+row;
+        UITextField *tf = [alert textFieldAtIndex:0];
+        tf.text = pItem.content;
+        [alert show];
+    }else {
+    //跳转
+    }
 }
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSInteger row = alertView.tag-10;
+        UITextField *tf = [alertView textFieldAtIndex:0];
+        PersonItem *pItem = _listArr[row];
+        pItem.content = tf.text;
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+        [self.myTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
 @end

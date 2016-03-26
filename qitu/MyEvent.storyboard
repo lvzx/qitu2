@@ -485,6 +485,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="avatarImgV" destination="3qm-Cx-OcB" id="Oe7-cA-d4k"/>
+                        <outlet property="exitBtn" destination="yfU-Qh-NZ6" id="1nt-k9-9Ey"/>
+                        <outlet property="myTableView" destination="rBg-sZ-VHV" id="xMF-ci-uMd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lq-2p-9GO" userLabel="First Responder" sceneMemberID="firstResponder"/>

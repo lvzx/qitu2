@@ -16,8 +16,26 @@
                     <view key="view" contentMode="scaleToFill" id="Ccg-Hh-JSN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lec-Gy-2bP">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="lec-Gy-2bP" secondAttribute="trailing" id="ORy-fX-EC5"/>
+                            <constraint firstItem="lec-Gy-2bP" firstAttribute="top" secondItem="5PO-b6-jsL" secondAttribute="bottom" id="otI-6I-7kX"/>
+                            <constraint firstItem="TGL-m9-hxe" firstAttribute="top" secondItem="lec-Gy-2bP" secondAttribute="bottom" id="ubA-FQ-NAq"/>
+                            <constraint firstItem="lec-Gy-2bP" firstAttribute="leading" secondItem="Ccg-Hh-JSN" secondAttribute="leading" id="vJv-92-8Pn"/>
+                            <constraint firstItem="lec-Gy-2bP" firstAttribute="top" secondItem="Ccg-Hh-JSN" secondAttribute="top" id="vql-of-Prm"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="vql-of-Prm"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osO-m1-1fU" userLabel="First Responder" sceneMemberID="firstResponder"/>
