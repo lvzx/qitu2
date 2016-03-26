@@ -8,6 +8,8 @@
 
 #import "SettingsVC.h"
 #import "MyUtills.h"
+#import "UserDetailItem.h"
+#import "PersonalInfoVC.h"
 
 @interface SettingsVC ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -18,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImg;
 @property (weak, nonatomic) IBOutlet UILabel *userAccountLbl;
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLbl;
+@property (strong, nonatomic) UserDetailItem *userDetail;
 @end
 
 @implementation SettingsVC
@@ -33,6 +36,13 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self getUserDetailNet];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showPersonalInfo"]) {
+        PersonalInfoVC *personalInfoVC = segue.destinationViewController;
+        personalInfoVC.userDetail = self.userDetail;
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -45,16 +55,29 @@
     self.navigationController.navigationBar.hidden = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [MyUtills roundedView:_avatarImg];
-    self.userAccountLbl.text = self.user.email;
-    self.nickNameLbl.text = [self.user.nickname length] > 0 ? _user.nickname : @"未设置";
+    self.userAccountLbl.text = self.email;
+    self.nickNameLbl.text = [self.nickname length] > 0 ? _nickname : @"未设置";
 }
 
 - (void)navBack {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)personalInfo:(id)sender {
-    NSLog(@"personalInfo");
+#pragma mark - Network
+- (void)getUserDetailNet {
+    QTAPIClient *QTClient = [QTAPIClient sharedClient];
+    NSInteger interval = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSString *url = [NSString stringWithFormat:@"%@/%@", kGetUserInfo, @(QTClient.uid)];
+    NSDictionary *param = @{@"timestamp":@(interval), @"token":QTClient.token, @"uid":@(QTClient.uid)};
+    [QTClient GET:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 请求成功，解析数据
+        NSDictionary *data = responseObject[@"data"];
+        self.userDetail = [UserDetailItem mj_objectWithKeyValues:data];
+        self.nickNameLbl.text = [self.userDetail.nickname length] > 0 ? _userDetail.nickname : @"未设置";
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 请求失败
+        NSLog(@"%@", [error localizedDescription]);
+    }];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -82,7 +105,7 @@
     NSInteger section = indexPath.section;
     if (section == 0 && row == 0) {
         cell.accessoryType = UITableViewCellAccessoryNone;
-        NSString *balance = [NSString stringWithFormat:@"余额：RMB¥ %@", @(_user.accountBalance)];
+        NSString *balance = [NSString stringWithFormat:@"余额：RMB¥ %@", @(_userDetail.acountBalance)];
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:balance];
         [str addAttribute:NSForegroundColorAttributeName value:RGBCOLOR(56, 184, 165) range:NSMakeRange(3,[balance length]-3)];
         cell.textLabel.attributedText = str;

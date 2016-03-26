@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "UserInfoItem.h"
 
 @interface SettingsVC : BaseViewController
-@property (strong, nonatomic) UserInfoItem *user;
+@property (copy, nonatomic) NSString *email;
+@property (copy, nonatomic) NSString *nickname;
 @end

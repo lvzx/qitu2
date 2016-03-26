@@ -8,20 +8,14 @@
 
 #import "PersonalInfoVC.h"
 #import "MyUtills.h"
-#import "UserDetailItem.h"
+#import "PersonalInfoCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface PersonalInfoVC ()
+@interface PersonalInfoVC ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *exitBtn;
-@property (weak, nonatomic) IBOutlet UIImageView *avatarimgV;
-@property (strong, nonatomic) UserDetailItem *userDetail;
-@property (weak, nonatomic) IBOutlet UITextField *nickNameTF;
-@property (weak, nonatomic) IBOutlet UITextField *companyTF;
-@property (weak, nonatomic) IBOutlet UITextField *trueName;
-@property (weak, nonatomic) IBOutlet UITextField *websiteTF;
-@property (weak, nonatomic) IBOutlet UILabel *cityLbl;
-@property (weak, nonatomic) IBOutlet UILabel *industryLbl;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImgV;
+@property (strong, nonatomic) NSArray *listArr;
 @end
 @implementation PersonalInfoVC
 - (void)viewDidLoad {
@@ -45,30 +39,18 @@
     self.navigationController.navigationBar.hidden = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.exitBtn.layer.cornerRadius = 3.0;
-    [MyUtills roundedView:_avatarimgV];
+    [MyUtills roundedView:_avatarImgV];
+    self.listArr = @[@"昵称", @"机构名称", @"姓名", @"手机", @"城市", @"行业"];
 }
 
 - (void)updateUI {
-    [self.avatarimgV sd_setImageWithURL:[NSURL URLWithString:_userDetail.thumb] placeholderImage:[UIImage imageNamed:@"maka_avatar_default"]];
-    self.nickNameTF.text = _userDetail.nickname;
-    self.companyTF.text = _userDetail.company;
-    self.trueName.text = _userDetail.truename;
-    self.websiteTF.text = _userDetail.mobile;
-    self.cityLbl.text = [_userDetail.city length] > 0 ? _userDetail.city : @"未设置";
-    self.industryLbl.text = [_userDetail.industry length] > 0 ? _userDetail.industry : @"未设置";
+    [self.avatarImgV sd_setImageWithURL:[NSURL URLWithString:_userDetail.thumb] placeholderImage:[UIImage imageNamed:@"maka_avatar_default"]];
 }
 #pragma mark - Action
 - (void)navBack {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-- (IBAction)selectAvatarImg:(id)sender {
-    
-}
-- (IBAction)selectCitys:(id)sender {
-    
-}
-- (IBAction)selectIndustry:(id)sender {
+- (IBAction)selectAvatar:(id)sender {
     
 }
 
@@ -88,4 +70,56 @@
     }];
 }
 
+#pragma mark - UITableViewDataSource, UITableViewDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [_listArr count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"CommonCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                      reuseIdentifier:CellIdentifier];
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.font = [UIFont systemFontOfSize:15.0];
+        cell.textLabel.textColor = RGBCOLOR(219, 219, 219);
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
+        cell.detailTextLabel.textColor = RGBCOLOR(219, 219, 219);
+    }
+    // Configure the cell...
+    NSInteger row = indexPath.row;
+    cell.textLabel.text = _listArr[row];
+    switch (row) {
+        case 0:
+            cell.detailTextLabel.text = _userDetail.nickname;
+            break;
+        case 1:
+            cell.detailTextLabel.text = _userDetail.company;
+            break;
+        case 2:
+            cell.detailTextLabel.text = _userDetail.truename;
+            break;
+        case 3:
+            cell.detailTextLabel.text = _userDetail.mobile;
+            break;
+        case 4:
+            cell.detailTextLabel.text = _userDetail.city;
+            break;
+        case 5:
+            cell.detailTextLabel.text = _userDetail.industry;
+            break;
+        default:
+            break;
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row;
+    
+}
 @end

@@ -98,7 +98,8 @@
     UIStoryboard *storyboard1 = [UIStoryboard storyboardWithName:@"MyEvent" bundle:nil];
     if (_user.uid) {
         SettingsVC *settingsVC = [storyboard1 instantiateViewControllerWithIdentifier:@"SettingsVC"];
-        settingsVC.user = _user;
+        settingsVC.email = _user.email;
+        settingsVC.nickname = _user.nickname;
         [settingsVC setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:settingsVC animated:YES];
     }else {

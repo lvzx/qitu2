@@ -10,6 +10,7 @@
 
 @interface UserDetailItem : NSObject
 @property (copy, nonatomic) NSString *username;
+@property (assign, nonatomic) NSInteger acountBalance;
 @property (copy, nonatomic) NSString *email;
 @property (copy, nonatomic) NSString *nickname;
 @property (copy, nonatomic) NSString *thumb;
