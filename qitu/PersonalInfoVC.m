@@ -11,6 +11,14 @@
 #import "PersonalInfoCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+@interface PersonItem : NSObject
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *content;
+@end
+
+@implementation PersonItem
+@end
+
 @interface PersonalInfoVC ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *exitBtn;
@@ -40,7 +48,15 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.exitBtn.layer.cornerRadius = 3.0;
     [MyUtills roundedView:_avatarImgV];
-    self.listArr = @[@"昵称", @"机构名称", @"姓名", @"手机", @"城市", @"行业"];
+    
+    NSArray *dictArr = @[@{@"title":@"昵称", @"content":_userDetail.nickname},
+                     @{@"title":@"机构名称", @"content":_userDetail.company},
+                     @{@"title":@"姓名", @"content":_userDetail.truename},
+                     @{@"title":@"手机", @"content":_userDetail.mobile},
+                     @{@"title":@"城市", @"content":_userDetail.city},
+                     @{@"title":@"行业", @"content":_userDetail.industry}];
+    self.listArr = [PersonItem mj_objectArrayWithKeyValuesArray:dictArr];
+    
 }
 
 - (void)updateUI {
@@ -91,35 +107,22 @@
     }
     // Configure the cell...
     NSInteger row = indexPath.row;
-    cell.textLabel.text = _listArr[row];
-    switch (row) {
-        case 0:
-            cell.detailTextLabel.text = _userDetail.nickname;
-            break;
-        case 1:
-            cell.detailTextLabel.text = _userDetail.company;
-            break;
-        case 2:
-            cell.detailTextLabel.text = _userDetail.truename;
-            break;
-        case 3:
-            cell.detailTextLabel.text = _userDetail.mobile;
-            break;
-        case 4:
-            cell.detailTextLabel.text = _userDetail.city;
-            break;
-        case 5:
-            cell.detailTextLabel.text = _userDetail.industry;
-            break;
-        default:
-            break;
-    }
+    PersonItem *pItem = _listArr[row];
+    cell.textLabel.text = pItem.title;
+    cell.detailTextLabel.text = pItem.content;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
+    PersonItem *pItem = _listArr[row];
+//    if (row > 0) {
+//        <#statements#>
+//    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:pItem.title message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
     
 }
 @end

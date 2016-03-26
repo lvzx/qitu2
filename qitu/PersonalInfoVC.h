@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 @class UserDetailItem;
+
 @interface PersonalInfoVC : BaseViewController
 @property (strong, nonatomic) UserDetailItem *userDetail;
 @end

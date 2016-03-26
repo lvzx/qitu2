@@ -46,7 +46,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navBar.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

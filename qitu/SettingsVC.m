@@ -57,6 +57,7 @@
     [MyUtills roundedView:_avatarImg];
     self.userAccountLbl.text = self.email;
     self.nickNameLbl.text = [self.nickname length] > 0 ? _nickname : @"未设置";
+    self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 - (void)navBack {
