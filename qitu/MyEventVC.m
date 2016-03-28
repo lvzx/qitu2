@@ -46,6 +46,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.avatarLeadingCons.constant = (kScreenWidth-80)/2;
+    [self.view updateConstraintsIfNeeded];
+    [self.view layoutIfNeeded];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
