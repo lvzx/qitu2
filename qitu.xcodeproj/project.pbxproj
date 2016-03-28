@@ -14,6 +14,11 @@
 		0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB21C9A5E340063AC7E /* QTAPIClient.m */; };
 		0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB71C9A96600063AC7E /* BaseViewController.m */; };
 		0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */; };
+		0D84905A1CA8CA8700A28D94 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8490591CA8CA8700A28D94 /* StoreKit.framework */; };
+		0D8490761CA8E91100A28D94 /* QTSlideBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8490751CA8E91100A28D94 /* QTSlideBtnView.m */; };
+		0D84907C1CA9136100A28D94 /* QTBigScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D84907B1CA9136100A28D94 /* QTBigScrollView.m */; };
+		0D84907F1CA913D400A28D94 /* QTBuyMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D84907E1CA913D400A28D94 /* QTBuyMainView.m */; };
+		0D8490821CA9200A00A28D94 /* BuyTemplateMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8490811CA9200A00A28D94 /* BuyTemplateMainVC.m */; };
 		0D8764F51CA39EE70078E871 /* MyUtills.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8764F41CA39EE70078E871 /* MyUtills.m */; };
 		0D8764F81CA3A21E0078E871 /* IdentifierValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8764F71CA3A21E0078E871 /* IdentifierValidator.m */; };
 		0D8764FC1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8764FB1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m */; };
@@ -76,6 +81,15 @@
 		0D630BBA1C9A9CF00063AC7E /* AppStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppStyle.h; sourceTree = "<group>"; };
 		0D630BBC1C9A9D9B0063AC7E /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
 		0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
+		0D8490591CA8CA8700A28D94 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0D8490741CA8E91100A28D94 /* QTSlideBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTSlideBtnView.h; sourceTree = "<group>"; };
+		0D8490751CA8E91100A28D94 /* QTSlideBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTSlideBtnView.m; sourceTree = "<group>"; };
+		0D84907A1CA9136100A28D94 /* QTBigScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTBigScrollView.h; sourceTree = "<group>"; };
+		0D84907B1CA9136100A28D94 /* QTBigScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTBigScrollView.m; sourceTree = "<group>"; };
+		0D84907D1CA913D400A28D94 /* QTBuyMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTBuyMainView.h; sourceTree = "<group>"; };
+		0D84907E1CA913D400A28D94 /* QTBuyMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTBuyMainView.m; sourceTree = "<group>"; };
+		0D8490801CA9200A00A28D94 /* BuyTemplateMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyTemplateMainVC.h; sourceTree = "<group>"; };
+		0D8490811CA9200A00A28D94 /* BuyTemplateMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyTemplateMainVC.m; sourceTree = "<group>"; };
 		0D8764F31CA39EE70078E871 /* MyUtills.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUtills.h; sourceTree = "<group>"; };
 		0D8764F41CA39EE70078E871 /* MyUtills.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUtills.m; sourceTree = "<group>"; };
 		0D8764F61CA3A21E0078E871 /* IdentifierValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifierValidator.h; sourceTree = "<group>"; };
@@ -129,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B09B59704F3633ECD5D669F /* Pods_qitu.framework in Frameworks */,
+				0D84905A1CA8CA8700A28D94 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +167,7 @@
 		02CCD91562BB1A13DCA9155F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D8490591CA8CA8700A28D94 /* StoreKit.framework */,
 				5D181B34881D259D5238DA90 /* Pods_qitu.framework */,
 			);
 			name = Frameworks;
@@ -185,6 +201,7 @@
 		0D630B9A1C9A3D5C0063AC7E /* PL */ = {
 			isa = PBXGroup;
 			children = (
+				0D84905B1CA8CB0500A28D94 /* BoughtTemplate */,
 				0DA937671C9BF162000DC170 /* MyEvent.storyboard */,
 				0DA937691C9BF17D000DC170 /* Creator.storyboard */,
 				0DA9376B1C9BF19A000DC170 /* PublicEvent.storyboard */,
@@ -334,6 +351,8 @@
 			children = (
 				0D97ABD51CA6661200099DF7 /* CreatorMainVC.h */,
 				0D97ABD61CA6661200099DF7 /* CreatorMainVC.m */,
+				0D8490801CA9200A00A28D94 /* BuyTemplateMainVC.h */,
+				0D8490811CA9200A00A28D94 /* BuyTemplateMainVC.m */,
 			);
 			name = Creator;
 			sourceTree = "<group>";
@@ -345,6 +364,19 @@
 				0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */,
 			);
 			name = MyAlertView;
+			sourceTree = "<group>";
+		};
+		0D84905B1CA8CB0500A28D94 /* BoughtTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				0D8490741CA8E91100A28D94 /* QTSlideBtnView.h */,
+				0D8490751CA8E91100A28D94 /* QTSlideBtnView.m */,
+				0D84907A1CA9136100A28D94 /* QTBigScrollView.h */,
+				0D84907B1CA9136100A28D94 /* QTBigScrollView.m */,
+				0D84907D1CA913D400A28D94 /* QTBuyMainView.h */,
+				0D84907E1CA913D400A28D94 /* QTBuyMainView.m */,
+			);
+			name = BoughtTemplate;
 			sourceTree = "<group>";
 		};
 		0D8764F21CA39EA90078E871 /* Util */ = {
@@ -522,6 +554,14 @@
 					0D9C9DAD1C97E62400652830 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = UTFY9Y5285;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					0D9C9DC61C97E62400652830 = {
 						CreatedOnToolsVersion = 7.2;
@@ -635,6 +675,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D84907F1CA913D400A28D94 /* QTBuyMainView.m in Sources */,
 				0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */,
 				0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */,
 				0D97ABD71CA6661200099DF7 /* CreatorMainVC.m in Sources */,
@@ -643,6 +684,8 @@
 				0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */,
 				0D8764FF1CA3A3410078E871 /* NSData+SSToolkitAdditions.m in Sources */,
 				0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */,
+				0D84907C1CA9136100A28D94 /* QTBigScrollView.m in Sources */,
+				0D8490821CA9200A00A28D94 /* BuyTemplateMainVC.m in Sources */,
 				0D9C9DB61C97E62400652830 /* AppDelegate.m in Sources */,
 				0DD2D0641CA5309700F2EF62 /* UserDetailItem.m in Sources */,
 				0DA937661C9BF0EA000DC170 /* HomeViewController.m in Sources */,
@@ -650,6 +693,7 @@
 				0DA937721C9BF576000DC170 /* PublicEventVC.m in Sources */,
 				0D8764F81CA3A21E0078E871 /* IdentifierValidator.m in Sources */,
 				0D9C9DB31C97E62400652830 /* main.m in Sources */,
+				0D8490761CA8E91100A28D94 /* QTSlideBtnView.m in Sources */,
 				0DA937631C9BD715000DC170 /* MyEventCell.m in Sources */,
 				0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */,
 				0D8764FC1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m in Sources */,
@@ -788,14 +832,14 @@
 			baseConfigurationReference = F7D5D376C15FCBA44FD5EF4A /* Pods-qitu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jianyu Hu (Z7KD52JB4W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qitu/PrefixHeader.pch";
 				INFOPLIST_FILE = qitu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.maishidai.qitu-beta";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanghaiqige.testdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c802a34e-7d75-45f4-ae48-f075187824dc";
+				PROVISIONING_PROFILE = "08c07b32-a57e-411f-a3a6-17d565f03fb5";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
 			};
@@ -811,9 +855,9 @@
 				INFOPLIST_FILE = qitu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.maishidai.qitu-beta";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shanghaiqige.testdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c802a34e-7d75-45f4-ae48-f075187824dc";
+				PROVISIONING_PROFILE = "08c07b32-a57e-411f-a3a6-17d565f03fb5";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
 			};

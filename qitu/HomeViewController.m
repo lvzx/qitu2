@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import "MyEventVC.h"
-#import "CreatorVC.h"
+#import "CreatorMainVC.h"
 #import "PublicEventVC.h"
 
 @interface HomeViewController ()<UITabBarControllerDelegate>
@@ -63,7 +63,7 @@
     UINavigationController * navi1 = [[UINavigationController alloc]initWithRootViewController:vc1];
     
     UIStoryboard *storyboard2 = [UIStoryboard storyboardWithName:@"Creator" bundle:nil];
-    CreatorVC *vc2 = [storyboard2 instantiateViewControllerWithIdentifier:@"CreatorVC"];
+    CreatorMainVC *vc2 = [storyboard2 instantiateViewControllerWithIdentifier:@"CreatorMainVC"];
     vc2.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"创作" image:[[UIImage imageNamed:TABBAR_BARITEM_SECOND_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:TABBAR_BARITEM_SECOND_SELECTED] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     UINavigationController * navi2 = [[UINavigationController alloc]initWithRootViewController:vc2];
     

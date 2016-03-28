@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2B78159A562AEB3B314C134F"
+               BlueprintIdentifier = "7FBCC5765D45BBBA0A1D2954"
                BuildableName = "Pods_qitu.framework"
                BlueprintName = "Pods-qitu"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -13,5 +13,8 @@
 #define kLogin                  @"app/user/login"
 #define kRegister               @"UserManage/register"
 #define kGetUserInfo            @"app/user"
-
+#define kPutUserInfo   @""
+#define kCategoryApp    @"app/categoryApp"
+#define kGetMyEvents    @"app/events2"
+#define kGetStoreTemplates  @"api/storeTemplates"
 #endif /* QTAPIConfig_h */

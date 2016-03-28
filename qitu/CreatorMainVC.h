@@ -10,4 +10,6 @@
 
 @interface CreatorMainVC : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+
 @end

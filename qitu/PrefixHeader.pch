@@ -20,4 +20,8 @@
 #import <MJExtension/MJExtension.h>
 //NSUserDefault中的Key值
 #define KUSER_USERINFO @"kuserInfo"
+
+//购买模版用到的宏及参数
+
+
 #endif /* PrefixHeader_pch */

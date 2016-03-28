@@ -56,6 +56,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-qitu/MBProgressHUD.framework'
   install_framework 'Pods-qitu/MJExtension.framework'
   install_framework 'Pods-qitu/MJRefresh.framework'
+  install_framework 'Pods-qitu/Masonry.framework'
   install_framework 'Pods-qitu/SDWebImage.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -63,5 +64,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-qitu/MBProgressHUD.framework'
   install_framework 'Pods-qitu/MJExtension.framework'
   install_framework 'Pods-qitu/MJRefresh.framework'
+  install_framework 'Pods-qitu/Masonry.framework'
   install_framework 'Pods-qitu/SDWebImage.framework'
 fi
