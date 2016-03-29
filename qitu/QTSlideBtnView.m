@@ -8,6 +8,7 @@
 
 #import "QTSlideBtnView.h"
 #import "Masonry.h"
+#import "CategoryItem.h"
 /**
  *  screen -->> width/height
  */
@@ -74,7 +75,8 @@
     float Origin_X = ButtonSpace/2;
     for (int i = 0; i < self.titleArr.count; i ++) {
         UIButton *titleBt = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSString *title = [self.titleArr objectAtIndex:i];
+        CategoryItem *categoryItem = self.titleArr[i];
+        NSString *title = categoryItem.name;
         [titleBt setTag:BaseTag + i];
         if (i == 0) {
             titleBt.selected = YES;

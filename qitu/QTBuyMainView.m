@@ -23,11 +23,11 @@
 @end
 
 @implementation QTBuyMainView
--(instancetype)initWithFrame:(CGRect)frame Title:(NSString *)title
+-(instancetype)initWithFrame:(CGRect)frame categoryId:(NSInteger)catId
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.title = title;
+        self.categoryId = catId;
         [self confingSubViews];
         cellW = (kScreenWidth-15*4)/3;
         cellH = cellW*307/190 + 55;

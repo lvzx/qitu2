@@ -8,6 +8,7 @@
 
 #import "QTBigScrollView.h"
 #import "QTBuyMainView.h"
+#import "CategoryItem.h"
 
 #define BaseTag         20000
 #define kSlideBtn_H 35
@@ -60,7 +61,8 @@
 {
     NSInteger i = 0;
     for (i = 0; i < 3; i++) {
-        QTBuyMainView *view = [[QTBuyMainView alloc] initWithFrame:CGRectMake(i * kScreenWidth, 0, kScreenWidth, kScreenHeight - kSlideBtn_H) Title:self.titleArr[i]];
+        CategoryItem *catItem = self.titleArr[i];
+        QTBuyMainView *view = [[QTBuyMainView alloc] initWithFrame:CGRectMake(i * kScreenWidth, 0, kScreenWidth, kScreenHeight - kSlideBtn_H) categoryId:catItem.ID];
         // 添加子视图到scrollview
         [self addSubview:view];
         // 添加view到托管的重用数组
@@ -158,7 +160,8 @@
 -(QTBuyMainView *)getReuseViewFromArr:(NSInteger)index
 {
     if (self.reuseViewArr[index] == nil) {
-        QTBuyMainView *view = [[QTBuyMainView alloc] initWithFrame:CGRectMake(index * kScreenWidth, 0, kScreenWidth, kScreenHeight - kSlideBtn_H) Title:self.titleArr[index]];
+        CategoryItem *catItem = self.titleArr[index];
+        QTBuyMainView *view = [[QTBuyMainView alloc] initWithFrame:CGRectMake(index * kScreenWidth, 0, kScreenWidth, kScreenHeight - kSlideBtn_H) categoryId:catItem.ID];
         [self.reuseViewArr insertObject:view atIndex:index];
         return view;
     }
@@ -176,7 +179,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             //通知主线程刷新
-            view.title = self.titleArr[index];
+            CategoryItem *catItem = self.titleArr[index];
+            view.categoryId = catItem.ID;
             [view reloadData];
             
             [MBProgressHUD hideHUDForView:self animated:YES];

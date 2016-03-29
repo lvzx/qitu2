@@ -9,6 +9,8 @@
 #import "CreatorMainVC.h"
 #import "BuyTemplateMainVC.h"
 #import "CreatorCollectionCell.h"
+#import "QTAPIClient.h"
+#import "CategoryItem.h"
 
 #define kContentH kScreenHeight-64-50
 @interface CreatorMainVC ()<UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -16,15 +18,18 @@
     UIImageView *navTitleImgV;
     CGFloat cellW;
     CGFloat cellH;
+    NSArray *collectionArr;
 }
 @property (strong, nonatomic) UICollectionView *leftView;
 @property (strong, nonatomic) BuyTemplateMainVC *rightVC;
+
 @end
 
 @implementation CreatorMainVC
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavAndView];
+    [self getCategoryNetAction];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -52,9 +57,9 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initialLeftUI];
-    _rightVC = [[BuyTemplateMainVC alloc] init];
+    
     [self.mainScrollView addSubview:_leftView];
-    [self.mainScrollView addSubview:_rightVC.view];
+    
     
     self.mainScrollView.contentSize = CGSizeMake(2*kScreenWidth, kContentH);
     
@@ -76,8 +81,6 @@
     
     //注册cell和ReusableView（相当于头部）
     [self.leftView registerClass:[CreatorCollectionCell class] forCellWithReuseIdentifier:@"CollectionCell"];
-//    [self.leftView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView"];
-    
 }
 #pragma mark - Action
 - (void)toucuUpInside:(UIButton *)sender {
@@ -99,13 +102,29 @@
 }
 #pragma mark - Net Request
 - (void)getCategoryNetAction {
-
+    QTAPIClient *QTClient = [QTAPIClient sharedClient];
+    NSInteger interval = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSString *url = [NSString stringWithFormat:@"%@?timestamp=%@", kCategoryApp, @(interval)];
+    [QTClient GET:url parameters:nil
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              NSArray *dataArr = responseObject[@"data"];
+              NSLog(@"***data:%@", dataArr);
+              NSArray *categoryItemArr = [CategoryItem mj_objectArrayWithKeyValuesArray:dataArr];
+              NSLog(@"***data:%@", categoryItemArr);
+              _rightVC = [[BuyTemplateMainVC alloc] init];
+              _rightVC.categoryArr = categoryItemArr;
+              [self.mainScrollView addSubview:_rightVC.view];
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              // 请求失败
+              NSLog(@"%@", [error localizedDescription]);
+          }];
 }
 #pragma mark -- UICollectionViewDataSource
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 1;
+    return [collectionArr count]+1;
 }
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -121,8 +140,13 @@
     if (!cell) {
         NSLog(@"无法创建CollectionViewCell时打印，自定义的cell就不可能进来了。");
     }
-    cell.imgView.image = [UIImage imageNamed:@"maka_muban_normal"];
-    cell.text.text = [NSString stringWithFormat:@"Cell %ld",indexPath.row];
+    NSInteger row = indexPath.row;
+    if (row == 0) {
+        cell.imgView.image = [UIImage imageNamed:@"maka_muban_normal"];
+        cell.text.text = @"通用版式";
+    }else {
+        //cell.imgView.image =
+    }
     
     return cell;
 }

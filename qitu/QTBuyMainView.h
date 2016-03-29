@@ -10,9 +10,9 @@
 
 @interface QTBuyMainView : UIView
 
--(instancetype)initWithFrame:(CGRect)frame Title:(NSString *)title;
+-(instancetype)initWithFrame:(CGRect)frame categoryId:(NSInteger)catId;
 
-@property(nonatomic, copy)NSString *title;
+@property(nonatomic, assign)NSInteger categoryId;
 
 - (void)reloadData;
 
