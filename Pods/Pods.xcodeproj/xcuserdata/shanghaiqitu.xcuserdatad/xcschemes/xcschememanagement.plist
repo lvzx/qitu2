@@ -9,6 +9,31 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CXAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FMDBHelpers.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FXBlurView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,7 +59,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>QBPopupMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TCBlobDownload.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,37 +77,72 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0884A5ED87D3992A0AC35F4F0F124DD8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0C37EF3B311122A1BD1308BE30FE2867</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E2B96EE1FB2B30D52523BC98C9A2D87</key>
+		<key>0DB8F6A4E029BC8991470A7812093972</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4F3157F70E29E3EF3953780C878CE929</key>
+		<key>1D6A55C6F7BD651FB50C376C7138EF26</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>68C2BDFB347FBC45FE764403FD34289B</key>
+		<key>251100FCDEE143987D8D98D57D8BBA53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A110B701E7C5A2E2195DBE44343D9B94</key>
+		<key>38E54ADB23C15E6400BF1D5FBF8A517C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3834837B3DAFCBFECA93EEAA63A65FF</key>
+		<key>73B0C5004E904186CADB2C7C23CD8CB2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBA092658C0DF36E380F2E3E9FCEA423</key>
+		<key>89FBE96D8FBBFB297DD150B04F797F43</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B8932F1ED3708CC76A2DC4207C926F8E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C00577D6DCA14E0C324AB072FC713083</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C03CE66B9B15FA78338CA33E2E33803B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C04716262EDA42ED79620B66903782D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F14BDB8E5EE1829917521741D60C537F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC0D107E6C770086D227D9B70805685B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

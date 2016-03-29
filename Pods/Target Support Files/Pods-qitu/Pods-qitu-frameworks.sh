@@ -53,17 +53,31 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-qitu/AFNetworking.framework'
+  install_framework 'Pods-qitu/CXAlertView.framework'
+  install_framework 'Pods-qitu/FMDB.framework'
+  install_framework 'Pods-qitu/FMDBHelpers.framework'
+  install_framework 'Pods-qitu/FXBlurView.framework'
+  install_framework 'Pods-qitu/IQKeyboardManager.framework'
   install_framework 'Pods-qitu/MBProgressHUD.framework'
   install_framework 'Pods-qitu/MJExtension.framework'
   install_framework 'Pods-qitu/MJRefresh.framework'
   install_framework 'Pods-qitu/Masonry.framework'
+  install_framework 'Pods-qitu/QBPopupMenu.framework'
   install_framework 'Pods-qitu/SDWebImage.framework'
+  install_framework 'Pods-qitu/TCBlobDownload.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-qitu/AFNetworking.framework'
+  install_framework 'Pods-qitu/CXAlertView.framework'
+  install_framework 'Pods-qitu/FMDB.framework'
+  install_framework 'Pods-qitu/FMDBHelpers.framework'
+  install_framework 'Pods-qitu/FXBlurView.framework'
+  install_framework 'Pods-qitu/IQKeyboardManager.framework'
   install_framework 'Pods-qitu/MBProgressHUD.framework'
   install_framework 'Pods-qitu/MJExtension.framework'
   install_framework 'Pods-qitu/MJRefresh.framework'
   install_framework 'Pods-qitu/Masonry.framework'
+  install_framework 'Pods-qitu/QBPopupMenu.framework'
   install_framework 'Pods-qitu/SDWebImage.framework'
+  install_framework 'Pods-qitu/TCBlobDownload.framework'
 fi

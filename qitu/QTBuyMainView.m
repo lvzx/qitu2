@@ -7,12 +7,18 @@
 //
 
 #import "QTBuyMainView.h"
+#import "StoreTemplateCell.h"
+#import "StoreTemplateItem.h"
 
-@interface QTBuyMainView ()<UITableViewDataSource,UITableViewDelegate>
+@interface QTBuyMainView ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
+{
+    CGFloat cellW;
+    CGFloat cellH;
+}
 /**
  *  mytableView 可以根据自己需求替换成自己的视图.
  */
-@property(nonatomic, strong)UITableView *mytableView;
+@property(nonatomic, strong)UICollectionView *mycollectionView;
 
 @end
 
@@ -23,67 +29,89 @@
     if (self) {
         self.title = title;
         [self confingSubViews];
+        cellW = (kScreenWidth-15*4)/3;
+        cellH = cellW*307/190 + 55;
     }
     return self;
 }
 
 - (void)confingSubViews
 {
-    [self addSubview:self.mytableView];
+    [self addSubview:self.mycollectionView];
 }
 
 
--(UITableView *)mytableView
+-(UICollectionView *)mycollectionView
 {
-    if (_mytableView != nil) {
-        return _mytableView;
+    if (_mycollectionView != nil) {
+        return _mycollectionView;
     }
-    _mytableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 44) style:UITableViewStylePlain];
-    _mytableView.delegate = self;
-    _mytableView.dataSource = self;
-    _mytableView.showsHorizontalScrollIndicator = NO;
-    _mytableView.showsVerticalScrollIndicator = NO;
-    _mytableView.layer.cornerRadius = 10;
-    _mytableView.backgroundColor = [UIColor whiteColor];
-    return _mytableView;
+    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    _mycollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) collectionViewLayout:flowLayout];
+    _mycollectionView.delegate = self;
+    _mycollectionView.dataSource = self;
+    _mycollectionView.showsHorizontalScrollIndicator = NO;
+    _mycollectionView.showsVerticalScrollIndicator = NO;
+    _mycollectionView.backgroundColor = RGBCOLOR(236, 236, 236);
+    [_mycollectionView registerClass:[StoreTemplateCell class] forCellWithReuseIdentifier:@"StoreTemplateCell"];
+    return _mycollectionView;
 }
 
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+#pragma mark -- UICollectionViewDataSource
+//定义展示的UICollectionViewCell的个数
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return 1;
 }
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//定义展示的Section的个数
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 20;
+    return 1;
 }
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//每个UICollectionView展示的内容
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *identifier = @"statusCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        //        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    static NSString *identify = @"StoreTemplateCell";
+    StoreTemplateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
+    [cell sizeToFit];
+    if (!cell) {
+        NSLog(@"无法创建CollectionViewCell时打印，自定义的cell就不可能进来了。");
     }
-    
-    for (UIView *view in cell.contentView.subviews) {
-        [view removeFromSuperview];
-    }
-    if (indexPath.row%2 == 0) {
-        cell.backgroundColor = [UIColor lightGrayColor];
-    }
-    cell.textLabel.text = self.title;
-    cell.textLabel.font = [UIFont systemFontOfSize:15];
+    cell.imgView.image = [UIImage imageNamed:@"maka_muban_normal"];
+    cell.titleLbl.text = [NSString stringWithFormat:@"Cell %ld",indexPath.row];
     
     return cell;
-    
+}
+
+#pragma mark --UICollectionViewDelegateFlowLayout
+//定义每个UICollectionView 的大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(cellW, cellH);
+}
+//定义每个UICollectionView 的间距
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(15, 12, 0, 12);
+}
+//定义每个UICollectionView 纵向的间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+#pragma mark --UICollectionViewDelegate
+//UICollectionView被选中时调用的方法
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    //    UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    //    cell.backgroundColor = [UIColor redColor];
+    NSLog(@"选择%ld",indexPath.row);
+}
+//返回这个UICollectionView是否可以被选择
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
 }
 
 /**
@@ -91,7 +119,7 @@
  */
 - (void)reloadData
 {
-    [self.mytableView reloadData];
+    [self.mycollectionView reloadData];
 }
 
 @end

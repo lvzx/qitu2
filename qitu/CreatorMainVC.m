@@ -58,14 +58,14 @@
     
     self.mainScrollView.contentSize = CGSizeMake(2*kScreenWidth, kContentH);
     
-    cellW = (kScreenWidth-24*3-10)/3;
-    cellH = cellW*307/190;
+    cellW = (kScreenWidth-24*3-16)/3;
+    cellH = cellW*307/190 + 25;
 }
 
 - (void)initialLeftUI {
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    _leftView = [[UICollectionView alloc]initWithFrame:CGRectMake(5, 0, kScreenWidth-10, kContentH) collectionViewLayout:flowLayout];
+    _leftView = [[UICollectionView alloc]initWithFrame:CGRectMake(8, 0, kScreenWidth-16, kContentH) collectionViewLayout:flowLayout];
     _leftView.backgroundColor = RGBCOLOR(234, 234, 234);
     
     //设置代理
@@ -76,7 +76,7 @@
     
     //注册cell和ReusableView（相当于头部）
     [self.leftView registerClass:[CreatorCollectionCell class] forCellWithReuseIdentifier:@"CollectionCell"];
-    [self.leftView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView"];
+//    [self.leftView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView"];
     
 }
 #pragma mark - Action
@@ -97,12 +97,15 @@
             break;
     }
 }
+#pragma mark - Net Request
+- (void)getCategoryNetAction {
 
+}
 #pragma mark -- UICollectionViewDataSource
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return 1;
 }
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

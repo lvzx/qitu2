@@ -16,7 +16,7 @@
 #define BaseTag         10000
 #define kSlideBtn_H 35
 #define kSlideLine_H 3
-#define TITLEFONT 16*kScreenHeight/736
+#define TITLEFONT 14*kScreenWidth/320.0
 
 /**
  *  clolor

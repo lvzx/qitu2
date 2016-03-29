@@ -40,6 +40,9 @@
 		0DA9376A1C9BF17D000DC170 /* Creator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA937691C9BF17D000DC170 /* Creator.storyboard */; };
 		0DA9376C1C9BF19A000DC170 /* PublicEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9376B1C9BF19A000DC170 /* PublicEvent.storyboard */; };
 		0DA937721C9BF576000DC170 /* PublicEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA937711C9BF576000DC170 /* PublicEventVC.m */; };
+		0DAED5B51CAA140A00D0BEA5 /* StoreTemplateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAED5B41CAA140A00D0BEA5 /* StoreTemplateItem.m */; };
+		0DAED5B81CAA14E600D0BEA5 /* CategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAED5B71CAA14E600D0BEA5 /* CategoryItem.m */; };
+		0DAED5BB1CAA247100D0BEA5 /* StoreTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAED5BA1CAA247100D0BEA5 /* StoreTemplateCell.m */; };
 		0DD2D0641CA5309700F2EF62 /* UserDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2D0631CA5309700F2EF62 /* UserDetailItem.m */; };
 		0DD2D0671CA534FC00F2EF62 /* PersonalInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2D0661CA534FC00F2EF62 /* PersonalInfoCell.m */; };
 		6B09B59704F3633ECD5D669F /* Pods_qitu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D181B34881D259D5238DA90 /* Pods_qitu.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -131,6 +134,12 @@
 		0DA9376B1C9BF19A000DC170 /* PublicEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PublicEvent.storyboard; sourceTree = "<group>"; };
 		0DA937701C9BF576000DC170 /* PublicEventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicEventVC.h; sourceTree = "<group>"; };
 		0DA937711C9BF576000DC170 /* PublicEventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicEventVC.m; sourceTree = "<group>"; };
+		0DAED5B31CAA140A00D0BEA5 /* StoreTemplateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTemplateItem.h; sourceTree = "<group>"; };
+		0DAED5B41CAA140A00D0BEA5 /* StoreTemplateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTemplateItem.m; sourceTree = "<group>"; };
+		0DAED5B61CAA14E600D0BEA5 /* CategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryItem.h; sourceTree = "<group>"; };
+		0DAED5B71CAA14E600D0BEA5 /* CategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryItem.m; sourceTree = "<group>"; };
+		0DAED5B91CAA247100D0BEA5 /* StoreTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTemplateCell.h; sourceTree = "<group>"; };
+		0DAED5BA1CAA247100D0BEA5 /* StoreTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTemplateCell.m; sourceTree = "<group>"; };
 		0DD2D0621CA5309700F2EF62 /* UserDetailItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailItem.h; sourceTree = "<group>"; };
 		0DD2D0631CA5309700F2EF62 /* UserDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailItem.m; sourceTree = "<group>"; };
 		0DD2D0651CA534FC00F2EF62 /* PersonalInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoCell.h; sourceTree = "<group>"; };
@@ -183,6 +192,10 @@
 				0D5D7B731CA0FF22002E1D3F /* UserInfoItem.m */,
 				0DD2D0621CA5309700F2EF62 /* UserDetailItem.h */,
 				0DD2D0631CA5309700F2EF62 /* UserDetailItem.m */,
+				0DAED5B31CAA140A00D0BEA5 /* StoreTemplateItem.h */,
+				0DAED5B41CAA140A00D0BEA5 /* StoreTemplateItem.m */,
+				0DAED5B61CAA14E600D0BEA5 /* CategoryItem.h */,
+				0DAED5B71CAA14E600D0BEA5 /* CategoryItem.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -388,6 +401,8 @@
 				0D84905B1CA8CB0500A28D94 /* BuyTemplate */,
 				0D8490891CA92B6800A28D94 /* CreatorCollectionCell.h */,
 				0D84908A1CA92B6800A28D94 /* CreatorCollectionCell.m */,
+				0DAED5B91CAA247100D0BEA5 /* StoreTemplateCell.h */,
+				0DAED5BA1CAA247100D0BEA5 /* StoreTemplateCell.m */,
 			);
 			name = Creator;
 			sourceTree = "<group>";
@@ -702,6 +717,7 @@
 				0D9C9DB61C97E62400652830 /* AppDelegate.m in Sources */,
 				0DD2D0641CA5309700F2EF62 /* UserDetailItem.m in Sources */,
 				0DA937661C9BF0EA000DC170 /* HomeViewController.m in Sources */,
+				0DAED5B51CAA140A00D0BEA5 /* StoreTemplateItem.m in Sources */,
 				0D3C0F941CA3E2020063F5CB /* PersonalInfoVC.m in Sources */,
 				0DA937721C9BF576000DC170 /* PublicEventVC.m in Sources */,
 				0D8764F81CA3A21E0078E871 /* IdentifierValidator.m in Sources */,
@@ -712,7 +728,9 @@
 				0D8764FC1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m in Sources */,
 				0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */,
 				0DD2D0671CA534FC00F2EF62 /* PersonalInfoCell.m in Sources */,
+				0DAED5B81CAA14E600D0BEA5 /* CategoryItem.m in Sources */,
 				0D8899FD1CA4D0E1003F6B29 /* ArrayDataSource.m in Sources */,
+				0DAED5BB1CAA247100D0BEA5 /* StoreTemplateCell.m in Sources */,
 				0D84908B1CA92B6800A28D94 /* CreatorCollectionCell.m in Sources */,
 				0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */,
 			);

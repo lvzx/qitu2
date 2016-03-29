@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BuyTemplateMainVC : UIViewController
-
+@property (nonatomic, strong) NSArray *categoryArr;
 @end
