@@ -109,9 +109,7 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               NSArray *dataArr = responseObject[@"data"];
-              NSLog(@"***data:%@", dataArr);
               NSArray *categoryItemArr = [CategoryItem mj_objectArrayWithKeyValuesArray:dataArr];
-              NSLog(@"***data:%@", categoryItemArr);
               _rightVC = [[BuyTemplateMainVC alloc] init];
               _rightVC.categoryArr = categoryItemArr;
               [self.mainScrollView addSubview:_rightVC.view];

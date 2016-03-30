@@ -7,6 +7,7 @@
 //
 
 #import "StoreTemplateCell.h"
+#import "UIImageView+WebCache.h"
 
 @implementation StoreTemplateCell
 - (id)initWithFrame:(CGRect)frame
@@ -36,5 +37,12 @@
         [self addSubview:self.saleNumLbl];
     }
     return self;
+}
+
+- (void)initCellWithData:(StoreTemplateItem *)item {
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:item.firstImg] placeholderImage:[UIImage imageNamed:@"maka_muban_normal"]];
+    self.titleLbl.text = item.title;
+    self.priceLbl.text = [NSString stringWithFormat:@"RMB¥: %.2f", item.price];
+    self.saleNumLbl.text = [NSString stringWithFormat:@"%@人购买", @(item.sale_number)];
 }
 @end

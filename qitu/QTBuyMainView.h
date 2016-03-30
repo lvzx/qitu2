@@ -15,5 +15,6 @@
 @property(nonatomic, assign)NSInteger categoryId;
 
 - (void)reloadData;
+- (void)getStoreTemplatesByNet;
 
 @end

@@ -9,16 +9,21 @@
 #import "QTBuyMainView.h"
 #import "StoreTemplateCell.h"
 #import "StoreTemplateItem.h"
+#import "QTAPIClient.h"
+#import "StoreTemplateCell.h"
 
 @interface QTBuyMainView ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
 {
     CGFloat cellW;
     CGFloat cellH;
+    NSInteger pageNum;
 }
 /**
  *  mytableView 可以根据自己需求替换成自己的视图.
  */
-@property(nonatomic, strong)UICollectionView *mycollectionView;
+@property (nonatomic, strong) UICollectionView *mycollectionView;
+
+@property (nonatomic, strong) NSArray *collectionArr;
 
 @end
 
@@ -31,6 +36,8 @@
         [self confingSubViews];
         cellW = (kScreenWidth-15*4)/3;
         cellH = cellW*307/190 + 55;
+        pageNum = 0;
+        [self getStoreTemplatesByNet];
     }
     return self;
 }
@@ -58,12 +65,27 @@
     return _mycollectionView;
 }
 
+#pragma mark - Net Action
+- (void)getStoreTemplatesByNet {
+    NSInteger interval = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSDictionary *params = @{@"cateId":@(_categoryId), @"pageNumber":@(pageNum), @"perPage":@(20), @"timestamp":@(interval)};
+    QTAPIClient *QTClient = [QTAPIClient sharedClient];
+    [QTClient GET:kGetStoreTemplates parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *data = responseObject[@"data"];
+        self.collectionArr = [StoreTemplateItem mj_objectArrayWithKeyValuesArray:data[@"dataList"]];
+        [self.mycollectionView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 请求失败
+        NSLog(@"%@", [error localizedDescription]);
+    }];
+    
+}
 
 #pragma mark -- UICollectionViewDataSource
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 1;
+    return [_collectionArr count];
 }
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -77,10 +99,12 @@
     StoreTemplateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
     [cell sizeToFit];
     if (!cell) {
+        //cell = [[StoreTemplateCell alloc] init];
         NSLog(@"无法创建CollectionViewCell时打印，自定义的cell就不可能进来了。");
     }
-    cell.imgView.image = [UIImage imageNamed:@"maka_muban_normal"];
-    cell.titleLbl.text = [NSString stringWithFormat:@"Cell %ld",indexPath.row];
+    NSInteger row = indexPath.row;
+    StoreTemplateItem *item = _collectionArr[row];
+    [cell initCellWithData:item];
     
     return cell;
 }
@@ -119,7 +143,17 @@
  */
 - (void)reloadData
 {
-    [self.mycollectionView reloadData];
+    NSInteger interval = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSDictionary *params = @{@"cateId":@(_categoryId), @"pageNumber":@(pageNum), @"perPage":@(20), @"timestamp":@(interval)};
+    QTAPIClient *QTClient = [QTAPIClient sharedClient];
+    [QTClient GET:kGetStoreTemplates parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *data = responseObject[@"data"];
+        self.collectionArr = [StoreTemplateItem mj_objectArrayWithKeyValuesArray:data[@"dataList"]];
+        [self.mycollectionView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 请求失败
+        NSLog(@"%@", [error localizedDescription]);
+    }];
 }
 
 @end

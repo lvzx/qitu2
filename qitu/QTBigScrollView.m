@@ -97,7 +97,6 @@
         if (self.Bgbolck) {
             self.Bgbolck(index);
         }
-        
     }
 }
 
@@ -176,13 +175,11 @@
     [MBProgressHUD showHUDAddedTo:self animated:YES];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         // 处理耗时操作的代码块...
-        
+        CategoryItem *catItem = self.titleArr[index];
+        view.categoryId = catItem.ID;
+        [view getStoreTemplatesByNet];
         dispatch_async(dispatch_get_main_queue(), ^{
             //通知主线程刷新
-            CategoryItem *catItem = self.titleArr[index];
-            view.categoryId = catItem.ID;
-            [view reloadData];
-            
             [MBProgressHUD hideHUDForView:self animated:YES];
         });
         
