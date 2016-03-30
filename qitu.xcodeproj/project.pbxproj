@@ -14,6 +14,7 @@
 		0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB21C9A5E340063AC7E /* QTAPIClient.m */; };
 		0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB71C9A96600063AC7E /* BaseViewController.m */; };
 		0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */; };
+		0D6BC6071CAB7F9D0027B5A6 /* BuyTemplateContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6BC6061CAB7F9D0027B5A6 /* BuyTemplateContentVC.m */; };
 		0D84905A1CA8CA8700A28D94 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8490591CA8CA8700A28D94 /* StoreKit.framework */; };
 		0D8490761CA8E91100A28D94 /* QTSlideBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8490751CA8E91100A28D94 /* QTSlideBtnView.m */; };
 		0D84907C1CA9136100A28D94 /* QTBigScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D84907B1CA9136100A28D94 /* QTBigScrollView.m */; };
@@ -85,6 +86,8 @@
 		0D630BBA1C9A9CF00063AC7E /* AppStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppStyle.h; sourceTree = "<group>"; };
 		0D630BBC1C9A9D9B0063AC7E /* MyAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertView.h; sourceTree = "<group>"; };
 		0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertView.m; sourceTree = "<group>"; };
+		0D6BC6051CAB7F9D0027B5A6 /* BuyTemplateContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyTemplateContentVC.h; sourceTree = "<group>"; };
+		0D6BC6061CAB7F9D0027B5A6 /* BuyTemplateContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyTemplateContentVC.m; sourceTree = "<group>"; };
 		0D8490591CA8CA8700A28D94 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0D8490741CA8E91100A28D94 /* QTSlideBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTSlideBtnView.h; sourceTree = "<group>"; };
 		0D8490751CA8E91100A28D94 /* QTSlideBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTSlideBtnView.m; sourceTree = "<group>"; };
@@ -369,6 +372,8 @@
 				0D97ABD61CA6661200099DF7 /* CreatorMainVC.m */,
 				0D8490801CA9200A00A28D94 /* BuyTemplateMainVC.h */,
 				0D8490811CA9200A00A28D94 /* BuyTemplateMainVC.m */,
+				0D6BC6051CAB7F9D0027B5A6 /* BuyTemplateContentVC.h */,
+				0D6BC6061CAB7F9D0027B5A6 /* BuyTemplateContentVC.m */,
 			);
 			name = Creator;
 			sourceTree = "<group>";
@@ -718,6 +723,7 @@
 				0DD2D0641CA5309700F2EF62 /* UserDetailItem.m in Sources */,
 				0DA937661C9BF0EA000DC170 /* HomeViewController.m in Sources */,
 				0DAED5B51CAA140A00D0BEA5 /* StoreTemplateItem.m in Sources */,
+				0D6BC6071CAB7F9D0027B5A6 /* BuyTemplateContentVC.m in Sources */,
 				0D3C0F941CA3E2020063F5CB /* PersonalInfoVC.m in Sources */,
 				0DA937721C9BF576000DC170 /* PublicEventVC.m in Sources */,
 				0D8764F81CA3A21E0078E871 /* IdentifierValidator.m in Sources */,

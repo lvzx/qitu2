@@ -11,6 +11,7 @@
 #import "CreatorCollectionCell.h"
 #import "QTAPIClient.h"
 #import "CategoryItem.h"
+#import "BuyTemplateContentVC.h"
 
 #define kContentH kScreenHeight-64-50
 @interface CreatorMainVC ()<UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -29,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavAndView];
-    [self getCategoryNetAction];
+    //[self getCategoryNetAction];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -59,7 +60,9 @@
     [self initialLeftUI];
     
     [self.mainScrollView addSubview:_leftView];
-    
+    BuyTemplateContentVC *nextVC = [[BuyTemplateContentVC alloc] init];
+    nextVC.categoryId = -1;
+    [self.mainScrollView addSubview:nextVC.view];
     
     self.mainScrollView.contentSize = CGSizeMake(2*kScreenWidth, kContentH);
     
