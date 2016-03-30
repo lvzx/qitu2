@@ -10,6 +10,7 @@
 #import "QTBuyMainView.h"
 #import "CategoryItem.h"
 
+#define kContentH kScreenHeight-64-50
 #define BaseTag         20000
 #define kSlideBtn_H 35
 @interface QTBigScrollView ()<UIScrollViewDelegate>
@@ -39,7 +40,7 @@
         self.showsVerticalScrollIndicator = NO;
         self.bounces = NO;
         self.delegate = self;
-        self.contentSize = CGSizeMake(kScreenWidth * self.titleArr.count, kScreenHeight - kSlideBtn_H);
+        self.contentSize = CGSizeMake(kScreenWidth * self.titleArr.count, kContentH - kSlideBtn_H);
         [VC.view addSubview:self];
         [self confingSubViews];
         
@@ -50,7 +51,7 @@
 -(CGRect)getViewFrame
 {
     CGRect frame = CGRectZero;
-    frame.size.height = kScreenHeight - kSlideBtn_H;
+    frame.size.height = kContentH - kSlideBtn_H;
     frame.size.width = kScreenWidth;
     frame.origin.x = 0;
     frame.origin.y = kSlideBtn_H;
@@ -62,7 +63,7 @@
     NSInteger i = 0;
     for (i = 0; i < 3; i++) {
         CategoryItem *catItem = self.titleArr[i];
-        QTBuyMainView *view = [[QTBuyMainView alloc] initWithFrame:CGRectMake(i * kScreenWidth, 0, kScreenWidth, kScreenHeight - kSlideBtn_H) categoryId:catItem.ID];
+        QTBuyMainView *view = [[QTBuyMainView alloc] initWithFrame:CGRectMake(i * kScreenWidth, 0, kScreenWidth, kContentH - kSlideBtn_H) categoryId:catItem.ID];
         // 添加子视图到scrollview
         [self addSubview:view];
         // 添加view到托管的重用数组
@@ -136,7 +137,7 @@
 {
     [self removeLeftView:^(QTBuyMainView *view) {
         [self.reuseViewArr removeObject:view];
-        [view setFrame:CGRectMake(kScreenWidth *index, 0, kScreenWidth, kScreenHeight - kSlideBtn_H)];
+        [view setFrame:CGRectMake(kScreenWidth *index, 0, kScreenWidth, kContentH - kSlideBtn_H)];
         [self.reuseViewArr addObject:view];
         if (complete) {
             complete(view,index);
@@ -148,7 +149,7 @@
 {
     [self removeRightView:^(QTBuyMainView *view) {
         [self.reuseViewArr removeObject:view];
-        [view setFrame:CGRectMake(kScreenWidth *index, 0, kScreenWidth, kScreenHeight - kSlideBtn_H)];
+        [view setFrame:CGRectMake(kScreenWidth *index, 0, kScreenWidth, kContentH - kSlideBtn_H)];
         [self.reuseViewArr addObject:view];
         if (complete) {
             complete(view,index);
@@ -160,7 +161,7 @@
 {
     if (self.reuseViewArr[index] == nil) {
         CategoryItem *catItem = self.titleArr[index];
-        QTBuyMainView *view = [[QTBuyMainView alloc] initWithFrame:CGRectMake(index * kScreenWidth, 0, kScreenWidth, kScreenHeight - kSlideBtn_H) categoryId:catItem.ID];
+        QTBuyMainView *view = [[QTBuyMainView alloc] initWithFrame:CGRectMake(index * kScreenWidth, 0, kScreenWidth, kContentH - kSlideBtn_H) categoryId:catItem.ID];
         [self.reuseViewArr insertObject:view atIndex:index];
         return view;
     }

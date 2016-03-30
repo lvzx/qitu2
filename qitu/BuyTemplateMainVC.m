@@ -9,14 +9,13 @@
 #import "BuyTemplateMainVC.h"
 #import "QTSlideBtnView.h"
 #import "QTBigScrollView.h"
-
-#define kContentH kScreenHeight-64-50
+#import "CategoryItem.h"
 
 @implementation BuyTemplateMainVC
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.frame = CGRectMake(kScreenWidth, 0, kScreenWidth, kContentH);
-    [self confingSlideBtnView];
+    [self getCategoryNetAction];
 }
 
 - (void)confingSlideBtnView
@@ -34,6 +33,23 @@
     s.sbBlock = ^(NSInteger index){
         [Bweak setBgScrollViewContentOffset:index];
     };
+}
+
+#pragma mark - Net Request
+- (void)getCategoryNetAction {
+    QTAPIClient *QTClient = [QTAPIClient sharedClient];
+    NSInteger interval = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSString *url = [NSString stringWithFormat:@"%@?timestamp=%@", kCategoryApp, @(interval)];
+    [QTClient GET:url parameters:nil
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              NSArray *dataArr = responseObject[@"data"];
+              self.categoryArr = [CategoryItem mj_objectArrayWithKeyValuesArray:dataArr];
+              [self confingSlideBtnView];
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              // 请求失败
+              NSLog(@"%@", [error localizedDescription]);
+          }];
 }
 
 @end

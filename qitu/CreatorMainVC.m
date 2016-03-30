@@ -10,10 +10,9 @@
 #import "BuyTemplateMainVC.h"
 #import "CreatorCollectionCell.h"
 #import "QTAPIClient.h"
-#import "CategoryItem.h"
+//#import "CategoryItem.h"
 #import "BuyTemplateContentVC.h"
 
-#define kContentH kScreenHeight-64-50
 @interface CreatorMainVC ()<UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
     UIImageView *navTitleImgV;
@@ -30,7 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavAndView];
-    //[self getCategoryNetAction];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -58,11 +56,12 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initialLeftUI];
-    
     [self.mainScrollView addSubview:_leftView];
-    BuyTemplateContentVC *nextVC = [[BuyTemplateContentVC alloc] init];
-    nextVC.categoryId = -1;
-    [self.mainScrollView addSubview:nextVC.view];
+    self.rightVC = [[BuyTemplateMainVC alloc] init];
+    [self.mainScrollView addSubview:_rightVC.view];
+//    BuyTemplateContentVC *nextVC = [[BuyTemplateContentVC alloc] init];
+//    nextVC.categoryId = -1;
+//    [self.mainScrollView addSubview:nextVC.view];
     
     self.mainScrollView.contentSize = CGSizeMake(2*kScreenWidth, kContentH);
     
@@ -103,24 +102,7 @@
             break;
     }
 }
-#pragma mark - Net Request
-- (void)getCategoryNetAction {
-    QTAPIClient *QTClient = [QTAPIClient sharedClient];
-    NSInteger interval = [[NSDate date] timeIntervalSince1970] * 1000;
-    NSString *url = [NSString stringWithFormat:@"%@?timestamp=%@", kCategoryApp, @(interval)];
-    [QTClient GET:url parameters:nil
-         progress:nil
-          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-              NSArray *dataArr = responseObject[@"data"];
-              NSArray *categoryItemArr = [CategoryItem mj_objectArrayWithKeyValuesArray:dataArr];
-              _rightVC = [[BuyTemplateMainVC alloc] init];
-              _rightVC.categoryArr = categoryItemArr;
-              [self.mainScrollView addSubview:_rightVC.view];
-          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-              // 请求失败
-              NSLog(@"%@", [error localizedDescription]);
-          }];
-}
+
 #pragma mark -- UICollectionViewDataSource
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

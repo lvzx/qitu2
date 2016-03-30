@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kContentH kScreenHeight-64-50
+
 @interface BuyTemplateMainVC : UIViewController
 @property (nonatomic, strong) NSArray *categoryArr;
 @end

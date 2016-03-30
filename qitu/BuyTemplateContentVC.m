@@ -124,8 +124,8 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    //    cell.backgroundColor = [UIColor redColor];
+//    NSInteger row = indexPath.row;
+//    StoreTemplateItem *item = _collectionArr[row];
     NSLog(@"选择%ld",indexPath.row);
 }
 //返回这个UICollectionView是否可以被选择

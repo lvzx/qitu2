@@ -22,7 +22,7 @@
  */
 @property (nonatomic, strong) UICollectionView *mycollectionView;
 
-@property (nonatomic, strong) NSArray *collectionArr;
+@property (nonatomic, strong) NSMutableArray *collectionArr;
 
 @end
 
@@ -35,7 +35,7 @@
         [self confingSubViews];
         cellW = (kScreenWidth-15*4)/3;
         cellH = cellW*307/190 + 55;
-        [self getStoreTemplatesByNet];
+        [self refreshConfig];
     }
     return self;
 }
@@ -53,7 +53,7 @@
     }
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    _mycollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) collectionViewLayout:flowLayout];
+    _mycollectionView = [[UICollectionView alloc]initWithFrame:self.frame collectionViewLayout:flowLayout];
     _mycollectionView.delegate = self;
     _mycollectionView.dataSource = self;
     _mycollectionView.showsHorizontalScrollIndicator = NO;
@@ -67,14 +67,15 @@
     // 下拉刷新
     self.mycollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         pageNum = 0;
-        [self getStoreTemplatesByNet];
+        [_collectionArr removeAllObjects];
+        [self reloadData];
     }];
     [self.mycollectionView.mj_header beginRefreshing];
     
     // 上拉刷新
     self.mycollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         pageNum++;
-        [self getStoreTemplatesByNet];
+        [self reloadData];
     }];
     // 默认先隐藏footer
     self.mycollectionView.mj_footer.hidden = YES;
@@ -105,6 +106,8 @@
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    // 设置尾部控件的显示和隐藏
+    self.mycollectionView.mj_footer.hidden = _collectionArr.count == 0;
     return [_collectionArr count];
 }
 //定义展示的Section的个数
@@ -166,13 +169,26 @@
     NSInteger interval = [[NSDate date] timeIntervalSince1970] * 1000;
     NSDictionary *params = @{@"cateId":@(_categoryId), @"pageNumber":@(pageNum), @"perPage":@(20), @"timestamp":@(interval)};
     QTAPIClient *QTClient = [QTAPIClient sharedClient];
+    __unsafe_unretained __typeof(self) weakSelf = self;
     [QTClient GET:kGetStoreTemplates parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *data = responseObject[@"data"];
-        self.collectionArr = [StoreTemplateItem mj_objectArrayWithKeyValuesArray:data[@"dataList"]];
-        [self.mycollectionView reloadData];
+        if (pageNum == 0) {
+            weakSelf.collectionArr = [StoreTemplateItem mj_objectArrayWithKeyValuesArray:data[@"dataList"]];
+        }else {
+            [weakSelf.collectionArr addObjectsFromArray:[StoreTemplateItem mj_objectArrayWithKeyValuesArray:data[@"dataList"]]];
+        }
+        
+        [weakSelf.mycollectionView reloadData];
+        // 结束刷新
+        [weakSelf.mycollectionView.mj_header endRefreshing];
+        [weakSelf.mycollectionView.mj_footer endRefreshing];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         // 请求失败
         NSLog(@"%@", [error localizedDescription]);
+        // 结束刷新
+        [weakSelf.mycollectionView.mj_header endRefreshing];
+        [weakSelf.mycollectionView.mj_footer endRefreshing];
     }];
 }
 
