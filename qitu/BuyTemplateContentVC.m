@@ -10,6 +10,7 @@
 #import "QTAPIClient.h"
 #import "StoreTemplateCell.h"
 #import "MJRefresh.h"
+#import "TemplatePreviewVC.h"
 
 @interface BuyTemplateContentVC ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
 {
@@ -26,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.frame = CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight-64-50);
     [self confingSubViews];
     cellW = (kScreenWidth-15*4)/3;
     cellH = cellW*307/190 + 55;
@@ -124,9 +126,13 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSInteger row = indexPath.row;
-//    StoreTemplateItem *item = _collectionArr[row];
-    NSLog(@"选择%ld",indexPath.row);
+    NSInteger row = indexPath.row;
+    StoreTemplateItem *item = _collectionArr[row];
+    TemplatePreviewVC *nextVC = [[TemplatePreviewVC alloc] init];
+    nextVC.navTitle = item.title;
+    nextVC.templateId = item.ID;
+    nextVC.mode = @"storeTemplate";
+    [super.navigationController pushViewController:nextVC animated:YES];
 }
 //返回这个UICollectionView是否可以被选择
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath

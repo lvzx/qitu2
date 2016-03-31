@@ -20,8 +20,6 @@
 
 - (void)confingSlideBtnView
 {
-    //NSArray *titleArr = @[@"英语",@"数学",@"语文",@"历史",@"地理",@"思想政治",@"化学",@"物理",@"体育",@"生物",@"音乐",@"美术"];
-    
     QTSlideBtnView *s = [[QTSlideBtnView alloc] initWithcontroller:self TitleArr:_categoryArr];
     QTBigScrollView *b = [[QTBigScrollView alloc] initWithcontroller:self TitleArr:_categoryArr];
     

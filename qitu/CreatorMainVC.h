@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QTBuyMainDelegate.h"
 
-@interface CreatorMainVC : UIViewController
+@interface CreatorMainVC : UIViewController<QTBuyMainDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 

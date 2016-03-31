@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QTBuyMainDelegate.h"
 @interface QTBuyMainView : UIView
 
 -(instancetype)initWithFrame:(CGRect)frame categoryId:(NSInteger)catId;
 
 @property(nonatomic, assign)NSInteger categoryId;
-
+@property (assign, nonatomic) id<QTBuyMainDelegate> myDelegate;
 - (void)reloadData;
 - (void)getStoreTemplatesByNet;
 

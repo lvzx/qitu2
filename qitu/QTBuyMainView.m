@@ -10,6 +10,7 @@
 #import "QTAPIClient.h"
 #import "StoreTemplateCell.h"
 #import "MJRefresh.h"
+//#import "TemplatePreviewVC.h"
 
 @interface QTBuyMainView ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
 {
@@ -151,9 +152,11 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    //    cell.backgroundColor = [UIColor redColor];
-    NSLog(@"选择%ld",indexPath.row);
+    NSInteger row = indexPath.row;
+    StoreTemplateItem *item = _collectionArr[row];
+    if (_myDelegate && [_myDelegate respondsToSelector:@selector(revealNavPush:)]) {
+        [_myDelegate revealNavPush:item];
+    }
 }
 //返回这个UICollectionView是否可以被选择
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath

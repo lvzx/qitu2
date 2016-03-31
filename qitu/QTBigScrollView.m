@@ -20,7 +20,7 @@
 @property(nonatomic, strong)NSMutableArray *reuseViewArr;
 
 @property (nonatomic, assign) CGFloat offset;
-
+@property (strong, nonatomic) id<QTBuyMainDelegate> myDelegate;
 @end
 
 @implementation QTBigScrollView{
@@ -40,6 +40,7 @@
         self.showsVerticalScrollIndicator = NO;
         self.bounces = NO;
         self.delegate = self;
+        self.myDelegate = (id)VC;
         self.contentSize = CGSizeMake(kScreenWidth * self.titleArr.count, kContentH - kSlideBtn_H);
         [VC.view addSubview:self];
         [self confingSubViews];
@@ -64,6 +65,7 @@
     for (i = 0; i < 3; i++) {
         CategoryItem *catItem = self.titleArr[i];
         QTBuyMainView *view = [[QTBuyMainView alloc] initWithFrame:CGRectMake(i * kScreenWidth, 0, kScreenWidth, kContentH - kSlideBtn_H) categoryId:catItem.ID];
+        view.myDelegate = self.myDelegate;
         // 添加子视图到scrollview
         [self addSubview:view];
         // 添加view到托管的重用数组

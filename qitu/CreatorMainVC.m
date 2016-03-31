@@ -9,9 +9,12 @@
 #import "CreatorMainVC.h"
 #import "BuyTemplateMainVC.h"
 #import "CreatorCollectionCell.h"
-#import "QTAPIClient.h"
-//#import "CategoryItem.h"
 #import "BuyTemplateContentVC.h"
+#import "TemplatePreviewVC.h"
+#import "QTSlideBtnView.h"
+#import "QTBigScrollView.h"
+#import "CategoryItem.h"
+#import "StoreTemplateItem.h"
 
 @interface CreatorMainVC ()<UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
@@ -22,6 +25,8 @@
 }
 @property (strong, nonatomic) UICollectionView *leftView;
 @property (strong, nonatomic) BuyTemplateMainVC *rightVC;
+@property (strong, nonatomic) UIView *rightView;
+@property (nonatomic, strong) NSArray *categoryArr;
 
 @end
 
@@ -57,12 +62,12 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initialLeftUI];
     [self.mainScrollView addSubview:_leftView];
-    self.rightVC = [[BuyTemplateMainVC alloc] init];
-    [self.mainScrollView addSubview:_rightVC.view];
+    [self getCategoryNetAction];
+//    self.rightVC = [[BuyTemplateMainVC alloc] init];
+//    [self.mainScrollView addSubview:_rightVC.view];
 //    BuyTemplateContentVC *nextVC = [[BuyTemplateContentVC alloc] init];
 //    nextVC.categoryId = -1;
 //    [self.mainScrollView addSubview:nextVC.view];
-    
     self.mainScrollView.contentSize = CGSizeMake(2*kScreenWidth, kContentH);
     
     cellW = (kScreenWidth-24*3-16)/3;
@@ -84,6 +89,44 @@
     //注册cell和ReusableView（相当于头部）
     [self.leftView registerClass:[CreatorCollectionCell class] forCellWithReuseIdentifier:@"CollectionCell"];
 }
+
+- (void)confingSlideBtnView
+{
+    QTSlideBtnView *s = [[QTSlideBtnView alloc] initWithcontroller:self TitleArr:_categoryArr];
+    QTBigScrollView *b = [[QTBigScrollView alloc] initWithcontroller:self TitleArr:_categoryArr];
+    
+    __weak typeof(s) Sweak = s;
+    __weak typeof(b) Bweak = b;
+    b.Bgbolck = ^(NSInteger index){
+        [Sweak setSBScrollViewContentOffset:index];
+    };
+    s.sbBlock = ^(NSInteger index){
+        [Bweak setBgScrollViewContentOffset:index];
+    };
+    
+    self.rightView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kContentH)];
+    [self.rightView addSubview:s];
+    [self.rightView addSubview:b];
+    [self.mainScrollView addSubview:_rightView];
+}
+
+#pragma mark - Net Request
+- (void)getCategoryNetAction {
+    QTAPIClient *QTClient = [QTAPIClient sharedClient];
+    NSInteger interval = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSString *url = [NSString stringWithFormat:@"%@?timestamp=%@", kCategoryApp, @(interval)];
+    [QTClient GET:url parameters:nil
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              NSArray *dataArr = responseObject[@"data"];
+              self.categoryArr = [CategoryItem mj_objectArrayWithKeyValuesArray:dataArr];
+              [self confingSlideBtnView];
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              // 请求失败
+              NSLog(@"%@", [error localizedDescription]);
+          }];
+}
+
 #pragma mark - Action
 - (void)toucuUpInside:(UIButton *)sender {
     NSInteger tag = sender.tag;
@@ -101,6 +144,16 @@
         default:
             break;
     }
+}
+
+#pragma mark - QTBuyMainDelegate
+- (void)revealNavPush:(StoreTemplateItem *)item {
+    TemplatePreviewVC *nextVC = [[TemplatePreviewVC alloc] init];
+    nextVC.webTitle = item.title;
+    nextVC.templateId = item.ID;
+    nextVC.mode = @"storeTemplate";
+    [nextVC setHidesBottomBarWhenPushed:YES];
+    [super.navigationController pushViewController:nextVC animated:YES];
 }
 
 #pragma mark -- UICollectionViewDataSource
@@ -153,8 +206,6 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    //    cell.backgroundColor = [UIColor redColor];
     NSLog(@"选择%ld",indexPath.row);
 }
 //返回这个UICollectionView是否可以被选择
