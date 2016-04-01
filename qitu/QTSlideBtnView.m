@@ -19,11 +19,6 @@
 #define kSlideLine_H 3
 #define TITLEFONT 14*kScreenWidth/320.0
 
-/**
- *  clolor
- */
-#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-
 @interface QTSlideBtnView ()<UIScrollViewDelegate>
 
 @property(nonatomic, strong)UIImageView *lineView;
@@ -45,7 +40,7 @@
     self = [super init];
     if (self) {
         self.frame = [self getViewFrame];
-        self.backgroundColor = UIColorFromRGB(0xf5f5f5);
+        self.backgroundColor = UIColorFromHex(0xf5f5f5);
         self.pagingEnabled = NO;
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
@@ -84,10 +79,10 @@
         }
         [titleBt setTitle:title forState:UIControlStateNormal];
         titleBt.titleLabel.font = [UIFont systemFontOfSize:TITLEFONT];
-        [titleBt setTitleColor:UIColorFromRGB(0x868686) forState:UIControlStateNormal];
-        [titleBt setTitleColor:UIColorFromRGB(0x5c8aea) forState:UIControlStateSelected];
+        [titleBt setTitleColor:UIColorFromHex(0x868686) forState:UIControlStateNormal];
+        [titleBt setTitleColor:UIColorFromHex(0x5c8aea) forState:UIControlStateSelected];
         [titleBt addTarget:self action:@selector(selectType:) forControlEvents:UIControlEventTouchUpInside];
-        [titleBt setBackgroundColor:UIColorFromRGB(0xf5f5f5)];
+        [titleBt setBackgroundColor:UIColorFromHex(0xf5f5f5)];
         
         NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:TITLEFONT + 1]};
         CGSize textSize = [title boundingRectWithSize:CGSizeMake(ButtonSpace*11, kSlideBtn_H) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
@@ -116,7 +111,7 @@
 {
     if (_lineView == nil) {
         _lineView = [[UIImageView alloc] init];
-        _lineView.backgroundColor = UIColorFromRGB(0x5c8aea);
+        _lineView.backgroundColor = UIColorFromHex(0x5c8aea);
     }
     return _lineView;
 }

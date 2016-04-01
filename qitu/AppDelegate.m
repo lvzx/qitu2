@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <AFNetworking/AFNetworking.h>
 #import "HomeViewController.h"
+
+#import "DiyTemplateMainVC.h"
 @interface AppDelegate ()
 
 @end
@@ -21,8 +23,11 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    HomeViewController *mainView = [[HomeViewController alloc] init];
-    self.window.rootViewController = mainView;
+    DiyTemplateMainVC *testView = [[DiyTemplateMainVC alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:testView];
+    self.window.rootViewController = nav;
+//    HomeViewController *mainView = [[HomeViewController alloc] init];
+//    self.window.rootViewController = mainView;
     [self changeNavigationBarStyle];
     
     [self.window makeKeyAndVisible];

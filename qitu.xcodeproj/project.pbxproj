@@ -16,6 +16,11 @@
 		0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */; };
 		0D6BC6071CAB7F9D0027B5A6 /* BuyTemplateContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6BC6061CAB7F9D0027B5A6 /* BuyTemplateContentVC.m */; };
 		0D6BC60A1CABC2FB0027B5A6 /* TemplatePreviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6BC6091CABC2FB0027B5A6 /* TemplatePreviewVC.m */; };
+		0D7D51F71CACD7D10085E138 /* TemplateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D51F61CACD7D10085E138 /* TemplateItem.m */; };
+		0D7D51FA1CACDA6F0085E138 /* DiyTemplateMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D51F91CACDA6F0085E138 /* DiyTemplateMainVC.m */; };
+		0D7D779F1CAE045500AF9E7D /* SelectBgColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D779E1CAE045500AF9E7D /* SelectBgColor.m */; };
+		0D7D77A51CAE5A4A00AF9E7D /* ColorRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D77A41CAE5A4A00AF9E7D /* ColorRect.m */; };
+		0D7D77A81CAE6F9D00AF9E7D /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D77A71CAE6F9D00AF9E7D /* UIColor+Hex.m */; };
 		0D84905A1CA8CA8700A28D94 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8490591CA8CA8700A28D94 /* StoreKit.framework */; };
 		0D8490761CA8E91100A28D94 /* QTSlideBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8490751CA8E91100A28D94 /* QTSlideBtnView.m */; };
 		0D84907C1CA9136100A28D94 /* QTBigScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D84907B1CA9136100A28D94 /* QTBigScrollView.m */; };
@@ -92,6 +97,17 @@
 		0D6BC6081CABC2FB0027B5A6 /* TemplatePreviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatePreviewVC.h; sourceTree = "<group>"; };
 		0D6BC6091CABC2FB0027B5A6 /* TemplatePreviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatePreviewVC.m; sourceTree = "<group>"; };
 		0D7D51F41CACBD310085E138 /* QTBuyMainDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTBuyMainDelegate.h; sourceTree = "<group>"; };
+		0D7D51F51CACD7D10085E138 /* TemplateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateItem.h; sourceTree = "<group>"; };
+		0D7D51F61CACD7D10085E138 /* TemplateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateItem.m; sourceTree = "<group>"; };
+		0D7D51F81CACDA6F0085E138 /* DiyTemplateMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyTemplateMainVC.h; sourceTree = "<group>"; };
+		0D7D51F91CACDA6F0085E138 /* DiyTemplateMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyTemplateMainVC.m; sourceTree = "<group>"; };
+		0D7D779D1CAE045500AF9E7D /* SelectBgColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBgColor.h; sourceTree = "<group>"; };
+		0D7D779E1CAE045500AF9E7D /* SelectBgColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBgColor.m; sourceTree = "<group>"; };
+		0D7D77A01CAE049800AF9E7D /* CreatorComponentsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatorComponentsDelegate.h; sourceTree = "<group>"; };
+		0D7D77A31CAE5A4A00AF9E7D /* ColorRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorRect.h; sourceTree = "<group>"; };
+		0D7D77A41CAE5A4A00AF9E7D /* ColorRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorRect.m; sourceTree = "<group>"; };
+		0D7D77A61CAE6F9D00AF9E7D /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		0D7D77A71CAE6F9D00AF9E7D /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		0D8490591CA8CA8700A28D94 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0D8490741CA8E91100A28D94 /* QTSlideBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTSlideBtnView.h; sourceTree = "<group>"; };
 		0D8490751CA8E91100A28D94 /* QTSlideBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTSlideBtnView.m; sourceTree = "<group>"; };
@@ -203,6 +219,8 @@
 				0DAED5B41CAA140A00D0BEA5 /* StoreTemplateItem.m */,
 				0DAED5B61CAA14E600D0BEA5 /* CategoryItem.h */,
 				0DAED5B71CAA14E600D0BEA5 /* CategoryItem.m */,
+				0D7D51F51CACD7D10085E138 /* TemplateItem.h */,
+				0D7D51F61CACD7D10085E138 /* TemplateItem.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -380,6 +398,8 @@
 				0D6BC6061CAB7F9D0027B5A6 /* BuyTemplateContentVC.m */,
 				0D6BC6081CABC2FB0027B5A6 /* TemplatePreviewVC.h */,
 				0D6BC6091CABC2FB0027B5A6 /* TemplatePreviewVC.m */,
+				0D7D51F81CACDA6F0085E138 /* DiyTemplateMainVC.h */,
+				0D7D51F91CACDA6F0085E138 /* DiyTemplateMainVC.m */,
 			);
 			name = Creator;
 			sourceTree = "<group>";
@@ -391,6 +411,18 @@
 				0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */,
 			);
 			name = MyAlertView;
+			sourceTree = "<group>";
+		};
+		0D7D779C1CAE040900AF9E7D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0D7D779D1CAE045500AF9E7D /* SelectBgColor.h */,
+				0D7D779E1CAE045500AF9E7D /* SelectBgColor.m */,
+				0D7D77A31CAE5A4A00AF9E7D /* ColorRect.h */,
+				0D7D77A41CAE5A4A00AF9E7D /* ColorRect.m */,
+				0D7D77A01CAE049800AF9E7D /* CreatorComponentsDelegate.h */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 		0D84905B1CA8CB0500A28D94 /* BuyTemplate */ = {
@@ -410,6 +442,7 @@
 		0D8490831CA9267100A28D94 /* Creator */ = {
 			isa = PBXGroup;
 			children = (
+				0D7D779C1CAE040900AF9E7D /* Components */,
 				0D84905B1CA8CB0500A28D94 /* BuyTemplate */,
 				0D8490891CA92B6800A28D94 /* CreatorCollectionCell.h */,
 				0D84908A1CA92B6800A28D94 /* CreatorCollectionCell.m */,
@@ -437,6 +470,8 @@
 				0D8764FB1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m */,
 				0D8764FD1CA3A3410078E871 /* NSData+SSToolkitAdditions.h */,
 				0D8764FE1CA3A3410078E871 /* NSData+SSToolkitAdditions.m */,
+				0D7D77A61CAE6F9D00AF9E7D /* UIColor+Hex.h */,
+				0D7D77A71CAE6F9D00AF9E7D /* UIColor+Hex.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -717,13 +752,17 @@
 			files = (
 				0D84907F1CA913D400A28D94 /* QTBuyMainView.m in Sources */,
 				0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */,
+				0D7D77A81CAE6F9D00AF9E7D /* UIColor+Hex.m in Sources */,
 				0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */,
 				0D97ABD71CA6661200099DF7 /* CreatorMainVC.m in Sources */,
 				0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */,
 				0D6BC60A1CABC2FB0027B5A6 /* TemplatePreviewVC.m in Sources */,
+				0D7D51F71CACD7D10085E138 /* TemplateItem.m in Sources */,
+				0D7D779F1CAE045500AF9E7D /* SelectBgColor.m in Sources */,
 				0D8764F51CA39EE70078E871 /* MyUtills.m in Sources */,
 				0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */,
 				0D8764FF1CA3A3410078E871 /* NSData+SSToolkitAdditions.m in Sources */,
+				0D7D51FA1CACDA6F0085E138 /* DiyTemplateMainVC.m in Sources */,
 				0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */,
 				0D84907C1CA9136100A28D94 /* QTBigScrollView.m in Sources */,
 				0D8490821CA9200A00A28D94 /* BuyTemplateMainVC.m in Sources */,
@@ -747,6 +786,7 @@
 				0DAED5BB1CAA247100D0BEA5 /* StoreTemplateCell.m in Sources */,
 				0D84908B1CA92B6800A28D94 /* CreatorCollectionCell.m in Sources */,
 				0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */,
+				0D7D77A51CAE5A4A00AF9E7D /* ColorRect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
