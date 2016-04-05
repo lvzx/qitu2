@@ -18,6 +18,8 @@
 		0D6BC60A1CABC2FB0027B5A6 /* TemplatePreviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6BC6091CABC2FB0027B5A6 /* TemplatePreviewVC.m */; };
 		0D7325731CB33F64008899BA /* DiyBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7325721CB33F64008899BA /* DiyBottomBar.m */; };
 		0D73257C1CB34A68008899BA /* BtnContentVSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D73257B1CB34A68008899BA /* BtnContentVSort.m */; };
+		0D7325821CB3947F008899BA /* DiyMainBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7325811CB3947F008899BA /* DiyMainBottomBar.m */; };
+		0D7325881CB39C1C008899BA /* DiyOnePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7325871CB39C1C008899BA /* DiyOnePageCell.m */; };
 		0D7D51F71CACD7D10085E138 /* TemplateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D51F61CACD7D10085E138 /* TemplateItem.m */; };
 		0D7D51FA1CACDA6F0085E138 /* DiyTemplateMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D51F91CACDA6F0085E138 /* DiyTemplateMainVC.m */; };
 		0D7D779F1CAE045500AF9E7D /* SelectBgColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D779E1CAE045500AF9E7D /* SelectBgColor.m */; };
@@ -102,6 +104,10 @@
 		0D7325721CB33F64008899BA /* DiyBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyBottomBar.m; sourceTree = "<group>"; };
 		0D73257A1CB34A68008899BA /* BtnContentVSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BtnContentVSort.h; sourceTree = "<group>"; };
 		0D73257B1CB34A68008899BA /* BtnContentVSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BtnContentVSort.m; sourceTree = "<group>"; };
+		0D7325801CB3947F008899BA /* DiyMainBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyMainBottomBar.h; sourceTree = "<group>"; };
+		0D7325811CB3947F008899BA /* DiyMainBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyMainBottomBar.m; sourceTree = "<group>"; };
+		0D7325861CB39C1C008899BA /* DiyOnePageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyOnePageCell.h; sourceTree = "<group>"; };
+		0D7325871CB39C1C008899BA /* DiyOnePageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyOnePageCell.m; sourceTree = "<group>"; };
 		0D7D51F41CACBD310085E138 /* QTBuyMainDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTBuyMainDelegate.h; sourceTree = "<group>"; };
 		0D7D51F51CACD7D10085E138 /* TemplateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateItem.h; sourceTree = "<group>"; };
 		0D7D51F61CACD7D10085E138 /* TemplateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateItem.m; sourceTree = "<group>"; };
@@ -407,6 +413,8 @@
 				0D6BC6091CABC2FB0027B5A6 /* TemplatePreviewVC.m */,
 				0D7D51F81CACDA6F0085E138 /* DiyTemplateMainVC.h */,
 				0D7D51F91CACDA6F0085E138 /* DiyTemplateMainVC.m */,
+				0D7325861CB39C1C008899BA /* DiyOnePageCell.h */,
+				0D7325871CB39C1C008899BA /* DiyOnePageCell.m */,
 			);
 			name = Creator;
 			sourceTree = "<group>";
@@ -438,6 +446,8 @@
 				0D7D77A41CAE5A4A00AF9E7D /* ColorRect.m */,
 				0D7325711CB33F64008899BA /* DiyBottomBar.h */,
 				0D7325721CB33F64008899BA /* DiyBottomBar.m */,
+				0D7325801CB3947F008899BA /* DiyMainBottomBar.h */,
+				0D7325811CB3947F008899BA /* DiyMainBottomBar.m */,
 				0D7D77A01CAE049800AF9E7D /* CreatorComponentsDelegate.h */,
 			);
 			name = Components;
@@ -770,6 +780,7 @@
 			files = (
 				0D84907F1CA913D400A28D94 /* QTBuyMainView.m in Sources */,
 				0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */,
+				0D7325821CB3947F008899BA /* DiyMainBottomBar.m in Sources */,
 				0D7D77A81CAE6F9D00AF9E7D /* UIColor+Hex.m in Sources */,
 				0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */,
 				0D97ABD71CA6661200099DF7 /* CreatorMainVC.m in Sources */,
@@ -800,6 +811,7 @@
 				0D8764FC1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m in Sources */,
 				0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */,
 				0DD2D0671CA534FC00F2EF62 /* PersonalInfoCell.m in Sources */,
+				0D7325881CB39C1C008899BA /* DiyOnePageCell.m in Sources */,
 				0DAED5B81CAA14E600D0BEA5 /* CategoryItem.m in Sources */,
 				0D8899FD1CA4D0E1003F6B29 /* ArrayDataSource.m in Sources */,
 				0DAED5BB1CAA247100D0BEA5 /* StoreTemplateCell.m in Sources */,

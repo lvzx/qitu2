@@ -21,11 +21,11 @@ typedef enum {
 }ENUM_DIYBOTTOM_ACTIONINDEX;
 
 @protocol DiyBottomBarDelegate
-- (void)didSelectDiyBottomBtn:(ENUM_DIYBOTTOM_ACTIONINDEX)index;
+- (void)didSelectDiyBottomBtn:(UIButton *)btn;
 @end
 
 @interface DiyBottomBar : UIView
 
 @property (assign, nonatomic) ENUM_DIYBOTTOMTYPE diyBottomType;
-
+- (void)reloadDiyBottom:(ENUM_DIYBOTTOMTYPE)style;
 @end

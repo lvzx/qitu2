@@ -10,5 +10,5 @@
 #import "BaseViewController.h"
 
 @interface DiyTemplateMainVC : BaseViewController
-
+@property (strong, nonatomic) NSDictionary *pagesData;
 @end
