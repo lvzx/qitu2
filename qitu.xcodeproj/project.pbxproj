@@ -16,6 +16,8 @@
 		0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BBD1C9A9D9B0063AC7E /* MyAlertView.m */; };
 		0D6BC6071CAB7F9D0027B5A6 /* BuyTemplateContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6BC6061CAB7F9D0027B5A6 /* BuyTemplateContentVC.m */; };
 		0D6BC60A1CABC2FB0027B5A6 /* TemplatePreviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6BC6091CABC2FB0027B5A6 /* TemplatePreviewVC.m */; };
+		0D7325731CB33F64008899BA /* DiyBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7325721CB33F64008899BA /* DiyBottomBar.m */; };
+		0D73257C1CB34A68008899BA /* BtnContentVSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D73257B1CB34A68008899BA /* BtnContentVSort.m */; };
 		0D7D51F71CACD7D10085E138 /* TemplateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D51F61CACD7D10085E138 /* TemplateItem.m */; };
 		0D7D51FA1CACDA6F0085E138 /* DiyTemplateMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D51F91CACDA6F0085E138 /* DiyTemplateMainVC.m */; };
 		0D7D779F1CAE045500AF9E7D /* SelectBgColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D779E1CAE045500AF9E7D /* SelectBgColor.m */; };
@@ -96,6 +98,10 @@
 		0D6BC6061CAB7F9D0027B5A6 /* BuyTemplateContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyTemplateContentVC.m; sourceTree = "<group>"; };
 		0D6BC6081CABC2FB0027B5A6 /* TemplatePreviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatePreviewVC.h; sourceTree = "<group>"; };
 		0D6BC6091CABC2FB0027B5A6 /* TemplatePreviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatePreviewVC.m; sourceTree = "<group>"; };
+		0D7325711CB33F64008899BA /* DiyBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyBottomBar.h; sourceTree = "<group>"; };
+		0D7325721CB33F64008899BA /* DiyBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyBottomBar.m; sourceTree = "<group>"; };
+		0D73257A1CB34A68008899BA /* BtnContentVSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BtnContentVSort.h; sourceTree = "<group>"; };
+		0D73257B1CB34A68008899BA /* BtnContentVSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BtnContentVSort.m; sourceTree = "<group>"; };
 		0D7D51F41CACBD310085E138 /* QTBuyMainDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTBuyMainDelegate.h; sourceTree = "<group>"; };
 		0D7D51F51CACD7D10085E138 /* TemplateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateItem.h; sourceTree = "<group>"; };
 		0D7D51F61CACD7D10085E138 /* TemplateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateItem.m; sourceTree = "<group>"; };
@@ -293,6 +299,7 @@
 		0D630B9E1C9A3E4C0063AC7E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0D7325791CB34A22008899BA /* BtnContentVSort */,
 				0D8764F21CA39EA90078E871 /* Util */,
 				0D8A6A281CA2365E00C65EF0 /* MyTextField */,
 				0D630BBB1C9A9D580063AC7E /* MyAlertView */,
@@ -413,6 +420,15 @@
 			name = MyAlertView;
 			sourceTree = "<group>";
 		};
+		0D7325791CB34A22008899BA /* BtnContentVSort */ = {
+			isa = PBXGroup;
+			children = (
+				0D73257A1CB34A68008899BA /* BtnContentVSort.h */,
+				0D73257B1CB34A68008899BA /* BtnContentVSort.m */,
+			);
+			name = BtnContentVSort;
+			sourceTree = "<group>";
+		};
 		0D7D779C1CAE040900AF9E7D /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +436,8 @@
 				0D7D779E1CAE045500AF9E7D /* SelectBgColor.m */,
 				0D7D77A31CAE5A4A00AF9E7D /* ColorRect.h */,
 				0D7D77A41CAE5A4A00AF9E7D /* ColorRect.m */,
+				0D7325711CB33F64008899BA /* DiyBottomBar.h */,
+				0D7325721CB33F64008899BA /* DiyBottomBar.m */,
 				0D7D77A01CAE049800AF9E7D /* CreatorComponentsDelegate.h */,
 			);
 			name = Components;
@@ -761,6 +779,7 @@
 				0D7D779F1CAE045500AF9E7D /* SelectBgColor.m in Sources */,
 				0D8764F51CA39EE70078E871 /* MyUtills.m in Sources */,
 				0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */,
+				0D7325731CB33F64008899BA /* DiyBottomBar.m in Sources */,
 				0D8764FF1CA3A3410078E871 /* NSData+SSToolkitAdditions.m in Sources */,
 				0D7D51FA1CACDA6F0085E138 /* DiyTemplateMainVC.m in Sources */,
 				0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */,
@@ -784,6 +803,7 @@
 				0DAED5B81CAA14E600D0BEA5 /* CategoryItem.m in Sources */,
 				0D8899FD1CA4D0E1003F6B29 /* ArrayDataSource.m in Sources */,
 				0DAED5BB1CAA247100D0BEA5 /* StoreTemplateCell.m in Sources */,
+				0D73257C1CB34A68008899BA /* BtnContentVSort.m in Sources */,
 				0D84908B1CA92B6800A28D94 /* CreatorCollectionCell.m in Sources */,
 				0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */,
 				0D7D77A51CAE5A4A00AF9E7D /* ColorRect.m in Sources */,

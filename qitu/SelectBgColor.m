@@ -8,10 +8,11 @@
 
 #import "SelectBgColor.h"
 #import "ColorRect.h"
+
 #import "UIColor+Hex.h"
 #import "Masonry.h"
 
-#define SELECTBG_HEIGHT 170
+#define SELECTBG_HEIGHT 105
 #define COLORBTN_WIDTH 35
 #define COLORBTN_HEIGHT 65
 
@@ -27,7 +28,7 @@
 @implementation SelectBgColor
 - (instancetype)initWithColors:(NSArray *)colors {
     self.colors = colors;
-    CGRect rect = CGRectMake(0, kScreenHeight-SELECTBG_HEIGHT, kScreenWidth, SELECTBG_HEIGHT);
+    CGRect rect = CGRectMake(0, 0, kScreenWidth, SELECTBG_HEIGHT);
     if (self = [self initWithFrame:rect]) {
         self.backgroundColor = RGBCOLOR(22, 22, 22);
     }
@@ -48,6 +49,7 @@
         }];
         
         self.bgScrollView = [[UIScrollView alloc] init];
+        self.bgScrollView.showsHorizontalScrollIndicator = NO;
         self.bgScrollView.delegate = self;
         [self setup:self.bgScrollView];
         [self addSubview:self.bgScrollView];
