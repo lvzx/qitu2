@@ -28,4 +28,5 @@ typedef enum {
 
 @property (assign, nonatomic) ENUM_DIYBOTTOMTYPE diyBottomType;
 - (void)reloadDiyBottom:(ENUM_DIYBOTTOMTYPE)style;
+- (void)setActionHandler:(id)target;
 @end

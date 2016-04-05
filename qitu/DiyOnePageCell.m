@@ -7,6 +7,10 @@
 //
 
 #import "DiyOnePageCell.h"
+@interface DiyOnePageCell ()
+@property (strong, nonatomic) UIImageView *backgroundImg;
+
+@end
 
 @implementation DiyOnePageCell
 - (id)initWithFrame:(CGRect)frame
@@ -14,12 +18,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = RGBCOLOR(57, 57, 57);
-        self.layer.borderWidth = 1.0;
+        self.layer.borderWidth = 0.8;
         self.layer.borderColor = RGBCOLOR(213, 213, 213).CGColor;
-//        self.imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-55)];
-//        [self addSubview:self.imgView];
-//        
+        self.backgroundImg = [[UIImageView alloc]initWithFrame:self.frame];
+        [self addSubview:self.backgroundImg];
+//
 //        self.titleLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.imgView.frame), CGRectGetWidth(self.frame), 20)];
 //        self.titleLbl.font = [UIFont systemFontOfSize:15.0];
 //        self.titleLbl.textColor = RGBCOLOR(156, 156, 156);

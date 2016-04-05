@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef enum {
-    ENUM_DIYMAINBOTTOM_FIRST = 30,
-    ENUM_DIYMAINBOTTOM_SECOND,
-    ENUM_DIYMAINBOTTOM_THIRD,
-    ENUM_DIYMAINBOTTOM_FOURTH
-}ENUM_DIYMAINBOTTOM_BTNINDEX;
 
 @protocol DiyMainBottomBar
 - (void)touchUpInsideOnBtn:(UIButton *)btn;
 @end
+
 @interface DiyMainBottomBar : UIView
-//@property (assign, nonatomic) id<DiyMainBottomBarDelegate> myDelegate;
+
+- (instancetype)initWithFrame:(CGRect)frame actionHandler:(id)target;
+
 @end
+
