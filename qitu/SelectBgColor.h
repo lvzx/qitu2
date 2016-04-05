@@ -14,5 +14,6 @@
 @interface SelectBgColor : UIView
 @property (assign, nonatomic) NSInteger colorIdx;
 @property (assign, nonatomic) id<SelectBgColorDelegate> delegate;
+@property (strong, nonatomic) UISlider *slider;
 - (instancetype)initWithColors:(NSArray *)colors;
 @end

@@ -8,7 +8,6 @@
 
 #import "SelectBgColor.h"
 #import "ColorRect.h"
-
 #import "UIColor+Hex.h"
 #import "Masonry.h"
 
@@ -37,15 +36,29 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
+        UIEdgeInsets padding = UIEdgeInsetsMake(10, 20, 10, 10);
         UILabel *titleLbl = [[UILabel alloc] init];
         titleLbl.textColor = [UIColor whiteColor];
         titleLbl.font = [UIFont systemFontOfSize:15.0];
-        titleLbl.text = @"选择背景颜色或背景图";
+        titleLbl.text = @"透明度";
         [self addSubview:titleLbl];
         [titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.mas_top).with.offset(padding.top);
-            make.centerX.equalTo(self.mas_centerX);
+            make.left.mas_equalTo(padding.left);
+        }];
+        
+        _slider = [[UISlider alloc] init];
+        _slider.minimumTrackTintColor = [UIColor whiteColor];
+        _slider.maximumTrackTintColor = [UIColor whiteColor];
+        _slider.minimumValue = 0.1;
+        _slider.maximumValue = 1.0;
+        [_slider setValue:0.6 animated:YES];
+        [_slider setThumbImage:[UIImage imageNamed:@"maka_oval"] forState:UIControlStateNormal];
+        [self addSubview:_slider];
+        [_slider mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(titleLbl.mas_trailing).with.offset(padding.left);
+            make.top.mas_equalTo(padding.top);
+            make.size.mas_equalTo(CGSizeMake(kScreenWidth-120, 20));
         }];
         
         self.bgScrollView = [[UIScrollView alloc] init];
@@ -55,8 +68,7 @@
         [self addSubview:self.bgScrollView];
         [_bgScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.mas_top).with.offset(40);
-            make.height.mas_equalTo(COLORBTN_HEIGHT);
-            make.width.mas_equalTo(kScreenWidth);
+            make.size.mas_equalTo(CGSizeMake(kScreenWidth, COLORBTN_HEIGHT));
             make.left.equalTo(self.mas_left);
         }];
     }

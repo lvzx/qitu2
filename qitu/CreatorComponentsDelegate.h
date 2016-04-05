@@ -13,5 +13,5 @@
 - (void)didSelectBgColor:(UIColor *)color;
 - (void)didSelectbgImage:(UIImage *)img;
 
-
+- (void)didChangeAlpha:(float)value;
 @end
