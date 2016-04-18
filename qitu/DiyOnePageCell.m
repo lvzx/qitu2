@@ -40,21 +40,6 @@
         numLbl.text = [NSString stringWithFormat:@"%@", @(self.tag+1)];
         [pageNumV addSubview:numLbl];
         [self addSubview:pageNumV];
-//
-//        self.titleLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.imgView.frame), CGRectGetWidth(self.frame), 20)];
-//        self.titleLbl.font = [UIFont systemFontOfSize:15.0];
-//        self.titleLbl.textColor = RGBCOLOR(156, 156, 156);
-//        [self addSubview:self.titleLbl];
-//        
-//        self.priceLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleLbl.frame), CGRectGetWidth(self.frame), 18)];
-//        self.priceLbl.font = [UIFont systemFontOfSize:14.0];
-//        self.priceLbl.textColor = RGBCOLOR(31, 182, 162);
-//        [self addSubview:self.priceLbl];
-//        
-//        self.saleNumLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.priceLbl.frame), CGRectGetWidth(self.frame), 17)];
-//        self.saleNumLbl.font = [UIFont systemFontOfSize:12.0];
-//        self.saleNumLbl.textColor = RGBCOLOR(184, 184, 184);
-//        [self addSubview:self.saleNumLbl];
     }
     return self;
 }
@@ -64,10 +49,17 @@
     [self.backgroundImg sd_setImageWithURL:[NSURL URLWithString:pageData.bgImgUrl]];
     
     CGFloat bili = kScreenWidth/(pageData.bgpicwidth/2);
-    NSLog(@"&&&%ld, %f, %f",pageData.bgpicwidth, kScreenWidth, bili);
+    
     for (APageImgItem *imgItem in pageData.imgsMArr) {
-//        APageImgView *imgV = [[APageImgView alloc] initWithFrame:CGRectMake(imgItem.img_x*bili, imgItem.img_y*bili, imgItem.imgWidth*bili, 200*bili)];
-        APageImgScrV *imgV = [[APageImgScrV alloc] initWithFrame:CGRectMake(imgItem.img_x*bili+CREATOR_IMG_PADDING, imgItem.img_y*bili+CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, 200*bili+2*CREATOR_IMG_PADDING)];
+        APageImgView *imgV = [[APageImgView alloc] initWithFrame:CGRectMake(imgItem.img_x*bili+CREATOR_IMG_PADDING, imgItem.img_y*bili+CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, 200*bili+2*CREATOR_IMG_PADDING)];
+        UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
+                                                        initWithTarget:self
+                                                        action:@selector(handlePan:)];
+        [imgV addGestureRecognizer:panGestureRecognizer];
+        UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc]
+                                                            initWithTarget:self
+                                                            action:@selector(handlePinch:)];
+        [imgV addGestureRecognizer:pinchGestureRecognizer];
         [imgV initImgViewWith:imgItem];
         [self addSubview:imgV];
     }
@@ -80,5 +72,16 @@
         textLbl.font = [UIFont systemFontOfSize:textItem.fontSize*bili];
         [self addSubview:textLbl];
     }
+}
+
+- (void) handlePan:(UIPanGestureRecognizer*) recognizer {
+    CGPoint translation = [recognizer translationInView:self];
+    recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
+                                         recognizer.view.center.y + translation.y);
+    [recognizer setTranslation:CGPointZero inView:self];
+}
+- (void) handlePinch:(UIPinchGestureRecognizer*) recognizer {
+    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
+    recognizer.scale = 1;
 }
 @end

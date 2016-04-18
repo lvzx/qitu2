@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BorderView.h"
+@class APageImgItem;
 
 @interface APageImgView : UIView
 @property (strong, nonatomic) BorderView *borderView;
+@property (strong, nonatomic) UIImageView *imgView;
+- (void)initImgViewWith:(APageImgItem *)imgItem;
 @end
