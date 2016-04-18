@@ -18,22 +18,24 @@
     CGFloat cellW;
     CGFloat cellH;
     NSArray *bgColors;
+    NSMutableArray *pagesArr;
 }
 @property (strong, nonatomic) UICollectionView *myCollectionView;
-@property (strong, nonatomic) NSArray *pagesArr;
+
 @end
 
 @implementation DiyTemplateMainVC
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavAndView];
+    [self loadData];
 }
 
 - (UICollectionView *)myCollectionView {
     if (_myCollectionView != nil) {
         return _myCollectionView;
     }
-    
+
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     _myCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50) collectionViewLayout:flowLayout];
@@ -66,6 +68,47 @@
 //    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.myCollectionView];
 }
+
+#pragma mark - LoadData
+- (void)loadData {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"model" ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSASCIIStringEncoding];
+    NSError *error;
+    NSDictionary *jsonSerialData = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+    if (!jsonSerialData && error) {
+        NSLog(@"Error:%@", error);
+    }
+    
+    pagesArr = [NSMutableArray array];
+    NSArray *scenesArr = jsonSerialData[@"scene"];
+    NSInteger scenesCount = [scenesArr count];
+    for (NSInteger i = 0; i < scenesCount; i++) {
+        NSDictionary *aPageDic = scenesArr[i];
+        NSArray *aPageArr = aPageDic[@"content"];
+        DiyAPageItem *apageItem = [[DiyAPageItem alloc] init];
+        apageItem.bgColor = aPageDic[@"bgcolor"];
+        apageItem.bgImgUrl = aPageDic[@"bgpic"];
+        apageItem.bgpicwidth = [aPageDic[@"bgpicwidth"] integerValue];
+        apageItem.bgpicheight = [aPageDic[@"bgpicheight"] integerValue];
+        NSMutableArray *imgArr = [NSMutableArray array];
+        NSMutableArray *textArr = [NSMutableArray array];
+        for (NSDictionary *pDic in aPageArr) {
+            NSString *type = pDic[@"type"];
+            if ([type isEqualToString:@"img"]) {
+                APageImgItem *imgItem = [APageImgItem mj_objectWithKeyValues:pDic];
+                [imgArr addObject:imgItem];
+            }else if ([type isEqualToString:@"text"]){
+                APageTextItem *textItem = [APageTextItem mj_objectWithKeyValues:pDic];
+                [textArr addObject:textItem];
+            }
+        }
+        apageItem.imgsMArr = imgArr;
+        apageItem.textMArr = textArr;
+        [pagesArr addObject:apageItem];
+    }
+    NSLog(@"***pagesArr:%@", pagesArr);
+}
 #pragma mark - DiyMainBottomAction
 - (void)touchUpInsideOnBtn:(UIButton *)btn {
     NSLog(@"***DiyMainBottomAction:%@", @(btn.tag));
@@ -86,15 +129,16 @@
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 2;
+    return [pagesArr count];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identify = @"DiyOnePageCell";
     DiyOnePageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
     [cell sizeToFit];
     NSInteger row = indexPath.row;
-    NSDictionary *onePageData = _pagesArr[row];
-    [cell initCellWithData:onePageData];
+    DiyAPageItem *OnePageItem = pagesArr[row];
+    cell.tag = row;
+    [cell initCellWithData:OnePageItem];
     return cell;
 }
 #pragma mark --UICollectionViewDelegateFlowLayout

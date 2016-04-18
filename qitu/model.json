@@ -1,0 +1,64 @@
+{
+    "music":"",
+    "shareImg":"",
+    "shareTitle":"",
+    "shareText":"",
+    "cover":"",
+    "category":"",
+    "direction":"vertical",
+    "loop":"false",
+    "auto":"false",
+    "scene":[{
+             "bgpicwidth": "640.000000",
+             "justShoweffect": "pt-page-rotateCubeTopIn",
+             "showeffect": "pt-page-rotateCubeTopIn",
+             "bgpic": "http:\/\/img1.maka.im\/user\/1999139\/88077254-d7ce-40fc-b927-300f6efacfc5.jpeg",
+             "bgpictop": "-127.869373",
+             "opacity": "0.700000",
+             "bgpicheight": "1136.000000",
+             "thumbnail": "http:\/\/img1.maka.im\/user\/1999139\/785d39d1-9737-4d81-8557-dfa43d410622.jpeg",
+             "bgpicleft": "0.130612",
+             "effect": "cubedown",
+             "bgcolor": "#aaaaaa",
+             "content": [
+                         {
+                         "anim":"",
+                         "borderType": "none",
+                         "borderWidth":"0",
+                         "opacity": "1",
+                         "radius":"0",
+                         "resources": "maka_muban_normal.png",
+                         "rotate": "-8.5",
+                         "shadow": "",
+                         "type": "img",
+                         "url": "",
+                         "width": "146",
+                         "x": "60",
+                         "y": "141"
+                         },
+                         {
+                         "anim":"{\"current\":\"0\",\"list\":\"{\"name\":\"test1\",\"time\":\"1\",\"delay\":\"0\"}\"}",
+                         "borderType": "soild",
+                         "borderWidth": "2",
+                         "opacity": "0.5",
+                         "radius": "0",
+                         "resources": "",
+                         "rotate": "",
+                         "shadow": "-12px*-14px*27px*rgb(0,0,0)",
+                         "type": "text",
+                         "url": "http://www.baidu.com",
+                         "width": "360",
+                         "x": "107",
+                         "y": "40",
+                         "text": {
+                         "text": "呵呵 哈哈吼吼\n呵呵呵",
+                         "textAlign": "center",
+                         "textColor": "#b82121",
+                         "textFamily": "test",
+                         "textSize": "59"
+                         }
+                         }
+                         ]
+             }
+             ]
+}

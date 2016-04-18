@@ -21,6 +21,8 @@
 //NSUserDefault中的Key值
 #define KUSER_USERINFO @"kuserInfo"
 
+#define CREATOR_IMG_PADDING 8
+#define CREATOR_IMG_RADIUS 6
 //购买模版用到的宏及参数
 
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DiyAPageItem.h"
 @interface DiyOnePageCell : UICollectionViewCell
-- (void)initCellWithData:(NSDictionary *)pageData;
+- (void)initCellWithData:(DiyAPageItem *)pageData;
 @end
