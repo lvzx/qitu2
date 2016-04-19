@@ -33,6 +33,7 @@
                          "type": "img",
                          "url": "",
                          "width": "146",
+                         "height": "200",
                          "x": "60",
                          "y": "141"
                          },
@@ -48,6 +49,7 @@
                          "type": "text",
                          "url": "http://www.baidu.com",
                          "width": "360",
+                         "height": "60",
                          "x": "107",
                          "y": "40",
                          "text": {

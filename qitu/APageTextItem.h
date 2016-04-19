@@ -17,7 +17,8 @@
 @interface APageTextItem : NSObject
 @property (nonatomic, assign) NSInteger txt_x;
 @property (nonatomic, assign) NSInteger txt_y;
-@property (nonatomic, assign) NSInteger tx_width;
+@property (nonatomic, assign) NSInteger txt_width;
+@property (nonatomic, assign) NSInteger txt_height;
 @property (nonatomic, strong) NSString *txt_url;
 @property (nonatomic, strong) TextItem *textItem;
  @property (nonatomic, strong) NSString *type;

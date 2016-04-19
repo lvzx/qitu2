@@ -12,6 +12,7 @@
 +(NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{
              @"imgWidth" : @"width",
+             @"imgHeight" : @"height",
              @"img_x" : @"x",
              @"img_y" : @"y",
              @"imgStr" : @"resources",

@@ -1,14 +1,14 @@
 //
-//  BorderView.m
+//  TextBorderView.m
 //  qitu
 //
-//  Created by 上海企图 on 16/4/18.
+//  Created by 上海企图 on 16/4/19.
 //  Copyright © 2016年 上海企图. All rights reserved.
 //
 
-#import "BorderView.h"
+#import "TextBorderView.h"
 
-@implementation BorderView
+@implementation TextBorderView
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -30,20 +30,16 @@
     UIColor *aColor = RGBCOLOR(61, 171, 252);//blue蓝色
     CGContextSetStrokeColorWithColor(context, aColor.CGColor);//线框颜色
     CGContextStrokeRect(context,imgRect);//画方框
-    /*画左上角、左下角、右上角、右下角圆*/
+    /*画左中、右中圆*/
     CGContextSetFillColorWithColor(context, aColor.CGColor);
     CGContextSetLineWidth(context, 2.0);
     aColor = [UIColor whiteColor];
     CGContextSetStrokeColorWithColor(context, aColor.CGColor);
     // x,y为圆点坐标，radius半径，startAngle为开始的弧度，endAngle为 结束的弧度，clockwise 0为顺时针，1为逆时针。
-    CGContextAddArc(context, CREATOR_IMG_PADDING, CREATOR_IMG_PADDING, CREATOR_IMG_RADIUS, 0, 2*M_PI, 0); //添加一个圆
+    CGContextAddArc(context, CREATOR_IMG_PADDING, height/2.0+CREATOR_IMG_PADDING, CREATOR_IMG_RADIUS, 0, 2*M_PI, 0); //添加一个圆
     CGContextDrawPath(context, kCGPathFillStroke);
-    CGContextAddArc(context, width+CREATOR_IMG_PADDING, CREATOR_IMG_PADDING, CREATOR_IMG_RADIUS, 0, 2*M_PI, 0);
+    CGContextAddArc(context, width+CREATOR_IMG_PADDING, height/2.0+CREATOR_IMG_PADDING, CREATOR_IMG_RADIUS, 0, 2*M_PI, 0);
     CGContextDrawPath(context, kCGPathFillStroke);
-    CGContextAddArc(context, CREATOR_IMG_PADDING, height+CREATOR_IMG_PADDING, CREATOR_IMG_RADIUS, 0, 2*M_PI, 0);
-    CGContextDrawPath(context, kCGPathFillStroke);
-    CGContextAddArc(context, width+CREATOR_IMG_PADDING, height+CREATOR_IMG_PADDING, CREATOR_IMG_RADIUS, 0, 2*M_PI, 0);
-    CGContextDrawPath(context, kCGPathFillStroke); //绘制路径
 }
 
 @end

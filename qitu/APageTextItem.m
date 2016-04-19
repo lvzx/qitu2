@@ -24,6 +24,7 @@
              @"txt_x" : @"x",
              @"txt_y" : @"y",
              @"txt_width" : @"width",
+             @"txt_height" : @"height",
              @"txt_url" : @"url",
              @"textItem" : @"text"
              };

@@ -9,11 +9,17 @@
 #import "DiyOnePageCell.h"
 #import "UIColor+Hex.h"
 #import "UIImageView+WebCache.h"
-#import "APageImgScrV.h"
-#import "APageImgView.h"
+#import "APageImageView.h"
+#import "BorderView.h"
+//#import "APageImgView.h"
 #import "APageTextLabel.h"
+#import "TextBorderView.h"
 
 @interface DiyOnePageCell ()
+{
+    BorderView *borderView;
+    TextBorderView *textBorderView;
+}
 @property (strong, nonatomic) UIImageView *backgroundImg;
 
 @end
@@ -51,7 +57,9 @@
     CGFloat bili = kScreenWidth/(pageData.bgpicwidth/2);
     
     for (APageImgItem *imgItem in pageData.imgsMArr) {
-        APageImgView *imgV = [[APageImgView alloc] initWithFrame:CGRectMake(imgItem.img_x*bili+CREATOR_IMG_PADDING, imgItem.img_y*bili+CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, 200*bili+2*CREATOR_IMG_PADDING)];
+//        APageImgView *imgV = [[APageImgView alloc] initWithFrame:CGRectMake(imgItem.img_x*bili+CREATOR_IMG_PADDING, imgItem.img_y*bili+CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, 200*bili+2*CREATOR_IMG_PADDING)];
+        APageImageView *imgV = [[APageImageView alloc] initWithFrame:CGRectMake(imgItem.img_x*bili, imgItem.img_y*bili, imgItem.imgWidth*bili, 200*bili)];
+        
         UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
                                                         initWithTarget:self
                                                         action:@selector(handlePan:)];
@@ -60,28 +68,64 @@
                                                             initWithTarget:self
                                                             action:@selector(handlePinch:)];
         [imgV addGestureRecognizer:pinchGestureRecognizer];
-        [imgV initImgViewWith:imgItem];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        [imgV addGestureRecognizer:tapGestureRecognizer];
+        //[imgV initImgViewWith:imgItem];
+        [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
         [self addSubview:imgV];
     }
     
     for (APageTextItem *txtItem in pageData.textMArr) {
-        APageTextLabel *textLbl = [[APageTextLabel alloc] initWithFrame:CGRectMake(txtItem.txt_x*bili, txtItem.txt_y*bili, txtItem.tx_width*bili, 100*bili)];
+        APageTextLabel *textLbl = [[APageTextLabel alloc] initWithFrame:CGRectMake(txtItem.txt_x*bili, txtItem.txt_y*bili, txtItem.txt_width*bili, txtItem.txt_height*bili)];
         TextItem *textItem = txtItem.textItem;
         textLbl.textColor = [UIColor colorWithHexString:textItem.txtColorHexStr];
         textLbl.text = textItem.text;
         textLbl.font = [UIFont systemFontOfSize:textItem.fontSize*bili];
+        UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
+                                                        initWithTarget:self
+                                                        action:@selector(handlePan:)];
+        [textLbl addGestureRecognizer:panGestureRecognizer];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        [textLbl addGestureRecognizer:tapGestureRecognizer];
         [self addSubview:textLbl];
     }
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    [self addGestureRecognizer:tapGestureRecognizer];
 }
 
-- (void) handlePan:(UIPanGestureRecognizer*) recognizer {
+- (void)handlePan:(UIPanGestureRecognizer *)recognizer {
     CGPoint translation = [recognizer translationInView:self];
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
                                          recognizer.view.center.y + translation.y);
     [recognizer setTranslation:CGPointZero inView:self];
 }
-- (void) handlePinch:(UIPinchGestureRecognizer*) recognizer {
+- (void)handlePinch:(UIPinchGestureRecognizer *)recognizer {
     recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
     recognizer.scale = 1;
+}
+- (void)handleTap:(UITapGestureRecognizer *)recognizer {
+    UIView *targetView = recognizer.view;
+    CGRect frame = targetView.frame;
+    NSLog(@"$$$$$%@", targetView);
+    CGRect borderRect = CGRectMake(-CREATOR_IMG_PADDING, -CREATOR_IMG_PADDING, frame.size.width+2*CREATOR_IMG_PADDING, frame.size.height+2*CREATOR_IMG_PADDING);
+    if (borderView == nil) {
+        borderView = [[BorderView alloc] initWithFrame:CGRectZero];
+    }
+    if (textBorderView == nil) {
+        textBorderView = [[TextBorderView alloc] initWithFrame:CGRectZero];
+    }
+
+    if (targetView) {
+        [borderView removeFromSuperview];
+        [textBorderView removeFromSuperview];
+        if ([targetView isKindOfClass:[APageImageView class]]) {
+            borderView.frame = borderRect;
+            [targetView addSubview:borderView];
+        }else if ([targetView isKindOfClass:[APageTextLabel class]]) {
+            textBorderView.frame = borderRect;
+            [targetView addSubview:textBorderView];
+        }
+    }
 }
 @end

@@ -1,14 +1,14 @@
 //
-//  APageTextLabel.m
+//  APageImageView.m
 //  qitu
 //
-//  Created by 上海企图 on 16/4/18.
+//  Created by 上海企图 on 16/4/19.
 //  Copyright © 2016年 上海企图. All rights reserved.
 //
 
-#import "APageTextLabel.h"
+#import "APageImageView.h"
 
-@implementation APageTextLabel
+@implementation APageImageView
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {

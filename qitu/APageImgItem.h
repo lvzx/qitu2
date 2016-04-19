@@ -10,6 +10,7 @@
 
 @interface APageImgItem : NSObject
 @property (nonatomic, assign) NSInteger imgWidth;
+@property (nonatomic, assign) NSInteger imgHeight;
 @property (nonatomic, assign) NSInteger img_x;
 @property (nonatomic, assign) NSInteger img_y;
 @property (nonatomic, strong) NSString *imgStr;

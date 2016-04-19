@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0398511C9F90DB00A65973 /* MyEventVC.m */; };
-		0D2912D41CC467F7005EF62A /* APageImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2912D31CC467F7005EF62A /* APageImgView.m */; };
 		0D2912DA1CC47BD7005EF62A /* APageTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2912D91CC47BD7005EF62A /* APageTextLabel.m */; };
 		0D2912DD1CC49599005EF62A /* BorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2912DC1CC49599005EF62A /* BorderView.m */; };
-		0D2912E01CC4D060005EF62A /* APageImgScrV.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2912DF1CC4D060005EF62A /* APageImgScrV.m */; };
 		0D3C0F941CA3E2020063F5CB /* PersonalInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3C0F931CA3E2020063F5CB /* PersonalInfoVC.m */; };
 		0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D7B731CA0FF22002E1D3F /* UserInfoItem.m */; };
 		0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D7B761CA1481D002E1D3F /* LoginVC.m */; };
@@ -65,6 +63,8 @@
 		0DCE80AC1CB5F2FD0003ADB1 /* DiyAPageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE80AB1CB5F2FD0003ADB1 /* DiyAPageItem.m */; };
 		0DD2D0641CA5309700F2EF62 /* UserDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2D0631CA5309700F2EF62 /* UserDetailItem.m */; };
 		0DD2D0671CA534FC00F2EF62 /* PersonalInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2D0661CA534FC00F2EF62 /* PersonalInfoCell.m */; };
+		0DD609281CC5BB2F002AB7DE /* APageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD609271CC5BB2F002AB7DE /* APageImageView.m */; };
+		0DD6092B1CC5C884002AB7DE /* TextBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6092A1CC5C884002AB7DE /* TextBorderView.m */; };
 		6B09B59704F3633ECD5D669F /* Pods_qitu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D181B34881D259D5238DA90 /* Pods_qitu.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -88,14 +88,10 @@
 /* Begin PBXFileReference section */
 		0D0398501C9F90DB00A65973 /* MyEventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventVC.h; sourceTree = "<group>"; };
 		0D0398511C9F90DB00A65973 /* MyEventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventVC.m; sourceTree = "<group>"; };
-		0D2912D21CC467F7005EF62A /* APageImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APageImgView.h; sourceTree = "<group>"; };
-		0D2912D31CC467F7005EF62A /* APageImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageImgView.m; sourceTree = "<group>"; };
 		0D2912D81CC47BD7005EF62A /* APageTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APageTextLabel.h; sourceTree = "<group>"; };
 		0D2912D91CC47BD7005EF62A /* APageTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageTextLabel.m; sourceTree = "<group>"; };
 		0D2912DB1CC49599005EF62A /* BorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderView.h; sourceTree = "<group>"; };
 		0D2912DC1CC49599005EF62A /* BorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderView.m; sourceTree = "<group>"; };
-		0D2912DE1CC4D060005EF62A /* APageImgScrV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APageImgScrV.h; sourceTree = "<group>"; };
-		0D2912DF1CC4D060005EF62A /* APageImgScrV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageImgScrV.m; sourceTree = "<group>"; };
 		0D3C0F921CA3E2020063F5CB /* PersonalInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoVC.h; sourceTree = "<group>"; };
 		0D3C0F931CA3E2020063F5CB /* PersonalInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoVC.m; sourceTree = "<group>"; };
 		0D5D7B721CA0FF22002E1D3F /* UserInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoItem.h; sourceTree = "<group>"; };
@@ -204,6 +200,10 @@
 		0DD2D0631CA5309700F2EF62 /* UserDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailItem.m; sourceTree = "<group>"; };
 		0DD2D0651CA534FC00F2EF62 /* PersonalInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoCell.h; sourceTree = "<group>"; };
 		0DD2D0661CA534FC00F2EF62 /* PersonalInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoCell.m; sourceTree = "<group>"; };
+		0DD609261CC5BB2F002AB7DE /* APageImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APageImageView.h; sourceTree = "<group>"; };
+		0DD609271CC5BB2F002AB7DE /* APageImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageImageView.m; sourceTree = "<group>"; };
+		0DD609291CC5C884002AB7DE /* TextBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextBorderView.h; sourceTree = "<group>"; };
+		0DD6092A1CC5C884002AB7DE /* TextBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextBorderView.m; sourceTree = "<group>"; };
 		4B1010901B633EC246E9A2FA /* Pods-qitu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qitu.release.xcconfig"; path = "Pods/Target Support Files/Pods-qitu/Pods-qitu.release.xcconfig"; sourceTree = "<group>"; };
 		5D181B34881D259D5238DA90 /* Pods_qitu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qitu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7D5D376C15FCBA44FD5EF4A /* Pods-qitu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qitu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qitu/Pods-qitu.debug.xcconfig"; sourceTree = "<group>"; };
@@ -248,14 +248,14 @@
 		0D2912D11CC467BA005EF62A /* APageView */ = {
 			isa = PBXGroup;
 			children = (
-				0D2912D21CC467F7005EF62A /* APageImgView.h */,
-				0D2912D31CC467F7005EF62A /* APageImgView.m */,
-				0D2912DE1CC4D060005EF62A /* APageImgScrV.h */,
-				0D2912DF1CC4D060005EF62A /* APageImgScrV.m */,
+				0DD609261CC5BB2F002AB7DE /* APageImageView.h */,
+				0DD609271CC5BB2F002AB7DE /* APageImageView.m */,
 				0D2912DB1CC49599005EF62A /* BorderView.h */,
 				0D2912DC1CC49599005EF62A /* BorderView.m */,
 				0D2912D81CC47BD7005EF62A /* APageTextLabel.h */,
 				0D2912D91CC47BD7005EF62A /* APageTextLabel.m */,
+				0DD609291CC5C884002AB7DE /* TextBorderView.h */,
+				0DD6092A1CC5C884002AB7DE /* TextBorderView.m */,
 			);
 			name = APageView;
 			sourceTree = "<group>";
@@ -844,7 +844,8 @@
 				0D2912DD1CC49599005EF62A /* BorderView.m in Sources */,
 				0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */,
 				0D97ABD71CA6661200099DF7 /* CreatorMainVC.m in Sources */,
-				0D2912D41CC467F7005EF62A /* APageImgView.m in Sources */,
+				0DD6092B1CC5C884002AB7DE /* TextBorderView.m in Sources */,
+				0DD609281CC5BB2F002AB7DE /* APageImageView.m in Sources */,
 				0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */,
 				0DCE80A51CB5F2B30003ADB1 /* APageImgItem.m in Sources */,
 				0D6BC60A1CABC2FB0027B5A6 /* TemplatePreviewVC.m in Sources */,
@@ -871,7 +872,6 @@
 				0D8764F81CA3A21E0078E871 /* IdentifierValidator.m in Sources */,
 				0D9C9DB31C97E62400652830 /* main.m in Sources */,
 				0D8490761CA8E91100A28D94 /* QTSlideBtnView.m in Sources */,
-				0D2912E01CC4D060005EF62A /* APageImgScrV.m in Sources */,
 				0DA937631C9BD715000DC170 /* MyEventCell.m in Sources */,
 				0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */,
 				0D8764FC1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m in Sources */,
