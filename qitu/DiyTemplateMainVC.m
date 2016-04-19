@@ -12,25 +12,28 @@
 #import "DiyMainBottomBar.h"
 #import "DiyOnePageCell.h"
 #import "Masonry.h"
+#import "DiyTemplateScrV.h"
 
-@interface DiyTemplateMainVC ()<SelectBgColorDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DiyMainBottomBar>
+@interface DiyTemplateMainVC ()<SelectBgColorDelegate, UIScrollViewDelegate, DiyMainBottomBar>
 {
     CGFloat cellW;
     CGFloat cellH;
     NSArray *bgColors;
     NSMutableArray *pagesArr;
+    DiyTemplateScrV *diyTemplateSrcV;
 }
-@property (strong, nonatomic) UICollectionView *myCollectionView;
+//@property (strong, nonatomic) UICollectionView *myCollectionView;
 
 @end
 
 @implementation DiyTemplateMainVC
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initNavAndView];
     [self loadData];
+    [self initNavAndView];
+    
 }
-
+/*
 - (UICollectionView *)myCollectionView {
     if (_myCollectionView != nil) {
         return _myCollectionView;
@@ -46,12 +49,15 @@
     [_myCollectionView registerClass:[DiyOnePageCell class] forCellWithReuseIdentifier:@"DiyOnePageCell"];
     return _myCollectionView;
 }
-
+*/
 - (void)initNavAndView {
-    cellW = kScreenWidth-90*kScreenWidth/320.0;
-    cellH = cellW*36/23.0;
+//    cellW = kScreenWidth-90*kScreenWidth/320.0;
+//    cellH = cellW*36/23.0;
     DiyMainBottomBar *diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
     [self.view addSubview:diyMainBottomBar];
+    
+    diyTemplateSrcV = [[DiyTemplateScrV alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50) withData:pagesArr];
+    [self.view addSubview:diyTemplateSrcV];
     
     //    DiyBottomBar *diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, 105, kScreenWidth, 50)];
 //    
@@ -66,7 +72,7 @@
 //    [bottomView addSubview:diyBottomBar];
 //    [self.view addSubview:bottomView];
 //    self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.myCollectionView];
+    //[self.view addSubview:self.myCollectionView];
 }
 
 #pragma mark - LoadData
@@ -123,6 +129,7 @@
 
 }
 
+/*
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -155,4 +162,5 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     return CGSizeMake(33, cellH);
 }
+ */
 @end

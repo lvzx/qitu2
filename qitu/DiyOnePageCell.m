@@ -79,7 +79,8 @@
         APageTextLabel *textLbl = [[APageTextLabel alloc] initWithFrame:CGRectMake(txtItem.txt_x*bili, txtItem.txt_y*bili, txtItem.txt_width*bili, txtItem.txt_height*bili)];
         TextItem *textItem = txtItem.textItem;
         textLbl.textColor = [UIColor colorWithHexString:textItem.txtColorHexStr];
-        textLbl.text = textItem.text;
+        NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
+        textLbl.text = txtStr;
         textLbl.font = [UIFont systemFontOfSize:textItem.fontSize*bili];
         UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
                                                         initWithTarget:self
@@ -128,4 +129,12 @@
         }
     }
 }
+
+#pragma mark - 解决中文乱码火星文
+- (NSString *) analysisChineseMassyCodeStr:(NSString *)messyCodeStr{
+    const char *c = [messyCodeStr cStringUsingEncoding:NSISOLatin1StringEncoding];
+    NSString *retStr = [[NSString alloc] initWithCString:c encoding:NSUTF8StringEncoding];
+    return retStr;
+}
+
 @end
