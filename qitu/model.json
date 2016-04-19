@@ -8,18 +8,19 @@
     "direction":"vertical",
     "loop":"false",
     "auto":"false",
-    "scene":[{
+    "scene":[
+             {
              "bgpicwidth": "640.000000",
              "justShoweffect": "pt-page-rotateCubeTopIn",
              "showeffect": "pt-page-rotateCubeTopIn",
-             "bgpic": "http:\/\/img1.maka.im\/user\/1999139\/88077254-d7ce-40fc-b927-300f6efacfc5.jpeg",
-             "bgpictop": "-127.869373",
+             "bgpic": "",
+             "bgpictop": "127.869373",
              "opacity": "0.700000",
              "bgpicheight": "1136.000000",
              "thumbnail": "http:\/\/img1.maka.im\/user\/1999139\/785d39d1-9737-4d81-8557-dfa43d410622.jpeg",
              "bgpicleft": "0.130612",
              "effect": "cubedown",
-             "bgcolor": "#aaaaaa",
+             "bgcolor": "#ffffff",
              "content": [
                          {
                          "anim":"",
@@ -27,29 +28,46 @@
                          "borderWidth":"0",
                          "opacity": "1",
                          "radius":"0",
-                         "resources": "maka_muban_normal.png",
+                         "resources": "001.jpg",
                          "rotate": "-8.5",
                          "shadow": "",
                          "type": "img",
                          "url": "",
                          "width": "146",
-                         "height": "200",
-                         "x": "60",
-                         "y": "141"
+                         "height":"240",
+                         "x": "65",
+                         "y": "150"
+                         },
+                         {
+                         "anim":"",
+                         "borderType": "none",
+                         "borderWidth":"0",
+                         "opacity": "1",
+                         "radius":"0",
+                         "resources": "003.jpg",
+                         "rotate": "-8.5",
+                         "shadow": "",
+                         "type": "img",
+                         "url": "",
+                         "width": "90",
+                         "height":"90",
+                         "x": "100",
+                         "y": "20"
                          },
                          {
                          "anim":"{\"current\":\"0\",\"list\":\"{\"name\":\"test1\",\"time\":\"1\",\"delay\":\"0\"}\"}",
                          "borderType": "soild",
                          "borderWidth": "2",
+                         "bordercolor":"#478d2e",
                          "opacity": "0.5",
                          "radius": "0",
                          "resources": "",
-                         "rotate": "",
+                         "rotate": "0",
                          "shadow": "-12px*-14px*27px*rgb(0,0,0)",
                          "type": "text",
                          "url": "http://www.baidu.com",
-                         "width": "360",
-                         "height": "60",
+                         "width": "200",
+                         "height":"30",
                          "x": "107",
                          "y": "40",
                          "text": {
@@ -57,10 +75,67 @@
                          "textAlign": "center",
                          "textColor": "#b82121",
                          "textFamily": "test",
-                         "textSize": "59"
+                         "textSize": "18"
+                         }
+                         }
+                         ]
+             },
+             
+             {
+             "bgpicwidth": "640.000000",
+             "justShoweffect": "pt-page-rotateCubeTopIn",
+             "showeffect": "pt-page-rotateCubeTopIn",
+             "bgpic": "http:\/\/7sbsoj.com2.z0.glb.qiniucdn.com\/maka\/app\/gfile\/public\/pic%3fget=id\/6SZVEXP5RY65F4RPYV5Q.jpg\/thumb\/100",
+             "bgpictop": "127.869373",
+             "opacity": "0.700000",
+             "bgpicheight": "1136.000000",
+             "thumbnail": "http:\/\/img1.maka.im\/user\/1999139\/785d39d1-9737-4d81-8557-dfa43d410622.jpeg",
+             "bgpicleft": "0.130612",
+             "effect": "cubedown",
+             "bgcolor": "#507534",
+             "content": [
+                         {
+                         "anim":"",
+                         "borderType": "none",
+                         "borderWidth":"0",
+                         "opacity": "1",
+                         "radius":"0",
+                         "resources": "002.jpg",
+                         "rotate": "-8.5",
+                         "shadow": "",
+                         "type": "img",
+                         "url": "",
+                         "width": "146",
+                         "height":"300",
+                         "x": "65",
+                         "y": "141"
+                         },
+                         {
+                         "anim":"{\"current\":\"0\",\"list\":\"{\"name\":\"test1\",\"time\":\"1\",\"delay\":\"0\"}\"}",
+                         "borderType": "soild",
+                         "borderWidth": "2",
+                         "bordercolor":"#508eaf",
+                         "opacity": "0.5",
+                         "radius": "0",
+                         "resources": "",
+                         "rotate": "0",
+                         "shadow": "-12px*-14px*27px*rgb(0,0,0)",
+                         "type": "text",
+                         "url": "http://www.baidu.com",
+                         "width": "120",
+                         "height":"60",
+                         "x": "107",
+                         "y": "40",
+                         "text": {
+                         "text": "呵呵 哈哈吼吼\n呵呵呵",
+                         "textAlign": "center",
+                         "textColor": "#b82121",
+                         "textFamily": "test",
+                         "textSize": "30"
                          }
                          }
                          ]
              }
+             
              ]
 }
