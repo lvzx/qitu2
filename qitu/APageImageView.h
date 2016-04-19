@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface APageImageView : UIImageView
-
+@property (nonatomic, assign) BOOL hasBorder;
 @end
