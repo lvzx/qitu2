@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface APageTextLabel : UILabel
-
+@property (nonatomic, assign) BOOL hasBorder;
 @end

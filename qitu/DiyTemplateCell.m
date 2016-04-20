@@ -10,15 +10,14 @@
 #import "UIColor+Hex.h"
 #import "UIImageView+WebCache.h"
 #import "APageImageView.h"
-#import "BorderView.h"
 #import "APageTextLabel.h"
-#import "TextBorderView.h"
-
 
 @interface DiyTemplateCell()
 {
     NSMutableArray *imgViewMArr;//成员APageImageView对象
     NSMutableArray *textLblMArr;//成员APageTextLabel对象
+    
+    CGPoint originalLocation;
 }
 @property (strong, nonatomic) UIImageView *backgroundImg;
 
@@ -90,20 +89,7 @@
     imgViewMArr = [[NSMutableArray alloc] init];
     textLblMArr = [[NSMutableArray alloc] init];
     for (APageImgItem *imgItem in pageData.imgsMArr) {
-        //        APageImgView *imgV = [[APageImgView alloc] initWithFrame:CGRectMake(imgItem.img_x*bili+CREATOR_IMG_PADDING, imgItem.img_y*bili+CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, 200*bili+2*CREATOR_IMG_PADDING)];
         APageImageView *imgV = [[APageImageView alloc] initWithFrame:CGRectMake(imgItem.img_x*bili, imgItem.img_y*bili, imgItem.imgWidth*bili, imgItem.imgHeight*bili)];
-        
-        UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
-                                                        initWithTarget:self
-                                                        action:@selector(handlePan:)];
-        [imgV addGestureRecognizer:panGestureRecognizer];
-        UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc]
-                                                            initWithTarget:self
-                                                            action:@selector(handlePinch:)];
-        [imgV addGestureRecognizer:pinchGestureRecognizer];
-        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-        [imgV addGestureRecognizer:tapGestureRecognizer];
-        //[imgV initImgViewWith:imgItem];
         [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
         [self addSubview:imgV];
         [imgViewMArr addObject:imgV];
@@ -116,19 +102,9 @@
         NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
         textLbl.text = txtStr;
         textLbl.font = [UIFont systemFontOfSize:textItem.fontSize*bili];
-        UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
-                                                        initWithTarget:self
-                                                        action:@selector(handlePan:)];
-        [textLbl addGestureRecognizer:panGestureRecognizer];
-        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-        [textLbl addGestureRecognizer:tapGestureRecognizer];
         [self addSubview:textLbl];
         [textLblMArr addObject:textLbl];
-        
     }
-    
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    [self addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
@@ -142,43 +118,58 @@
     recognizer.scale = 1;
 }
 - (void)handleTap:(UITapGestureRecognizer *)recognizer {
-    [self resetBorderState];
-    UIView *targetView = recognizer.view;
-    if (targetView) {
-//        [borderView removeFromSuperview];
-//        [textBorderView removeFromSuperview];
-        if ([targetView isKindOfClass:[APageImageView class]]) {
-            APageImageView *imgView = (APageImageView *)targetView;
-            imgView.hasBorder = YES;
-        }else if ([targetView isKindOfClass:[APageTextLabel class]]) {
-//            textBorderView.frame = borderRect;
-//            [targetView addSubview:textBorderView];
-        }
-    }
+    
 }
 
 - (void)resetBorderState {
     for (APageImageView *imgView in imgViewMArr) {
         imgView.hasBorder = NO;
     }
-//    for (APageTextLabel *textLbl in textLblMArr) {
-//        
-//    }
+    for (APageTextLabel *textLbl in textLblMArr) {
+        textLbl.hasBorder = NO;
+    }
 }
 
 #pragma mark - 视图控制器的触摸事件
-//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-//    NSLog(@"UIViewController start touch...");
-//}
-//
-//-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-//    NSLog(@"UIViewController moving...");
-//    
-//}
-//
-//-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-//    NSLog(@"UIViewController touch end.");
-//}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self resetBorderState];
+    UITouch *touch = [touches anyObject];
+    originalLocation = [touch locationInView:self];
+    UIView *targetView = touch.view;
+    if (targetView) {
+        if ([targetView isKindOfClass:[APageImageView class]]) {
+            APageImageView *imgView = (APageImageView *)targetView;
+            imgView.hasBorder = YES;
+            if (_myDelegate && [_myDelegate respondsToSelector:@selector(showImgBottomView)]) {
+                [_myDelegate showImgBottomView];
+            }
+        }else if ([targetView isKindOfClass:[APageTextLabel class]]) {
+            APageTextLabel *txtLbl = (APageTextLabel *)targetView;
+            txtLbl.hasBorder = YES;
+        }
+    }
+    
+    NSLog(@"UIViewController start touch...targetView:%@, touch:%@, event%@", targetView, touch, event);
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    NSLog(@"UIViewController moving...");
+//    UITouch *touch = [touches anyObject];
+//    CGPoint currentLocation = [touch locationInView:self];
+//    CGRect frame = self.view.frame;
+//    frame.origin.x += currentLocation.x-originalLocation.x;
+//    frame.origin.y += currentLocation.y-originalLocation.y;
+//    self.view.frame = frame;
+    
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    if (touch.tapCount == 1) {
+        
+    }
+    NSLog(@"UIViewController touch end.");
+}
 
 #pragma mark - 解决中文乱码火星文
 - (NSString *) analysisChineseMassyCodeStr:(NSString *)messyCodeStr{

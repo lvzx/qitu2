@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DiyTemplateCell.h"
 
 @interface DiyTemplateScrV : UIScrollView
 @property (strong, nonatomic) NSMutableArray *pageMArr;
-- (instancetype)initWithFrame:(CGRect)frame withData:(NSMutableArray *)dataItems;
+- (instancetype)initWithVC:(id<DiyShowDelgate>)vc withData:(NSMutableArray *)dataItems;
 @end

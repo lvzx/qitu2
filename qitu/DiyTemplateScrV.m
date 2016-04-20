@@ -7,7 +7,6 @@
 //
 
 #import "DiyTemplateScrV.h"
-#import "DiyTemplateCell.h"
 
 @interface DiyTemplateScrV ()
 {
@@ -18,23 +17,23 @@
 @end
 
 @implementation DiyTemplateScrV
-- (instancetype)initWithFrame:(CGRect)frame withData:(NSMutableArray *)dataItems {
-    self = [super initWithFrame:frame];
+- (instancetype)initWithVC:(id)vc withData:(NSMutableArray *)dataItems {
+    self = [super init];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         self.pageViewMArr = [NSMutableArray arrayWithCapacity:dataItems.count];
         self.pageMArr = dataItems;
-    
+        self.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50);
         self.backgroundColor = RGBCOLOR(57, 57, 57);
         self.showsHorizontalScrollIndicator = NO;
         self.pagingEnabled = YES;
         //创建底部滑动视图
-        [self _initViews];
+        [self _initViewsWithDel:(id<DiyShowDelgate>)vc];
     }
     return self;
 }
 
-- (void)_initViews
+- (void)_initViewsWithDel:(id<DiyShowDelgate>)vc
 {
     cellW = kScreenWidth-90*kScreenWidth/320.0;
     cellH = cellW*36/23.0;
@@ -43,6 +42,7 @@
         DiyAPageItem *OnePageItem = _pageMArr[i];
         CGRect cellRect = CGRectMake(DIYCELL_PADDING+(cellW+DIYCELL_PADDING)*i, DIYCELL_TOPPADDING, cellW, cellH);
         DiyTemplateCell *diyTemplateCell = [[DiyTemplateCell alloc] initWithFrame:cellRect];
+        diyTemplateCell.myDelegate = vc;
         diyTemplateCell.tag = DIY_CELL_TAG + i;
         [diyTemplateCell initCellWithData:OnePageItem];
         [self addSubview:diyTemplateCell];

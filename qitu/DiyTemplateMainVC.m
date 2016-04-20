@@ -14,7 +14,7 @@
 #import "Masonry.h"
 #import "DiyTemplateScrV.h"
 
-@interface DiyTemplateMainVC ()<SelectBgColorDelegate, UIScrollViewDelegate, DiyMainBottomBar>
+@interface DiyTemplateMainVC ()<SelectBgColorDelegate, UIScrollViewDelegate, DiyMainBottomBar, DiyShowDelgate>
 {
     CGFloat cellW;
     CGFloat cellH;
@@ -56,7 +56,7 @@
     DiyMainBottomBar *diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
     [self.view addSubview:diyMainBottomBar];
     
-    diyTemplateSrcV = [[DiyTemplateScrV alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50) withData:pagesArr];
+    diyTemplateSrcV = [[DiyTemplateScrV alloc] initWithVC:self withData:pagesArr];
     [self.view addSubview:diyTemplateSrcV];
     
     //    DiyBottomBar *diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, 105, kScreenWidth, 50)];
@@ -129,6 +129,13 @@
 
 }
 
+#pragma mark - DiyShowDelgate
+- (void)showImgBottomView {
+    NSLog(@"showImgBottom View");
+}
+- (void)showTextBottomView {
+
+}
 /*
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
