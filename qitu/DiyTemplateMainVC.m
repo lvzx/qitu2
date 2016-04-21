@@ -21,6 +21,8 @@
     NSArray *bgColors;
     NSMutableArray *pagesArr;
     DiyTemplateScrV *diyTemplateSrcV;
+    DiyBottomBar *diyBottomBar;
+    DiyMainBottomBar *diyMainBottomBar;
 }
 //@property (strong, nonatomic) UICollectionView *myCollectionView;
 
@@ -53,14 +55,16 @@
 - (void)initNavAndView {
 //    cellW = kScreenWidth-90*kScreenWidth/320.0;
 //    cellH = cellW*36/23.0;
-    DiyMainBottomBar *diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
+    diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
     [self.view addSubview:diyMainBottomBar];
     
     diyTemplateSrcV = [[DiyTemplateScrV alloc] initWithVC:self withData:pagesArr];
     [self.view addSubview:diyTemplateSrcV];
     
-    //    DiyBottomBar *diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, 105, kScreenWidth, 50)];
-//    
+    diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 50)];
+    [self.view addSubview:diyBottomBar];
+    
+//    DiyBottomBar *diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, 105, kScreenWidth, 50)];
 //    bgColors = @[@"#040404", @"#FFFFFF", @"#25CDCF", @"#167FA3", @"#17AFEE",
 //                 @"#59C2F2", @"#3B7FBC", @"#0A4CA9", @"#5248FE", @"#6228F2",
 //                 @"#676BFB", @"#7751F1", @"#952CBE", @"#CA32AF", @"#F12084"];
@@ -132,6 +136,10 @@
 #pragma mark - DiyShowDelgate
 - (void)showImgBottomView {
     NSLog(@"showImgBottom View");
+    [diyBottomBar reloadDiyBottom:ENUM_DIYIMAGE];
+    [UIView animateWithDuration:0.5 animations:^{
+        diyBottomBar.frame = CGRectMake(0, kScreenHeight-50, kScreenWidth, 50);
+    }];
 }
 - (void)showTextBottomView {
 

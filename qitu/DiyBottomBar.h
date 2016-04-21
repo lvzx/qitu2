@@ -7,18 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef enum {
-    ENUM_DIYBACKGROUND,
-    ENUM_DIYTEXT,
-    ENUM_DIYIMAGE
-}ENUM_DIYBOTTOMTYPE;
-
-typedef enum {
-    ENUM_DIYBOTTOM_FIRST,
-    ENUM_DIYBOTTOM_SECOND,
-    ENUM_DIYBOTTOM_THIRD
-}ENUM_DIYBOTTOM_ACTIONINDEX;
+#import "DiyRelatedEnum.h"
 
 @protocol DiyBottomBarDelegate
 - (void)didSelectDiyBottomBtn:(UIButton *)btn;
@@ -26,7 +15,7 @@ typedef enum {
 
 @interface DiyBottomBar : UIView
 
-@property (assign, nonatomic) ENUM_DIYBOTTOMTYPE diyBottomType;
-- (void)reloadDiyBottom:(ENUM_DIYBOTTOMTYPE)style;
+@property (assign, nonatomic) ENUM_DIY_TYPE diyBottomType;
+- (void)reloadDiyBottom:(ENUM_DIY_TYPE)style;
 - (void)setActionHandler:(id)target;
 @end

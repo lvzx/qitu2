@@ -27,9 +27,9 @@
 }
 
 - (void)_init {
+    self.backgroundColor = RGBCOLOR(57, 57, 57);
     UIEdgeInsets padding = UIEdgeInsetsMake(3, 0, 0, 1);
     CGFloat btnWidth = (kScreenWidth-2)/3.0;
-    self.backgroundColor = [UIColor blackColor];
     self.firstBtn = [[UIButton alloc] init];
     _firstBtn.tag = 40;
     _firstBtn.backgroundColor = RGBCOLOR(44, 98, 90);
@@ -51,7 +51,7 @@
     
     [_secondBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_top).with.offset(padding.top);
-        make.left.equalTo(_firstBtn.mas_trailing).with.offset(padding.right);
+        make.left.equalTo(_firstBtn.mas_right).with.offset(padding.right);
         make.bottom.width.equalTo(_firstBtn);
     }];
 
@@ -63,7 +63,7 @@
     
     [_thirdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_top).with.offset(padding.top);
-        make.left.equalTo(_secondBtn.mas_trailing).with.offset(padding.right);
+        make.left.equalTo(_secondBtn.mas_right).with.offset(padding.right);
         make.bottom.width.equalTo(_firstBtn);
     }];
 }
@@ -74,7 +74,7 @@
 }
 
 
-- (void)reloadDiyBottom:(ENUM_DIYBOTTOMTYPE)style {
+- (void)reloadDiyBottom:(ENUM_DIY_TYPE)style {
     switch (style) {
         case ENUM_DIYBACKGROUND:
         {
@@ -85,12 +85,17 @@
             break;
         case ENUM_DIYIMAGE:
         {
-        
+            [_firstBtn setImage:[UIImage imageNamed:@"maka_edit7_delete_white2"] forState:UIControlStateNormal];
+            [_secondBtn setImage:[UIImage imageNamed:@"maka_edit1_img2"] forState:UIControlStateNormal];
+            [_thirdBtn setImage:[UIImage imageNamed:@"maka_edit2_cut2"] forState:UIControlStateNormal];
+
         }
             break;
         case ENUM_DIYTEXT:
         {
-        
+            [_firstBtn setImage:[UIImage imageNamed:@"maka_edit7_delete_white2"] forState:UIControlStateNormal];
+            [_secondBtn setImage:[UIImage imageNamed:@"maka_edit3_ttext_white2"] forState:UIControlStateNormal];
+            [_thirdBtn setImage:[UIImage imageNamed:@"maka_edit3_atext_white2"] forState:UIControlStateNormal];
         }
             break;
         default:
