@@ -40,14 +40,14 @@
     NSUInteger imgcount = self.pageMArr.count;
     for (NSUInteger i = 0; i < imgcount; i++) {
         DiyAPageItem *OnePageItem = _pageMArr[i];
-        CGRect cellRect = CGRectMake(DIYCELL_PADDING+(cellW+DIYCELL_PADDING)*i, DIYCELL_TOPPADDING, cellW, cellH);
+        CGRect cellRect = CGRectMake(DIYCELL_LEADPADDING+(cellW+DIYCELL_PADDING)*i, DIYCELL_TOPPADDING, cellW, cellH);
         DiyTemplateCell *diyTemplateCell = [[DiyTemplateCell alloc] initWithFrame:cellRect];
         diyTemplateCell.myDelegate = vc;
         diyTemplateCell.tag = DIY_CELL_TAG + i;
-        [diyTemplateCell initCellWithData:OnePageItem];
+        diyTemplateCell.aPageItem = OnePageItem;
         [self addSubview:diyTemplateCell];
     }
-    self.contentSize = CGSizeMake(DIYCELL_PADDING+(cellW+DIYCELL_PADDING)*imgcount, self.frame.size.height);
+    self.contentSize = CGSizeMake(DIYCELL_LEADPADDING*2+(cellW+DIYCELL_PADDING)*imgcount-DIYCELL_PADDING, self.frame.size.height);
 }
 
 - (BOOL)touchesShouldCancelInContentView:(UIView *)view {
