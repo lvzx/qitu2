@@ -7,14 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol DiyShowDelgate <NSObject>
-- (void)showImgBottomView;
-- (void)showTextBottomView;
-@end
+//#import "DiyShowDelgate.h"
 
 @interface APageImgView : UIView
 @property (nonatomic, assign) BOOL hasBorder;
 @property (nonatomic, strong) UIImage *image;
-@property (assign, nonatomic) id<DiyShowDelgate> myDelegate;
+//@property (assign, nonatomic) id<DiyShowDelgate> myDelegate;
 @end

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "DiyAPageItem.h"
-#import "APageImgView.h"
+
+#import "DiyShowDelgate.h"
 #define DIY_CELL_TAG 88
 #define DIYCELL_TOPPADDING 30
 #define DIYCELL_PADDING 45

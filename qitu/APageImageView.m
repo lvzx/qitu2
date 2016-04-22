@@ -77,6 +77,7 @@ static CGFloat distanceBetweenPoints(CGPoint point0, CGPoint point1)
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer {
     recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
     recognizer.scale = 1;
+    
     NSLog(@"recoginizer:%@", recognizer.view);
 //    CGFloat destX,destY,destW,destH;
 //    destX = recognizer.view.frame.origin.x;
