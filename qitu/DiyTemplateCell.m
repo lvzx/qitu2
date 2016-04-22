@@ -63,6 +63,7 @@
         _numLbl.textAlignment = NSTextAlignmentCenter;
         [pageNumV addSubview:_numLbl];
         [self addSubview:pageNumV];
+        self.clipsToBounds = YES;
     }
     return self;
 }
