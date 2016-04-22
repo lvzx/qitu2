@@ -14,15 +14,6 @@
 #import "APageTextLabel.h"
 #import "TextBorderView.h"
 #import "DiyRelatedEnum.h"
-#import "APageImgView.h"
-
-static const CGFloat kMinimumScaleArea = 60;
-static const CGFloat kScaleBorderDotArea = 6;
-
-static CGFloat distanceBetweenPoints(CGPoint point0, CGPoint point1)
-{
-    return sqrt(pow(point1.x - point0.x, 2) + pow(point1.y - point0.y, 2));
-}
 
 @interface DiyTemplateCell()
 {
@@ -78,7 +69,6 @@ static CGFloat distanceBetweenPoints(CGPoint point0, CGPoint point1)
 - (void)setContentView:(UIView *)contentView
 {
     [self.contentView removeFromSuperview];
-    
     if(self.contentView)
     {
         contentView.frame = self.contentView.frame;
@@ -103,10 +93,16 @@ static CGFloat distanceBetweenPoints(CGPoint point0, CGPoint point1)
     imgViewMArr = [[NSMutableArray alloc] init];
     textLblMArr = [[NSMutableArray alloc] init];
     for (APageImgItem *imgItem in pageData.imgsMArr) {
-//        APageImageView *imgV = [[APageImageView alloc] initWithFrame:CGRectMake(imgItem.img_x*bili, imgItem.img_y*bili, imgItem.imgWidth*bili, imgItem.imgHeight*bili)];
         APageImgView *imgV = [[APageImgView alloc] init];
+        
+        imgV.frame = CGRectMake(imgItem.img_x*bili-CREATOR_IMG_PADDING, imgItem.img_y*bili-CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, imgItem.imgHeight*bili+2*CREATOR_IMG_PADDING);
+//                              WithFrame:CGRectMake(imgItem.img_x*bili, imgItem.img_y*bili, imgItem.imgWidth*bili, imgItem.imgHeight*bili)];
+        //imgV.borderSize = self.frame.size;
+        imgV.myDelegate = self.myDelegate;
         [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
-        imgV.frame = CGRectMake(imgItem.img_x*bili+CREATOR_IMG_PADDING, imgItem.img_y*bili+CREATOR_IMG_PADDING, imgItem.imgWidth*bili+CREATOR_IMG_PADDING*2, imgItem.imgHeight*bili+CREATOR_IMG_PADDING*2);
+        
+//        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+//        [self addGestureRecognizer:tapGesture];
         [self addSubview:imgV];
         [imgViewMArr addObject:imgV];
     }
@@ -123,172 +119,15 @@ static CGFloat distanceBetweenPoints(CGPoint point0, CGPoint point1)
     }
 }
 
-- (void)handlePan:(UIPanGestureRecognizer *)recognizer {
-    CGPoint translation = [recognizer translationInView:self];
-    recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
-                                         recognizer.view.center.y + translation.y);
-    [recognizer setTranslation:CGPointZero inView:self];
-}
-- (void)handlePinch:(UIPinchGestureRecognizer *)recognizer {
-    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
-    recognizer.scale = 1;
-}
-- (void)handleTap:(UITapGestureRecognizer *)recognizer {
-    
-}
-
-- (void)resetBorderState {
-    for (APageImageView *imgView in imgViewMArr) {
-        imgView.hasBorder = NO;
-    }
-    for (APageTextLabel *textLbl in textLblMArr) {
-        textLbl.hasBorder = NO;
-    }
-}
-
-#pragma mark - 视图控制器的触摸事件
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    if ([touches count] != 1) {
-        return;
-    }
-    
-    //[self resetBorderState];
-    UITouch *touch = [touches anyObject];
-    originalLocation = [touch locationInView:self];
-    targetView = touch.view;
-    if ([targetView isKindOfClass:[APageImgView class]]) {
-        diyContentType = ENUM_DIYIMAGE;
-        APageImgView *imgView = (APageImgView *)targetView;
-        imgView.hasBorder = YES;
-
-        if (_myDelegate && [_myDelegate respondsToSelector:@selector(showImgBottomView)]) {
-            [_myDelegate showImgBottomView];
-        }
-    }else if ([targetView isKindOfClass:[APageTextLabel class]]) {
-        diyContentType = ENUM_DIYTEXT;
-        APageTextLabel *txtLbl = (APageTextLabel *)targetView;
-        txtLbl.hasBorder = YES;
-    }else {
-        diyContentType = ENUM_DIYBACKGROUND;
-    }
-    
-    NSLog(@"UIViewController start touch...targetView:%@, targetX:%@, touch:%@, event%@", targetView, @(targetView.frame.origin.x), touch, event);
-}
-
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    //NSLog(@"UIViewController moving...");
-    UITouch *touch = [touches anyObject];
-    if ([touches count] == 1) {
-        CGPoint currentLocation = [touch locationInView:self];
-        CGRect frame = targetView.frame;
-        NSLog(@"**targetView:%@", targetView);
-        switch (diyContentType) {
-            case ENUM_DIYIMAGE:
-            {
-                //四个角的位置
-                CGFloat targetX = targetView.frame.origin.x;
-                CGFloat targetY = targetView.frame.origin.y;
-                CGFloat targetW = targetView.frame.size.width;
-                CGFloat targetH = targetView.frame.size.height;
-                CGPoint p0 = targetView.frame.origin;//左上角坐标
-                CGPoint p1 = CGPointMake(targetX, targetY+targetW);//左下角坐标
-                CGPoint p2 = CGPointMake(targetX+targetW, targetY);//右上角坐标
-                CGPoint p3 = CGPointMake(targetX+targetW, targetY+targetH);//右下角坐标
-                
-                BOOL canChangeWidth = frame.size.width > kMinimumScaleArea;
-                BOOL canChangeHeight = frame.size.height > kMinimumScaleArea;
-                
-                if (distanceBetweenPoints(currentLocation, p0) < kScaleBorderDotArea) {
-                    if (canChangeWidth) {
-                        frame.origin.x += currentLocation.x - originalLocation.x;
-                        frame.size.width -= currentLocation.x - originalLocation.x;
-                    }
-                    if (canChangeHeight) {
-                        frame.origin.y += currentLocation.y - originalLocation.y;
-                        frame.size.height -= currentLocation.y - originalLocation.y;
-                    }
-                }
-                else if (distanceBetweenPoints(currentLocation, p1) < kScaleBorderDotArea) {
-                    if (canChangeWidth) {
-                        frame.size.width += currentLocation.x - originalLocation.x;
-                    }
-                    if (canChangeHeight) {
-                        frame.origin.y += currentLocation.y - originalLocation.y;
-                        frame.size.height -= currentLocation.y - originalLocation.y;
-                    }
-                }
-                else if (distanceBetweenPoints(currentLocation, p2) < kScaleBorderDotArea) {
-                    if (canChangeWidth) {
-                        frame.origin.x += currentLocation.x - originalLocation.x;
-                        frame.size.width -= currentLocation.x - originalLocation.x;
-                    }
-                    if (canChangeHeight) {
-                        frame.size.height += currentLocation.y - originalLocation.y;
-                    }
-                }
-                else if (distanceBetweenPoints(currentLocation, p3) < kScaleBorderDotArea) {
-                    if (canChangeWidth) {
-                        frame.origin.x += currentLocation.x - originalLocation.x;
-                        frame.size.width -= currentLocation.x - originalLocation.x;
-                    }
-                    if (canChangeHeight) {
-                        frame.origin.y += currentLocation.y - originalLocation.y;
-                        frame.size.height -= currentLocation.y - originalLocation.y;
-                    }
-                }
-                NSLog(@"moving:%@", NSStringFromCGRect(frame));
-                targetView.frame = frame;
-            }
-                break;
-            case ENUM_DIYTEXT:
-            {
-                
-            }
-                break;
-            case ENUM_DIYBACKGROUND:
-            {
-                
-            }
-                break;
-            default:
-                break;
-        }
-    }
-//    UITouch *touch = [touches anyObject];
-//    CGPoint currentLocation = [touch locationInView:self];
-//    CGRect frame = self.view.frame;
-//    frame.origin.x += currentLocation.x-originalLocation.x;
-//    frame.origin.y += currentLocation.y-originalLocation.y;
-//    self.view.frame = frame;
-    
-}
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    UITouch *touch = [touches anyObject];
-    if (touch.tapCount == 1) {
-        
-    }
-    NSLog(@"UIViewController touch end.");
-}
-
-- (void)addBorder:(ENUM_DIY_TYPE)type toView:(UIView *)targetV{
-    switch (type) {
-        case ENUM_DIYIMAGE:
-        {
-            CGRect borderRect = CGRectMake(-CREATOR_IMG_PADDING, -CREATOR_IMG_PADDING, targetV.frame.size.width+2*CREATOR_IMG_PADDING, targetV.frame.size.height+2*CREATOR_IMG_PADDING);
-            BorderView *borderView = [[BorderView alloc] initWithFrame:borderRect];
-            [targetV insertSubview:borderView atIndex:0];
-        }
-            break;
-        case ENUM_DIYTEXT:
-        {
-            
-        }
-            break;
-        default:
-            break;
-    }
-}
+//
+//-( UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+//    UIView *hitView = [super hitTest:point withEvent:event];
+//    if (hitView == self) {
+//        return nil; // 是self的时候, 不做处理，由它的父视图处理
+//    } else {
+//        return hitView; // 是subView的时候,由subView去处理
+//    }
+//}
 
 #pragma mark - 解决中文乱码火星文
 - (NSString *) analysisChineseMassyCodeStr:(NSString *)messyCodeStr{

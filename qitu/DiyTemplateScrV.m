@@ -50,4 +50,7 @@
     self.contentSize = CGSizeMake(DIYCELL_PADDING+(cellW+DIYCELL_PADDING)*imgcount, self.frame.size.height);
 }
 
+- (BOOL)touchesShouldCancelInContentView:(UIView *)view {
+    return NO;
+}
 @end

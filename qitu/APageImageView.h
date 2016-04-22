@@ -10,4 +10,5 @@
 
 @interface APageImageView : UIImageView
 @property (nonatomic, assign) BOOL hasBorder;
+@property (nonatomic, assign) CGSize borderSize;
 @end
