@@ -65,7 +65,10 @@
     diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
     [self.view addSubview:diyMainBottomBar];
     
-    diyTemplateSrcV = [[DiyTemplateScrV alloc] initWithVC:self withData:pagesArr];
+    diyTemplateSrcV = [[DiyTemplateScrV alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50)];
+    diyTemplateSrcV.myDelegate = self;
+    diyTemplateSrcV.pageMArr = pagesArr;
+    [diyTemplateSrcV reloadView];
     [self.view addSubview:diyTemplateSrcV];
     
     diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 50)];

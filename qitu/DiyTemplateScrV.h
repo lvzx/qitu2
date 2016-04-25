@@ -11,5 +11,9 @@
 
 @interface DiyTemplateScrV : UIScrollView
 @property (strong, nonatomic) NSMutableArray *pageMArr;
-- (instancetype)initWithVC:(id<DiyShowDelgate>)vc withData:(NSMutableArray *)dataItems;
+@property (nonatomic, strong) NSMutableArray *pageViewMArr;//统计视图个数
+@property (nonatomic, strong) id<DiyShowDelgate> myDelegate;//点击图片、文本展示bottomView
+//- (instancetype)initWithVC:(id<DiyShowDelgate>)vc withData:(NSMutableArray *)dataItems;
+- (void)addAPage;
+- (void)reloadView;
 @end
