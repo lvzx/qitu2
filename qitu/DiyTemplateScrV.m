@@ -13,7 +13,7 @@
     CGFloat cellW;
     CGFloat cellH;
 }
-@property (nonatomic, strong) NSMutableArray *pageViewMArr;
+@property (nonatomic, strong) NSMutableArray *pageViewMArr;//统计视图个数
 @end
 
 @implementation DiyTemplateScrV
@@ -27,7 +27,7 @@
         self.backgroundColor = RGBCOLOR(57, 57, 57);
         self.showsHorizontalScrollIndicator = NO;
         self.pagingEnabled = YES;
-        //创建底部滑动视图
+        //创建模版视图
         [self _initViewsWithDel:(id<DiyShowDelgate>)vc];
     }
     return self;

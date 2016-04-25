@@ -65,6 +65,15 @@
 		0DD2D0671CA534FC00F2EF62 /* PersonalInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2D0661CA534FC00F2EF62 /* PersonalInfoCell.m */; };
 		0DD609281CC5BB2F002AB7DE /* APageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD609271CC5BB2F002AB7DE /* APageImageView.m */; };
 		0DD6092B1CC5C884002AB7DE /* TextBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6092A1CC5C884002AB7DE /* TextBorderView.m */; };
+		0DD609301CC5CE6F002AB7DE /* 001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6092C1CC5CE6F002AB7DE /* 001.jpg */; };
+		0DD609311CC5CE6F002AB7DE /* 002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6092D1CC5CE6F002AB7DE /* 002.jpg */; };
+		0DD609331CC5CE6F002AB7DE /* 004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6092F1CC5CE6F002AB7DE /* 004.jpg */; };
+		0DD609361CC5E122002AB7DE /* DiyTemplateScrV.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD609351CC5E122002AB7DE /* DiyTemplateScrV.m */; };
+		0DD609391CC5E442002AB7DE /* DynamicScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD609381CC5E442002AB7DE /* DynamicScrollView.m */; };
+		0DD6093C1CC5E9BC002AB7DE /* DiyTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6093B1CC5E9BC002AB7DE /* DiyTemplateCell.m */; };
+		0DE33A061CC858BE00E5D229 /* APageImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE33A051CC858BE00E5D229 /* APageImgView.m */; };
+		0DE33A081CC8754700E5D229 /* 003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE33A071CC8754700E5D229 /* 003@2x.png */; };
+		0DE7E4431CCA06E500DBC02A /* DiyScrollViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7E4421CCA06E500DBC02A /* DiyScrollViewContainer.m */; };
 		6B09B59704F3633ECD5D669F /* Pods_qitu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D181B34881D259D5238DA90 /* Pods_qitu.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -175,6 +184,7 @@
 		0D9C9DD21C97E62400652830 /* qituUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qituUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9C9DD61C97E62400652830 /* qituUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qituUITests.m; sourceTree = "<group>"; };
 		0D9C9DD81C97E62400652830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DA3C6211CC7784200E1F279 /* DiyRelatedEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyRelatedEnum.h; sourceTree = "<group>"; };
 		0DA937611C9BD715000DC170 /* MyEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventCell.h; sourceTree = "<group>"; };
 		0DA937621C9BD715000DC170 /* MyEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventCell.m; sourceTree = "<group>"; };
 		0DA937641C9BF0EA000DC170 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -204,6 +214,21 @@
 		0DD609271CC5BB2F002AB7DE /* APageImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageImageView.m; sourceTree = "<group>"; };
 		0DD609291CC5C884002AB7DE /* TextBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextBorderView.h; sourceTree = "<group>"; };
 		0DD6092A1CC5C884002AB7DE /* TextBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextBorderView.m; sourceTree = "<group>"; };
+		0DD6092C1CC5CE6F002AB7DE /* 001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 001.jpg; sourceTree = "<group>"; };
+		0DD6092D1CC5CE6F002AB7DE /* 002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 002.jpg; sourceTree = "<group>"; };
+		0DD6092F1CC5CE6F002AB7DE /* 004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 004.jpg; sourceTree = "<group>"; };
+		0DD609341CC5E122002AB7DE /* DiyTemplateScrV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyTemplateScrV.h; sourceTree = "<group>"; };
+		0DD609351CC5E122002AB7DE /* DiyTemplateScrV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyTemplateScrV.m; sourceTree = "<group>"; };
+		0DD609371CC5E442002AB7DE /* DynamicScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicScrollView.h; sourceTree = "<group>"; };
+		0DD609381CC5E442002AB7DE /* DynamicScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicScrollView.m; sourceTree = "<group>"; };
+		0DD6093A1CC5E9BC002AB7DE /* DiyTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyTemplateCell.h; sourceTree = "<group>"; };
+		0DD6093B1CC5E9BC002AB7DE /* DiyTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyTemplateCell.m; sourceTree = "<group>"; };
+		0DE33A041CC858BE00E5D229 /* APageImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APageImgView.h; sourceTree = "<group>"; };
+		0DE33A051CC858BE00E5D229 /* APageImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageImgView.m; sourceTree = "<group>"; };
+		0DE33A071CC8754700E5D229 /* 003@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "003@2x.png"; sourceTree = "<group>"; };
+		0DE7E4401CC9FDFE00DBC02A /* DiyShowDelgate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyShowDelgate.h; sourceTree = "<group>"; };
+		0DE7E4411CCA06E500DBC02A /* DiyScrollViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyScrollViewContainer.h; sourceTree = "<group>"; };
+		0DE7E4421CCA06E500DBC02A /* DiyScrollViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyScrollViewContainer.m; sourceTree = "<group>"; };
 		4B1010901B633EC246E9A2FA /* Pods-qitu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qitu.release.xcconfig"; path = "Pods/Target Support Files/Pods-qitu/Pods-qitu.release.xcconfig"; sourceTree = "<group>"; };
 		5D181B34881D259D5238DA90 /* Pods_qitu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qitu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7D5D376C15FCBA44FD5EF4A /* Pods-qitu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qitu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qitu/Pods-qitu.debug.xcconfig"; sourceTree = "<group>"; };
@@ -250,6 +275,8 @@
 			children = (
 				0DD609261CC5BB2F002AB7DE /* APageImageView.h */,
 				0DD609271CC5BB2F002AB7DE /* APageImageView.m */,
+				0DE33A041CC858BE00E5D229 /* APageImgView.h */,
+				0DE33A051CC858BE00E5D229 /* APageImgView.m */,
 				0D2912DB1CC49599005EF62A /* BorderView.h */,
 				0D2912DC1CC49599005EF62A /* BorderView.m */,
 				0D2912D81CC47BD7005EF62A /* APageTextLabel.h */,
@@ -288,6 +315,10 @@
 		0D630B991C9A3D4A0063AC7E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DD6092C1CC5CE6F002AB7DE /* 001.jpg */,
+				0DD6092D1CC5CE6F002AB7DE /* 002.jpg */,
+				0DE33A071CC8754700E5D229 /* 003@2x.png */,
+				0DD6092F1CC5CE6F002AB7DE /* 004.jpg */,
 				0D8572191CB785E200936F0D /* model.json */,
 				0D7325891CB3BEAA008899BA /* data.json */,
 			);
@@ -513,6 +544,7 @@
 		0D8490831CA9267100A28D94 /* Creator */ = {
 			isa = PBXGroup;
 			children = (
+				0DD6093D1CC5E9C9002AB7DE /* DiyTemplate */,
 				0D2912D11CC467BA005EF62A /* APageView */,
 				0D7D779C1CAE040900AF9E7D /* Components */,
 				0D84905B1CA8CB0500A28D94 /* BuyTemplate */,
@@ -520,6 +552,7 @@
 				0D84908A1CA92B6800A28D94 /* CreatorCollectionCell.m */,
 				0DAED5B91CAA247100D0BEA5 /* StoreTemplateCell.h */,
 				0DAED5BA1CAA247100D0BEA5 /* StoreTemplateCell.m */,
+				0DA3C6211CC7784200E1F279 /* DiyRelatedEnum.h */,
 			);
 			name = Creator;
 			sourceTree = "<group>";
@@ -632,6 +665,22 @@
 				0DCE80AB1CB5F2FD0003ADB1 /* DiyAPageItem.m */,
 			);
 			name = DiyModel;
+			sourceTree = "<group>";
+		};
+		0DD6093D1CC5E9C9002AB7DE /* DiyTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				0DD609341CC5E122002AB7DE /* DiyTemplateScrV.h */,
+				0DD609351CC5E122002AB7DE /* DiyTemplateScrV.m */,
+				0DD6093A1CC5E9BC002AB7DE /* DiyTemplateCell.h */,
+				0DD6093B1CC5E9BC002AB7DE /* DiyTemplateCell.m */,
+				0DD609371CC5E442002AB7DE /* DynamicScrollView.h */,
+				0DD609381CC5E442002AB7DE /* DynamicScrollView.m */,
+				0DE7E4401CC9FDFE00DBC02A /* DiyShowDelgate.h */,
+				0DE7E4411CCA06E500DBC02A /* DiyScrollViewContainer.h */,
+				0DE7E4421CCA06E500DBC02A /* DiyScrollViewContainer.m */,
+			);
+			name = DiyTemplate;
 			sourceTree = "<group>";
 		};
 		8FE72B43F38F4CCAE1BAB2EA /* Pods */ = {
@@ -763,8 +812,12 @@
 				0D85721A1CB785E200936F0D /* model.json in Resources */,
 				0DA937681C9BF162000DC170 /* MyEvent.storyboard in Resources */,
 				0DA9376A1C9BF17D000DC170 /* Creator.storyboard in Resources */,
+				0DD609331CC5CE6F002AB7DE /* 004.jpg in Resources */,
 				0D9C9DBE1C97E62400652830 /* Assets.xcassets in Resources */,
+				0DD609311CC5CE6F002AB7DE /* 002.jpg in Resources */,
+				0DE33A081CC8754700E5D229 /* 003@2x.png in Resources */,
 				0DA9376C1C9BF19A000DC170 /* PublicEvent.storyboard in Resources */,
+				0DD609301CC5CE6F002AB7DE /* 001.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,8 +897,12 @@
 				0D2912DD1CC49599005EF62A /* BorderView.m in Sources */,
 				0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */,
 				0D97ABD71CA6661200099DF7 /* CreatorMainVC.m in Sources */,
+				0DE7E4431CCA06E500DBC02A /* DiyScrollViewContainer.m in Sources */,
+				0DD609391CC5E442002AB7DE /* DynamicScrollView.m in Sources */,
+				0DD609361CC5E122002AB7DE /* DiyTemplateScrV.m in Sources */,
 				0DD6092B1CC5C884002AB7DE /* TextBorderView.m in Sources */,
 				0DD609281CC5BB2F002AB7DE /* APageImageView.m in Sources */,
+				0DE33A061CC858BE00E5D229 /* APageImgView.m in Sources */,
 				0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */,
 				0DCE80A51CB5F2B30003ADB1 /* APageImgItem.m in Sources */,
 				0D6BC60A1CABC2FB0027B5A6 /* TemplatePreviewVC.m in Sources */,
@@ -854,6 +911,7 @@
 				0DCE80A91CB5F2E60003ADB1 /* APageTextItem.m in Sources */,
 				0D7D779F1CAE045500AF9E7D /* SelectBgColor.m in Sources */,
 				0D8764F51CA39EE70078E871 /* MyUtills.m in Sources */,
+				0DD6093C1CC5E9BC002AB7DE /* DiyTemplateCell.m in Sources */,
 				0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */,
 				0D7325731CB33F64008899BA /* DiyBottomBar.m in Sources */,
 				0D8764FF1CA3A3410078E871 /* NSData+SSToolkitAdditions.m in Sources */,

@@ -26,6 +26,8 @@
     APageImgView *selImgView;
     APageTextLabel *selTextLbl;
     
+    BOOL isUpdate;//标识是否有更新，需要保存
+    
     //UIView *targetView;//touch move指定编辑的view
 }
 @property (strong, nonatomic) UIImageView *backgroundImg;
@@ -154,9 +156,6 @@
         //imgV.borderSize = self.frame.size;
 //        imgV.myDelegate = self.myDelegate;
         [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
-        
-//        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-//        [self addGestureRecognizer:tapGesture];
         [self addSubview:imgV];
         [imgViewMArr addObject:imgV];
     }
@@ -223,13 +222,7 @@
 - (void)resetBottomView {
 
 }
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    UIView *targetView = touch.view;
-    if ([targetView isKindOfClass:[APageImgView class]]) {
-        
-    }
-}
+
 #pragma mark - 解决中文乱码火星文
 - (NSString *) analysisChineseMassyCodeStr:(NSString *)messyCodeStr{
     const char *c = [messyCodeStr cStringUsingEncoding:NSISOLatin1StringEncoding];
