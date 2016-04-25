@@ -11,4 +11,5 @@
 
 @interface DiyTemplateMainVC : BaseViewController
 @property (strong, nonatomic) NSDictionary *pagesData;
+@property (strong, nonatomic) NSString *myTitle;
 @end

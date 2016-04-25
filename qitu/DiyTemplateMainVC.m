@@ -35,6 +35,9 @@
     [self initNavAndView];
     
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
 /*
 - (UICollectionView *)myCollectionView {
     if (_myCollectionView != nil) {
@@ -53,6 +56,10 @@
 }
 */
 - (void)initNavAndView {
+    [self setNavTitle:_myTitle];
+    [self setNavBackBarSelector:@selector(navBack)];
+    [self setNavRightBarBtnTitle:@"预览" selector:@selector(navPreview)];
+    
 //    cellW = kScreenWidth-90*kScreenWidth/320.0;
 //    cellH = cellW*36/23.0;
     diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
@@ -79,6 +86,12 @@
     //[self.view addSubview:self.myCollectionView];
 }
 
+- (void)navBack {
+
+}
+- (void)navPreview {
+
+}
 #pragma mark - LoadData
 - (void)loadData {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"model" ofType:@"json"];
