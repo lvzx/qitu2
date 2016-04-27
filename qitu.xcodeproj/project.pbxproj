@@ -8,9 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0398511C9F90DB00A65973 /* MyEventVC.m */; };
+		0D0B8C681CCF171B00DB61D0 /* AssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0B8C661CCF171B00DB61D0 /* AssetCell.m */; };
+		0D0B8C691CCF171B00DB61D0 /* AssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D0B8C671CCF171B00DB61D0 /* AssetCell.xib */; };
+		0D0B8C6D1CCF1CC900DB61D0 /* AssetTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0B8C6B1CCF1CC900DB61D0 /* AssetTableCell.m */; };
+		0D0B8C6E1CCF1CC900DB61D0 /* AssetTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D0B8C6C1CCF1CC900DB61D0 /* AssetTableCell.xib */; };
+		0D0B8C711CCF3C2D00DB61D0 /* ImagePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0B8C701CCF3C2D00DB61D0 /* ImagePickerVC.m */; };
+		0D0B8C741CCF6D7C00DB61D0 /* DiyCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0B8C731CCF6D7C00DB61D0 /* DiyCollectionView.m */; };
 		0D2912DA1CC47BD7005EF62A /* APageTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2912D91CC47BD7005EF62A /* APageTextLabel.m */; };
 		0D2912DD1CC49599005EF62A /* BorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2912DC1CC49599005EF62A /* BorderView.m */; };
 		0D3C0F941CA3E2020063F5CB /* PersonalInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3C0F931CA3E2020063F5CB /* PersonalInfoVC.m */; };
+		0D4B3EC01CCDCF880052B22D /* DiyAddPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4B3EBF1CCDCF880052B22D /* DiyAddPageView.m */; };
+		0D4B3EC41CCDFC490052B22D /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4B3EC21CCDFC490052B22D /* CropImageViewController.m */; };
+		0D4B3EC51CCDFC490052B22D /* CropImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D4B3EC31CCDFC490052B22D /* CropImageViewController.xib */; };
+		0D4B3EC81CCE17340052B22D /* SelectImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4B3EC71CCE17340052B22D /* SelectImageVC.m */; };
 		0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D7B731CA0FF22002E1D3F /* UserInfoItem.m */; };
 		0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D7B761CA1481D002E1D3F /* LoginVC.m */; };
 		0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D630BB21C9A5E340063AC7E /* QTAPIClient.m */; };
@@ -97,12 +107,29 @@
 /* Begin PBXFileReference section */
 		0D0398501C9F90DB00A65973 /* MyEventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventVC.h; sourceTree = "<group>"; };
 		0D0398511C9F90DB00A65973 /* MyEventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventVC.m; sourceTree = "<group>"; };
+		0D0B8C651CCF171B00DB61D0 /* AssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetCell.h; sourceTree = "<group>"; };
+		0D0B8C661CCF171B00DB61D0 /* AssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetCell.m; sourceTree = "<group>"; };
+		0D0B8C671CCF171B00DB61D0 /* AssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssetCell.xib; sourceTree = "<group>"; };
+		0D0B8C6A1CCF1CC900DB61D0 /* AssetTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetTableCell.h; sourceTree = "<group>"; };
+		0D0B8C6B1CCF1CC900DB61D0 /* AssetTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetTableCell.m; sourceTree = "<group>"; };
+		0D0B8C6C1CCF1CC900DB61D0 /* AssetTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssetTableCell.xib; sourceTree = "<group>"; };
+		0D0B8C6F1CCF3C2D00DB61D0 /* ImagePickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerVC.h; sourceTree = "<group>"; };
+		0D0B8C701CCF3C2D00DB61D0 /* ImagePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerVC.m; sourceTree = "<group>"; };
+		0D0B8C721CCF6D7C00DB61D0 /* DiyCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyCollectionView.h; sourceTree = "<group>"; };
+		0D0B8C731CCF6D7C00DB61D0 /* DiyCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyCollectionView.m; sourceTree = "<group>"; };
 		0D2912D81CC47BD7005EF62A /* APageTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APageTextLabel.h; sourceTree = "<group>"; };
 		0D2912D91CC47BD7005EF62A /* APageTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageTextLabel.m; sourceTree = "<group>"; };
 		0D2912DB1CC49599005EF62A /* BorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderView.h; sourceTree = "<group>"; };
 		0D2912DC1CC49599005EF62A /* BorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderView.m; sourceTree = "<group>"; };
 		0D3C0F921CA3E2020063F5CB /* PersonalInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoVC.h; sourceTree = "<group>"; };
 		0D3C0F931CA3E2020063F5CB /* PersonalInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoVC.m; sourceTree = "<group>"; };
+		0D4B3EBE1CCDCF880052B22D /* DiyAddPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyAddPageView.h; sourceTree = "<group>"; };
+		0D4B3EBF1CCDCF880052B22D /* DiyAddPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyAddPageView.m; sourceTree = "<group>"; };
+		0D4B3EC11CCDFC490052B22D /* CropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropImageViewController.h; sourceTree = "<group>"; };
+		0D4B3EC21CCDFC490052B22D /* CropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropImageViewController.m; sourceTree = "<group>"; };
+		0D4B3EC31CCDFC490052B22D /* CropImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CropImageViewController.xib; sourceTree = "<group>"; };
+		0D4B3EC61CCE17340052B22D /* SelectImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectImageVC.h; sourceTree = "<group>"; };
+		0D4B3EC71CCE17340052B22D /* SelectImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectImageVC.m; sourceTree = "<group>"; };
 		0D5D7B721CA0FF22002E1D3F /* UserInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoItem.h; sourceTree = "<group>"; };
 		0D5D7B731CA0FF22002E1D3F /* UserInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoItem.m; sourceTree = "<group>"; };
 		0D5D7B751CA1481D002E1D3F /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
@@ -489,6 +516,19 @@
 				0D7D51F91CACDA6F0085E138 /* DiyTemplateMainVC.m */,
 				0D7325861CB39C1C008899BA /* DiyOnePageCell.h */,
 				0D7325871CB39C1C008899BA /* DiyOnePageCell.m */,
+				0D4B3EC61CCE17340052B22D /* SelectImageVC.h */,
+				0D4B3EC71CCE17340052B22D /* SelectImageVC.m */,
+				0D0B8C6F1CCF3C2D00DB61D0 /* ImagePickerVC.h */,
+				0D0B8C701CCF3C2D00DB61D0 /* ImagePickerVC.m */,
+				0D0B8C6A1CCF1CC900DB61D0 /* AssetTableCell.h */,
+				0D0B8C6B1CCF1CC900DB61D0 /* AssetTableCell.m */,
+				0D0B8C6C1CCF1CC900DB61D0 /* AssetTableCell.xib */,
+				0D0B8C651CCF171B00DB61D0 /* AssetCell.h */,
+				0D0B8C661CCF171B00DB61D0 /* AssetCell.m */,
+				0D0B8C671CCF171B00DB61D0 /* AssetCell.xib */,
+				0D4B3EC11CCDFC490052B22D /* CropImageViewController.h */,
+				0D4B3EC21CCDFC490052B22D /* CropImageViewController.m */,
+				0D4B3EC31CCDFC490052B22D /* CropImageViewController.xib */,
 			);
 			name = Creator;
 			sourceTree = "<group>";
@@ -674,11 +714,15 @@
 				0DD609351CC5E122002AB7DE /* DiyTemplateScrV.m */,
 				0DD6093A1CC5E9BC002AB7DE /* DiyTemplateCell.h */,
 				0DD6093B1CC5E9BC002AB7DE /* DiyTemplateCell.m */,
+				0D4B3EBE1CCDCF880052B22D /* DiyAddPageView.h */,
+				0D4B3EBF1CCDCF880052B22D /* DiyAddPageView.m */,
 				0DD609371CC5E442002AB7DE /* DynamicScrollView.h */,
 				0DD609381CC5E442002AB7DE /* DynamicScrollView.m */,
 				0DE7E4401CC9FDFE00DBC02A /* DiyShowDelgate.h */,
 				0DE7E4411CCA06E500DBC02A /* DiyScrollViewContainer.h */,
 				0DE7E4421CCA06E500DBC02A /* DiyScrollViewContainer.m */,
+				0D0B8C721CCF6D7C00DB61D0 /* DiyCollectionView.h */,
+				0D0B8C731CCF6D7C00DB61D0 /* DiyCollectionView.m */,
 			);
 			name = DiyTemplate;
 			sourceTree = "<group>";
@@ -807,8 +851,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0B8C691CCF171B00DB61D0 /* AssetCell.xib in Resources */,
 				0D9C9DC11C97E62400652830 /* LaunchScreen.storyboard in Resources */,
 				0D73258A1CB3BEAA008899BA /* data.json in Resources */,
+				0D0B8C6E1CCF1CC900DB61D0 /* AssetTableCell.xib in Resources */,
+				0D4B3EC51CCDFC490052B22D /* CropImageViewController.xib in Resources */,
 				0D85721A1CB785E200936F0D /* model.json in Resources */,
 				0DA937681C9BF162000DC170 /* MyEvent.storyboard in Resources */,
 				0DA9376A1C9BF17D000DC170 /* Creator.storyboard in Resources */,
@@ -900,6 +947,7 @@
 				0DE7E4431CCA06E500DBC02A /* DiyScrollViewContainer.m in Sources */,
 				0DD609391CC5E442002AB7DE /* DynamicScrollView.m in Sources */,
 				0DD609361CC5E122002AB7DE /* DiyTemplateScrV.m in Sources */,
+				0D4B3EC01CCDCF880052B22D /* DiyAddPageView.m in Sources */,
 				0DD6092B1CC5C884002AB7DE /* TextBorderView.m in Sources */,
 				0DD609281CC5BB2F002AB7DE /* APageImageView.m in Sources */,
 				0DE33A061CC858BE00E5D229 /* APageImgView.m in Sources */,
@@ -913,6 +961,7 @@
 				0D8764F51CA39EE70078E871 /* MyUtills.m in Sources */,
 				0DD6093C1CC5E9BC002AB7DE /* DiyTemplateCell.m in Sources */,
 				0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */,
+				0D4B3EC41CCDFC490052B22D /* CropImageViewController.m in Sources */,
 				0D7325731CB33F64008899BA /* DiyBottomBar.m in Sources */,
 				0D8764FF1CA3A3410078E871 /* NSData+SSToolkitAdditions.m in Sources */,
 				0DCE80AC1CB5F2FD0003ADB1 /* DiyAPageItem.m in Sources */,
@@ -934,11 +983,16 @@
 				0D0398521C9F90DB00A65973 /* MyEventVC.m in Sources */,
 				0D8764FC1CA3A2D00078E871 /* NSString+SSToolkitAdditions.m in Sources */,
 				0D630BBE1C9A9D9B0063AC7E /* MyAlertView.m in Sources */,
+				0D4B3EC81CCE17340052B22D /* SelectImageVC.m in Sources */,
 				0DD2D0671CA534FC00F2EF62 /* PersonalInfoCell.m in Sources */,
+				0D0B8C711CCF3C2D00DB61D0 /* ImagePickerVC.m in Sources */,
 				0D7325881CB39C1C008899BA /* DiyOnePageCell.m in Sources */,
+				0D0B8C681CCF171B00DB61D0 /* AssetCell.m in Sources */,
 				0DAED5B81CAA14E600D0BEA5 /* CategoryItem.m in Sources */,
+				0D0B8C6D1CCF1CC900DB61D0 /* AssetTableCell.m in Sources */,
 				0D8899FD1CA4D0E1003F6B29 /* ArrayDataSource.m in Sources */,
 				0DAED5BB1CAA247100D0BEA5 /* StoreTemplateCell.m in Sources */,
+				0D0B8C741CCF6D7C00DB61D0 /* DiyCollectionView.m in Sources */,
 				0D73257C1CB34A68008899BA /* BtnContentVSort.m in Sources */,
 				0D84908B1CA92B6800A28D94 /* CreatorCollectionCell.m in Sources */,
 				0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */,
