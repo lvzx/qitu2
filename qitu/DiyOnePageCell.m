@@ -11,17 +11,27 @@
 #import "UIImageView+WebCache.h"
 #import "APageImageView.h"
 #import "BorderView.h"
-//#import "APageImgView.h"
+#import "APageImgView.h"
 #import "APageTextLabel.h"
 #import "TextBorderView.h"
+#import "DiyRelatedEnum.h"
 
 @interface DiyOnePageCell ()
 {
-    BorderView *borderView;
-    TextBorderView *textBorderView;
+    NSMutableArray *imgViewMArr;//成员APageImageView对象
+    NSMutableArray *textLblMArr;//成员APageTextLabel对象
+    ENUM_DIY_TYPE diyContentType;//背景、图片、文本
+    CGPoint originalLocation;
+    
+    APageImgView *selImgView;
+    APageTextLabel *selTextLbl;
+    
+    BOOL isUpdate;//标识是否有更新，需要保存
+    
+    //UIView *targetView;//touch move指定编辑的view
 }
 @property (strong, nonatomic) UIImageView *backgroundImg;
-
+@property (strong, nonatomic) UILabel *numLbl;
 @end
 
 @implementation DiyOnePageCell
@@ -30,6 +40,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.clipsToBounds = YES;
         CGFloat width = frame.size.width;
         CGFloat height = frame.size.height;
         self.layer.borderWidth = 0.8;
@@ -40,16 +51,48 @@
         UIView *pageNumV = [[UIView alloc] initWithFrame:CGRectMake(width-35, height-35, 35, 35)];
         pageNumV.backgroundColor = [UIColor blackColor];
         pageNumV.alpha = 0.5;
-        UILabel *numLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 6, 35, 28)];
-        numLbl.textColor = [UIColor whiteColor];
-        numLbl.textAlignment = NSTextAlignmentCenter;
-        numLbl.text = [NSString stringWithFormat:@"%@", @(self.tag+1)];
-        [pageNumV addSubview:numLbl];
+        _numLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 6, 35, 28)];
+        _numLbl.textColor = [UIColor whiteColor];
+        _numLbl.textAlignment = NSTextAlignmentCenter;
+        _numLbl.text = [NSString stringWithFormat:@"%@", @(self.tag+1)];
+        [pageNumV addSubview:_numLbl];
         [self addSubview:pageNumV];
     }
     return self;
 }
 
+- (void)setAPageItem:(DiyAPageItem *)aPageItem {
+    if (_aPageItem != aPageItem) {
+        _aPageItem = aPageItem;
+    }
+    self.backgroundImg.backgroundColor = [UIColor colorWithHexString:aPageItem.bgColor];
+    [self.backgroundImg sd_setImageWithURL:[NSURL URLWithString:aPageItem.bgImgUrl]];
+    self.numLbl.text = [NSString stringWithFormat:@"%@", @(self.tag-DIY_CELL_TAG+1)];
+    CGFloat bili = kScreenWidth/aPageItem.bgpicwidth;
+    
+    imgViewMArr = [[NSMutableArray alloc] init];
+    textLblMArr = [[NSMutableArray alloc] init];
+    for (APageImgItem *imgItem in aPageItem.imgsMArr) {
+        CGRect imgRect = CGRectMake(imgItem.img_x*bili-CREATOR_IMG_PADDING, imgItem.img_y*bili-CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, imgItem.imgHeight*bili+2*CREATOR_IMG_PADDING);
+        APageImgView *imgV = [[APageImgView alloc] initWithFrame:imgRect];
+        imgV.myDelegate = self.myDelegate;
+        [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
+        [self addSubview:imgV];
+        [imgViewMArr addObject:imgV];
+    }
+    
+    for (APageTextItem *txtItem in aPageItem.textMArr) {
+        APageTextLabel *textLbl = [[APageTextLabel alloc] initWithFrame:CGRectMake(txtItem.txt_x*bili-CREATOR_IMG_PADDING, txtItem.txt_y*bili-CREATOR_IMG_PADDING, txtItem.txt_width*bili+2*CREATOR_IMG_PADDING, txtItem.txt_height*bili+2*CREATOR_IMG_PADDING)];
+        TextItem *textItem = txtItem.textItem;
+        textLbl.textColor = [UIColor colorWithHexString:textItem.txtColorHexStr];
+        NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
+        textLbl.text = txtStr;
+        textLbl.font = [UIFont systemFontOfSize:textItem.fontSize*bili];
+        [self addSubview:textLbl];
+        [textLblMArr addObject:textLbl];
+    }
+}
+/*
 - (void)initCellWithData:(DiyAPageItem *)pageData {
     self.contentView.backgroundColor = [UIColor colorWithHexString:pageData.bgColor];
     [self.backgroundImg sd_setImageWithURL:[NSURL URLWithString:pageData.bgImgUrl]];
@@ -72,7 +115,7 @@
         [imgV addGestureRecognizer:tapGestureRecognizer];
         //[imgV initImgViewWith:imgItem];
         [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
-        [self addSubview:imgV];
+        [self.contentView addSubview:imgV];
     }
     
     for (APageTextItem *txtItem in pageData.textMArr) {
@@ -88,7 +131,7 @@
         [textLbl addGestureRecognizer:panGestureRecognizer];
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         [textLbl addGestureRecognizer:tapGestureRecognizer];
-        [self addSubview:textLbl];
+        [self.contentView addSubview:textLbl];
     }
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
@@ -129,6 +172,7 @@
         }
     }
 }
+*/
 
 #pragma mark - 解决中文乱码火星文
 - (NSString *) analysisChineseMassyCodeStr:(NSString *)messyCodeStr{

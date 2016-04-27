@@ -50,10 +50,10 @@
     navTitleImgV.image = [UIImage imageNamed:@"maka_mubanstore_buy"];
     UIButton *btnLeft = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 40)];
     btnLeft.tag = 20;
-    [btnLeft addTarget:self action:@selector(toucuUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [btnLeft addTarget:self action:@selector(touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     UIButton *btnRight = [[UIButton alloc] initWithFrame:CGRectMake(90, 0, 90, 40)];
     btnRight.tag = 21;
-    [btnRight addTarget:self action:@selector(toucuUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [btnRight addTarget:self action:@selector(touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [navTitleView addSubview:navTitleImgV];
     [navTitleView addSubview:btnLeft];
     [navTitleView addSubview:btnRight];
@@ -128,7 +128,7 @@
 }
 
 #pragma mark - Action
-- (void)toucuUpInside:(UIButton *)sender {
+- (void)touchUpInside:(UIButton *)sender {
     NSInteger tag = sender.tag;
     switch (tag) {
         case 20:

@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "DiyAPageItem.h"
+#import "DiyShowDelgate.h"
+
+#define DIY_CELL_TAG 88
+#define DIYCELL_TOPPADDING 30
+#define DIYCELL_LEADPADDING 45
+#define DIYCELL_PADDING 12
+#define DIYCELL_BOTTOMPADDING 60
+
 @interface DiyOnePageCell : UICollectionViewCell
-- (void)initCellWithData:(DiyAPageItem *)pageData;
+
+@property (strong, nonatomic) DiyAPageItem *aPageItem;
+@property (strong, nonatomic) id<DiyShowDelgate> myDelegate;
+
 @end

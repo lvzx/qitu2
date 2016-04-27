@@ -11,20 +11,21 @@
 #import "DiyBottomBar.h"
 #import "DiyMainBottomBar.h"
 #import "DiyOnePageCell.h"
-#import "Masonry.h"
-#import "DiyTemplateScrV.h"
+#import "DiyCollectionView.h"
+#import "SelectImageVC.h"
 
-@interface DiyTemplateMainVC ()<SelectBgColorDelegate, UIScrollViewDelegate, DiyMainBottomBar, DiyShowDelgate>
+@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 {
     CGFloat cellW;
     CGFloat cellH;
     NSArray *bgColors;
     NSMutableArray *pagesArr;
-    DiyTemplateScrV *diyTemplateSrcV;
+
     DiyBottomBar *diyBottomBar;
     DiyMainBottomBar *diyMainBottomBar;
+    ENUM_DIY_TYPE bottomStyle;
 }
-//@property (strong, nonatomic) UICollectionView *myCollectionView;
+@property (strong, nonatomic) DiyCollectionView *myCollectionView;
 
 @end
 
@@ -33,20 +34,20 @@
     [super viewDidLoad];
     [self loadData];
     [self initNavAndView];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:@"CropOK" object:nil];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
-/*
-- (UICollectionView *)myCollectionView {
+
+- (DiyCollectionView *)myCollectionView {
     if (_myCollectionView != nil) {
         return _myCollectionView;
     }
 
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    _myCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50) collectionViewLayout:flowLayout];
+    _myCollectionView = [[DiyCollectionView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50) collectionViewLayout:flowLayout];
     _myCollectionView.dataSource = self;
     _myCollectionView.delegate = self;
     _myCollectionView.showsHorizontalScrollIndicator = NO;
@@ -54,24 +55,19 @@
     [_myCollectionView registerClass:[DiyOnePageCell class] forCellWithReuseIdentifier:@"DiyOnePageCell"];
     return _myCollectionView;
 }
-*/
+
 - (void)initNavAndView {
     [self setNavTitle:_myTitle];
     [self setNavBackBarSelector:@selector(navBack)];
     [self setNavRightBarBtnTitle:@"预览" selector:@selector(navPreview)];
     
-//    cellW = kScreenWidth-90*kScreenWidth/320.0;
-//    cellH = cellW*36/23.0;
+    cellW = kScreenWidth-90*kScreenWidth/320.0;
+    cellH = cellW*36/23.0;
     diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
     [self.view addSubview:diyMainBottomBar];
-    
-    diyTemplateSrcV = [[DiyTemplateScrV alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50)];
-    diyTemplateSrcV.myDelegate = self;
-    diyTemplateSrcV.pageMArr = pagesArr;
-    [diyTemplateSrcV reloadView];
-    [self.view addSubview:diyTemplateSrcV];
-    
+   
     diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 50)];
+    [diyBottomBar setActionHandler:self];
     [self.view addSubview:diyBottomBar];
     
 //    DiyBottomBar *diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, 105, kScreenWidth, 50)];
@@ -86,7 +82,7 @@
 //    [bottomView addSubview:diyBottomBar];
 //    [self.view addSubview:bottomView];
 //    self.view.backgroundColor = [UIColor whiteColor];
-    //[self.view addSubview:self.myCollectionView];
+    [self.view addSubview:self.myCollectionView];
 }
 
 - (void)navBack {
@@ -135,9 +131,53 @@
     }
     NSLog(@"***pagesArr:%@", pagesArr);
 }
+- (void)notificationHandler: (NSNotification *)notification {
+//    self.toCropImageView.image = notification.object;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - DiyMainBottomAction
 - (void)touchUpInsideOnBtn:(UIButton *)btn {
     NSLog(@"***DiyMainBottomAction:%@", @(btn.tag));
+}
+#pragma mark - DiyBottomBarDelegate
+- (void)didSelectDiyBottomBtn:(UIButton *)btn {
+    switch (btn.tag) {
+        case 40:
+        {
+            if (bottomStyle == ENUM_DIYIMAGE) {
+                //删除
+            }else if (bottomStyle == ENUM_DIYTEXT) {
+            
+            }
+        }
+            break;
+        case 41:
+        {
+            if (bottomStyle == ENUM_DIYIMAGE) {
+                //更换图片
+                SelectImageVC *nextView = [[SelectImageVC alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:nextView];
+                [self presentViewController:nav animated:YES completion:nil];
+                
+            }else if (bottomStyle == ENUM_DIYTEXT) {
+                
+            }
+
+        }
+            break;
+        case 42:
+        {
+            if (bottomStyle == ENUM_DIYIMAGE) {
+                
+            }else if (bottomStyle == ENUM_DIYTEXT) {
+                
+            }
+        }
+            break;
+        default:
+            break;
+    }
 }
 #pragma mark - Alpha changed
 - (void)changeAlphaValue {
@@ -152,15 +192,21 @@
 #pragma mark - DiyShowDelgate
 - (void)showImgBottomView {
     NSLog(@"showImgBottom View");
-    [diyBottomBar reloadDiyBottom:ENUM_DIYIMAGE];
+    bottomStyle = ENUM_DIYIMAGE;
+    [diyBottomBar reloadDiyBottom:bottomStyle];
     [UIView animateWithDuration:0.5 animations:^{
         diyBottomBar.frame = CGRectMake(0, kScreenHeight-50, kScreenWidth, 50);
     }];
 }
 - (void)showTextBottomView {
-
+    bottomStyle = ENUM_DIYTEXT;
+    [diyBottomBar reloadDiyBottom:bottomStyle];
+    [UIView animateWithDuration:0.5 animations:^{
+        diyBottomBar.frame = CGRectMake(0, kScreenHeight-50, kScreenWidth, 50);
+    }];
 }
-/*
+
+
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -175,8 +221,9 @@
     [cell sizeToFit];
     NSInteger row = indexPath.row;
     DiyAPageItem *OnePageItem = pagesArr[row];
-    cell.tag = row;
-    [cell initCellWithData:OnePageItem];
+    cell.tag = DIY_CELL_TAG+row;
+    cell.aPageItem = OnePageItem;
+
     return cell;
 }
 #pragma mark --UICollectionViewDelegateFlowLayout
@@ -193,5 +240,5 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     return CGSizeMake(33, cellH);
 }
- */
+
 @end
