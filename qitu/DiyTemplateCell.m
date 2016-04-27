@@ -105,13 +105,13 @@
             APageImgView *imgV = [[APageImgView alloc] init];
             
             imgV.frame = CGRectMake(imgItem.img_x*bili-CREATOR_IMG_PADDING, imgItem.img_y*bili-CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, imgItem.imgHeight*bili+2*CREATOR_IMG_PADDING);
-            UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-            [imgV addGestureRecognizer:panGesture];
-            UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
-            [imgV addGestureRecognizer:pinchGesture];
+//            UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+//            [imgV addGestureRecognizer:panGesture];
+//            UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+//            [imgV addGestureRecognizer:pinchGesture];
             //                              WithFrame:CGRectMake(imgItem.img_x*bili, imgItem.img_y*bili, imgItem.imgWidth*bili, imgItem.imgHeight*bili)];
             //imgV.borderSize = self.frame.size;
-            //        imgV.myDelegate = self.myDelegate;
+            imgV.myDelegate = self.myDelegate;
             [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
             
             //        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
@@ -148,10 +148,10 @@
         APageImgView *imgV = [[APageImgView alloc] init];
         
         imgV.frame = CGRectMake(imgItem.img_x*bili-CREATOR_IMG_PADDING, imgItem.img_y*bili-CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, imgItem.imgHeight*bili+2*CREATOR_IMG_PADDING);
-        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-        [imgV addGestureRecognizer:panGesture];
-        UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
-        [imgV addGestureRecognizer:pinchGesture];
+//        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+//        [imgV addGestureRecognizer:panGesture];
+//        UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+//        [imgV addGestureRecognizer:pinchGesture];
 //                              WithFrame:CGRectMake(imgItem.img_x*bili, imgItem.img_y*bili, imgItem.imgWidth*bili, imgItem.imgHeight*bili)];
         //imgV.borderSize = self.frame.size;
 //        imgV.myDelegate = self.myDelegate;
@@ -167,8 +167,8 @@
         NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
         textLbl.text = txtStr;
         textLbl.font = [UIFont systemFontOfSize:textItem.fontSize*bili];
-        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-        [textLbl addGestureRecognizer:panGesture];
+//        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+//        [textLbl addGestureRecognizer:panGesture];
 
         [self addSubview:textLbl];
         [textLblMArr addObject:textLbl];
@@ -185,7 +185,7 @@
     recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
     recognizer.scale = 1;
 }
-
+/*
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     UIView *targetView = touch.view;
@@ -222,7 +222,7 @@
 - (void)resetBottomView {
 
 }
-
+*/
 #pragma mark - 解决中文乱码火星文
 - (NSString *) analysisChineseMassyCodeStr:(NSString *)messyCodeStr{
     const char *c = [messyCodeStr cStringUsingEncoding:NSISOLatin1StringEncoding];

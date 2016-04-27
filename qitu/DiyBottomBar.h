@@ -10,7 +10,7 @@
 #import "DiyRelatedEnum.h"
 
 @protocol DiyBottomBarDelegate
-- (void)didSelectDiyBottomBtn:(UIButton *)btn;
+- (void)didSelectDiyBottomBtn:(UIButton *)btn;//btn.tag 由 40 开始自增
 @end
 
 @interface DiyBottomBar : UIView

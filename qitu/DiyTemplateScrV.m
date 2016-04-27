@@ -48,6 +48,9 @@
     [self updateOverView:imgcount];
     self.contentSize = CGSizeMake(DIYCELL_LEADPADDING*2+(cellW+DIYCELL_PADDING)*(imgcount+1)-DIYCELL_PADDING, self.frame.size.height);
 }
+- (void)reloadAPageWithIndex:(NSInteger)index {
+
+}
 - (void)updateOverView:(NSInteger)index {
     CGRect cellRect = CGRectMake(DIYCELL_LEADPADDING+(cellW+DIYCELL_PADDING)*index, DIYCELL_TOPPADDING, cellW, cellH);
     addPageV.frame = cellRect;

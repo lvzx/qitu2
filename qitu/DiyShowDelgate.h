@@ -12,6 +12,7 @@
 - (void)showImgBottomView;
 - (void)showTextBottomView;
 
+@optional
 - (void)addPage;
 - (void)addForm;
 @end

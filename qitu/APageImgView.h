@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "APageImgItem.h"
+#import "DiyShowDelgate.h"
 
 @interface APageImgView : UIView
 @property (nonatomic, strong) APageImgItem* imgItem;
 @property (nonatomic, assign) BOOL hasBorder;
 @property (nonatomic, strong) UIImage *image;
-//@property (assign, nonatomic) id<DiyShowDelgate> myDelegate;
+@property (assign, nonatomic) id<DiyShowDelgate> myDelegate;
 @end

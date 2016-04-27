@@ -16,4 +16,5 @@
 
 - (void)addAPageWithItem:(DiyAPageItem *)aPageItem;
 - (void)reloadView;
+- (void)reloadAPageWithIndex:(NSInteger)index;
 @end

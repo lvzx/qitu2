@@ -24,6 +24,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     DiyTemplateMainVC *testView = [[DiyTemplateMainVC alloc] init];
+    testView.myTitle = @"我的MAKA作品";
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:testView];
     self.window.rootViewController = nav;
 //    HomeViewController *mainView = [[HomeViewController alloc] init];

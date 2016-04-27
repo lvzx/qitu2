@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol DiyMainBottomBar
-- (void)touchUpInsideOnBtn:(UIButton *)btn;
+- (void)touchUpInsideOnBtn:(UIButton *)btn;//btn.tag 由 30 开始自增
 @end
 
 @interface DiyMainBottomBar : UIView
