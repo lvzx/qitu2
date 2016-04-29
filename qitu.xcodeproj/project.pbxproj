@@ -33,10 +33,10 @@
 		0D7325821CB3947F008899BA /* DiyMainBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7325811CB3947F008899BA /* DiyMainBottomBar.m */; };
 		0D7325881CB39C1C008899BA /* DiyOnePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7325871CB39C1C008899BA /* DiyOnePageCell.m */; };
 		0D73258A1CB3BEAA008899BA /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D7325891CB3BEAA008899BA /* data.json */; };
+		0D76A1B31CD0BB0D007C2823 /* PhotoTweakView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D76A1B21CD0BB0D007C2823 /* PhotoTweakView.m */; };
 		0D7D51F71CACD7D10085E138 /* TemplateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D51F61CACD7D10085E138 /* TemplateItem.m */; };
 		0D7D51FA1CACDA6F0085E138 /* DiyTemplateMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D51F91CACDA6F0085E138 /* DiyTemplateMainVC.m */; };
 		0D7D779F1CAE045500AF9E7D /* SelectBgColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D779E1CAE045500AF9E7D /* SelectBgColor.m */; };
-		0D7D77A51CAE5A4A00AF9E7D /* ColorRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D77A41CAE5A4A00AF9E7D /* ColorRect.m */; };
 		0D7D77A81CAE6F9D00AF9E7D /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D77A71CAE6F9D00AF9E7D /* UIColor+Hex.m */; };
 		0D84905A1CA8CA8700A28D94 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8490591CA8CA8700A28D94 /* StoreKit.framework */; };
 		0D8490761CA8E91100A28D94 /* QTSlideBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8490751CA8E91100A28D94 /* QTSlideBtnView.m */; };
@@ -158,6 +158,8 @@
 		0D7325861CB39C1C008899BA /* DiyOnePageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyOnePageCell.h; sourceTree = "<group>"; };
 		0D7325871CB39C1C008899BA /* DiyOnePageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyOnePageCell.m; sourceTree = "<group>"; };
 		0D7325891CB3BEAA008899BA /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		0D76A1B11CD0BB0D007C2823 /* PhotoTweakView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTweakView.h; sourceTree = "<group>"; };
+		0D76A1B21CD0BB0D007C2823 /* PhotoTweakView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTweakView.m; sourceTree = "<group>"; };
 		0D7D51F41CACBD310085E138 /* QTBuyMainDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTBuyMainDelegate.h; sourceTree = "<group>"; };
 		0D7D51F51CACD7D10085E138 /* TemplateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateItem.h; sourceTree = "<group>"; };
 		0D7D51F61CACD7D10085E138 /* TemplateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateItem.m; sourceTree = "<group>"; };
@@ -166,8 +168,6 @@
 		0D7D779D1CAE045500AF9E7D /* SelectBgColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBgColor.h; sourceTree = "<group>"; };
 		0D7D779E1CAE045500AF9E7D /* SelectBgColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBgColor.m; sourceTree = "<group>"; };
 		0D7D77A01CAE049800AF9E7D /* CreatorComponentsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatorComponentsDelegate.h; sourceTree = "<group>"; };
-		0D7D77A31CAE5A4A00AF9E7D /* ColorRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorRect.h; sourceTree = "<group>"; };
-		0D7D77A41CAE5A4A00AF9E7D /* ColorRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorRect.m; sourceTree = "<group>"; };
 		0D7D77A61CAE6F9D00AF9E7D /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		0D7D77A71CAE6F9D00AF9E7D /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		0D8490591CA8CA8700A28D94 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -556,13 +556,13 @@
 			children = (
 				0D7D779D1CAE045500AF9E7D /* SelectBgColor.h */,
 				0D7D779E1CAE045500AF9E7D /* SelectBgColor.m */,
-				0D7D77A31CAE5A4A00AF9E7D /* ColorRect.h */,
-				0D7D77A41CAE5A4A00AF9E7D /* ColorRect.m */,
 				0D7325711CB33F64008899BA /* DiyBottomBar.h */,
 				0D7325721CB33F64008899BA /* DiyBottomBar.m */,
 				0D7325801CB3947F008899BA /* DiyMainBottomBar.h */,
 				0D7325811CB3947F008899BA /* DiyMainBottomBar.m */,
 				0D7D77A01CAE049800AF9E7D /* CreatorComponentsDelegate.h */,
+				0D76A1B11CD0BB0D007C2823 /* PhotoTweakView.h */,
+				0D76A1B21CD0BB0D007C2823 /* PhotoTweakView.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -965,6 +965,7 @@
 				0D7325731CB33F64008899BA /* DiyBottomBar.m in Sources */,
 				0D8764FF1CA3A3410078E871 /* NSData+SSToolkitAdditions.m in Sources */,
 				0DCE80AC1CB5F2FD0003ADB1 /* DiyAPageItem.m in Sources */,
+				0D76A1B31CD0BB0D007C2823 /* PhotoTweakView.m in Sources */,
 				0D7D51FA1CACDA6F0085E138 /* DiyTemplateMainVC.m in Sources */,
 				0D630BB81C9A96600063AC7E /* BaseViewController.m in Sources */,
 				0D84907C1CA9136100A28D94 /* QTBigScrollView.m in Sources */,
@@ -996,7 +997,6 @@
 				0D73257C1CB34A68008899BA /* BtnContentVSort.m in Sources */,
 				0D84908B1CA92B6800A28D94 /* CreatorCollectionCell.m in Sources */,
 				0D630BB31C9A5E340063AC7E /* QTAPIClient.m in Sources */,
-				0D7D77A51CAE5A4A00AF9E7D /* ColorRect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
