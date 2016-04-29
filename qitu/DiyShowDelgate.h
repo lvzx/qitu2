@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @protocol DiyShowDelgate <NSObject>
-- (void)showImgBottomView;
-- (void)showTextBottomView;
+- (void)showImgBottomView:(UIView *)element;
+- (void)showTextBottomView:(UIView *)element;
 
 @optional
 - (void)addPage;
