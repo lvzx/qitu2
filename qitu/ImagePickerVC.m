@@ -148,7 +148,6 @@ static NSString * const reuseIdentifier = @"ImageAssetCell";
     [fetchResult enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self.assetOrderedSet addObject:obj];
     }];
-    NSLog(@"$$$$%@**%@",_assets, _assetOrderedSet);
 }
 #pragma mark <UICollectionViewDataSource>
 
@@ -190,7 +189,10 @@ static NSString * const reuseIdentifier = @"ImageAssetCell";
     
     CropImageViewController *nextView = [[CropImageViewController alloc] initWithNibName:@"CropImageViewController" bundle:nil];
     nextView.orginalImage = self.selectImage;
+    nextView.imgSize = self.imgSize;
     [self.navigationController pushViewController:nextView animated:YES];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"CropOK" object:self.selectImage];
+//     [self dismissViewControllerAnimated:YES completion:nil];
     /*
     if (_myDelegate && [_myDelegate respondsToSelector:@selector(imagePickerController:didPickImage:)]) {
         [_myDelegate imagePickerController:self didPickImage:self.selectImage];

@@ -107,6 +107,11 @@ typedef enum {
     [self setNeedsDisplay];
 }
 
+- (void)setImage:(UIImage *)image {
+    _image = image;
+    [self setNeedsDisplay];
+}
+
 #pragma mark - 视图触摸事件处理
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     self.alpha = 1.0;
@@ -115,8 +120,8 @@ typedef enum {
     orginalPoint = curPoint;
     self.hasBorder = YES;
     
-    if (_myDelegate && [_myDelegate respondsToSelector:@selector(showImgBottomView)]) {
-        [_myDelegate showImgBottomView];
+    if (_myDelegate && [_myDelegate respondsToSelector:@selector(showImgBottomView:)]) {
+        [_myDelegate showImgBottomView:self];
     }
     CGPoint p0 = CGPointMake(pLeft, pTop);//左上角坐标
     CGPoint p1 = CGPointMake(pLeft, pBottom);//左下角坐标

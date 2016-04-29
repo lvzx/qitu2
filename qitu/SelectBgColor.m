@@ -7,9 +7,29 @@
 //
 
 #import "SelectBgColor.h"
-#import "ColorRect.h"
 #import "UIColor+Hex.h"
 #import "Masonry.h"
+
+@protocol ColorRect
+@property (strong, nonatomic) UIColor *color;
+@end
+
+@interface ColorRect : UIView<ColorRect>
+
+@end
+
+@implementation ColorRect
+@synthesize color;
+
+- (void)drawRect:(CGRect)rect {
+    CGRect colorRect = CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect));
+    UIBezierPath *rectanglePath = [UIBezierPath bezierPathWithRect:colorRect];
+    [rectanglePath closePath];
+    [self.color setFill];
+    [rectanglePath fill];
+}
+@end
+
 
 #define SELECTBG_HEIGHT 105
 #define COLORBTN_WIDTH 35

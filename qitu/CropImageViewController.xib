@@ -14,8 +14,92 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Uv-af-dmn" userLabel="BottomView">
+                    <rect key="frame" x="0.0" y="597" width="375" height="70"/>
+                    <subviews>
+                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5Q-uP-I5K" userLabel="Button0">
+                            <rect key="frame" x="20" y="21" width="51" height="28"/>
+                            <state key="normal" image="maka_cut_normalwhite"/>
+                            <state key="selected" image="maka_cut_normalgreen"/>
+                            <connections>
+                                <action selector="buttonTouch:" destination="-1" eventType="touchUpInside" id="F7F-sh-lll"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQ2-eH-ocZ" userLabel="Button2">
+                            <rect key="frame" x="162" y="18" width="51" height="34"/>
+                            <state key="normal" image="maka_cut_2white"/>
+                            <state key="selected" image="maka_cut_2green"/>
+                            <connections>
+                                <action selector="buttonTouch:" destination="-1" eventType="touchUpInside" id="GVl-FN-2Xf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1c-9x-yct" userLabel="Button3">
+                            <rect key="frame" x="233" y="23" width="51" height="25"/>
+                            <state key="normal" image="maka_cut_3white"/>
+                            <state key="selected" image="maka_cut_3green"/>
+                            <connections>
+                                <action selector="buttonTouch:" destination="-1" eventType="touchUpInside" id="Kl7-aR-rre"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiv-G2-dqJ" userLabel="Button4">
+                            <rect key="frame" x="304" y="26" width="51" height="22"/>
+                            <state key="normal" image="maka_cut_4white"/>
+                            <state key="selected" image="maka_cut_4green"/>
+                            <connections>
+                                <action selector="buttonTouch:" destination="-1" eventType="touchUpInside" id="m8n-uR-hyw"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORw-Gt-QBN" userLabel="Button1">
+                            <rect key="frame" x="91" y="22" width="51" height="26"/>
+                            <state key="normal" image="maka_cut_1white"/>
+                            <state key="selected" image="maka_cut_1green"/>
+                            <state key="highlighted" image="maka_cut_1green"/>
+                            <connections>
+                                <action selector="buttonTouch:" destination="-1" eventType="touchUpInside" id="Hms-4C-EtU"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="1Qo-Pg-Jth"/>
+                        <constraint firstItem="ORw-Gt-QBN" firstAttribute="leading" secondItem="r5Q-uP-I5K" secondAttribute="trailing" constant="20" id="3om-ha-PEm"/>
+                        <constraint firstItem="a1c-9x-yct" firstAttribute="width" secondItem="ORw-Gt-QBN" secondAttribute="width" id="5fC-qZ-VAE"/>
+                        <constraint firstItem="a1c-9x-yct" firstAttribute="leading" secondItem="hQ2-eH-ocZ" secondAttribute="trailing" constant="20" id="CYj-RO-0oa"/>
+                        <constraint firstItem="a1c-9x-yct" firstAttribute="baseline" secondItem="ORw-Gt-QBN" secondAttribute="baseline" id="Cvd-d2-W47"/>
+                        <constraint firstItem="yiv-G2-dqJ" firstAttribute="width" secondItem="ORw-Gt-QBN" secondAttribute="width" id="K2I-tr-uGJ"/>
+                        <constraint firstItem="r5Q-uP-I5K" firstAttribute="centerY" secondItem="9Uv-af-dmn" secondAttribute="centerY" id="NZ8-pi-iD1"/>
+                        <constraint firstItem="hQ2-eH-ocZ" firstAttribute="leading" secondItem="ORw-Gt-QBN" secondAttribute="trailing" constant="20" id="PFT-ia-t2G"/>
+                        <constraint firstItem="yiv-G2-dqJ" firstAttribute="baseline" secondItem="ORw-Gt-QBN" secondAttribute="baseline" id="XHl-Nz-dPu"/>
+                        <constraint firstAttribute="trailing" secondItem="yiv-G2-dqJ" secondAttribute="trailing" constant="20" id="ez3-S3-VxO"/>
+                        <constraint firstItem="yiv-G2-dqJ" firstAttribute="leading" secondItem="a1c-9x-yct" secondAttribute="trailing" constant="20" id="jNY-9c-5Iv"/>
+                        <constraint firstItem="ORw-Gt-QBN" firstAttribute="width" secondItem="r5Q-uP-I5K" secondAttribute="width" id="kqg-cV-u0s"/>
+                        <constraint firstItem="ORw-Gt-QBN" firstAttribute="centerY" secondItem="9Uv-af-dmn" secondAttribute="centerY" id="pEq-Ix-mDj"/>
+                        <constraint firstItem="hQ2-eH-ocZ" firstAttribute="width" secondItem="ORw-Gt-QBN" secondAttribute="width" id="wR8-Rw-9ek"/>
+                        <constraint firstItem="r5Q-uP-I5K" firstAttribute="leading" secondItem="9Uv-af-dmn" secondAttribute="leading" constant="20" id="yPG-gS-06V"/>
+                        <constraint firstItem="hQ2-eH-ocZ" firstAttribute="centerY" secondItem="9Uv-af-dmn" secondAttribute="centerY" id="yU6-fY-VWo"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="9Uv-af-dmn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BO8-hb-FTK"/>
+                <constraint firstAttribute="trailing" secondItem="9Uv-af-dmn" secondAttribute="trailing" id="kxS-vg-mR8"/>
+                <constraint firstAttribute="bottom" secondItem="9Uv-af-dmn" secondAttribute="bottom" id="wef-sw-SFe"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>
+    <resources>
+        <image name="maka_cut_1green" width="26" height="26"/>
+        <image name="maka_cut_1white" width="26" height="26"/>
+        <image name="maka_cut_2green" width="23" height="34"/>
+        <image name="maka_cut_2white" width="23" height="34"/>
+        <image name="maka_cut_3green" width="33" height="25"/>
+        <image name="maka_cut_3white" width="33" height="25"/>
+        <image name="maka_cut_4green" width="38" height="22"/>
+        <image name="maka_cut_4white" width="38" height="22"/>
+        <image name="maka_cut_normalgreen" width="29" height="28"/>
+        <image name="maka_cut_normalwhite" width="29" height="28"/>
+    </resources>
 </document>

@@ -12,7 +12,7 @@
 #import "AssetTableCell.h"
 #import "ImagePickerVC.h"
 
-@interface SelectImageVC ()<UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource, PHPhotoLibraryChangeObserver>
+@interface SelectImageVC ()<UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 {
     UIView *lineView;
 }
@@ -108,12 +108,9 @@
     self.fetchResults = @[smartAlbums, userAlbums];
     
     [self updateAssetCollections];
-    
-    [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
-    
 }
-#pragma mark - Fetching Asset Collections
 
+#pragma mark - Fetching Asset Collections
 - (void)updateAssetCollections
 {
     // Filter albums
@@ -160,50 +157,6 @@
     
     self.assetCollections = assetCollections;
     [_rightTableView reloadData];
-}
-- (UIImage *)placeholderImageWithSize:(CGSize)size
-{
-    UIGraphicsBeginImageContext(size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    UIColor *backgroundColor = [UIColor colorWithRed:(239.0 / 255.0) green:(239.0 / 255.0) blue:(244.0 / 255.0) alpha:1.0];
-    UIColor *iconColor = [UIColor colorWithRed:(179.0 / 255.0) green:(179.0 / 255.0) blue:(182.0 / 255.0) alpha:1.0];
-    
-    // Background
-    CGContextSetFillColorWithColor(context, [backgroundColor CGColor]);
-    CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height));
-    
-    // Icon (back)
-    CGRect backIconRect = CGRectMake(size.width * (16.0 / 68.0),
-                                     size.height * (20.0 / 68.0),
-                                     size.width * (32.0 / 68.0),
-                                     size.height * (24.0 / 68.0));
-    
-    CGContextSetFillColorWithColor(context, [iconColor CGColor]);
-    CGContextFillRect(context, backIconRect);
-    
-    CGContextSetFillColorWithColor(context, [backgroundColor CGColor]);
-    CGContextFillRect(context, CGRectInset(backIconRect, 1.0, 1.0));
-    
-    // Icon (front)
-    CGRect frontIconRect = CGRectMake(size.width * (20.0 / 68.0),
-                                      size.height * (24.0 / 68.0),
-                                      size.width * (32.0 / 68.0),
-                                      size.height * (24.0 / 68.0));
-    
-    CGContextSetFillColorWithColor(context, [backgroundColor CGColor]);
-    CGContextFillRect(context, CGRectInset(frontIconRect, -1.0, -1.0));
-    
-    CGContextSetFillColorWithColor(context, [iconColor CGColor]);
-    CGContextFillRect(context, frontIconRect);
-    
-    CGContextSetFillColorWithColor(context, [backgroundColor CGColor]);
-    CGContextFillRect(context, CGRectInset(frontIconRect, 1.0, 1.0));
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
 #pragma mark - Action
@@ -257,6 +210,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ImagePickerVC *nextVC = [[ImagePickerVC alloc] init];
+    nextVC.imgSize = self.imgSize;
     nextVC.assets = self.assetCollections[indexPath.row];
     [self.navigationController pushViewController:nextVC animated:YES];
 }
@@ -270,10 +224,4 @@
     AssetCell *cell = (AssetCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"AssetCell" forIndexPath:indexPath];
     return cell;
 }
-- (void)dealloc
-{
-    // Deregister observer
-    [[PHPhotoLibrary sharedPhotoLibrary] unregisterChangeObserver:self];
-}
-
 @end

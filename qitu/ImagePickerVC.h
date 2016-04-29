@@ -19,6 +19,7 @@
 */
 @interface ImagePickerVC : UICollectionViewController
 @property (nonatomic, strong) PHAssetCollection *assets;
+@property (nonatomic, assign) CGSize imgSize;
 //@property (weak, nonatomic) id<ImagePickerVCDelegate> myDelegate;
 @end
 

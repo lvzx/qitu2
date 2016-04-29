@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APageImgView.h"
+#import "APageTextLabel.h"
 #import "DiyAPageItem.h"
 #import "DiyShowDelgate.h"
 

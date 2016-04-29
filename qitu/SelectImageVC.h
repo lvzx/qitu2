@@ -10,5 +10,5 @@
 
 
 @interface SelectImageVC : BaseViewController
-
+@property (nonatomic, assign) CGSize imgSize;
 @end

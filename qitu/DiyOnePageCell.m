@@ -11,8 +11,6 @@
 #import "UIImageView+WebCache.h"
 #import "APageImageView.h"
 #import "BorderView.h"
-#import "APageImgView.h"
-#import "APageTextLabel.h"
 #import "TextBorderView.h"
 #import "DiyRelatedEnum.h"
 

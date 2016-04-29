@@ -26,7 +26,7 @@
     ENUM_DIY_TYPE bottomStyle;
 }
 @property (strong, nonatomic) DiyCollectionView *myCollectionView;
-
+@property (strong, nonatomic) UIView *selectedElement;//图、文
 @end
 
 @implementation DiyTemplateMainVC
@@ -39,7 +39,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
-
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (DiyCollectionView *)myCollectionView {
     if (_myCollectionView != nil) {
         return _myCollectionView;
@@ -86,7 +88,7 @@
 }
 
 - (void)navBack {
-
+    
 }
 - (void)navPreview {
 
@@ -133,7 +135,11 @@
 }
 - (void)notificationHandler: (NSNotification *)notification {
 //    self.toCropImageView.image = notification.object;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"&&&%@", notification.object);
+    if ([_selectedElement isKindOfClass:[APageImgView class]]) {
+        APageImgView *imgView = (APageImgView *)_selectedElement;
+        imgView.image = notification.object;
+    }
 }
 
 #pragma mark - DiyMainBottomAction
@@ -157,6 +163,7 @@
             if (bottomStyle == ENUM_DIYIMAGE) {
                 //更换图片
                 SelectImageVC *nextView = [[SelectImageVC alloc] init];
+                nextView.imgSize = _selectedElement.frame.size;
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:nextView];
                 [self presentViewController:nav animated:YES completion:nil];
                 
@@ -190,15 +197,20 @@
 }
 
 #pragma mark - DiyShowDelgate
-- (void)showImgBottomView {
+- (void)showImgBottomView:(UIView *)element {
     NSLog(@"showImgBottom View");
+    if (_selectedElement != nil) {
+        _selectedElement = nil;
+    }
+    _selectedElement = element;
+    
     bottomStyle = ENUM_DIYIMAGE;
     [diyBottomBar reloadDiyBottom:bottomStyle];
     [UIView animateWithDuration:0.5 animations:^{
         diyBottomBar.frame = CGRectMake(0, kScreenHeight-50, kScreenWidth, 50);
     }];
 }
-- (void)showTextBottomView {
+- (void)showTextBottomView:(UIView *)element {
     bottomStyle = ENUM_DIYTEXT;
     [diyBottomBar reloadDiyBottom:bottomStyle];
     [UIView animateWithDuration:0.5 animations:^{
@@ -218,9 +230,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identify = @"DiyOnePageCell";
     DiyOnePageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-    [cell sizeToFit];
     NSInteger row = indexPath.row;
     DiyAPageItem *OnePageItem = pagesArr[row];
+    cell.myDelegate = self;
     cell.tag = DIY_CELL_TAG+row;
     cell.aPageItem = OnePageItem;
 

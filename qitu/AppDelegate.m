@@ -11,7 +11,9 @@
 #import "HomeViewController.h"
 
 #import "DiyTemplateMainVC.h"
-@interface AppDelegate ()
+#import "CropImageViewController.h"
+
+@interface AppDelegate ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, CropImageViewControllerDelegate>
 
 @end
 
@@ -23,16 +25,38 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
     DiyTemplateMainVC *testView = [[DiyTemplateMainVC alloc] init];
     testView.myTitle = @"我的MAKA作品";
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:testView];
     self.window.rootViewController = nav;
 //    HomeViewController *mainView = [[HomeViewController alloc] init];
-//    self.window.rootViewController = mainView;
+//    self.window.rootViewController = mainView;*/
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    picker.delegate = self;
+//    picker.allowsEditing = NO;
+//    picker.navigationBarHidden = YES;
+//    self.window.rootViewController = picker;
     [self changeNavigationBarStyle];
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    CropImageViewController *nextView = [[CropImageViewController alloc] initWithImage:image];
+    nextView.delegate = self;
+    nextView.autoSaveToLibray = YES;
+    [picker pushViewController:nextView animated:YES];
+}
+- (void)cropImageViewController:(CropImageViewController *)ctrl didFinishWithCropedImage:(UIImage *)image {
+    [ctrl.navigationController popViewControllerAnimated:YES];
+}
+- (void)cropImageViewControllerDidCancle:(CropImageViewController *)ctrl {
+    [ctrl.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
