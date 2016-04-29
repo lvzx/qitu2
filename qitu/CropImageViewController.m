@@ -9,10 +9,23 @@
 #import "CropImageViewController.h"
 #import "PhotoTweakView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "UIImage+Handler.h"
 
 @interface CropImageViewController ()
+{
+    NSArray *proportionBtnArr;
+    NSArray *proportionArr;//存储不同缩放比例
+    CGFloat currentProportion;//当前选择的缩放比例
+}
 @property (nonatomic, strong) PhotoTweakView *photoView;
 @property (nonatomic, strong) UIButton *preSelectedBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn0;
+@property (weak, nonatomic) IBOutlet UIButton *btn1;
+@property (weak, nonatomic) IBOutlet UIButton *btn2;
+@property (weak, nonatomic) IBOutlet UIButton *btn3;
+@property (weak, nonatomic) IBOutlet UIButton *btn4;
+
 @end
 
 @implementation CropImageViewController
@@ -32,7 +45,21 @@
     [self setUpNav];
     [self setupSubviews];
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    currentProportion = _imgSize.width/_imgSize.height;
+    NSInteger btnIndex = 0;
+    for (NSInteger i = 0; i < [proportionArr count]; i++) {
+        CGFloat temp = [proportionArr[i] floatValue];
+        if (temp == currentProportion) {
+            btnIndex = i;
+            break;
+        }
+    }
+    [self buttonTouch:proportionBtnArr[btnIndex]];
 
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -49,6 +76,8 @@
 }
 
 - (void)setupSubviews {
+    proportionArr = @[@0, @1, @(2.0/3.0), @(4.0/3.0), @(16.0/9.0)];
+    proportionBtnArr = @[_btn0, _btn1, _btn2, _btn3, _btn4];
     CGRect photoRect = CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-70);
     self.photoView = [[PhotoTweakView alloc] initWithFrame:photoRect image:_orginalImage];
     self.photoView.normalCropSize = _imgSize;
@@ -61,6 +90,9 @@
 }
 
 - (void)doneCrop {
+    CGRect cropRect = [self.photoView cropAreaInImage];
+    UIImage *cropImage = [self.orginalImage imageAtRect:cropRect];
+    /*
     CGAffineTransform transform = CGAffineTransformIdentity;
     
     // translate
@@ -94,8 +126,12 @@
             }
         }];
     }
+    */
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"CropOK" object:cropImage];
+    }];
     
-    [self.delegate cropImageViewController:self didFinishWithCropedImage:image];
+    //[self.delegate cropImageViewController:self didFinishWithCropedImage:image];
 
 }
 - (CGImageRef)newScaledImage:(CGImageRef)source withOrientation:(UIImageOrientation)orientation toSize:(CGSize)size withQuality:(CGInterpolationQuality)quality
@@ -200,11 +236,11 @@
         _preSelectedBtn.selected = NO;
         _preSelectedBtn = sender;
     }
-    NSLog(@"&&&UIButton:%@", sender);
     sender.selected = !sender.selected;
     
     NSInteger index = sender.tag - 10;
-    
+    currentProportion = [proportionArr[index] floatValue];
+    [self.photoView updateCropProportion:currentProportion];
 }
 
 @end

@@ -138,6 +138,7 @@ static const CGFloat kCropViewBorderWidth = 1.0f;
 
 @property (nonatomic, assign) BOOL manualZoomed;
 
+@property (nonatomic, assign) CGRect defaultCropRect;
 //masks
 @property (nonatomic, strong) UIView *cropMaskView;
 
@@ -156,36 +157,7 @@ static const CGFloat kCropViewBorderWidth = 1.0f;
         self.frame = frame;
         
         _image = image;
-        /*
-        // scale the image
-        _maximumCanvasSize = CGSizeMake(kMaximumCanvasWidthRatio * self.frame.size.width,
-                                        kMaximumCanvasHeightRatio * self.frame.size.height);
-        
-        CGFloat scaleX = image.size.width / self.maximumCanvasSize.width;
-        CGFloat scaleY = image.size.height / self.maximumCanvasSize.height;
-        CGFloat scale = MAX(scaleX, scaleY);
-        CGRect bounds = CGRectMake(0, 0, image.size.width / scale, image.size.height / scale);
-        _originalSize = bounds.size;
-        
-        _centerY = CGRectGetHeight(self.frame)/2;
-        */
-//        CGFloat boundsW, boundsH;
-//        CGFloat imgWHScale = image.size.width/image.size.height;
-//        if (imgWHScale > 1.0) {
-//            boundsH = kScreenWidth*0.75;
-//            boundsW = imgWHScale*boundsH;
-//        }else {
-//            boundsW = kScreenWidth-kLeftPadding*2;
-//            boundsH = boundsW/imgWHScale;
-//        }
-//        CGRect bounds = CGRectMake(0, 0, boundsW, boundsH);
-//        
-//        CGFloat cropW = kScreenWidth-kLeftPadding*2;
-//        CGFloat cropY = (self.bounds.size.height-boundsH)/2;
-//        CGRect cropRect = CGRectMake(kLeftPadding, cropY, cropW, boundsH);
-//        
-//        _originalSize = bounds.size;
-        
+
         _scrollView = [[PhotoScrollView alloc] init];
         _scrollView.bounces = YES;
         _scrollView.layer.anchorPoint = CGPointMake(0.5, 0.5);
@@ -197,8 +169,7 @@ static const CGFloat kCropViewBorderWidth = 1.0f;
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.clipsToBounds = NO;
-        //_scrollView.contentSize = bounds.size;
-        //[_scrollView setContentOffsetX:(boundsW-cropW)/2];
+       
         [self addSubview:_scrollView];
 #ifdef kInstruction
         _scrollView.layer.borderColor = [UIColor redColor].CGColor;
@@ -208,7 +179,6 @@ static const CGFloat kCropViewBorderWidth = 1.0f;
 #endif
         
         _photoContentView = [[PhotoContentView alloc] initWithImage:image];
-        //_photoContentView.frame = bounds;
         _photoContentView.backgroundColor = [UIColor clearColor];
         _photoContentView.userInteractionEnabled = YES;
         _scrollView.photoContentView = self.photoContentView;
@@ -272,6 +242,7 @@ static const CGFloat kCropViewBorderWidth = 1.0f;
     CGRect cropRect = CGRectMake(cropX, cropY, cropW, cropH);
     
     _originalSize = bounds.size;
+    self.defaultCropRect = cropRect;
     
     self.scrollView.frame = cropRect;
     self.scrollView.contentSize = bounds.size;
@@ -290,6 +261,30 @@ static const CGFloat kCropViewBorderWidth = 1.0f;
     NSLog(@"$$$bounds:%@, cropRect:%@", NSStringFromCGRect(bounds), NSStringFromCGRect(cropRect));
 }
 
+//cropView 比例：1:1, 2:3, 4:3, 16:9
+- (void)updateCropProportion:(CGFloat)curProportion {
+    CGFloat cropW, cropH;
+    if (curProportion == 0) {
+        self.cropView.frame = _defaultCropRect;
+    }
+    else if (curProportion > 1) {
+        cropW = CGRectGetWidth(_photoContentView.frame);
+        cropH = MIN(cropW/curProportion, CGRectGetHeight(_photoContentView.frame));
+        self.cropView.frame = CGRectMake(0, 0, cropW, cropH);
+    }else if (curProportion == 1) {
+        cropW = MIN(CGRectGetWidth(_photoContentView.frame), CGRectGetHeight(_photoContentView.frame));
+        self.cropView.frame = CGRectMake(0, 0, cropW, cropW);
+    }else {
+        cropH = CGRectGetHeight(_photoContentView.frame);
+        cropW = MIN(cropH*curProportion, _maximumCanvasSize.width);
+        cropH = cropW/curProportion;
+        self.cropView.frame = CGRectMake(0, 0, cropW, cropH);
+    }
+    self.cropView.center = self.scrollView.center;
+    [_cropView resetCropCorner:_cropView.frame];
+    [self resetCropMask];
+}
+
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.photoContentView;
@@ -298,6 +293,21 @@ static const CGFloat kCropViewBorderWidth = 1.0f;
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
 {
     self.manualZoomed = YES;
+}
+
+/**
+ *由于image在imageview中是缩放过的，这里要根据裁剪区域在imageview的尺寸换算
+ *出对应的裁剪区域在实际image的尺寸
+ */
+- (CGRect)cropAreaInImage {
+    CGFloat imageScale = _image.size.width/CGRectGetWidth(_photoContentView.frame);
+    CGRect cropAreaInImageView = [self.cropMaskView convertRect:self.cropView.frame toView:self.photoContentView];
+    CGRect cropAreaInImage;
+    cropAreaInImage.origin.x = cropAreaInImageView.origin.x * imageScale;
+    cropAreaInImage.origin.y = cropAreaInImageView.origin.y * imageScale;
+    cropAreaInImage.size.width = cropAreaInImageView.size.width * imageScale;
+    cropAreaInImage.size.height = cropAreaInImageView.size.height * imageScale;
+    return cropAreaInImage;
 }
 
 /*

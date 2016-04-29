@@ -15,4 +15,6 @@
 @property (nonatomic, assign) BOOL hasBorder;
 @property (nonatomic, strong) UIImage *image;
 @property (assign, nonatomic) id<DiyShowDelgate> myDelegate;
+
+- (void)updateImage:(UIImage *)image withSize:(CGSize)size;
 @end

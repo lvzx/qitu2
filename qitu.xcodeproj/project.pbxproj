@@ -14,6 +14,7 @@
 		0D0B8C6E1CCF1CC900DB61D0 /* AssetTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D0B8C6C1CCF1CC900DB61D0 /* AssetTableCell.xib */; };
 		0D0B8C711CCF3C2D00DB61D0 /* ImagePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0B8C701CCF3C2D00DB61D0 /* ImagePickerVC.m */; };
 		0D0B8C741CCF6D7C00DB61D0 /* DiyCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0B8C731CCF6D7C00DB61D0 /* DiyCollectionView.m */; };
+		0D1C55F41CD3645D00165E81 /* UIImage+Handler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1C55F31CD3645D00165E81 /* UIImage+Handler.m */; };
 		0D2912DA1CC47BD7005EF62A /* APageTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2912D91CC47BD7005EF62A /* APageTextLabel.m */; };
 		0D2912DD1CC49599005EF62A /* BorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2912DC1CC49599005EF62A /* BorderView.m */; };
 		0D3C0F941CA3E2020063F5CB /* PersonalInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3C0F931CA3E2020063F5CB /* PersonalInfoVC.m */; };
@@ -117,6 +118,8 @@
 		0D0B8C701CCF3C2D00DB61D0 /* ImagePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerVC.m; sourceTree = "<group>"; };
 		0D0B8C721CCF6D7C00DB61D0 /* DiyCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyCollectionView.h; sourceTree = "<group>"; };
 		0D0B8C731CCF6D7C00DB61D0 /* DiyCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyCollectionView.m; sourceTree = "<group>"; };
+		0D1C55F21CD3645D00165E81 /* UIImage+Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Handler.h"; sourceTree = "<group>"; };
+		0D1C55F31CD3645D00165E81 /* UIImage+Handler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Handler.m"; sourceTree = "<group>"; };
 		0D2912D81CC47BD7005EF62A /* APageTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APageTextLabel.h; sourceTree = "<group>"; };
 		0D2912D91CC47BD7005EF62A /* APageTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageTextLabel.m; sourceTree = "<group>"; };
 		0D2912DB1CC49599005EF62A /* BorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderView.h; sourceTree = "<group>"; };
@@ -563,6 +566,8 @@
 				0D7D77A01CAE049800AF9E7D /* CreatorComponentsDelegate.h */,
 				0D76A1B11CD0BB0D007C2823 /* PhotoTweakView.h */,
 				0D76A1B21CD0BB0D007C2823 /* PhotoTweakView.m */,
+				0D1C55F21CD3645D00165E81 /* UIImage+Handler.h */,
+				0D1C55F31CD3645D00165E81 /* UIImage+Handler.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -991,6 +996,7 @@
 				0D0B8C681CCF171B00DB61D0 /* AssetCell.m in Sources */,
 				0DAED5B81CAA14E600D0BEA5 /* CategoryItem.m in Sources */,
 				0D0B8C6D1CCF1CC900DB61D0 /* AssetTableCell.m in Sources */,
+				0D1C55F41CD3645D00165E81 /* UIImage+Handler.m in Sources */,
 				0D8899FD1CA4D0E1003F6B29 /* ArrayDataSource.m in Sources */,
 				0DAED5BB1CAA247100D0BEA5 /* StoreTemplateCell.m in Sources */,
 				0D0B8C741CCF6D7C00DB61D0 /* DiyCollectionView.m in Sources */,

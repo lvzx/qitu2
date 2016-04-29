@@ -136,9 +136,10 @@
 - (void)notificationHandler: (NSNotification *)notification {
 //    self.toCropImageView.image = notification.object;
     NSLog(@"&&&%@", notification.object);
+    UIImage *image = notification.object;
     if ([_selectedElement isKindOfClass:[APageImgView class]]) {
         APageImgView *imgView = (APageImgView *)_selectedElement;
-        imgView.image = notification.object;
+        [imgView updateImage:image withSize:CGSizeMake(image.size.width, image.size.height)];
     }
 }
 

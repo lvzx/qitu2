@@ -7,6 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CropImageViewController">
             <connections>
+                <outlet property="btn0" destination="r5Q-uP-I5K" id="bP0-BT-rkw"/>
+                <outlet property="btn1" destination="ORw-Gt-QBN" id="V8X-Qr-3vx"/>
+                <outlet property="btn2" destination="hQ2-eH-ocZ" id="Z2o-Hc-CkD"/>
+                <outlet property="btn3" destination="a1c-9x-yct" id="dS1-MA-z9v"/>
+                <outlet property="btn4" destination="yiv-G2-dqJ" id="jVh-pJ-e5f"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

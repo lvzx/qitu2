@@ -13,7 +13,8 @@
 @property (nonatomic, assign) NSInteger imgHeight;
 @property (nonatomic, assign) NSInteger img_x;
 @property (nonatomic, assign) NSInteger img_y;
-@property (nonatomic, strong) NSString *imgStr;
+@property (nonatomic, strong) NSString *imgStr;//网络图片地址
+@property (nonatomic, strong) NSString *imgLocalStr;//本地图片地址
 @property (nonatomic,strong) NSString *bgColor;
 @property (nonatomic, strong) NSString *type;
 @end
