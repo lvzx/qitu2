@@ -15,7 +15,7 @@
 #import "DiyCollectionView.h"
 #import "SelectImageVC.h"
 
-@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate>
+@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate>
 {
     CGFloat cellW;
     CGFloat cellH;
@@ -162,6 +162,10 @@
         {
             if (bottomStyle == ENUM_DIYIMAGE) {
                 //删除
+                UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"确定删除图片？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:nil];
+                actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+                [actionSheet showInView:self.view];
+                
             }else if (bottomStyle == ENUM_DIYTEXT) {
             
             }
@@ -208,12 +212,19 @@
 #pragma mark - DiyShowDelgate
 - (void)showImgBottomView:(UIView *)element {
     NSLog(@"showImgBottom View");
-    [self clearOverBorders];
+    
     if (_selectedElement != nil) {
+        _preSelectedElement = _selectedElement;
         _selectedElement = nil;
     }
-    _preSelectedElement = element;
+    
     _selectedElement = element;
+    
+    if (_preSelectedElement && _preSelectedElement == _selectedElement) {
+        return;
+    }
+    
+    [self clearOverBorders];
     
     bottomStyle = ENUM_DIYIMAGE;
     [diyBottomBar reloadDiyBottom:bottomStyle];
@@ -231,6 +242,7 @@
 
 - (void)clearOverBorders {
     if (_preSelectedElement != nil) {
+        
         if ([_preSelectedElement isKindOfClass:[APageImgView class]]) {
             APageImgView *imgView = (APageImgView *)_preSelectedElement;
             imgView.hasBorder = NO;
@@ -270,6 +282,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(cellW, cellH);
 }
+
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     return UIEdgeInsetsMake(-10, 12, 30, 12);
@@ -308,5 +321,13 @@
     NSLog(@"targetOffset:%@", NSStringFromCGPoint(targetOffset));
     targetContentOffset->x = targetOffset.x;
     targetContentOffset->y = targetOffset.y;
+}
+
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"**%@", @(buttonIndex));
+    if (buttonIndex == 0) {
+       //执行删除操作
+    }
 }
 @end

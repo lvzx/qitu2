@@ -26,6 +26,7 @@
 - (void)setHasBorder:(BOOL)hasBorder {
     _hasBorder = hasBorder;
     [self setNeedsDisplay];
+    
 }
 
 - (void)drawRect:(CGRect)rect {

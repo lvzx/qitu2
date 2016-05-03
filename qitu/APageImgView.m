@@ -126,6 +126,7 @@ typedef enum {
     if (_myDelegate && [_myDelegate respondsToSelector:@selector(showImgBottomView:)]) {
         [_myDelegate showImgBottomView:self];
     }
+    
     CGPoint p0 = CGPointMake(pLeft, pTop);//左上角坐标
     CGPoint p1 = CGPointMake(pLeft, pBottom);//左下角坐标
     CGPoint p2 = CGPointMake(pRight, pTop);//右上角坐标
@@ -148,7 +149,6 @@ typedef enum {
         actionStyle = ENUM_RIGHT_BOTTOM_POINT;
         
     }else{
-        
         actionStyle = ENUM_CENTER_POINT;
     }
 }

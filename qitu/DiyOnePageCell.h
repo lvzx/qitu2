@@ -18,6 +18,9 @@
 #define DIYCELL_PADDING 12
 #define DIYCELL_BOTTOMPADDING 60
 
+
+static const NSInteger kCellElementTag = 44;
+
 @interface DiyOnePageCell : UICollectionViewCell
 
 @property (strong, nonatomic) DiyAPageItem *aPageItem;
