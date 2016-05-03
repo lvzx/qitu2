@@ -213,6 +213,7 @@ typedef enum {
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+
     if (moved) {
         self.alpha = 1.0;
         self.imgItem.img_x = self.frame.origin.x;

@@ -11,15 +11,18 @@
 #import "DiyBottomBar.h"
 #import "DiyMainBottomBar.h"
 #import "DiyOnePageCell.h"
+#import "DiyAddPageView.h"
 #import "DiyCollectionView.h"
 #import "SelectImageVC.h"
 
-@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate>
 {
     CGFloat cellW;
     CGFloat cellH;
+    CGFloat cellPadding;
     NSArray *bgColors;
     NSMutableArray *pagesArr;
+    NSInteger _curPageIndex;
 
     DiyBottomBar *diyBottomBar;
     DiyMainBottomBar *diyMainBottomBar;
@@ -49,6 +52,9 @@
         return _myCollectionView;
     }
 
+    cellPadding = 45*kScreenWidth/320.0;
+    cellW = kScreenWidth-2*cellPadding;
+    cellH = cellW*36/23.0;
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     _myCollectionView = [[DiyCollectionView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50) collectionViewLayout:flowLayout];
@@ -65,8 +71,6 @@
     [self setNavBackBarSelector:@selector(navBack)];
     [self setNavRightBarBtnTitle:@"预览" selector:@selector(navPreview)];
     
-    cellW = kScreenWidth-90*kScreenWidth/320.0;
-    cellH = cellW*36/23.0;
     diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
     [self.view addSubview:diyMainBottomBar];
    
@@ -244,17 +248,22 @@
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [pagesArr count];
+    return [pagesArr count]+1;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row;
     static NSString *identify = @"DiyOnePageCell";
     DiyOnePageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-    NSInteger row = indexPath.row;
-    DiyAPageItem *OnePageItem = pagesArr[row];
-    cell.myDelegate = self;
-    cell.tag = DIY_CELL_TAG+row;
-    cell.aPageItem = OnePageItem;
-
+    if (row < [pagesArr count]) {
+        DiyAPageItem *OnePageItem = pagesArr[row];
+        cell.myDelegate = self;
+        cell.tag = DIY_CELL_TAG+row;
+        cell.aPageItem = OnePageItem;
+    }else {
+        DiyAddPageView *addView = [[DiyAddPageView alloc] initWithFrame:cell.contentView.frame];
+        [cell addSubview:addView];
+    }
+    
     return cell;
 }
 #pragma mark --UICollectionViewDelegateFlowLayout
@@ -272,4 +281,32 @@
     return CGSizeMake(33, cellH);
 }
 
+#pragma mark - UIScrollViewDelegate
+- (CGPoint)nearestTargetOffsetForOffset:(CGPoint)offset
+{
+    CGFloat pageSize = cellW+12;
+    _curPageIndex = round(offset.x/pageSize);
+    CGFloat targetX = offset.x;
+    if (targetX > _curPageIndex*pageSize+20) {
+        if (_curPageIndex<[pagesArr count]) {
+            _curPageIndex++;
+        }
+        targetX = _curPageIndex*pageSize;
+       
+    }else if (targetX < _curPageIndex*pageSize-20){
+        if (_curPageIndex > 0) {
+            _curPageIndex--;
+        }
+        targetX = _curPageIndex*pageSize;
+    }
+    return CGPointMake(targetX, offset.y);
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    CGPoint targetOffset = [self nearestTargetOffsetForOffset:*targetContentOffset];
+    NSLog(@"targetOffset:%@", NSStringFromCGPoint(targetOffset));
+    targetContentOffset->x = targetOffset.x;
+    targetContentOffset->y = targetOffset.y;
+}
 @end

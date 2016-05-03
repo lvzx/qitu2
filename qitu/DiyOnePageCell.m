@@ -41,20 +41,20 @@
         self.clipsToBounds = YES;
         CGFloat width = frame.size.width;
         CGFloat height = frame.size.height;
-        self.layer.borderWidth = 0.8;
-        self.layer.borderColor = RGBCOLOR(213, 213, 213).CGColor;
+        //self.contentView.layer.borderWidth = 0.8;
+        //self.contentView.layer.borderColor = RGBCOLOR(213, 213, 213).CGColor;
         self.backgroundImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, width, height)];
-        [self addSubview:self.backgroundImg];
+        [self.contentView addSubview:self.backgroundImg];
         
         UIView *pageNumV = [[UIView alloc] initWithFrame:CGRectMake(width-35, height-35, 35, 35)];
         pageNumV.backgroundColor = [UIColor blackColor];
-        pageNumV.alpha = 0.5;
+        pageNumV.alpha = 0.25;
         _numLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 6, 35, 28)];
         _numLbl.textColor = [UIColor whiteColor];
         _numLbl.textAlignment = NSTextAlignmentCenter;
         _numLbl.text = [NSString stringWithFormat:@"%@", @(self.tag+1)];
         [pageNumV addSubview:_numLbl];
-        [self addSubview:pageNumV];
+        [self.contentView addSubview:pageNumV];
     }
     return self;
 }
@@ -76,7 +76,7 @@
         imgV.imgItem = imgItem;
         imgV.myDelegate = self.myDelegate;
         [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
-        [self addSubview:imgV];
+        [self.contentView addSubview:imgV];
         [imgViewMArr addObject:imgV];
     }
     
@@ -87,7 +87,7 @@
         NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
         textLbl.text = txtStr;
         textLbl.font = [UIFont systemFontOfSize:textItem.fontSize*bili];
-        [self addSubview:textLbl];
+        [self.contentView addSubview:textLbl];
         [textLblMArr addObject:textLbl];
     }
 }
