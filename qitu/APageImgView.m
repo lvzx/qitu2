@@ -27,6 +27,7 @@ typedef enum {
 
 @interface APageImgView ()
 {
+    BOOL moved;
     CGRect imgRect;
     CGPoint orginalPoint;//移动开始时起点
     
@@ -53,6 +54,7 @@ typedef enum {
         self.backgroundColor = [UIColor clearColor];
         self.contentMode = UIViewContentModeRedraw;
         orginalScale = frame.size.height/frame.size.width;
+        moved = NO;
     }
     return self;
 }
@@ -152,6 +154,7 @@ typedef enum {
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    moved = YES;
     self.alpha = 0.7;
     UITouch *touch = [touches anyObject];
     CGPoint curPoint = [touch locationInView:self];
@@ -210,6 +213,14 @@ typedef enum {
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.alpha = 1.0;
+    if (moved) {
+        self.alpha = 1.0;
+        self.imgItem.img_x = self.frame.origin.x;
+        self.imgItem.img_y = self.frame.origin.y;
+        self.imgItem.imgWidth = self.frame.size.width;
+        self.imgItem.imgHeight = self.frame.size.height;
+        
+        NSLog(@"***touchEnded-ApageImgView");
+    }
 }
 @end

@@ -73,6 +73,7 @@
     for (APageImgItem *imgItem in aPageItem.imgsMArr) {
         CGRect imgRect = CGRectMake(imgItem.img_x*bili-CREATOR_IMG_PADDING, imgItem.img_y*bili-CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, imgItem.imgHeight*bili+2*CREATOR_IMG_PADDING);
         APageImgView *imgV = [[APageImgView alloc] initWithFrame:imgRect];
+        imgV.imgItem = imgItem;
         imgV.myDelegate = self.myDelegate;
         [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
         [self addSubview:imgV];

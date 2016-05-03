@@ -24,9 +24,11 @@
     DiyBottomBar *diyBottomBar;
     DiyMainBottomBar *diyMainBottomBar;
     ENUM_DIY_TYPE bottomStyle;
+    
+    UIView *_preSelectedElement;//上一次选中的图、文
+    UIView *_selectedElement;//当前选中的图、文
 }
 @property (strong, nonatomic) DiyCollectionView *myCollectionView;
-@property (strong, nonatomic) UIView *selectedElement;//图、文
 @end
 
 @implementation DiyTemplateMainVC
@@ -139,7 +141,6 @@
     UIImage *image = info[@"image"];
     NSString *destImgPath = info[@"imgPath"];
     NSLog(@"&&&%@, destImgPath:%@", notification.object, destImgPath);
-    //CGSize imgSize = CGSizeMake([info[@"width"] floatValue], [info[@"height"] floatValue]);
     if ([_selectedElement isKindOfClass:[APageImgView class]]) {
         APageImgView *imgView = (APageImgView *)_selectedElement;
         [imgView updateImage:image withSize:image.size];
@@ -203,9 +204,11 @@
 #pragma mark - DiyShowDelgate
 - (void)showImgBottomView:(UIView *)element {
     NSLog(@"showImgBottom View");
+    [self clearOverBorders];
     if (_selectedElement != nil) {
         _selectedElement = nil;
     }
+    _preSelectedElement = element;
     _selectedElement = element;
     
     bottomStyle = ENUM_DIYIMAGE;
@@ -222,7 +225,19 @@
     }];
 }
 
-
+- (void)clearOverBorders {
+    if (_preSelectedElement != nil) {
+        if ([_preSelectedElement isKindOfClass:[APageImgView class]]) {
+            APageImgView *imgView = (APageImgView *)_preSelectedElement;
+            imgView.hasBorder = NO;
+        }//else if (_preSelectedElement isKindOfClass:[])
+        else {
+           
+        }
+    }else {
+       
+    }
+}
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
