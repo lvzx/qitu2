@@ -220,7 +220,8 @@ static const CGFloat kCropViewBorderWidth = 1.0f;
     CGFloat imgWHScale = _image.size.width/_image.size.height;
     if (imgWHScale > 1.0) {
         boundsH = _maximumCanvasSize.height;
-        boundsW = imgWHScale*boundsH;
+        boundsW = MIN(imgWHScale*boundsH, kScreenWidth);
+        boundsH = boundsW/imgWHScale;
     }else {
         boundsW = _maximumCanvasSize.width;
         boundsH = boundsW/imgWHScale;
@@ -287,11 +288,13 @@ static const CGFloat kCropViewBorderWidth = 1.0f;
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
+    NSLog(@"photoContentView:%@", NSStringFromCGRect(_photoContentView.frame));
     return self.photoContentView;
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
 {
+    NSLog(@"photoContentView:%@", NSStringFromCGRect(_photoContentView.frame));
     self.manualZoomed = YES;
 }
 

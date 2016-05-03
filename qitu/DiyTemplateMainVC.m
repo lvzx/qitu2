@@ -134,12 +134,13 @@
     NSLog(@"***pagesArr:%@", pagesArr);
 }
 - (void)notificationHandler: (NSNotification *)notification {
-//    self.toCropImageView.image = notification.object;
     NSLog(@"&&&%@", notification.object);
-    UIImage *image = notification.object;
+    NSDictionary *info = notification.object;
+    UIImage *image = info[@"image"];
+    CGSize imgSize = CGSizeMake([info[@"width"] floatValue], [info[@"height"] floatValue]);
     if ([_selectedElement isKindOfClass:[APageImgView class]]) {
         APageImgView *imgView = (APageImgView *)_selectedElement;
-        [imgView updateImage:image withSize:CGSizeMake(image.size.width, image.size.height)];
+        [imgView updateImage:image withSize:imgSize];
     }
 }
 
