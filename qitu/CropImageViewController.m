@@ -10,6 +10,7 @@
 #import "PhotoTweakView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIImage+Handler.h"
+#import "MyUtills.h"
 
 @interface CropImageViewController ()
 {
@@ -98,7 +99,14 @@
     CGRect cropRect = [self.photoView cropAreaInImage];
     UIImage *cropImage = [self.orginalImage imageAtRect:cropRect];
     
-    NSDictionary *info = @{@"image":cropImage, @"width":@(destImgWidth), @"height":@(destImgHeight)};
+    NSString *filepath = [MyUtills getLocalPath:[NSString stringWithFormat:@"worksImages/%@",  _templateId]];
+    UIImage *destImage = [MyUtills thumbnailWithImageWithoutScale:cropImage size:CGSizeMake(destImgWidth, destImgHeight)];
+    NSString *destImgPath = [NSString stringWithFormat:@"dest_%@.jpg", [MyUtills getrendenstr:8]];
+    destImgPath = [filepath stringByAppendingPathComponent:destImgPath];
+    //保存图片
+    [UIImageJPEGRepresentation(destImage, 0.7) writeToFile:destImgPath atomically:YES];
+    
+    NSDictionary *info = @{@"image":destImage, @"imgPath":destImgPath};
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"CropOK" object:info];
     }];

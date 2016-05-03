@@ -12,6 +12,7 @@
 @protocol CropImageViewControllerDelegate;
 
 @interface CropImageViewController : BaseViewController
+@property (strong, nonatomic) NSString *templateId;//模版id
 /**
  Image to process.
  */

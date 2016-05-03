@@ -134,13 +134,15 @@
     NSLog(@"***pagesArr:%@", pagesArr);
 }
 - (void)notificationHandler: (NSNotification *)notification {
-    NSLog(@"&&&%@", notification.object);
+    
     NSDictionary *info = notification.object;
     UIImage *image = info[@"image"];
-    CGSize imgSize = CGSizeMake([info[@"width"] floatValue], [info[@"height"] floatValue]);
+    NSString *destImgPath = info[@"imgPath"];
+    NSLog(@"&&&%@, destImgPath:%@", notification.object, destImgPath);
+    //CGSize imgSize = CGSizeMake([info[@"width"] floatValue], [info[@"height"] floatValue]);
     if ([_selectedElement isKindOfClass:[APageImgView class]]) {
         APageImgView *imgView = (APageImgView *)_selectedElement;
-        [imgView updateImage:image withSize:imgSize];
+        [imgView updateImage:image withSize:image.size];
     }
 }
 

@@ -125,6 +125,64 @@
     return str;
 }
 
+//保持原来的长宽比，生成一个缩略图
++ (UIImage *)thumbnailWithImageWithoutScale:(UIImage *)image size:(CGSize)asize
+{
+    UIImage *newimage;
+    if (nil == image) {
+        newimage = nil;
+    }
+    else{
+        CGSize oldsize = image.size;
+        CGRect rect;
+        if (asize.width/asize.height > oldsize.width/oldsize.height) {
+            rect.size.width = asize.height*oldsize.width/oldsize.height;
+            rect.size.height = asize.height;
+            rect.origin.x = (asize.width - rect.size.width)/2;
+            rect.origin.y = 0;
+        }
+        else{
+            rect.size.width = asize.width;
+            rect.size.height = asize.width*oldsize.height/oldsize.width;
+            rect.origin.x = 0;
+            rect.origin.y = (asize.height - rect.size.height)/2;
+        }
+        
+        UIGraphicsBeginImageContext(asize);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetFillColorWithColor(context, [[UIColor clearColor] CGColor]);
+        UIRectFill(CGRectMake(0, 0, asize.width, asize.height));//clear background
+        [image drawInRect:rect];
+        newimage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    return newimage;
+}
+
++(NSString *)getLocalPath:(NSString *)filename {
+    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    //初始化临时文件路径
+    NSString *folderPath = [path stringByAppendingPathComponent:filename];
+    //创建文件管理器
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    //判断temp文件夹是否存在
+    BOOL fileExists = [fileManager fileExistsAtPath:folderPath];
+    if (!fileExists) {//如果不存在说创建,因为下载时,不会自动创建文件夹
+        [fileManager createDirectoryAtPath:folderPath
+               withIntermediateDirectories:YES
+                                attributes:nil
+                                     error:nil];
+    }
+    return folderPath;
+}
+
+//返回指定个数的随机字符
++(NSString*)getrendenstr:(int)NUMBER_OF_CHARS{
+    char data[NUMBER_OF_CHARS];
+    for (int x=0;x<NUMBER_OF_CHARS;data[x++] = (char)('A' + (arc4random_uniform(26))));
+    return [[NSString alloc] initWithBytes:data length:NUMBER_OF_CHARS encoding:NSUTF8StringEncoding];
+}
+
 #pragma mark - Clear Cache Function
 
 +(float)fileSizeAtPath:(NSString *)path{

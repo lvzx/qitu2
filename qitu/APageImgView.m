@@ -109,7 +109,7 @@ typedef enum {
 
 - (void)updateImage:(UIImage *)image withSize:(CGSize)size {
     _image = image;
-    self.bounds = CGRectMake(0, 0, size.width, size.height);
+    self.bounds = CGRectMake(0, 0, size.width+2*CREATOR_IMG_PADDING, size.height+2*CREATOR_IMG_PADDING);
     [self setNeedsDisplay];
 }
 

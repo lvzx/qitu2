@@ -29,6 +29,15 @@
 //+ (void)formatLbl1:(UILabel *) lab1 withLab2:(UILabel *) lab2;
 ////设置不同字体颜色
 //+ (void)fuwenbenLabel:(UILabel *)label fontNumber:(id)font andRange:(NSRange)range andColor:(UIColor *)vaColor;
+
+//保持原来的长宽比，生成一个缩略图
++ (UIImage *)thumbnailWithImageWithoutScale:(UIImage *)image size:(CGSize)asize;
+
+//返回本地路径，如果不存在就创建
++(NSString *)getLocalPath:(NSString *)filename;
+
+//返回指定个数的随机字符
++(NSString*)getrendenstr:(int)NUMBER_OF_CHARS;
 #pragma mark - Clear Cache Function
 //计算单个文件大小
 +(float)fileSizeAtPath:(NSString *)path;
