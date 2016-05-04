@@ -13,7 +13,7 @@
 @end
 
 @interface DiyMainBottomBar : UIView
-
+@property (assign, nonatomic) NSInteger pageNum;//页面显示数字
 - (instancetype)initWithFrame:(CGRect)frame actionHandler:(id)target;
 
 @end

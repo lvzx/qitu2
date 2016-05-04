@@ -44,6 +44,9 @@
         //self.contentView.layer.borderWidth = 0.8;
         //self.contentView.layer.borderColor = RGBCOLOR(213, 213, 213).CGColor;
         self.backgroundImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, width, height)];
+        self.backgroundImg.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        [self.backgroundImg addGestureRecognizer:tapGesture];
         [self.contentView addSubview:self.backgroundImg];
         
         UIView *pageNumV = [[UIView alloc] initWithFrame:CGRectMake(width-35, height-35, 35, 35)];
@@ -175,7 +178,11 @@
     }
 }
 */
-
+- (void)handleTap:(UITapGestureRecognizer *)recognizer {
+    if (_myDelegate && [_myDelegate respondsToSelector:@selector(showMainBottomView:)]) {
+        [_myDelegate showMainBottomView:self];
+    }
+}
 #pragma mark - 解决中文乱码火星文
 - (NSString *) analysisChineseMassyCodeStr:(NSString *)messyCodeStr{
     const char *c = [messyCodeStr cStringUsingEncoding:NSISOLatin1StringEncoding];

@@ -71,7 +71,9 @@
     [self setNavBackBarSelector:@selector(navBack)];
     [self setNavRightBarBtnTitle:@"预览" selector:@selector(navPreview)];
     
+    self.view.backgroundColor = RGBCOLOR(57, 57, 57);
     diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
+    diyMainBottomBar.pageNum = [pagesArr count];
     [self.view addSubview:diyMainBottomBar];
    
     diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 50)];
@@ -229,6 +231,7 @@
     bottomStyle = ENUM_DIYIMAGE;
     [diyBottomBar reloadDiyBottom:bottomStyle];
     [UIView animateWithDuration:0.5 animations:^{
+        diyMainBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 50);
         diyBottomBar.frame = CGRectMake(0, kScreenHeight-50, kScreenWidth, 50);
     }];
 }
@@ -236,10 +239,30 @@
     bottomStyle = ENUM_DIYTEXT;
     [diyBottomBar reloadDiyBottom:bottomStyle];
     [UIView animateWithDuration:0.5 animations:^{
+        diyMainBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 50);
         diyBottomBar.frame = CGRectMake(0, kScreenHeight-50, kScreenWidth, 50);
     }];
 }
-
+- (void)showMainBottomView:(UIView *)element {
+    if (_selectedElement != nil) {
+        _preSelectedElement = _selectedElement;
+        _selectedElement = nil;
+    }
+    
+    _selectedElement = element;
+    
+    if (_preSelectedElement && _preSelectedElement == _selectedElement) {
+        return;
+    }
+    
+    [self clearOverBorders];
+    
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        diyMainBottomBar.frame = CGRectMake(0, kScreenHeight-50, kScreenWidth, 50);
+        diyBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 50);
+    }];
+}
 - (void)clearOverBorders {
     if (_preSelectedElement != nil) {
         

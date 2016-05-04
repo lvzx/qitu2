@@ -11,7 +11,7 @@
 @protocol DiyShowDelgate <NSObject>
 - (void)showImgBottomView:(UIView *)element;
 - (void)showTextBottomView:(UIView *)element;
-
+- (void)showMainBottomView:(UIView *)element;
 @optional
 - (void)addPage;
 - (void)addForm;
