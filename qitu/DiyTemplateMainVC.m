@@ -172,7 +172,7 @@
 }
 
 #pragma mark - DiyMainBottomAction
-- (void)touchUpInsideOnBtn:(UIButton *)btn {
+- (void)diySelectDiyMainBarBtn:(UIButton *)btn {
     NSLog(@"***DiyMainBottomAction:%@", @(btn.tag));
     [UIView animateWithDuration:0.5 animations:^{
         diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight-170, kScreenWidth, 170);

@@ -45,7 +45,7 @@
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn setTitle:dataArr[i][@"text"] forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:dataArr[i][@"image"]] forState:UIControlStateNormal];
-        [btn addTarget:target action:@selector(touchUpInsideOnBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:target action:@selector(diySelectDiyMainBarBtn:) forControlEvents:UIControlEventTouchUpInside];
         
         if (i == 0) {
             _numLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];

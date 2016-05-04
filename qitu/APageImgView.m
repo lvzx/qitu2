@@ -30,7 +30,6 @@ typedef enum {
     BOOL moved;
     CGRect imgRect;
     CGPoint orginalPoint;//移动开始时起点
-    CGRect orginalFrame;
     
     CGFloat pLeft;
     CGFloat pRight;
@@ -121,8 +120,8 @@ typedef enum {
     self.alpha = 1.0;
     UITouch *touch = [touches anyObject];
     CGPoint curPoint = [touch locationInView:self];
-    orginalPoint = curPoint;
-    orginalFrame = self.frame;
+    orginalPoint = [touch locationInView:self.superview];
+
     self.hasBorder = YES;
     NSLog(@"touch begin");
     if (_myDelegate && [_myDelegate respondsToSelector:@selector(showImgBottomView:)]) {
@@ -159,8 +158,8 @@ typedef enum {
     moved = YES;
     self.alpha = 0.5;
     UITouch *touch = [touches anyObject];
-    CGPoint curPoint = [touch locationInView:self];
-    CGRect destFrame = orginalFrame;
+    CGPoint curPoint = [touch locationInView:self.superview];
+    CGRect destFrame = self.frame;
     //NSLog(@"curFrame:%@, curPoint:%@, orginalPoint:%@", NSStringFromCGRect(destFrame), NSStringFromCGPoint(curPoint), NSStringFromCGPoint(orginalPoint));
     
     //分别计算x，和y方向上的移动
@@ -212,19 +211,18 @@ typedef enum {
     }
     
     orginalPoint = curPoint;
-    orginalFrame = destFrame;
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 
-//    if (moved) {
-//        self.alpha = 1.0;
-//        self.imgItem.img_x = self.frame.origin.x;
-//        self.imgItem.img_y = self.frame.origin.y;
-//        self.imgItem.imgWidth = self.frame.size.width;
-//        self.imgItem.imgHeight = self.frame.size.height;
-//        
-//        NSLog(@"***touchEnded-ApageImgView");
-//    }
+    if (moved) {
+        self.alpha = 1.0;
+        self.imgItem.img_x = self.frame.origin.x;
+        self.imgItem.img_y = self.frame.origin.y;
+        self.imgItem.imgWidth = self.frame.size.width;
+        self.imgItem.imgHeight = self.frame.size.height;
+        
+        NSLog(@"***touchEnded-ApageImgView");
+    }
 }
 @end
