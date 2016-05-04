@@ -16,7 +16,7 @@
 #import "DiyCollectionView.h"
 #import "SelectImageVC.h"
 
-@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate>
+@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, MSUpdateAddBtnPositionDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate>
 {
     CGFloat cellW;
     CGFloat cellH;
@@ -65,6 +65,10 @@
     cellH = cellW*36/23.0;
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    flowLayout.headerReferenceSize = CGSizeMake(33, cellH);
+    flowLayout.footerReferenceSize = CGSizeMake(33, cellH);
+    flowLayout.itemSize = CGSizeMake(cellW, cellH);
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     _myCollectionView = [[DiyCollectionView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50) collectionViewLayout:flowLayout];
     _myCollectionView.dataSource = self;
     _myCollectionView.delegate = self;
@@ -91,6 +95,7 @@
     
     diyPageSortBottomBar = [[DiyPageSortBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 170) withImages:pageImgShotMArr];
     diyPageSortBottomBar.imgDataType = 0;
+    diyPageSortBottomBar.delegate = self;
     [self.view addSubview:diyPageSortBottomBar];
     
 //    DiyBottomBar *diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, 105, kScreenWidth, 50)];
@@ -171,7 +176,7 @@
     NSLog(@"***DiyMainBottomAction:%@", @(btn.tag));
     [UIView animateWithDuration:0.5 animations:^{
         diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight-170, kScreenWidth, 170);
-        _myCollectionView.frame = CGRectMake(0, -20, kScreenWidth, kScreenHeight-64-50);
+        _myCollectionView.frame = CGRectMake(0, -10, kScreenWidth, kScreenHeight-64-50);
     }];
 }
 #pragma mark - DiyBottomBarDelegate
@@ -294,13 +299,23 @@
        
     }
 }
+#pragma mark - MSUpdateAddBtnPositionDelegate
+- (void)pickImage {
+    NSLog(@"pickImage");
+    [UIView animateWithDuration:0.5 animations:^{
+        diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 170);
+        _myCollectionView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50);
+    }];
+}
+
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [pagesArr count]+1;
+    NSInteger pageCount = [pagesArr count];
+    return pageCount==0 ? 0 : pageCount+1;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
@@ -319,22 +334,13 @@
     return cell;
 }
 #pragma mark --UICollectionViewDelegateFlowLayout
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(cellW, cellH);
-}
-
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(-10, 12, 30, 12);
-}
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(33, cellH);
-}
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
-    return CGSizeMake(33, cellH);
+    return UIEdgeInsetsMake(-50, 12, 50, 12);
 }
 
 #pragma mark - UIScrollViewDelegate
+
 - (CGPoint)nearestTargetOffsetForOffset:(CGPoint)offset
 {
     CGFloat pageSize = cellW+12;

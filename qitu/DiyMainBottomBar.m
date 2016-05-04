@@ -48,16 +48,11 @@
         [btn addTarget:target action:@selector(touchUpInsideOnBtn:) forControlEvents:UIControlEventTouchUpInside];
         
         if (i == 0) {
-            _numLbl = [[UILabel alloc] init];
+            _numLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
             _numLbl.font = [UIFont systemFontOfSize:12.0];
             _numLbl.textColor = [UIColor blackColor];
-            NSLog(@"***btn.imageview:%@", NSStringFromCGRect(btn.imageView.frame));
+            _numLbl.textAlignment = NSTextAlignmentCenter;
             [btn.imageView addSubview:_numLbl];
-            [_numLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.mas_equalTo((btn.imageView.frame.origin.x-2)/2);
-                make.top.mas_equalTo(0.0);
-                make.size.mas_equalTo(btn.imageView.frame.size);
-            }];
         }
 
         [self addSubview:btn];
