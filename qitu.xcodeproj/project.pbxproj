@@ -85,6 +85,8 @@
 		0DE33A061CC858BE00E5D229 /* APageImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE33A051CC858BE00E5D229 /* APageImgView.m */; };
 		0DE33A081CC8754700E5D229 /* 003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE33A071CC8754700E5D229 /* 003@2x.png */; };
 		0DE7E4431CCA06E500DBC02A /* DiyScrollViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7E4421CCA06E500DBC02A /* DiyScrollViewContainer.m */; };
+		0DFD5C101CD98A930047A3E6 /* DiyPageSortBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFD5C0F1CD98A930047A3E6 /* DiyPageSortBottomBar.m */; };
+		0DFD5C121CD99C190047A3E6 /* Intro_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFD5C111CD99C190047A3E6 /* Intro_2@2x.png */; };
 		6B09B59704F3633ECD5D669F /* Pods_qitu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D181B34881D259D5238DA90 /* Pods_qitu.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -259,6 +261,9 @@
 		0DE7E4401CC9FDFE00DBC02A /* DiyShowDelgate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyShowDelgate.h; sourceTree = "<group>"; };
 		0DE7E4411CCA06E500DBC02A /* DiyScrollViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyScrollViewContainer.h; sourceTree = "<group>"; };
 		0DE7E4421CCA06E500DBC02A /* DiyScrollViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyScrollViewContainer.m; sourceTree = "<group>"; };
+		0DFD5C0E1CD98A930047A3E6 /* DiyPageSortBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyPageSortBottomBar.h; sourceTree = "<group>"; };
+		0DFD5C0F1CD98A930047A3E6 /* DiyPageSortBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyPageSortBottomBar.m; sourceTree = "<group>"; };
+		0DFD5C111CD99C190047A3E6 /* Intro_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro_2@2x.png"; sourceTree = "<group>"; };
 		4B1010901B633EC246E9A2FA /* Pods-qitu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qitu.release.xcconfig"; path = "Pods/Target Support Files/Pods-qitu/Pods-qitu.release.xcconfig"; sourceTree = "<group>"; };
 		5D181B34881D259D5238DA90 /* Pods_qitu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qitu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7D5D376C15FCBA44FD5EF4A /* Pods-qitu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qitu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qitu/Pods-qitu.debug.xcconfig"; sourceTree = "<group>"; };
@@ -345,6 +350,7 @@
 		0D630B991C9A3D4A0063AC7E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DFD5C111CD99C190047A3E6 /* Intro_2@2x.png */,
 				0DD6092C1CC5CE6F002AB7DE /* 001.jpg */,
 				0DD6092D1CC5CE6F002AB7DE /* 002.jpg */,
 				0DE33A071CC8754700E5D229 /* 003@2x.png */,
@@ -563,6 +569,8 @@
 				0D7325721CB33F64008899BA /* DiyBottomBar.m */,
 				0D7325801CB3947F008899BA /* DiyMainBottomBar.h */,
 				0D7325811CB3947F008899BA /* DiyMainBottomBar.m */,
+				0DFD5C0E1CD98A930047A3E6 /* DiyPageSortBottomBar.h */,
+				0DFD5C0F1CD98A930047A3E6 /* DiyPageSortBottomBar.m */,
 				0D7D77A01CAE049800AF9E7D /* CreatorComponentsDelegate.h */,
 				0D76A1B11CD0BB0D007C2823 /* PhotoTweakView.h */,
 				0D76A1B21CD0BB0D007C2823 /* PhotoTweakView.m */,
@@ -856,6 +864,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DFD5C121CD99C190047A3E6 /* Intro_2@2x.png in Resources */,
 				0D0B8C691CCF171B00DB61D0 /* AssetCell.xib in Resources */,
 				0D9C9DC11C97E62400652830 /* LaunchScreen.storyboard in Resources */,
 				0D73258A1CB3BEAA008899BA /* data.json in Resources */,
@@ -992,6 +1001,7 @@
 				0D4B3EC81CCE17340052B22D /* SelectImageVC.m in Sources */,
 				0DD2D0671CA534FC00F2EF62 /* PersonalInfoCell.m in Sources */,
 				0D0B8C711CCF3C2D00DB61D0 /* ImagePickerVC.m in Sources */,
+				0DFD5C101CD98A930047A3E6 /* DiyPageSortBottomBar.m in Sources */,
 				0D7325881CB39C1C008899BA /* DiyOnePageCell.m in Sources */,
 				0D0B8C681CCF171B00DB61D0 /* AssetCell.m in Sources */,
 				0DAED5B81CAA14E600D0BEA5 /* CategoryItem.m in Sources */,

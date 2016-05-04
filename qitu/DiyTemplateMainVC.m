@@ -10,6 +10,7 @@
 #import "SelectBgColor.h"
 #import "DiyBottomBar.h"
 #import "DiyMainBottomBar.h"
+#import "DiyPageSortBottomBar.h"
 #import "DiyOnePageCell.h"
 #import "DiyAddPageView.h"
 #import "DiyCollectionView.h"
@@ -26,6 +27,8 @@
 
     DiyBottomBar *diyBottomBar;
     DiyMainBottomBar *diyMainBottomBar;
+    DiyPageSortBottomBar *diyPageSortBottomBar;
+    NSMutableArray *pageImgShotMArr;//页面截图数组
     ENUM_DIY_TYPE bottomStyle;
     
     UIView *_preSelectedElement;//上一次选中的图、文
@@ -37,6 +40,11 @@
 @implementation DiyTemplateMainVC
 - (void)viewDidLoad {
     [super viewDidLoad];
+     pageImgShotMArr = [NSMutableArray array];
+    for (NSInteger i = 0; i < 3; i++) {
+        UIImage *img = [UIImage imageNamed:@"Intro_2"];
+        [pageImgShotMArr addObject:img];
+    }
     [self loadData];
     [self initNavAndView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:@"CropOK" object:nil];
@@ -72,6 +80,7 @@
     [self setNavRightBarBtnTitle:@"预览" selector:@selector(navPreview)];
     
     self.view.backgroundColor = RGBCOLOR(57, 57, 57);
+     [self.view addSubview:self.myCollectionView];
     diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
     diyMainBottomBar.pageNum = [pagesArr count];
     [self.view addSubview:diyMainBottomBar];
@@ -79,6 +88,10 @@
     diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 50)];
     [diyBottomBar setActionHandler:self];
     [self.view addSubview:diyBottomBar];
+    
+    diyPageSortBottomBar = [[DiyPageSortBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 170) withImages:pageImgShotMArr];
+    diyPageSortBottomBar.imgDataType = 0;
+    [self.view addSubview:diyPageSortBottomBar];
     
 //    DiyBottomBar *diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, 105, kScreenWidth, 50)];
 //    bgColors = @[@"#040404", @"#FFFFFF", @"#25CDCF", @"#167FA3", @"#17AFEE",
@@ -92,7 +105,6 @@
 //    [bottomView addSubview:diyBottomBar];
 //    [self.view addSubview:bottomView];
 //    self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.myCollectionView];
 }
 
 - (void)navBack {
@@ -103,6 +115,7 @@
 }
 #pragma mark - LoadData
 - (void)loadData {
+    
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"model" ofType:@"json"];
     NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSASCIIStringEncoding];
@@ -156,6 +169,10 @@
 #pragma mark - DiyMainBottomAction
 - (void)touchUpInsideOnBtn:(UIButton *)btn {
     NSLog(@"***DiyMainBottomAction:%@", @(btn.tag));
+    [UIView animateWithDuration:0.5 animations:^{
+        diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight-170, kScreenWidth, 170);
+        _myCollectionView.frame = CGRectMake(0, -20, kScreenWidth, kScreenHeight-64-50);
+    }];
 }
 #pragma mark - DiyBottomBarDelegate
 - (void)didSelectDiyBottomBtn:(UIButton *)btn {
