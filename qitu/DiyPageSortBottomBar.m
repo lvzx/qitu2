@@ -125,9 +125,8 @@
 - (void)tapAction:(UITapGestureRecognizer *)recognizer {
     UIImageView *imageView = (UIImageView *)recognizer.view;
     NSInteger index = [imageViews indexOfObject:imageView];
-    NSInteger imgCount = [imageViews count];
-    if (_delegate && [_delegate respondsToSelector:@selector(tapImageAction:totalImgsCount:)]) {
-        [_delegate tapImageAction:index totalImgsCount:imgCount];
+    if (_delegate && [_delegate respondsToSelector:@selector(tapImageAction:)]) {
+        [_delegate tapImageAction:index];
     }
 }
 

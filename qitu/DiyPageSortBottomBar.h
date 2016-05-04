@@ -19,8 +19,7 @@
 #define IMAGE_SOURCE    @"imagesource"
 #define IMAGE_DESC  @"imagedesc"
 
-@protocol MSUpdateAddBtnPositionDelegate;
-typedef void(^DiyPageSortBlock)(NSInteger index);
+@protocol DiyPageSortDelegate;
 
 @interface DiyPageSortBottomBar : UIView
 
@@ -29,8 +28,7 @@ typedef void(^DiyPageSortBlock)(NSInteger index);
 @property(nonatomic,retain)UIScrollView *scrollView;
 @property(nonatomic,retain)NSMutableArray *images;
 @property (nonatomic) NSInteger imgDataType;//0 UIImage, 1 Dic
-@property (nonatomic, assign) id<MSUpdateAddBtnPositionDelegate> delegate;
-@property(nonatomic, copy)DiyPageSortBlock diyPageSortBlock;
+@property (nonatomic, assign) id<DiyPageSortDelegate> delegate;
 
 /**
  *  添加一个imageView
@@ -55,7 +53,7 @@ typedef void(^DiyPageSortBlock)(NSInteger index);
 
 @end
 
-@protocol MSUpdateAddBtnPositionDelegate <NSObject>
+@protocol DiyPageSortDelegate <NSObject>
 /**
  *  单击新增图片按钮选择图片方法
  */
@@ -67,7 +65,7 @@ typedef void(^DiyPageSortBlock)(NSInteger index);
  *  @param index      所点击图片的索引值
  *  @param totalCount 图片数组长度（图片总数）
  */
-- (void)tapImageAction:(NSInteger)index totalImgsCount:(NSInteger)totalCount;
+- (void)tapImageAction:(NSInteger)index;
 
 @end
 

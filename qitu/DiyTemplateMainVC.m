@@ -16,7 +16,7 @@
 #import "DiyCollectionView.h"
 #import "SelectImageVC.h"
 
-@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, MSUpdateAddBtnPositionDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate>
+@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, DiyPageSortDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate>
 {
     CGFloat cellW;
     CGFloat cellH;
@@ -176,7 +176,7 @@
     NSLog(@"***DiyMainBottomAction:%@", @(btn.tag));
     [UIView animateWithDuration:0.5 animations:^{
         diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight-170, kScreenWidth, 170);
-        _myCollectionView.frame = CGRectMake(0, -10, kScreenWidth, kScreenHeight-64-50);
+        _myCollectionView.frame = CGRectMake(0, 5, kScreenWidth, kScreenHeight-64-50);
     }];
 }
 #pragma mark - DiyBottomBarDelegate
@@ -299,7 +299,7 @@
        
     }
 }
-#pragma mark - MSUpdateAddBtnPositionDelegate
+#pragma mark - DiyPageSortDelegate
 - (void)pickImage {
     NSLog(@"pickImage");
     [UIView animateWithDuration:0.5 animations:^{
@@ -307,7 +307,13 @@
         _myCollectionView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50);
     }];
 }
-
+- (void)tapImageAction:(NSInteger)index {
+    CGFloat pageSize = cellW+12;
+    CGFloat scOffsetX = index*pageSize;
+    CGPoint scOffsetPoint = _myCollectionView.contentOffset;
+    scOffsetPoint.x = scOffsetX;
+    [_myCollectionView setContentOffset:scOffsetPoint animated:YES];
+}
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
