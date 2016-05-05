@@ -18,6 +18,8 @@
 
 @interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, DiyPageSortDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate>
 {
+    UIView *tapView;
+    
     CGFloat cellW;
     CGFloat cellH;
     CGFloat cellPadding;
@@ -75,6 +77,7 @@
     _myCollectionView.showsHorizontalScrollIndicator = NO;
     _myCollectionView.backgroundColor = RGBCOLOR(57, 57, 57);
     [_myCollectionView registerClass:[DiyOnePageCell class] forCellWithReuseIdentifier:@"DiyOnePageCell"];
+    
     return _myCollectionView;
 }
 
@@ -84,7 +87,15 @@
     [self setNavRightBarBtnTitle:@"预览" selector:@selector(navPreview)];
     
     self.view.backgroundColor = RGBCOLOR(57, 57, 57);
-     [self.view addSubview:self.myCollectionView];
+    
+    [self.view addSubview:self.myCollectionView];
+    
+    tapView = [[UIView alloc] initWithFrame:_myCollectionView.bounds];
+    tapView.hidden = YES;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    [tapView addGestureRecognizer:tapGesture];
+    [self.view addSubview:tapView];
+    
     diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
     diyMainBottomBar.pageNum = [pagesArr count];
     [self.view addSubview:diyMainBottomBar];
@@ -170,14 +181,47 @@
         [imgView updateImage:image withSize:image.size];
     }
 }
-
+- (void)handleTap:(UITapGestureRecognizer *)gesture {
+    NSLog(@"nihao");
+    tapView.hidden = YES;
+    [UIView animateWithDuration:0.5 animations:^{
+        diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 170);
+        _myCollectionView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50);
+    }];
+}
 #pragma mark - DiyMainBottomAction
 - (void)diySelectDiyMainBarBtn:(UIButton *)btn {
     NSLog(@"***DiyMainBottomAction:%@", @(btn.tag));
-    [UIView animateWithDuration:0.5 animations:^{
-        diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight-170, kScreenWidth, 170);
-        _myCollectionView.frame = CGRectMake(0, 5, kScreenWidth, kScreenHeight-64-50);
-    }];
+    switch (btn.tag) {
+        case 30://页面
+        {
+            tapView.hidden = NO;
+            [UIView animateWithDuration:0.5 animations:^{
+                diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight-170, kScreenWidth, 170);
+                _myCollectionView.frame = CGRectMake(0, 5, kScreenWidth, kScreenHeight-64-50);
+            }];
+
+        }
+            break;
+        case 31://背景
+        {
+            
+        }
+            break;
+        case 32://添加
+        {
+            
+        }
+            break;
+        case 33://音乐
+        {
+            
+        }
+            break;
+
+        default:
+            break;
+    }
 }
 #pragma mark - DiyBottomBarDelegate
 - (void)didSelectDiyBottomBtn:(UIButton *)btn {
@@ -258,6 +302,19 @@
     }];
 }
 - (void)showTextBottomView:(UIView *)element {
+    if (_selectedElement != nil) {
+        _preSelectedElement = _selectedElement;
+        _selectedElement = nil;
+    }
+    
+    _selectedElement = element;
+    
+    if (_preSelectedElement && _preSelectedElement == _selectedElement) {
+        return;
+    }
+    
+    [self clearOverBorders];
+    
     bottomStyle = ENUM_DIYTEXT;
     [diyBottomBar reloadDiyBottom:bottomStyle];
     [UIView animateWithDuration:0.5 animations:^{
@@ -291,7 +348,10 @@
         if ([_preSelectedElement isKindOfClass:[APageImgView class]]) {
             APageImgView *imgView = (APageImgView *)_preSelectedElement;
             imgView.hasBorder = NO;
-        }//else if (_preSelectedElement isKindOfClass:[])
+        }else if ([_preSelectedElement isKindOfClass:[APageTextLabel class]]) {
+            APageTextLabel *textLbl = (APageTextLabel *)_preSelectedElement;
+            textLbl.hasBorder = NO;
+        }
         else {
            
         }
@@ -302,6 +362,7 @@
 #pragma mark - DiyPageSortDelegate
 - (void)pickImage {
     NSLog(@"pickImage");
+    tapView.hidden = YES;
     [UIView animateWithDuration:0.5 animations:^{
         diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 170);
         _myCollectionView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50);

@@ -88,6 +88,7 @@
     
     for (APageTextItem *txtItem in aPageItem.textMArr) {
         APageTextLabel *textLbl = [[APageTextLabel alloc] initWithFrame:CGRectMake(txtItem.txt_x*bili-CREATOR_IMG_PADDING, txtItem.txt_y*bili-CREATOR_IMG_PADDING, txtItem.txt_width*bili+2*CREATOR_IMG_PADDING, txtItem.txt_height*bili+2*CREATOR_IMG_PADDING)];
+        textLbl.myDelegate = self.myDelegate;
         TextItem *textItem = txtItem.textItem;
         textLbl.textColor = [UIColor colorWithHexString:textItem.txtColorHexStr];
         NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
