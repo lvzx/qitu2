@@ -26,6 +26,9 @@ typedef enum {
 {
     BOOL moved;
     
+    UIEdgeInsets _contentInset;
+    CGSize textSize;
+    
     CGPoint orginalPoint;
     
     CGFloat pLeft;
@@ -42,7 +45,10 @@ typedef enum {
     self = [super initWithFrame:frame];
     if (self) {
         [self setUserInteractionEnabled:YES];
+        self.numberOfLines = 0;
         self.textAlignment = NSTextAlignmentCenter;
+        _contentInset = UIEdgeInsetsMake(CREATOR_BORDER_WIDTH, CREATOR_IMG_PADDING, CREATOR_BORDER_WIDTH, CREATOR_IMG_PADDING);
+        textSize = CGSizeZero;
     }
     return self;
 }
@@ -50,7 +56,6 @@ typedef enum {
 - (void)setHasBorder:(BOOL)hasBorder {
     _hasBorder = hasBorder;
     [self setNeedsDisplay];
-    
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -82,6 +87,48 @@ typedef enum {
         CGContextAddArc(context, pRight, pTop, CREATOR_IMG_RADIUS, 0, 2*M_PI, 0);
         CGContextDrawPath(context, kCGPathFillStroke);
     }
+}
+
+- (void)setup {
+    [self setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisVertical];
+    [self setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
+}
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    CGFloat targetWidth = CGRectGetWidth(self.bounds);
+    
+    if (self.preferredMaxLayoutWidth != targetWidth) {
+        self.preferredMaxLayoutWidth = targetWidth;
+    }
+    [self.superview setNeedsLayout];
+}
+- (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines {
+    CGRect rect = [super textRectForBounds:UIEdgeInsetsInsetRect(bounds, _contentInset) limitedToNumberOfLines:numberOfLines];
+    
+    rect.origin.x -= _contentInset.left;
+    rect.origin.y -= _contentInset.top;
+    rect.size.width += (_contentInset.left + _contentInset.right);
+    rect.size.height += (_contentInset.top + _contentInset.bottom);
+    
+    return rect;
+}
+- (void)drawTextInRect:(CGRect)rect {
+    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, _contentInset)];
+}
+
+- (CGFloat)getTextHeightFromWidth:(CGFloat)width {
+    CGSize size = CGSizeMake(width-2*CREATOR_IMG_PADDING, 800);
+    NSDictionary *attribute = @{NSFontAttributeName: self.font};
+    
+    CGSize retSize = [self.text boundingRectWithSize:size
+                                       options:\
+                      NSStringDrawingTruncatesLastVisibleLine |
+                      NSStringDrawingUsesLineFragmentOrigin |
+                      NSStringDrawingUsesFontLeading
+                                    attributes:attribute
+                                       context:nil].size;
+    CGFloat txtHeight = retSize.height+2*CREATOR_BORDER_WIDTH;
+    return txtHeight;
 }
 
 #pragma mark - 视图触摸事件处理
@@ -117,23 +164,23 @@ typedef enum {
     UITouch *touch = [touches anyObject];
     CGPoint curPoint = [touch locationInView:self.superview];
     CGRect destFrame = self.frame;
-    //NSLog(@"curFrame:%@, curPoint:%@, orginalPoint:%@", NSStringFromCGRect(destFrame), NSStringFromCGPoint(curPoint), NSStringFromCGPoint(orginalPoint));
     
     //计算x方向上的移动
     CGFloat offsetX = curPoint.x - orginalPoint.x;
 
-    NSLog(@"curPoint:%@, orginalPoint:%@, offsetX:%@", NSStringFromCGPoint(curPoint), NSStringFromCGPoint(orginalPoint),@(offsetX));
     switch (actionStyle) {
         case ENUM_LEFT_MID_POINT:
         {
             destFrame.origin.x += offsetX;
             destFrame.size.width -= offsetX;
+            destFrame.size.height = [self getTextHeightFromWidth:destFrame.size.width];
             self.frame = destFrame;
         }
             break;
         case ENUM_RIGHT_MID_POINT:
         {
             destFrame.size.width += offsetX;
+            destFrame.size.height = [self getTextHeightFromWidth:destFrame.size.width];
             self.frame = destFrame;
         }
             break;

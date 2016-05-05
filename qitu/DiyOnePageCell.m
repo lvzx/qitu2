@@ -69,6 +69,7 @@
     self.backgroundImg.backgroundColor = [UIColor colorWithHexString:aPageItem.bgColor];
     [self.backgroundImg sd_setImageWithURL:[NSURL URLWithString:aPageItem.bgImgUrl]];
     self.numLbl.text = [NSString stringWithFormat:@"%@", @(self.tag-DIY_CELL_TAG+1)];
+    //*[UIScreen mainScreen].scale
     CGFloat bili = kScreenWidth/aPageItem.bgpicwidth;
     
     imgViewMArr = [[NSMutableArray alloc] init];
@@ -87,17 +88,41 @@
     }
     
     for (APageTextItem *txtItem in aPageItem.textMArr) {
-        APageTextLabel *textLbl = [[APageTextLabel alloc] initWithFrame:CGRectMake(txtItem.txt_x*bili-CREATOR_IMG_PADDING, txtItem.txt_y*bili, txtItem.txt_width*bili+2*CREATOR_IMG_PADDING, txtItem.txt_height*bili)];
-        textLbl.myDelegate = self.myDelegate;
         TextItem *textItem = txtItem.textItem;
-        textLbl.textColor = [UIColor colorWithHexString:textItem.txtColorHexStr];
         NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
+        UIFont *textFont = [UIFont systemFontOfSize:textItem.fontSize*bili];
+        CGFloat textWidth = txtItem.txt_width*bili+2*CREATOR_IMG_PADDING;
+        CGSize textSize = [self boundingRectText:txtStr WithFont:textFont withSize:CGSizeMake(textWidth, 800)];
+        APageTextLabel *textLbl = [[APageTextLabel alloc] initWithFrame:CGRectMake(txtItem.txt_x*bili-CREATOR_IMG_PADDING, txtItem.txt_y*bili, textWidth, textSize.height+2*CREATOR_BORDER_WIDTH)];
+         NSLog(@"textSize:%@, textRect:%@, textFont:%@", NSStringFromCGSize(textSize), NSStringFromCGRect(textLbl.frame), textFont);
+        textLbl.myDelegate = self.myDelegate;
+        textLbl.textColor = [UIColor colorWithHexString:textItem.txtColorHexStr];
         textLbl.text = txtStr;
-        textLbl.font = [UIFont systemFontOfSize:textItem.fontSize*bili];
+        textLbl.font = textFont;
         [self.contentView addSubview:textLbl];
         [textLblMArr addObject:textLbl];
     }
 }
+
+-(CGSize)boundingRectText:(NSString *)str WithFont:(UIFont *)font withSize:(CGSize)size
+{
+    if (!font) {
+        font = [UIFont systemFontOfSize:15.0];
+    }
+    
+    NSDictionary *attribute = @{NSFontAttributeName: font};
+    
+    CGSize retSize = [str boundingRectWithSize:size
+                                       options:\
+                      NSStringDrawingTruncatesLastVisibleLine |
+                      NSStringDrawingUsesLineFragmentOrigin |
+                      NSStringDrawingUsesFontLeading
+                                    attributes:attribute
+                                       context:nil].size;
+    
+    return retSize;
+}
+
 /*
 - (void)initCellWithData:(DiyAPageItem *)pageData {
     self.contentView.backgroundColor = [UIColor colorWithHexString:pageData.bgColor];
