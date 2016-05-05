@@ -15,8 +15,13 @@
 #import "DiyAddPageView.h"
 #import "DiyCollectionView.h"
 #import "SelectImageVC.h"
+#import "DiyTextContentView.h"
 
-@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, DiyPageSortDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate>
+static const CGFloat kBottomBar_MHeight = 50.0;
+static const CGFloat kBottomBar_BHeight = 170.0;
+static const CGFloat kCollectionView_Top = 5.0;
+
+@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, DiyPageSortDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate, UITextViewDelegate>
 {
     UIView *tapView;
     
@@ -30,6 +35,9 @@
     DiyBottomBar *diyBottomBar;
     DiyMainBottomBar *diyMainBottomBar;
     DiyPageSortBottomBar *diyPageSortBottomBar;
+    
+    DiyTextContentView *txtContentV;
+
     NSMutableArray *pageImgShotMArr;//页面截图数组
     ENUM_DIY_TYPE bottomStyle;
     
@@ -50,9 +58,14 @@
     [self loadData];
     [self initNavAndView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:@"CropOK" object:nil];
+    [self registerForKeyboardNotifications];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+}
+- (void)viewDidDisappear:(BOOL)animated {
+    [self freeKeyboardNotifications];
+    [super viewDidDisappear:animated];
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -71,7 +84,7 @@
     flowLayout.footerReferenceSize = CGSizeMake(33, cellH);
     flowLayout.itemSize = CGSizeMake(cellW, cellH);
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    _myCollectionView = [[DiyCollectionView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50) collectionViewLayout:flowLayout];
+    _myCollectionView = [[DiyCollectionView alloc]initWithFrame:CGRectMake(0, GLOBAL_NAVTOP_HEIGHT, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight) collectionViewLayout:flowLayout];
     _myCollectionView.dataSource = self;
     _myCollectionView.delegate = self;
     _myCollectionView.showsHorizontalScrollIndicator = NO;
@@ -96,18 +109,22 @@
     [tapView addGestureRecognizer:tapGesture];
     [self.view addSubview:tapView];
     
-    diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 50) actionHandler:self];
+    diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-kBottomBar_MHeight, kScreenWidth, kBottomBar_MHeight) actionHandler:self];
     diyMainBottomBar.pageNum = [pagesArr count];
     [self.view addSubview:diyMainBottomBar];
    
-    diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 50)];
+    diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_MHeight)];
     [diyBottomBar setActionHandler:self];
     [self.view addSubview:diyBottomBar];
     
-    diyPageSortBottomBar = [[DiyPageSortBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 170) withImages:pageImgShotMArr];
+    diyPageSortBottomBar = [[DiyPageSortBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_BHeight) withImages:pageImgShotMArr];
     diyPageSortBottomBar.imgDataType = 0;
     diyPageSortBottomBar.delegate = self;
     [self.view addSubview:diyPageSortBottomBar];
+    
+    txtContentV = [[DiyTextContentView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_MHeight+30)];
+    [txtContentV setDiyTextContentHandler:self selector:@selector(textContentDoneAction)];
+    [self.view addSubview:txtContentV];
     
 //    DiyBottomBar *diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, 105, kScreenWidth, 50)];
 //    bgColors = @[@"#040404", @"#FFFFFF", @"#25CDCF", @"#167FA3", @"#17AFEE",
@@ -128,6 +145,70 @@
 }
 - (void)navPreview {
 
+}
+- (void)textContentDoneAction {
+    [txtContentV.textTV resignFirstResponder];
+}
+
+-(void) registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void) freeKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void) keyboardWasShown:(NSNotification*)aNotification
+{
+    NSLog(@"Keyboard was shown");
+    NSDictionary* info = [aNotification userInfo];
+    
+    // Get animation info from userInfo
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    CGRect keyboardFrame;
+    [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
+    [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
+    [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] getValue:&keyboardFrame];
+    
+    // Move
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:animationCurve];
+    NSLog(@"keyboard..%f..%f..%f..%f",keyboardFrame.origin.x, keyboardFrame.origin.y, keyboardFrame.size.width, keyboardFrame.size.height);
+    _myCollectionView.frame = CGRectMake(0, kCollectionView_Top, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
+    CGRect tempRect = txtContentV.frame;
+    tempRect.origin.y = kScreenHeight-keyboardFrame.size.height-kBottomBar_MHeight-30;
+    txtContentV.frame = tempRect;
+    [UIView commitAnimations];
+}
+
+-(void) keyboardWillHide:(NSNotification*)aNotification
+{
+    NSLog(@"Keyboard will hide");
+    NSDictionary* info = [aNotification userInfo];
+    
+    // Get animation info from userInfo
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    CGRect keyboardFrame;
+    [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
+    [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
+    [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] getValue:&keyboardFrame];
+    
+    // Move
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:animationCurve];
+   
+    _myCollectionView.frame = CGRectMake(0, GLOBAL_NAVTOP_HEIGHT, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
+    txtContentV.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_MHeight);
+    
+    [UIView commitAnimations];
 }
 #pragma mark - LoadData
 - (void)loadData {
@@ -185,8 +266,8 @@
     NSLog(@"nihao");
     tapView.hidden = YES;
     [UIView animateWithDuration:0.5 animations:^{
-        diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 170);
-        _myCollectionView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50);
+        diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_BHeight);
+        _myCollectionView.frame = CGRectMake(0, GLOBAL_NAVTOP_HEIGHT, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
     }];
 }
 #pragma mark - DiyMainBottomAction
@@ -197,8 +278,8 @@
         {
             tapView.hidden = NO;
             [UIView animateWithDuration:0.5 animations:^{
-                diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight-170, kScreenWidth, 170);
-                _myCollectionView.frame = CGRectMake(0, 5, kScreenWidth, kScreenHeight-64-50);
+                diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight-kBottomBar_BHeight, kScreenWidth, kBottomBar_BHeight);
+                _myCollectionView.frame = CGRectMake(0, kCollectionView_Top, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
             }];
 
         }
@@ -249,7 +330,10 @@
                 [self presentViewController:nav animated:YES completion:nil];
                 
             }else if (bottomStyle == ENUM_DIYTEXT) {
-                
+                //文字内容
+                //APageTextLabel *textLbl = (APageTextLabel *)_selectedElement;
+                //textTV.text = textLbl
+                [txtContentV.textTV becomeFirstResponder];
             }
 
         }
@@ -257,8 +341,9 @@
         case 42:
         {
             if (bottomStyle == ENUM_DIYIMAGE) {
-                
+                //裁剪图片
             }else if (bottomStyle == ENUM_DIYTEXT) {
+                //文字样式
                 
             }
         }
@@ -297,8 +382,8 @@
     bottomStyle = ENUM_DIYIMAGE;
     [diyBottomBar reloadDiyBottom:bottomStyle];
     [UIView animateWithDuration:0.5 animations:^{
-        diyMainBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 50);
-        diyBottomBar.frame = CGRectMake(0, kScreenHeight-50, kScreenWidth, 50);
+        diyMainBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_MHeight);
+        diyBottomBar.frame = CGRectMake(0, kScreenHeight-kBottomBar_MHeight, kScreenWidth, kBottomBar_MHeight);
     }];
 }
 - (void)showTextBottomView:(UIView *)element {
@@ -318,8 +403,8 @@
     bottomStyle = ENUM_DIYTEXT;
     [diyBottomBar reloadDiyBottom:bottomStyle];
     [UIView animateWithDuration:0.5 animations:^{
-        diyMainBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 50);
-        diyBottomBar.frame = CGRectMake(0, kScreenHeight-50, kScreenWidth, 50);
+        diyMainBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_MHeight);
+        diyBottomBar.frame = CGRectMake(0, kScreenHeight-kBottomBar_MHeight, kScreenWidth, kBottomBar_MHeight);
     }];
 }
 - (void)showMainBottomView:(UIView *)element {
@@ -338,8 +423,8 @@
     
     
     [UIView animateWithDuration:0.5 animations:^{
-        diyMainBottomBar.frame = CGRectMake(0, kScreenHeight-50, kScreenWidth, 50);
-        diyBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 50);
+        diyMainBottomBar.frame = CGRectMake(0, kScreenHeight-kBottomBar_MHeight, kScreenWidth, kBottomBar_MHeight);
+        diyBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_MHeight);
     }];
 }
 - (void)clearOverBorders {
@@ -364,8 +449,8 @@
     NSLog(@"pickImage");
     tapView.hidden = YES;
     [UIView animateWithDuration:0.5 animations:^{
-        diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 170);
-        _myCollectionView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-50);
+        diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_BHeight);
+        _myCollectionView.frame = CGRectMake(0, GLOBAL_NAVTOP_HEIGHT, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
     }];
 }
 - (void)tapImageAction:(NSInteger)index {

@@ -14,6 +14,7 @@
 #define GLOBAL_STATUSBAR_HEIGHT                                                 20.0f
 #define GLOBAL_NAVIGATIONBAR_HEIGHT                                             44.0f
 #define GLOBAL_TABBAR_HEIGHT                                                    49.0f
+#define GLOBAL_NAVTOP_HEIGHT                                                    64.0f
 
 //bodyView背景色
 #define GLOBAL_BODYVIEW_BG_COLOR    [UIColor colorWithRed:235/255.0 green:237/255.0 blue:241/255.0 alpha:1]

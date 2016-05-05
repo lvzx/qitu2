@@ -31,14 +31,21 @@
     //定义完成按钮
     UIToolbar * topView = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
     [topView setTintColor:[UIColor whiteColor]];
-    [topView setBarStyle:UIBarStyleBlack];
+    //[topView setBarStyle:UIBarStyleBlack];
     
+    UIButton *doneBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-50, 0, 50, 30)];
+    doneBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    [doneBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [doneBtn setTitleColor:RGBCOLOR(83, 189, 173) forState:UIControlStateNormal];
+    [doneBtn addTarget:obj action:selector forControlEvents:UIControlEventTouchUpInside];
+    [topView addSubview:doneBtn];
+    /*
     UIBarButtonItem * button1 =[[UIBarButtonItem  alloc]initWithBarButtonSystemItem:                                        UIBarButtonSystemItemFlexibleSpace target:obj action:nil];
     UIBarButtonItem * button2 = [[UIBarButtonItem  alloc]initWithBarButtonSystemItem:                                        UIBarButtonSystemItemFlexibleSpace target:obj action:nil];
     UIBarButtonItem * doneButton = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone  target:obj action:selector];
     NSArray * buttonsArray = [NSArray arrayWithObjects:button1,button2,doneButton,nil];
     
-    [topView setItems:buttonsArray];
+    [topView setItems:buttonsArray];*/
     
     if([activeView isKindOfClass:[UITextField class]])
     {

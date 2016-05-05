@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APageTextItem.h"
 #import "DiyShowDelgate.h"
 
 @interface APageTextLabel : UILabel
+@property (nonatomic, strong) APageTextItem *txtItem;
 @property (nonatomic, assign) BOOL hasBorder;
 @property (assign, nonatomic) id<DiyShowDelgate> myDelegate;
 @end
