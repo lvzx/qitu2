@@ -23,6 +23,7 @@
 
 #define CREATOR_IMG_PADDING 6
 #define CREATOR_IMG_RADIUS 4
+#define CREATOR_BORDER_WIDTH 1.0
 //购买模版用到的宏及参数
 
 
