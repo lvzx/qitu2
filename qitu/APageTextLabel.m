@@ -7,7 +7,6 @@
 //
 
 #import "APageTextLabel.h"
-#import "TextBorderView.h"
 
 static const CGFloat kScaleBorderDotArea = 25;
 
@@ -37,7 +36,6 @@ typedef enum {
     
     ENUM_ACTION_TYPE actionStyle;
 }
-@property (nonatomic, strong) TextBorderView *borderView;
 @end
 
 @implementation APageTextLabel

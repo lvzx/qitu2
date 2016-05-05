@@ -9,9 +9,6 @@
 #import "DiyOnePageCell.h"
 #import "UIColor+Hex.h"
 #import "UIImageView+WebCache.h"
-#import "APageImageView.h"
-#import "BorderView.h"
-#import "TextBorderView.h"
 #import "DiyRelatedEnum.h"
 
 @interface DiyOnePageCell ()

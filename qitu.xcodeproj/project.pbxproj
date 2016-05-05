@@ -16,7 +16,6 @@
 		0D0B8C741CCF6D7C00DB61D0 /* DiyCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0B8C731CCF6D7C00DB61D0 /* DiyCollectionView.m */; };
 		0D1C55F41CD3645D00165E81 /* UIImage+Handler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1C55F31CD3645D00165E81 /* UIImage+Handler.m */; };
 		0D2912DA1CC47BD7005EF62A /* APageTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2912D91CC47BD7005EF62A /* APageTextLabel.m */; };
-		0D2912DD1CC49599005EF62A /* BorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2912DC1CC49599005EF62A /* BorderView.m */; };
 		0D3C0F941CA3E2020063F5CB /* PersonalInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3C0F931CA3E2020063F5CB /* PersonalInfoVC.m */; };
 		0D4B3EC01CCDCF880052B22D /* DiyAddPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4B3EBF1CCDCF880052B22D /* DiyAddPageView.m */; };
 		0D4B3EC41CCDFC490052B22D /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4B3EC21CCDFC490052B22D /* CropImageViewController.m */; };
@@ -74,17 +73,12 @@
 		0DCE80AC1CB5F2FD0003ADB1 /* DiyAPageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE80AB1CB5F2FD0003ADB1 /* DiyAPageItem.m */; };
 		0DD2D0641CA5309700F2EF62 /* UserDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2D0631CA5309700F2EF62 /* UserDetailItem.m */; };
 		0DD2D0671CA534FC00F2EF62 /* PersonalInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2D0661CA534FC00F2EF62 /* PersonalInfoCell.m */; };
-		0DD609281CC5BB2F002AB7DE /* APageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD609271CC5BB2F002AB7DE /* APageImageView.m */; };
-		0DD6092B1CC5C884002AB7DE /* TextBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6092A1CC5C884002AB7DE /* TextBorderView.m */; };
 		0DD609301CC5CE6F002AB7DE /* 001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6092C1CC5CE6F002AB7DE /* 001.jpg */; };
 		0DD609311CC5CE6F002AB7DE /* 002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6092D1CC5CE6F002AB7DE /* 002.jpg */; };
 		0DD609331CC5CE6F002AB7DE /* 004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DD6092F1CC5CE6F002AB7DE /* 004.jpg */; };
-		0DD609361CC5E122002AB7DE /* DiyTemplateScrV.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD609351CC5E122002AB7DE /* DiyTemplateScrV.m */; };
 		0DD609391CC5E442002AB7DE /* DynamicScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD609381CC5E442002AB7DE /* DynamicScrollView.m */; };
-		0DD6093C1CC5E9BC002AB7DE /* DiyTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD6093B1CC5E9BC002AB7DE /* DiyTemplateCell.m */; };
 		0DE33A061CC858BE00E5D229 /* APageImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE33A051CC858BE00E5D229 /* APageImgView.m */; };
 		0DE33A081CC8754700E5D229 /* 003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE33A071CC8754700E5D229 /* 003@2x.png */; };
-		0DE7E4431CCA06E500DBC02A /* DiyScrollViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7E4421CCA06E500DBC02A /* DiyScrollViewContainer.m */; };
 		0DFD5C101CD98A930047A3E6 /* DiyPageSortBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFD5C0F1CD98A930047A3E6 /* DiyPageSortBottomBar.m */; };
 		0DFD5C121CD99C190047A3E6 /* Intro_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFD5C111CD99C190047A3E6 /* Intro_2@2x.png */; };
 		6B09B59704F3633ECD5D669F /* Pods_qitu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D181B34881D259D5238DA90 /* Pods_qitu.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -124,8 +118,6 @@
 		0D1C55F31CD3645D00165E81 /* UIImage+Handler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Handler.m"; sourceTree = "<group>"; };
 		0D2912D81CC47BD7005EF62A /* APageTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APageTextLabel.h; sourceTree = "<group>"; };
 		0D2912D91CC47BD7005EF62A /* APageTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageTextLabel.m; sourceTree = "<group>"; };
-		0D2912DB1CC49599005EF62A /* BorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderView.h; sourceTree = "<group>"; };
-		0D2912DC1CC49599005EF62A /* BorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderView.m; sourceTree = "<group>"; };
 		0D3C0F921CA3E2020063F5CB /* PersonalInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoVC.h; sourceTree = "<group>"; };
 		0D3C0F931CA3E2020063F5CB /* PersonalInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoVC.m; sourceTree = "<group>"; };
 		0D4B3EBE1CCDCF880052B22D /* DiyAddPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyAddPageView.h; sourceTree = "<group>"; };
@@ -242,25 +234,15 @@
 		0DD2D0631CA5309700F2EF62 /* UserDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailItem.m; sourceTree = "<group>"; };
 		0DD2D0651CA534FC00F2EF62 /* PersonalInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoCell.h; sourceTree = "<group>"; };
 		0DD2D0661CA534FC00F2EF62 /* PersonalInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoCell.m; sourceTree = "<group>"; };
-		0DD609261CC5BB2F002AB7DE /* APageImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APageImageView.h; sourceTree = "<group>"; };
-		0DD609271CC5BB2F002AB7DE /* APageImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageImageView.m; sourceTree = "<group>"; };
-		0DD609291CC5C884002AB7DE /* TextBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextBorderView.h; sourceTree = "<group>"; };
-		0DD6092A1CC5C884002AB7DE /* TextBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextBorderView.m; sourceTree = "<group>"; };
 		0DD6092C1CC5CE6F002AB7DE /* 001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 001.jpg; sourceTree = "<group>"; };
 		0DD6092D1CC5CE6F002AB7DE /* 002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 002.jpg; sourceTree = "<group>"; };
 		0DD6092F1CC5CE6F002AB7DE /* 004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 004.jpg; sourceTree = "<group>"; };
-		0DD609341CC5E122002AB7DE /* DiyTemplateScrV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyTemplateScrV.h; sourceTree = "<group>"; };
-		0DD609351CC5E122002AB7DE /* DiyTemplateScrV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyTemplateScrV.m; sourceTree = "<group>"; };
 		0DD609371CC5E442002AB7DE /* DynamicScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicScrollView.h; sourceTree = "<group>"; };
 		0DD609381CC5E442002AB7DE /* DynamicScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicScrollView.m; sourceTree = "<group>"; };
-		0DD6093A1CC5E9BC002AB7DE /* DiyTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyTemplateCell.h; sourceTree = "<group>"; };
-		0DD6093B1CC5E9BC002AB7DE /* DiyTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyTemplateCell.m; sourceTree = "<group>"; };
 		0DE33A041CC858BE00E5D229 /* APageImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APageImgView.h; sourceTree = "<group>"; };
 		0DE33A051CC858BE00E5D229 /* APageImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APageImgView.m; sourceTree = "<group>"; };
 		0DE33A071CC8754700E5D229 /* 003@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "003@2x.png"; sourceTree = "<group>"; };
 		0DE7E4401CC9FDFE00DBC02A /* DiyShowDelgate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyShowDelgate.h; sourceTree = "<group>"; };
-		0DE7E4411CCA06E500DBC02A /* DiyScrollViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyScrollViewContainer.h; sourceTree = "<group>"; };
-		0DE7E4421CCA06E500DBC02A /* DiyScrollViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyScrollViewContainer.m; sourceTree = "<group>"; };
 		0DFD5C0E1CD98A930047A3E6 /* DiyPageSortBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyPageSortBottomBar.h; sourceTree = "<group>"; };
 		0DFD5C0F1CD98A930047A3E6 /* DiyPageSortBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyPageSortBottomBar.m; sourceTree = "<group>"; };
 		0DFD5C111CD99C190047A3E6 /* Intro_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro_2@2x.png"; sourceTree = "<group>"; };
@@ -308,16 +290,10 @@
 		0D2912D11CC467BA005EF62A /* APageView */ = {
 			isa = PBXGroup;
 			children = (
-				0DD609261CC5BB2F002AB7DE /* APageImageView.h */,
-				0DD609271CC5BB2F002AB7DE /* APageImageView.m */,
 				0DE33A041CC858BE00E5D229 /* APageImgView.h */,
 				0DE33A051CC858BE00E5D229 /* APageImgView.m */,
-				0D2912DB1CC49599005EF62A /* BorderView.h */,
-				0D2912DC1CC49599005EF62A /* BorderView.m */,
 				0D2912D81CC47BD7005EF62A /* APageTextLabel.h */,
 				0D2912D91CC47BD7005EF62A /* APageTextLabel.m */,
-				0DD609291CC5C884002AB7DE /* TextBorderView.h */,
-				0DD6092A1CC5C884002AB7DE /* TextBorderView.m */,
 			);
 			name = APageView;
 			sourceTree = "<group>";
@@ -723,17 +699,11 @@
 		0DD6093D1CC5E9C9002AB7DE /* DiyTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				0DD609341CC5E122002AB7DE /* DiyTemplateScrV.h */,
-				0DD609351CC5E122002AB7DE /* DiyTemplateScrV.m */,
-				0DD6093A1CC5E9BC002AB7DE /* DiyTemplateCell.h */,
-				0DD6093B1CC5E9BC002AB7DE /* DiyTemplateCell.m */,
 				0D4B3EBE1CCDCF880052B22D /* DiyAddPageView.h */,
 				0D4B3EBF1CCDCF880052B22D /* DiyAddPageView.m */,
 				0DD609371CC5E442002AB7DE /* DynamicScrollView.h */,
 				0DD609381CC5E442002AB7DE /* DynamicScrollView.m */,
 				0DE7E4401CC9FDFE00DBC02A /* DiyShowDelgate.h */,
-				0DE7E4411CCA06E500DBC02A /* DiyScrollViewContainer.h */,
-				0DE7E4421CCA06E500DBC02A /* DiyScrollViewContainer.m */,
 				0D0B8C721CCF6D7C00DB61D0 /* DiyCollectionView.h */,
 				0D0B8C731CCF6D7C00DB61D0 /* DiyCollectionView.m */,
 			);
@@ -955,15 +925,10 @@
 				0D5D7B741CA0FF22002E1D3F /* UserInfoItem.m in Sources */,
 				0D7325821CB3947F008899BA /* DiyMainBottomBar.m in Sources */,
 				0D7D77A81CAE6F9D00AF9E7D /* UIColor+Hex.m in Sources */,
-				0D2912DD1CC49599005EF62A /* BorderView.m in Sources */,
 				0D8A6A2B1CA2367F00C65EF0 /* MyTextField.m in Sources */,
 				0D97ABD71CA6661200099DF7 /* CreatorMainVC.m in Sources */,
-				0DE7E4431CCA06E500DBC02A /* DiyScrollViewContainer.m in Sources */,
 				0DD609391CC5E442002AB7DE /* DynamicScrollView.m in Sources */,
-				0DD609361CC5E122002AB7DE /* DiyTemplateScrV.m in Sources */,
 				0D4B3EC01CCDCF880052B22D /* DiyAddPageView.m in Sources */,
-				0DD6092B1CC5C884002AB7DE /* TextBorderView.m in Sources */,
-				0DD609281CC5BB2F002AB7DE /* APageImageView.m in Sources */,
 				0DE33A061CC858BE00E5D229 /* APageImgView.m in Sources */,
 				0D5D7B771CA1481D002E1D3F /* LoginVC.m in Sources */,
 				0DCE80A51CB5F2B30003ADB1 /* APageImgItem.m in Sources */,
@@ -973,7 +938,6 @@
 				0DCE80A91CB5F2E60003ADB1 /* APageTextItem.m in Sources */,
 				0D7D779F1CAE045500AF9E7D /* SelectBgColor.m in Sources */,
 				0D8764F51CA39EE70078E871 /* MyUtills.m in Sources */,
-				0DD6093C1CC5E9BC002AB7DE /* DiyTemplateCell.m in Sources */,
 				0D8A6A2E1CA27BA600C65EF0 /* SettingsVC.m in Sources */,
 				0D4B3EC41CCDFC490052B22D /* CropImageViewController.m in Sources */,
 				0D7325731CB33F64008899BA /* DiyBottomBar.m in Sources */,
