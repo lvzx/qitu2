@@ -11,4 +11,5 @@
 @interface DiyAddPageView : UIView
 @property (nonatomic, strong) UIButton *addPageBtn;
 @property (nonatomic, strong) UIButton *addFormBtn;
+- (void)setaddBtnHandler:(id)target withSelector:(SEL)aSelector;
 @end

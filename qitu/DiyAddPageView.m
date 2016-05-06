@@ -32,6 +32,7 @@
         CGFloat cellH = cellW*36/23.0;
         CGFloat offsetY = cellH/4;
         _addPageBtn = [[UIButton alloc] init];
+        _addPageBtn.tag = 80;
         [_addPageBtn setBackgroundImage:[UIImage imageNamed:@"maka_edit4_addpage"] forState:UIControlStateNormal];
         [self addSubview:_addPageBtn];
         [_addPageBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -39,6 +40,7 @@
             make.center.mas_equalTo(CGPointMake(0, -offsetY));
         }];
         _addFormBtn = [[UIButton alloc] init];
+        _addFormBtn.tag = 81;
         [_addFormBtn setBackgroundImage:[UIImage imageNamed:@"maka_edit4_addform"] forState:UIControlStateNormal];
         [self addSubview:_addFormBtn];
         [_addFormBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -47,5 +49,9 @@
         }];
     }
     return self;
+}
+- (void)setaddBtnHandler:(id)target withSelector:(SEL)aSelector {
+    [_addPageBtn addTarget:target action:aSelector forControlEvents:UIControlEventTouchUpInside];
+    [_addFormBtn addTarget:target action:aSelector forControlEvents:UIControlEventTouchUpInside];
 }
 @end

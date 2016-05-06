@@ -11,6 +11,7 @@
 #import "APageTextLabel.h"
 #import "DiyAPageItem.h"
 #import "DiyShowDelgate.h"
+#import "DiyAddPageView.h"
 
 #define DIY_CELL_TAG 88
 #define DIYCELL_TOPPADDING 30
@@ -25,5 +26,6 @@ static const NSInteger kCellElementTag = 44;
 
 @property (strong, nonatomic) DiyAPageItem *aPageItem;
 @property (strong, nonatomic) id<DiyShowDelgate> myDelegate;
+@property (strong, nonatomic) DiyAddPageView *addView;
 
 @end

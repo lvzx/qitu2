@@ -13,6 +13,7 @@
 
 @interface DiyOnePageCell ()
 {
+    CGFloat width, height;
     NSMutableArray *imgViewMArr;//成员APageImageView对象
     NSMutableArray *textLblMArr;//成员APageTextLabel对象
     ENUM_DIY_TYPE diyContentType;//背景、图片、文本
@@ -36,11 +37,21 @@
     if (self) {
         // Initialization code
         self.clipsToBounds = YES;
-        CGFloat width = frame.size.width;
-        CGFloat height = frame.size.height;
-        //self.contentView.layer.borderWidth = 0.8;
-        //self.contentView.layer.borderColor = RGBCOLOR(213, 213, 213).CGColor;
+        width = frame.size.width;
+        height = frame.size.height;
+    }
+    return self;
+}
+
+- (void)setAPageItem:(DiyAPageItem *)aPageItem {
+    if (_aPageItem != aPageItem) {
+        _aPageItem = aPageItem;
+    }
+    if (_aPageItem.pageType == DIY_PAGETYPE_SHOW) {
+        _addView = nil;
         self.backgroundImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, width, height)];
+        self.backgroundImg.backgroundColor = [UIColor colorWithHexString:aPageItem.bgColor];
+        [self.backgroundImg sd_setImageWithURL:[NSURL URLWithString:aPageItem.bgImgUrl]];
         self.backgroundImg.userInteractionEnabled = YES;
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         [self.backgroundImg addGestureRecognizer:tapGesture];
@@ -52,52 +63,46 @@
         _numLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 6, 35, 28)];
         _numLbl.textColor = [UIColor whiteColor];
         _numLbl.textAlignment = NSTextAlignmentCenter;
-        _numLbl.text = [NSString stringWithFormat:@"%@", @(self.tag+1)];
+        self.numLbl.text = [NSString stringWithFormat:@"%@", @(self.tag-DIY_CELL_TAG+1)];
         [pageNumV addSubview:_numLbl];
         [self.contentView addSubview:pageNumV];
-    }
-    return self;
-}
-
-- (void)setAPageItem:(DiyAPageItem *)aPageItem {
-    if (_aPageItem != aPageItem) {
-        _aPageItem = aPageItem;
-    }
-    self.backgroundImg.backgroundColor = [UIColor colorWithHexString:aPageItem.bgColor];
-    [self.backgroundImg sd_setImageWithURL:[NSURL URLWithString:aPageItem.bgImgUrl]];
-    self.numLbl.text = [NSString stringWithFormat:@"%@", @(self.tag-DIY_CELL_TAG+1)];
-    //*[UIScreen mainScreen].scale
-    CGFloat bili = kScreenWidth/aPageItem.bgpicwidth;
-    
-    imgViewMArr = [[NSMutableArray alloc] init];
-    textLblMArr = [[NSMutableArray alloc] init];
-    NSInteger imgRow = 0;
-    for (APageImgItem *imgItem in aPageItem.imgsMArr) {
-        CGRect imgRect = CGRectMake(imgItem.img_x*bili-CREATOR_IMG_PADDING, imgItem.img_y*bili-CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, imgItem.imgHeight*bili+2*CREATOR_IMG_PADDING);
-        APageImgView *imgV = [[APageImgView alloc] initWithFrame:imgRect];
-        imgV.imgItem = imgItem;
-        imgRow++;
-        imgV.tag = kCellElementTag+imgRow;
-        imgV.myDelegate = self.myDelegate;
-        [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
-        [self.contentView addSubview:imgV];
-        [imgViewMArr addObject:imgV];
-    }
-    
-    for (APageTextItem *txtItem in aPageItem.textMArr) {
-        TextItem *textItem = txtItem.textItem;
-        NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
-        UIFont *textFont = [UIFont systemFontOfSize:textItem.fontSize*bili];
-        CGFloat textWidth = txtItem.txt_width*bili+2*CREATOR_IMG_PADDING;
-        CGSize textSize = [self boundingRectText:txtStr WithFont:textFont withSize:CGSizeMake(textWidth, 800)];
-        APageTextLabel *textLbl = [[APageTextLabel alloc] initWithFrame:CGRectMake(txtItem.txt_x*bili-CREATOR_IMG_PADDING, txtItem.txt_y*bili, textWidth, textSize.height+2*CREATOR_BORDER_WIDTH)];
-
-        textLbl.myDelegate = self.myDelegate;
-        textLbl.textColor = [UIColor colorWithHexString:textItem.txtColorHexStr];
-        textLbl.text = txtStr;
-        textLbl.font = textFont;
-        [self.contentView addSubview:textLbl];
-        [textLblMArr addObject:textLbl];
+        
+        //*[UIScreen mainScreen].scale
+        CGFloat bili = kScreenWidth/aPageItem.bgpicwidth;
+        
+        imgViewMArr = [[NSMutableArray alloc] init];
+        textLblMArr = [[NSMutableArray alloc] init];
+        NSInteger imgRow = 0;
+        for (APageImgItem *imgItem in aPageItem.imgsMArr) {
+            CGRect imgRect = CGRectMake(imgItem.img_x*bili-CREATOR_IMG_PADDING, imgItem.img_y*bili-CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, imgItem.imgHeight*bili+2*CREATOR_IMG_PADDING);
+            APageImgView *imgV = [[APageImgView alloc] initWithFrame:imgRect];
+            imgV.imgItem = imgItem;
+            imgRow++;
+            imgV.tag = kCellElementTag+imgRow;
+            imgV.myDelegate = self.myDelegate;
+            [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
+            [self.contentView addSubview:imgV];
+            [imgViewMArr addObject:imgV];
+        }
+        
+        for (APageTextItem *txtItem in aPageItem.textMArr) {
+            TextItem *textItem = txtItem.textItem;
+            NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
+            UIFont *textFont = [UIFont systemFontOfSize:textItem.fontSize*bili];
+            CGFloat textWidth = txtItem.txt_width*bili+2*CREATOR_IMG_PADDING;
+            CGSize textSize = [self boundingRectText:txtStr WithFont:textFont withSize:CGSizeMake(textWidth, 800)];
+            APageTextLabel *textLbl = [[APageTextLabel alloc] initWithFrame:CGRectMake(txtItem.txt_x*bili-CREATOR_IMG_PADDING, txtItem.txt_y*bili, textWidth, textSize.height+2*CREATOR_BORDER_WIDTH)];
+            
+            textLbl.myDelegate = self.myDelegate;
+            textLbl.textColor = [UIColor colorWithHexString:textItem.txtColorHexStr];
+            textLbl.text = txtStr;
+            textLbl.font = textFont;
+            [self.contentView addSubview:textLbl];
+            [textLblMArr addObject:textLbl];
+        }
+    }else {
+        _addView = [[DiyAddPageView alloc] initWithFrame:self.bounds];
+        [self.contentView addSubview:_addView];
     }
 }
 

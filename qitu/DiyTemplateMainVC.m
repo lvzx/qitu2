@@ -115,7 +115,7 @@ static const CGFloat kCollectionView_Top = 5.0;
     
      //点击页面背景底部工具栏视图
     diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-kBottomBar_MHeight, kScreenWidth, kBottomBar_MHeight) actionHandler:self];
-    diyMainBottomBar.pageNum = [pagesArr count];
+    diyMainBottomBar.pageNum = [pagesArr count]-1;
     [self.view addSubview:diyMainBottomBar];
    
      //点击图片、文字底部工具栏视图
@@ -245,6 +245,7 @@ static const CGFloat kCollectionView_Top = 5.0;
         NSDictionary *aPageDic = scenesArr[i];
         NSArray *aPageArr = aPageDic[@"content"];
         DiyAPageItem *apageItem = [[DiyAPageItem alloc] init];
+        apageItem.pageType = DIY_PAGETYPE_SHOW;
         apageItem.bgColor = aPageDic[@"bgcolor"];
         apageItem.bgImgUrl = aPageDic[@"bgpic"];
         apageItem.bgpicwidth = [aPageDic[@"bgpicwidth"] integerValue];
@@ -265,6 +266,10 @@ static const CGFloat kCollectionView_Top = 5.0;
         apageItem.textMArr = textArr;
         [pagesArr addObject:apageItem];
     }
+    
+    DiyAPageItem *apageItem = [[DiyAPageItem alloc] init];
+    apageItem.pageType = DIY_PAGETYPE_ADD;
+    [pagesArr addObject:apageItem];
     NSLog(@"***pagesArr:%@", pagesArr);
 }
 #pragma mark - 裁剪图片后的通知回调
@@ -511,29 +516,40 @@ static const CGFloat kCollectionView_Top = 5.0;
     scOffsetPoint.x = scOffsetX;
     [_myCollectionView setContentOffset:scOffsetPoint animated:YES];
 }
+#pragma mark -add Page, add Form Action
+- (void)addPageAndFormAction:(UIButton *)sender {
+    if (sender.tag == 80) {
+        //add page
+        NSLog(@"add page");
+    }else {
+        //add form
+        NSLog(@"add form");
+    }
+}
+
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSInteger pageCount = [pagesArr count];
-    return pageCount==0 ? 0 : pageCount+1;
+    return [pagesArr count];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     static NSString *identify = @"DiyOnePageCell";
     DiyOnePageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-    if (row < [pagesArr count]) {
-        DiyAPageItem *OnePageItem = pagesArr[row];
+    
+    DiyAPageItem *OnePageItem = pagesArr[row];
+    if (OnePageItem.pageType == DIY_PAGETYPE_SHOW) {
         cell.myDelegate = self;
         cell.tag = DIY_CELL_TAG+row;
         cell.aPageItem = OnePageItem;
     }else {
-        DiyAddPageView *addView = [[DiyAddPageView alloc] initWithFrame:cell.contentView.frame];
-        [cell addSubview:addView];
+        cell.aPageItem = OnePageItem;
+        [cell.addView setaddBtnHandler:self withSelector:@selector(addPageAndFormAction:)];
     }
-    
+
     return cell;
 }
 #pragma mark --UICollectionViewDelegateFlowLayout

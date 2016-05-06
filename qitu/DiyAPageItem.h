@@ -10,6 +10,11 @@
 #import "APageImgItem.h"
 #import "APageTextItem.h"
 
+typedef enum {
+    DIY_PAGETYPE_ADD = 20,
+    DIY_PAGETYPE_SHOW
+}DIY_PAGETYPE;
+
 @interface DiyAPageItem : NSObject
 @property (nonatomic, strong) NSMutableArray *imgsMArr;
 @property (nonatomic, strong) NSMutableArray *textMArr;
@@ -17,4 +22,5 @@
 @property (nonatomic, strong) NSString *bgImgUrl;
 @property (nonatomic, assign) NSInteger bgpicwidth;
 @property (nonatomic, assign) NSInteger bgpicheight;
+@property (assign, nonatomic) DIY_PAGETYPE pageType;
 @end
