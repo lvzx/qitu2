@@ -21,4 +21,10 @@ typedef enum {
     ENUM_DIYBOTTOM_THIRD
 }ENUM_DIYBOTTOM_ACTIONINDEX;
 
+typedef enum {
+    ENUM_DIY_TEXTLEFT,
+    ENUM_DIY_TEXTMIDDLE,
+    ENUM_DIY_TEXTRIGHT
+}ENUM_DIY_TEXTALIGN;
+
 #endif /* DiyRelatedEnum_h */

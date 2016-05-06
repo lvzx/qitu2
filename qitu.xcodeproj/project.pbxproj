@@ -79,6 +79,7 @@
 		0DE33A061CC858BE00E5D229 /* APageImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE33A051CC858BE00E5D229 /* APageImgView.m */; };
 		0DE33A081CC8754700E5D229 /* 003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE33A071CC8754700E5D229 /* 003@2x.png */; };
 		0DE3DD341CDB2067002612D6 /* DiyTextContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3DD331CDB2067002612D6 /* DiyTextContentView.m */; };
+		0DF6D55A1CDC29A700925C52 /* DiyTextStyleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF6D5591CDC29A700925C52 /* DiyTextStyleView.m */; };
 		0DFD5C101CD98A930047A3E6 /* DiyPageSortBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFD5C0F1CD98A930047A3E6 /* DiyPageSortBottomBar.m */; };
 		0DFD5C121CD99C190047A3E6 /* Intro_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFD5C111CD99C190047A3E6 /* Intro_2@2x.png */; };
 		6B09B59704F3633ECD5D669F /* Pods_qitu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D181B34881D259D5238DA90 /* Pods_qitu.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -243,6 +244,8 @@
 		0DE3DD321CDB2067002612D6 /* DiyTextContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyTextContentView.h; sourceTree = "<group>"; };
 		0DE3DD331CDB2067002612D6 /* DiyTextContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyTextContentView.m; sourceTree = "<group>"; };
 		0DE7E4401CC9FDFE00DBC02A /* DiyShowDelgate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyShowDelgate.h; sourceTree = "<group>"; };
+		0DF6D5581CDC29A700925C52 /* DiyTextStyleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyTextStyleView.h; sourceTree = "<group>"; };
+		0DF6D5591CDC29A700925C52 /* DiyTextStyleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyTextStyleView.m; sourceTree = "<group>"; };
 		0DFD5C0E1CD98A930047A3E6 /* DiyPageSortBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyPageSortBottomBar.h; sourceTree = "<group>"; };
 		0DFD5C0F1CD98A930047A3E6 /* DiyPageSortBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyPageSortBottomBar.m; sourceTree = "<group>"; };
 		0DFD5C111CD99C190047A3E6 /* Intro_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro_2@2x.png"; sourceTree = "<group>"; };
@@ -705,6 +708,8 @@
 				0DFD5C0F1CD98A930047A3E6 /* DiyPageSortBottomBar.m */,
 				0DE3DD321CDB2067002612D6 /* DiyTextContentView.h */,
 				0DE3DD331CDB2067002612D6 /* DiyTextContentView.m */,
+				0DF6D5581CDC29A700925C52 /* DiyTextStyleView.h */,
+				0DF6D5591CDC29A700925C52 /* DiyTextStyleView.m */,
 				0DA3C6211CC7784200E1F279 /* DiyRelatedEnum.h */,
 			);
 			name = DiyTemplate;
@@ -950,6 +955,7 @@
 				0D8490821CA9200A00A28D94 /* BuyTemplateMainVC.m in Sources */,
 				0D9C9DB61C97E62400652830 /* AppDelegate.m in Sources */,
 				0DD2D0641CA5309700F2EF62 /* UserDetailItem.m in Sources */,
+				0DF6D55A1CDC29A700925C52 /* DiyTextStyleView.m in Sources */,
 				0DA937661C9BF0EA000DC170 /* HomeViewController.m in Sources */,
 				0DAED5B51CAA140A00D0BEA5 /* StoreTemplateItem.m in Sources */,
 				0D6BC6071CAB7F9D0027B5A6 /* BuyTemplateContentVC.m in Sources */,

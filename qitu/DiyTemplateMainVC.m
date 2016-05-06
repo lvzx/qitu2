@@ -7,7 +7,7 @@
 //
 
 #import "DiyTemplateMainVC.h"
-#import "SelectBgColor.h"
+//#import "SelectBgColor.h"
 #import "DiyBottomBar.h"
 #import "DiyMainBottomBar.h"
 #import "DiyPageSortBottomBar.h"
@@ -16,19 +16,20 @@
 #import "DiyCollectionView.h"
 #import "SelectImageVC.h"
 #import "DiyTextContentView.h"
+#import "DiyTextStyleView.h"
 
 static const CGFloat kBottomBar_MHeight = 50.0;
 static const CGFloat kBottomBar_BHeight = 170.0;
 static const CGFloat kCollectionView_Top = 5.0;
 
-@interface DiyTemplateMainVC ()<SelectBgColorDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, DiyPageSortDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate, UITextViewDelegate>
+@interface DiyTemplateMainVC ()<DiyTextStyleViewDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, DiyPageSortDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate, UITextViewDelegate>
 {
     UIView *tapView;
     
     CGFloat cellW;
     CGFloat cellH;
     CGFloat cellPadding;
-    NSArray *bgColors;
+    NSArray *selColors;//供选择的颜色列表
     NSMutableArray *pagesArr;
     NSInteger _curPageIndex;
 
@@ -37,6 +38,7 @@ static const CGFloat kCollectionView_Top = 5.0;
     DiyPageSortBottomBar *diyPageSortBottomBar;
     
     DiyTextContentView *txtContentV;
+    DiyTextStyleView *txtStyleV;
 
     NSMutableArray *pageImgShotMArr;//页面截图数组
     ENUM_DIY_TYPE bottomStyle;
@@ -117,14 +119,28 @@ static const CGFloat kCollectionView_Top = 5.0;
     [diyBottomBar setActionHandler:self];
     [self.view addSubview:diyBottomBar];
     
+    //添加页面排序视图
     diyPageSortBottomBar = [[DiyPageSortBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_BHeight) withImages:pageImgShotMArr];
     diyPageSortBottomBar.imgDataType = 0;
     diyPageSortBottomBar.delegate = self;
     [self.view addSubview:diyPageSortBottomBar];
     
+    //添加文本内容视图
     txtContentV = [[DiyTextContentView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_MHeight+30)];
     [txtContentV setDiyTextContentHandler:self selector:@selector(textContentDoneAction)];
     [self.view addSubview:txtContentV];
+    
+    //添加文本样式视图
+    selColors = @[@"#040404", @"#FFFFFF", @"#25CDCF", @"#167FA3", @"#17AFEE",
+                  @"#59C2F2", @"#3B7FBC", @"#0A4CA9", @"#5248FE", @"#6228F2",
+                  @"#676BFB", @"#7751F1", @"#952CBE", @"#CA32AF", @"#F12084"];
+    txtStyleV = [[DiyTextStyleView alloc] initWithColors:selColors];
+    txtStyleV.colorIdx = 0;
+    txtStyleV.textAlign = ENUM_DIY_TEXTMIDDLE;
+    txtStyleV.fontSizeSlider.value = 15;
+    txtStyleV.delegate = self;
+    [txtStyleV.fontSizeSlider addTarget:self action:@selector(changeFontSizeValue) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:txtStyleV];
     
 //    DiyBottomBar *diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, 105, kScreenWidth, 50)];
 //    bgColors = @[@"#040404", @"#FFFFFF", @"#25CDCF", @"#167FA3", @"#17AFEE",
@@ -352,16 +368,17 @@ static const CGFloat kCollectionView_Top = 5.0;
             break;
     }
 }
-#pragma mark - Alpha changed
-- (void)changeAlphaValue {
 
-}
-
-#pragma mark - SelectBgColorDelegate
+#pragma mark - DiyTextStyleViewDelegate
 - (void)didSelectBgColor:(NSInteger)colorIdx {
 
 }
+- (void)didSelectTextAlign:(ENUM_DIY_TEXTALIGN)textAlign {
 
+}
+- (void)changeFontSizeValue {
+
+}
 #pragma mark - DiyShowDelgate
 - (void)showImgBottomView:(UIView *)element {
     NSLog(@"showImgBottom View");
