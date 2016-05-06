@@ -27,4 +27,10 @@ typedef enum {
     ENUM_DIY_TEXTRIGHT
 }ENUM_DIY_TEXTALIGN;
 
+typedef enum {
+    DIY_SEL_PAGE = 10,
+    DIY_SEL_BACKGROUND,
+    DIY_SEL_ADDITEM,
+    DIY_SEL_TEXTSTYLE
+}DIY_SEL_ITEM;
 #endif /* DiyRelatedEnum_h */

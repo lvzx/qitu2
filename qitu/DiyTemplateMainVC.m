@@ -25,6 +25,7 @@ static const CGFloat kCollectionView_Top = 5.0;
 @interface DiyTemplateMainVC ()<DiyTextStyleViewDelegate, DiyMainBottomBar, DiyBottomBarDelegate, DiyShowDelgate, DiyPageSortDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, UIActionSheetDelegate, UITextViewDelegate>
 {
     UIView *tapView;
+    DIY_SEL_ITEM tapViewStyle;
     
     CGFloat cellW;
     CGFloat cellH;
@@ -105,16 +106,19 @@ static const CGFloat kCollectionView_Top = 5.0;
     
     [self.view addSubview:self.myCollectionView];
     
+     //视图上移回归初始位置辅助视图
     tapView = [[UIView alloc] initWithFrame:_myCollectionView.bounds];
     tapView.hidden = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [tapView addGestureRecognizer:tapGesture];
     [self.view addSubview:tapView];
     
+     //点击页面背景底部工具栏视图
     diyMainBottomBar = [[DiyMainBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight-kBottomBar_MHeight, kScreenWidth, kBottomBar_MHeight) actionHandler:self];
     diyMainBottomBar.pageNum = [pagesArr count];
     [self.view addSubview:diyMainBottomBar];
    
+     //点击图片、文字底部工具栏视图
     diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_MHeight)];
     [diyBottomBar setActionHandler:self];
     [self.view addSubview:diyBottomBar];
@@ -162,22 +166,20 @@ static const CGFloat kCollectionView_Top = 5.0;
 - (void)navPreview {
 
 }
+
 - (void)textContentDoneAction {
     [txtContentV.textTV resignFirstResponder];
 }
-
 -(void) registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
-
 -(void) freeKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
-
 -(void) keyboardWasShown:(NSNotification*)aNotification
 {
     NSLog(@"Keyboard was shown");
@@ -202,7 +204,6 @@ static const CGFloat kCollectionView_Top = 5.0;
     txtContentV.frame = tempRect;
     [UIView commitAnimations];
 }
-
 -(void) keyboardWillHide:(NSNotification*)aNotification
 {
     NSLog(@"Keyboard will hide");
@@ -220,12 +221,11 @@ static const CGFloat kCollectionView_Top = 5.0;
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:animationDuration];
     [UIView setAnimationCurve:animationCurve];
-   
     _myCollectionView.frame = CGRectMake(0, GLOBAL_NAVTOP_HEIGHT, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
     txtContentV.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_MHeight);
-    
     [UIView commitAnimations];
 }
+
 #pragma mark - LoadData
 - (void)loadData {
     
@@ -267,6 +267,7 @@ static const CGFloat kCollectionView_Top = 5.0;
     }
     NSLog(@"***pagesArr:%@", pagesArr);
 }
+#pragma mark - 裁剪图片后的通知回调
 - (void)notificationHandler: (NSNotification *)notification {
     
     NSDictionary *info = notification.object;
@@ -278,13 +279,40 @@ static const CGFloat kCollectionView_Top = 5.0;
         [imgView updateImage:image withSize:image.size];
     }
 }
+#pragma mark - 视图回归原位
 - (void)handleTap:(UITapGestureRecognizer *)gesture {
     NSLog(@"nihao");
     tapView.hidden = YES;
-    [UIView animateWithDuration:0.5 animations:^{
-        diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_BHeight);
-        _myCollectionView.frame = CGRectMake(0, GLOBAL_NAVTOP_HEIGHT, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
-    }];
+    switch (tapViewStyle) {
+        case DIY_SEL_PAGE:
+        {
+            [UIView animateWithDuration:0.5 animations:^{
+                diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kBottomBar_BHeight);
+                _myCollectionView.frame = CGRectMake(0, GLOBAL_NAVTOP_HEIGHT, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
+            }];
+        }
+            break;
+        case DIY_SEL_BACKGROUND:
+        {
+            
+        }
+            break;
+        case DIY_SEL_ADDITEM:
+        {
+            
+        }
+            break;
+        case DIY_SEL_TEXTSTYLE:
+        {
+            [UIView animateWithDuration:0.5 animations:^{
+                txtStyleV.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kTextStyleViewH);
+                _myCollectionView.frame = CGRectMake(0, GLOBAL_NAVTOP_HEIGHT, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
+            }];
+        }
+            break;
+        default:
+            break;
+    }
 }
 #pragma mark - DiyMainBottomAction
 - (void)diySelectDiyMainBarBtn:(UIButton *)btn {
@@ -293,21 +321,23 @@ static const CGFloat kCollectionView_Top = 5.0;
         case 30://页面
         {
             tapView.hidden = NO;
+            tapViewStyle = DIY_SEL_PAGE;
             [UIView animateWithDuration:0.5 animations:^{
                 diyPageSortBottomBar.frame = CGRectMake(0, kScreenHeight-kBottomBar_BHeight, kScreenWidth, kBottomBar_BHeight);
                 _myCollectionView.frame = CGRectMake(0, kCollectionView_Top, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
             }];
-
         }
             break;
         case 31://背景
         {
-            
+            tapView.hidden = NO;
+            tapViewStyle = DIY_SEL_BACKGROUND;
         }
             break;
         case 32://添加
         {
-            
+            tapView.hidden = NO;
+            tapViewStyle = DIY_SEL_ADDITEM;
         }
             break;
         case 33://音乐
@@ -332,7 +362,7 @@ static const CGFloat kCollectionView_Top = 5.0;
                 [actionSheet showInView:self.view];
                 
             }else if (bottomStyle == ENUM_DIYTEXT) {
-            
+                //删除
             }
         }
             break;
@@ -347,8 +377,6 @@ static const CGFloat kCollectionView_Top = 5.0;
                 
             }else if (bottomStyle == ENUM_DIYTEXT) {
                 //文字内容
-                //APageTextLabel *textLbl = (APageTextLabel *)_selectedElement;
-                //textTV.text = textLbl
                 [txtContentV.textTV becomeFirstResponder];
             }
 
@@ -358,9 +386,15 @@ static const CGFloat kCollectionView_Top = 5.0;
         {
             if (bottomStyle == ENUM_DIYIMAGE) {
                 //裁剪图片
+                
             }else if (bottomStyle == ENUM_DIYTEXT) {
                 //文字样式
-                
+                tapView.hidden = NO;
+                tapViewStyle = DIY_SEL_TEXTSTYLE;
+                [UIView animateWithDuration:0.5 animations:^{
+                    txtStyleV.frame = CGRectMake(0, kScreenHeight-kTextStyleViewH, kScreenWidth, kTextStyleViewH);
+                    _myCollectionView.frame = CGRectMake(0, kCollectionView_Top, kScreenWidth, kScreenHeight-GLOBAL_NAVTOP_HEIGHT-kBottomBar_MHeight);
+                }];
             }
         }
             break;

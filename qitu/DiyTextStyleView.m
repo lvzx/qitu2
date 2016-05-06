@@ -30,10 +30,6 @@
 }
 @end
 
-static const CGFloat kTextStyleViewH = 160;
-static const CGFloat kColorSelectorH = 65;
-static const CGFloat kColorSelectorW = 35;
-
 @interface DiyTextStyleView()<UIScrollViewDelegate>
 {
     CGFloat offset;
@@ -48,7 +44,7 @@ static const CGFloat kColorSelectorW = 35;
 
 - (instancetype)initWithColors:(NSArray *)colors {
     self.colors = colors;
-    CGRect rect = CGRectMake(0, kScreenHeight-kTextStyleViewH, kScreenWidth, kTextStyleViewH);
+    CGRect rect = CGRectMake(0, kScreenHeight, kScreenWidth, kTextStyleViewH);
     if (self = [self initWithFrame:rect]) {
         self.backgroundColor = RGBCOLOR(22, 22, 22);
     }

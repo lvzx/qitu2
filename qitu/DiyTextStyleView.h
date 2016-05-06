@@ -16,6 +16,10 @@
 
 @end
 
+static const CGFloat kTextStyleViewH = 160;
+static const CGFloat kColorSelectorH = 65;
+static const CGFloat kColorSelectorW = 35;
+
 @interface DiyTextStyleView : UIView
 @property (nonatomic, assign) ENUM_DIY_TEXTALIGN textAlign;
 @property (nonatomic, assign) NSInteger colorIdx;
