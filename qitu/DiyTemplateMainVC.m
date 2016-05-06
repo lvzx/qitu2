@@ -17,6 +17,7 @@
 #import "SelectImageVC.h"
 #import "DiyTextContentView.h"
 #import "DiyTextStyleView.h"
+#import "UIColor+Hex.h"
 
 static const CGFloat kBottomBar_MHeight = 50.0;
 static const CGFloat kBottomBar_BHeight = 170.0;
@@ -143,7 +144,7 @@ static const CGFloat kCollectionView_Top = 5.0;
     txtStyleV.textAlign = ENUM_DIY_TEXTMIDDLE;
     txtStyleV.fontSizeSlider.value = 15;
     txtStyleV.delegate = self;
-    [txtStyleV.fontSizeSlider addTarget:self action:@selector(changeFontSizeValue) forControlEvents:UIControlEventValueChanged];
+    [txtStyleV.fontSizeSlider addTarget:self action:@selector(sliderFontSizeChange:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:txtStyleV];
     
 //    DiyBottomBar *diyBottomBar = [[DiyBottomBar alloc] initWithFrame:CGRectMake(0, 105, kScreenWidth, 50)];
@@ -410,13 +411,44 @@ static const CGFloat kCollectionView_Top = 5.0;
 
 #pragma mark - DiyTextStyleViewDelegate
 - (void)didSelectBgColor:(NSInteger)colorIdx {
-
+    NSString *colorHexStr = selColors[colorIdx];
+    if (_selectedElement != nil && [_selectedElement isKindOfClass:[APageTextLabel class]]) {
+        APageTextLabel *textLbl = (APageTextLabel *)_selectedElement;
+        textLbl.textColor = [UIColor colorWithHexString:colorHexStr];
+    }
 }
 - (void)didSelectTextAlign:(ENUM_DIY_TEXTALIGN)textAlign {
-
+    APageTextLabel *textLbl = nil;
+    if (_selectedElement != nil && [_selectedElement isKindOfClass:[APageTextLabel class]]) {
+        textLbl = (APageTextLabel *)_selectedElement;
+    }
+    
+    switch (textAlign) {
+        case ENUM_DIY_TEXTLEFT:
+        {
+            textLbl.textAlignment = NSTextAlignmentLeft;
+        }
+            break;
+        case ENUM_DIY_TEXTMIDDLE:
+        {
+            textLbl.textAlignment = NSTextAlignmentCenter;
+        }
+            break;
+        case ENUM_DIY_TEXTRIGHT:
+        {
+            textLbl.textAlignment = NSTextAlignmentRight;
+        }
+            break;
+        default:
+            break;
+    }
 }
-- (void)changeFontSizeValue {
-
+- (void)sliderFontSizeChange:(UISlider *)slider {
+    UIFont *txtFont = [UIFont systemFontOfSize:slider.value];
+    if (_selectedElement != nil && [_selectedElement isKindOfClass:[APageTextLabel class]]) {
+        APageTextLabel *textLbl = (APageTextLabel *)_selectedElement;
+        textLbl.font = txtFont;
+    }
 }
 #pragma mark - DiyShowDelgate
 - (void)showImgBottomView:(UIView *)element {

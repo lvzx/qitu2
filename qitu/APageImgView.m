@@ -45,7 +45,7 @@ typedef enum {
     CGPoint orginalCenter;
     CGFloat offsetX, offsetY;//移动时x,y方向上的偏移量
 }
-@property (nonatomic, strong) APageImgItem* imgItem;
+
 @end
 
 @implementation APageImgView

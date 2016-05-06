@@ -12,8 +12,12 @@
 @class DiyAPageItem;
 
 @interface APageImgView : UIView
+
 @property (nonatomic, strong) DiyAPageItem *pageItem;
 @property (assign, nonatomic) NSInteger imgIdx;//此图在imgsMArr中的索引
+
+@property (nonatomic, strong) APageImgItem* imgItem;
+
 @property (nonatomic, assign) BOOL hasBorder;
 @property (nonatomic, strong) UIImage *image;
 @property (assign, nonatomic) id<DiyShowDelgate> myDelegate;

@@ -7,6 +7,7 @@
 //
 
 #import "APageTextLabel.h"
+#import "DiyAPageItem.h"
 
 static const CGFloat kScaleBorderDotArea = 25;
 
@@ -50,7 +51,12 @@ typedef enum {
     }
     return self;
 }
-
+- (void)setFont:(UIFont *)font {
+    CGRect destFrame = self.frame;
+    destFrame.size.height = [self getTextHeightFromWidth:destFrame.size.width font:font];
+    self.frame = destFrame;
+    [super setFont:font];
+}
 - (void)setHasBorder:(BOOL)hasBorder {
     _hasBorder = hasBorder;
     [self setNeedsDisplay];
@@ -114,9 +120,9 @@ typedef enum {
     [super drawTextInRect:UIEdgeInsetsInsetRect(rect, _contentInset)];
 }
 
-- (CGFloat)getTextHeightFromWidth:(CGFloat)width {
+- (CGFloat)getTextHeightFromWidth:(CGFloat)width font:(UIFont *)font {
     CGSize size = CGSizeMake(width-2*CREATOR_IMG_PADDING, 800);
-    NSDictionary *attribute = @{NSFontAttributeName: self.font};
+    NSDictionary *attribute = @{NSFontAttributeName: font};
     
     CGSize retSize = [self.text boundingRectWithSize:size
                                        options:\
@@ -127,6 +133,18 @@ typedef enum {
                                        context:nil].size;
     CGFloat txtHeight = retSize.height+2*CREATOR_BORDER_WIDTH;
     return txtHeight;
+}
+
+//问题：imgIdx的赋值操作必须在pageItem之前
+- (void)setPageItem:(DiyAPageItem *)pageItem {
+    if (_pageItem != pageItem) {
+        _pageItem = pageItem;
+        
+        self.txtItem = _pageItem.textMArr[_txtIdx];
+    }
+}
+- (void)updatePageTextData {
+
 }
 
 #pragma mark - 视图触摸事件处理
@@ -171,14 +189,14 @@ typedef enum {
         {
             destFrame.origin.x += offsetX;
             destFrame.size.width -= offsetX;
-            destFrame.size.height = [self getTextHeightFromWidth:destFrame.size.width];
+            destFrame.size.height = [self getTextHeightFromWidth:destFrame.size.width font:self.font];
             self.frame = destFrame;
         }
             break;
         case ENUM_RIGHT_MID_POINT:
         {
             destFrame.size.width += offsetX;
-            destFrame.size.height = [self getTextHeightFromWidth:destFrame.size.width];
+            destFrame.size.height = [self getTextHeightFromWidth:destFrame.size.width font:self.font];
             self.frame = destFrame;
         }
             break;
@@ -197,7 +215,12 @@ typedef enum {
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     if (moved) {
+        self.txtItem.txt_x = self.frame.origin.x;
+        self.txtItem.txt_y = self.frame.origin.y;
+        self.txtItem.txt_width = self.frame.size.width;
+        self.txtItem.txt_height = self.frame.size.height;
         
+        _pageItem.textMArr[_txtIdx] = _txtItem;
         NSLog(@"***touchEnded-ApageImgView");
     }
 }

@@ -74,11 +74,11 @@
         textLblMArr = [[NSMutableArray alloc] init];
         NSInteger arrIndex = 0;
         for (APageImgItem *imgItem in aPageItem.imgsMArr) {
-            arrIndex++;
             CGRect imgRect = CGRectMake(imgItem.img_x*bili-CREATOR_IMG_PADDING, imgItem.img_y*bili-CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, imgItem.imgHeight*bili+2*CREATOR_IMG_PADDING);
             APageImgView *imgV = [[APageImgView alloc] initWithFrame:imgRect];
-            //下面两个元素的赋值顺序不能改变
+            //下面三个元素的赋值顺序不能改变
             imgV.imgIdx = arrIndex;
+            arrIndex++;
             imgV.pageItem = aPageItem;
             
             imgV.myDelegate = self.myDelegate;
@@ -89,14 +89,16 @@
         
         arrIndex = 0;
         for (APageTextItem *txtItem in aPageItem.textMArr) {
-            arrIndex++;
+            
             TextItem *textItem = txtItem.textItem;
             NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
             UIFont *textFont = [UIFont systemFontOfSize:textItem.fontSize*bili];
             CGFloat textWidth = txtItem.txt_width*bili+2*CREATOR_IMG_PADDING;
             CGSize textSize = [self boundingRectText:txtStr WithFont:textFont withSize:CGSizeMake(textWidth, 800)];
             APageTextLabel *textLbl = [[APageTextLabel alloc] initWithFrame:CGRectMake(txtItem.txt_x*bili-CREATOR_IMG_PADDING, txtItem.txt_y*bili, textWidth, textSize.height+2*CREATOR_BORDER_WIDTH)];
-            
+            textLbl.txtIdx = arrIndex;
+            arrIndex++;
+            textLbl.pageItem = aPageItem;
             textLbl.myDelegate = self.myDelegate;
             textLbl.textColor = [UIColor colorWithHexString:textItem.txtColorHexStr];
             textLbl.text = txtStr;
