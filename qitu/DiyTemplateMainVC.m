@@ -489,6 +489,11 @@ static const CGFloat kCollectionView_Top = 5.0;
         if ([_preSelectedElement isKindOfClass:[APageImgView class]]) {
             APageImgView *imgView = (APageImgView *)_preSelectedElement;
             imgView.hasBorder = NO;
+            /*
+            DiyAPageItem *pageItem = imgView.pageItem;
+            NSLog(@"diyAPageItem:%@", pageItem.imgsMArr);
+            APageImgItem *imgItem = pageItem.imgsMArr[0];
+            NSLog(@"imgItemw:%@, h:%@, x:%@, y:%@", @(imgItem.imgWidth), @(imgItem.imgHeight), @(imgItem.img_x), @(imgItem.img_y));*/
         }else if ([_preSelectedElement isKindOfClass:[APageTextLabel class]]) {
             APageTextLabel *textLbl = (APageTextLabel *)_preSelectedElement;
             textLbl.hasBorder = NO;

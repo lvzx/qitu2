@@ -7,6 +7,7 @@
 //
 
 #import "APageImgView.h"
+#import "DiyAPageItem.h"
 
 //static const CGFloat kMinimumScaleArea = 40;
 static const CGFloat kScaleBorderDotArea = 25;
@@ -44,6 +45,7 @@ typedef enum {
     CGPoint orginalCenter;
     CGFloat offsetX, offsetY;//移动时x,y方向上的偏移量
 }
+@property (nonatomic, strong) APageImgItem* imgItem;
 @end
 
 @implementation APageImgView
@@ -112,9 +114,19 @@ typedef enum {
 - (void)updateImage:(UIImage *)image withSize:(CGSize)size {
     _image = image;
     self.bounds = CGRectMake(0, 0, size.width+2*CREATOR_IMG_PADDING, size.height+2*CREATOR_IMG_PADDING);
+    self.imgItem.imgWidth = self.bounds.size.width;
+    self.imgItem.imgHeight = self.bounds.size.height;
+    self.pageItem.imgsMArr[_imgIdx] = _imgItem;
     [self setNeedsDisplay];
 }
-
+//问题：imgIdx的赋值操作必须在pageItem之前
+- (void)setPageItem:(DiyAPageItem *)pageItem {
+    if (_pageItem != pageItem) {
+        _pageItem = pageItem;
+        
+        self.imgItem = _pageItem.imgsMArr[_imgIdx];
+    }
+}
 #pragma mark - 视图触摸事件处理
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     self.alpha = 1.0;
@@ -222,6 +234,7 @@ typedef enum {
         self.imgItem.imgWidth = self.frame.size.width;
         self.imgItem.imgHeight = self.frame.size.height;
         
+        _pageItem.imgsMArr[_imgIdx] = _imgItem;
         NSLog(@"***touchEnded-ApageImgView");
     }
 }

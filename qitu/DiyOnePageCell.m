@@ -72,20 +72,24 @@
         
         imgViewMArr = [[NSMutableArray alloc] init];
         textLblMArr = [[NSMutableArray alloc] init];
-        NSInteger imgRow = 0;
+        NSInteger arrIndex = 0;
         for (APageImgItem *imgItem in aPageItem.imgsMArr) {
+            arrIndex++;
             CGRect imgRect = CGRectMake(imgItem.img_x*bili-CREATOR_IMG_PADDING, imgItem.img_y*bili-CREATOR_IMG_PADDING, imgItem.imgWidth*bili+2*CREATOR_IMG_PADDING, imgItem.imgHeight*bili+2*CREATOR_IMG_PADDING);
             APageImgView *imgV = [[APageImgView alloc] initWithFrame:imgRect];
-            imgV.imgItem = imgItem;
-            imgRow++;
-            imgV.tag = kCellElementTag+imgRow;
+            //下面两个元素的赋值顺序不能改变
+            imgV.imgIdx = arrIndex;
+            imgV.pageItem = aPageItem;
+            
             imgV.myDelegate = self.myDelegate;
             [imgV setImage:[UIImage imageNamed:imgItem.imgStr]];
             [self.contentView addSubview:imgV];
             [imgViewMArr addObject:imgV];
         }
         
+        arrIndex = 0;
         for (APageTextItem *txtItem in aPageItem.textMArr) {
+            arrIndex++;
             TextItem *textItem = txtItem.textItem;
             NSString *txtStr = [self analysisChineseMassyCodeStr:textItem.text];
             UIFont *textFont = [UIFont systemFontOfSize:textItem.fontSize*bili];
